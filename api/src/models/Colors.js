@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
 				allowNull: false,
 			},
 			size: {
-				type: DataTypes.ARRAY,
+				type: DataTypes.ARRAY(DataTypes.STRING),
 				allowNull: false,
 			},
 			stock: {
