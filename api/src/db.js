@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const { Sequelize, Op } = require("sequelize");
 
-const { DB_USER, DB_PASSWORD, DB_HOST, } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/proyect`,
@@ -40,15 +40,15 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 //Accedo a los modelos haciendo destructuring
-let { Clothes, Color, Size } = sequelize.models;
+let { Clothes, Colors, Size } = sequelize.models;
 
 /////////////ACA VAN LAS RELACIONES//////////////////////////
 
-Clothes.belongsToMany(Size, {through: 'Clothes_Size'});
-Size.belongsToMany(Clothes, {through: 'Clothes_Size'});
+Clothes.belongsToMany(Size, { through: "Clothes_Size" });
+Size.belongsToMany(Clothes, { through: "Clothes_Size" });
 
-Size.belongsToMany(Color, {through: 'Sizes_Colors'});
-Color.belongsToMany(Size, {through: 'Sizes_Colors'});
+Size.belongsToMany(Colors, { through: "Sizes_Colors" });
+Colors.belongsToMany(Size, { through: "Sizes_Colors" });
 
 //////////////////////////////////////////////////////
 
@@ -57,3 +57,6 @@ module.exports = {
   conn: sequelize,
   Op,
 };
+
+// throw new Error(`${this.name}
+// .belongsToMany llamado con algo que no es una subclase de Sequelize.Model`);
