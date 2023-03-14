@@ -1,0 +1,65 @@
+import Card from "../Card/Card";
+
+const CardContainer = () => {
+  const clothes = [
+    {
+      id: 1,
+      name: "remera",
+      price: "3500",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT54yTi5f1D_8j0J101vSZdf2JOlMrt-0j2exETwgaWzA&s",
+      gender: "female",
+      colors: [{ id: 1, color: "blue" }],
+      size: [{ id: 1, size: "1" }],
+    },
+
+    {
+      id: 2,
+      name: "remera",
+      price: "6500",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkbO82n56Biook_T4YoFXelgyk49jnK7P3lfLDvg&s",
+      gender: "female",
+      colors: [{ id: 3, color: "black" }],
+      size: [{ id: 1, size: "2" }],
+    },
+    {
+      id: 3,
+      name: "buzo",
+      price: "6500",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwX0K3SddveQkc_yBXY0oq-wMmr0iW7ba2zUazq-8&s",
+      gender: "female",
+      colors: [{ id: 3, color: "black" }],
+      size: [{ id: 4, size: "4" }],
+    },
+    {
+      id: 4,
+      name: "Sweter",
+      price: "7500",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDa-4HSx8bVKQjRwqAvUpGOs5a0vGRm-r_DhJHp31&s",
+      gender: "female",
+      colors: [{ id: 6, color: "brown" }],
+      size: [{ id: 3, size: "3" }],
+    },
+  ];
+  return (
+    <div>
+      {clothes.map((c) => {
+        return (
+          <Card
+            id={c.id}
+            name={c.name}
+            price={c.price}
+            image={c.image}
+            gender={c.gender}
+            colors={[c.colors]}
+            size={[c.size]}
+          />
+        );
+      })}
+    </div>
+  );
+};
+export default CardContainer;
