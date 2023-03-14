@@ -46,6 +46,12 @@ let {Clothes, Color, Size} = sequelize.models;
 
 /////////////ACA VAN LAS RELACIONES//////////////////////////
 
+Clothes.belongsToMany(Size, {through: 'Clothes_Size'});
+Size.belongsToMany(Clothes, {through: 'Clothes_Size'});
+
+Size.belongsToMany(Color, {through: 'Sizes_Colors'});
+Color.belongsToMany(Size, {through: 'Sizes_Colors'});
+
 //////////////////////////////////////////////////////
 
 module.exports = {
