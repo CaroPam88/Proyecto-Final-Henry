@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -L"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,11 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
+    "node": "^19.6.1",
     "nodemon": "^2.0.21",
+    "pg": "^8.10.0",
     "pg-hstore": "^2.3.4",
+    "process": "^0.11.10",
     "sequelize": "^6.29.3"
   }
 }
