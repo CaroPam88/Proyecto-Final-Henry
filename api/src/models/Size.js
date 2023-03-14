@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 //Export the function that defines the model.
 module.exports = (sequelize) => {
     //Define model.
-    sequelize.define('Size', {
+    sequelize.define('size', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         size: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
     },{

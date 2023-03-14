@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 //Export the function that defines the model.
 module.exports = (sequelize) => {
     //Define model.
-    sequelize.define('Colors', {
+    sequelize.define('colors', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

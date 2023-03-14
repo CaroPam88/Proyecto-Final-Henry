@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 //Export the function that defines the model.
 module.exports = (sequelize) => {
     //Define model.
-    sequelize.define('Clothes', {
+    sequelize.define('clothes', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -14,12 +14,12 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        type: {
-            type: DataTypes.ENUM('vestido', 'remera', 'chomba', 'pantalon', 'short'),
-            allowNull: false,
-        },
+        // type: {
+        //     type: DataTypes.ENUM('vestido', 'remera', 'chomba', 'pantalon', 'short'),
+        //     allowNull: false,
+        // },
         image: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         sex: {
