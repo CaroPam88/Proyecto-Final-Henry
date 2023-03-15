@@ -1,21 +1,21 @@
-const { Router } = require("express");
+const {Router} = require('express');
 const {
-  getProductHandler,
-  getProductByIdHandler,
-  postProductHandler,
-  patchProductHandler,
-} = require("../handlers/clothesHandlers");
+	getProductHandler,
+	getProductByIdHandler,
+	postProductHandler,
+	patchProductHandler,
+} = require('../handlers/clothesHandlers');
 
 const clothesRouter = Router();
 
 //RUTA PARA MOSTRAR TODOS LAS PRENDAS SIN DETALLE
-clothesRouter.get("/", getProductHandler);
+clothesRouter.get('/', getProductHandler);
 
 //RUTA PARA MOSTRAR LAS PRENDAS POR ID JUNTO AL DETALLE DE LA MISMA
-clothesRouter.get("/:id", );
+clothesRouter.get('/:id', getProductByIdHandler);
 
 //RUTA PARA CREAR PRODUCTO O PRENDA NUEVA
-clothesRouter.post("/", postProductHandler);
+clothesRouter.post('/', postProductHandler);
 
 //RUTA PARA ACTUALIZAR LA PRENDA (ESENCIAL PARA EL MANEJO DE STOCK)
 //clothesRouter.patch("/:id", patchProductHandler);

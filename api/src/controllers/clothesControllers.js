@@ -1,66 +1,82 @@
-const { Clothes, Size, Colors } = require("../db");
+const {Clothes, Size, Colors} = require('../db');
 
 let getClothesData = async (searchClothe) => {
-  const clothesData = await Clothes.findAll({
-    include: [
-      {
-        model: Size,
-        attributes: ["size", "stockSize"],
-        through: {
-          attributes: [],
-        },
-      },
-      {
-        model: Colors,
-        attributes: ["color", "stockColor"],
-        through: {
-          attributes: [],
-        },
-      },
-    ],
-  });
+	const clothesData = await Clothes.findAll({
+		include: [
+			{
+				model: Size,
+				attributes: ['size', 'stockSize'],
+				through: {
+					attributes: [],
+				},
+			},
+			{
+				model: Colors,
+				attributes: ['color', 'stockColor'],
+				through: {
+					attributes: [],
+				},
+			},
+		],
+	});
 
-  if (searchClothe) {
-    const clothes = clothesData.filter((e) =>
-      e.name.toLowerCase().includes(searchClothe.toLowerCase())
-    );
+	////////////////////////////////////////
 
-    if (!clothes.length) {
-      throw Error("Prenda no encontrada");
-    }
+	let getIdData = async (id) => {
+		const clothesData = await getClothesData();
 
-    return clothes;
-  }
+		let dataId = clothesData.find((e) => e.id == id);
 
-  return clothesData;
+		if (dataId) {
+			return dataId;
+		} else {
+			throw Error('Prenda no encontrado');
+		}
+	};
+
+	/////////////////////////////////////////////
+
+	if (searchClothe) {
+		const clothes = clothesData.filter((e) =>
+			e.name.toLowerCase().includes(searchClothe.toLowerCase())
+		);
+
+		if (!clothes.length) {
+			throw Error('Prenda no encontrada');
+		}
+
+		return clothes;
+	}
+
+	return clothesData;
 };
 
 const createProduct = async (
-  name,
-  price,
-  type,
-  image,
-  sex,
-  stockGeneral,
-  size,
-  color
+	name,
+	price,
+	type,
+	image,
+	sex,
+	stockGeneral,
+	size,
+	color
 ) => {
-  let create = await Clothes.create({
-    name,
-    price,
-    type,
-    image,
-    sex,
-    stockGeneral,
-  });
-  let sizeDb = await Size.findAll({ where: { size: size } });
+	let create = await Clothes.create({
+		name,
+		price,
+		type,
+		image,
+		sex,
+		stockGeneral,
+	});
+	let sizeDb = await Size.findAll({where: {size: size}});
 
-  create.addSize(sizeDb);
-  console.log(price);
-  let colorDb = await Colors.findAll({ where: { color: color } });
+	create.addSize(sizeDb);
+	console.log(price);
+	let colorDb = await Colors.findAll({where: {color: color}});
 
-  create.addColors(colorDb);
-  return { message: "Product Create !!!!!" };
+	create.addColors(colorDb);
+	return {message: 'Product Create !!!!!'};
 };
 
-module.exports = { getClothesData, createProduct };
+module.exports = {getClothesData, getIdData, createProduct};
