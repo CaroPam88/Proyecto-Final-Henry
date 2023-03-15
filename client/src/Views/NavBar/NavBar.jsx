@@ -7,12 +7,12 @@ const NavBar = ()=>{
     const path = location.pathname;
     return(
         <div className={style.content}>
-            {path !== "/home" && <Link to ="/home">Home</Link>}
-            {path !== "/form" &&  <Link to= "/form">Form</Link>}
             <section>
-                <h1>ClothesApp</h1>
+                <h1>DressMe</h1>
             </section>
             <SearchBar></SearchBar>
+            {path !== "/home" && <Link to ="/home">Home</Link>}
+            {path !== "/form" &&  <Link to= "/form">Form</Link>}
         </div>
     )
 }

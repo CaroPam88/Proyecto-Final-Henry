@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
-const Card = (props) => {
+const Card = ({id, name, image, price}) => {
   return (
     <div>
-      <Link to={"/Detail"} />
-      <p>Id:{props.id}</p>
-      <p>Name:{props.name}</p>
-      <img src={props.image} />
-      <p>${props.price}</p>
+      <img src={image} />
+      <p>${price}</p>
+      <p>{name}</p>
+      <Link to={`/Detail/${id}` }>
+        <p>view more</p>
+      </Link>
     </div>
   );
 };
