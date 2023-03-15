@@ -1,10 +1,8 @@
 const {DataTypes} = require('sequelize');
 
-//Export the function that defines the model.
 module.exports = (sequelize) => {
-	//Define model.
 	sequelize.define(
-		'Size',
+		'Colors',
 		{
 			id: {
 				type: DataTypes.INTEGER,
@@ -12,7 +10,7 @@ module.exports = (sequelize) => {
 				primaryKey: true,
 				allowNull: false,
 			},
-			size: {
+			color: {
 				type: DataTypes.INTEGER,
 				allowNull: false,
 			},
