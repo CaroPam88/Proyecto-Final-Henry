@@ -6,7 +6,7 @@ const {
   patchProductHandler,
 } = require("RUTAS EN CREACION"); // en proceso de creacion
 
-const Router = clothesRouter();
+const clothesRouter = Router();
 
 //RUTA PARA MOSTRAR TODOS LAS PRENDAS SIN DETALLE
 clothesRouter.get("/", getProductHandler);
