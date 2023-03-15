@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 //Faltan requerir rutas => const routes = require('./routes/index.js');
 
-//Falta requerir la db => require('./db.js);
+require('./db.js');
 
 const server = express();
 server.name = 'API';

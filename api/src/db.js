@@ -1,12 +1,16 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const {Sequelize} = require('sequelize');
+const {Sequelize, Op} = require('sequelize');
 
-const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT} = process.env;
+let DB_USER = 'postgres';
+let DB_PASSWORD = 'Riverlomas1';
+let DB_HOST = 'localhost:5432';
+
+// const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
 
 const sequelize = new Sequelize(
-	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dressme`,
 	{
 		logging: false,
 		native: false,
@@ -42,15 +46,12 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 //Accedo a los modelos haciendo destructuring
-let {Clothes, Color, Size} = sequelize.models;
+let {Clothes, Size} = sequelize.models;
 
 /////////////ACA VAN LAS RELACIONES//////////////////////////
 
 Clothes.belongsToMany(Size, {through: 'Clothes_Size'});
 Size.belongsToMany(Clothes, {through: 'Clothes_Size'});
-
-Size.belongsToMany(Color, {through: 'Sizes_Colors'});
-Color.belongsToMany(Size, {through: 'Sizes_Colors'});
 
 //////////////////////////////////////////////////////
 
