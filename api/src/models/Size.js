@@ -4,7 +4,7 @@ const {DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
 	//Define model.
 	sequelize.define(
-		'Colors',
+		'Size',
 		{
 			id: {
 				type: DataTypes.INTEGER,
@@ -12,11 +12,11 @@ module.exports = (sequelize) => {
 				primaryKey: true,
 				allowNull: false,
 			},
-			name: {
-				type: DataTypes.STRING,
+			size: {
+				type: DataTypes.INTEGER,
 				allowNull: false,
 			},
-			size: {
+			colors: {
 				type: DataTypes.ARRAY(DataTypes.STRING),
 				allowNull: false,
 			},
