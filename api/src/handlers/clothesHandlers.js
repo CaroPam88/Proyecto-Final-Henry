@@ -2,6 +2,7 @@ const {Clothes, Color, Size} = require('../db');
 const {
 	getClothesData,
 	createProduct,
+	getIdData,
 } = require('../controllers/clothesControllers');
 
 let getProductHandler = async (req, res) => {
