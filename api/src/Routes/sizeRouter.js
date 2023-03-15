@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getSizeHandler } = require("RUTAS EN CREACION");
+const { getSizeHandler } = require("../handlers/sizeHandlers");
 
 const sizeRouter = Router();
 

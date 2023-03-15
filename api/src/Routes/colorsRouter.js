@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const { getColorsHandler } = require("RUTAS EN CREACION");
+const { getColorsHandlers } = require("../handlers/colorsHandlers");
 
 const colorsRouter = Router();
 
 //RUTA PARA CARGAR LOS COLORES
-colorsRouter.get("/", getColorsHandler);
+colorsRouter.get("/", getColorsHandlers);
 
 module.exports = colorsRouter;

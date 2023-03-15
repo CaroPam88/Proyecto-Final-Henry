@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   //Define model.
   sequelize.define(
-    "Clothes",
+    "clothes",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       price: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       type: {
@@ -38,6 +38,10 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
+      stockGeneral: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      }
     },
     {
       timestamps: false,
