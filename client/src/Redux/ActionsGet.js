@@ -1,4 +1,4 @@
-import  { getProducts, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } from './productSlice';
+import  { getProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } from './productSlice';
 import axios from 'axios';
 
 
@@ -6,7 +6,18 @@ import axios from 'axios';
 const getAllProducts = () => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/clothes/getProductByIdHandler`)).data;
+            const dbData = (await axios(`/clothes/`)).data;
+            return dispatch(getProducts(dbData));
+        } catch (error) {
+            alert({ error : error.message });
+        };
+    };
+};
+
+const getProductsByName = (name) => {
+    return async (dispatch) => {
+        try {
+            const dbData = (await axios(`/clothes/?name=${name}`)).data;
             return dispatch(getProducts(dbData));
         } catch (error) {
             alert({ error : error.message });
@@ -17,7 +28,7 @@ const getAllProducts = () => {
 const getProductDetail = (id) => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/clothes/getProductByIdHandler/${id}`)).data;
+            const dbData = (await axios(`/clothes/:${id}`)).data;
             return dispatch(getDetail(dbData));
         } catch (error) {
             alert({ error : error.message });
@@ -28,7 +39,7 @@ const getProductDetail = (id) => {
 const getAllColors = () => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/colors/getColors`)).data;
+            const dbData = (await axios(`/colors/`)).data;
             return dispatch(getColors(dbData));
         } catch (error) {
             alert({ error : error.message });
@@ -39,7 +50,7 @@ const getAllColors = () => {
 const getAllSize = () => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/size/getSize`)).data;
+            const dbData = (await axios(`/size/`)).data;
             return dispatch(getSize(dbData));
         } catch (error) {
             alert({ error : error.message });
@@ -65,4 +76,4 @@ const clearSizeState = () => (dispatch) => {
     return dispatch(clearSize(clearState))
 }
 
-export { getAllProducts, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState }
+export { getAllProducts, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState }
