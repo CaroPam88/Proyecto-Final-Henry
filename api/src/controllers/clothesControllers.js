@@ -1,4 +1,4 @@
-const {Clothes, Size} = require('../db');
+const {Clothes, Size, Colors} = require('../db');
 
 let getClothesData = async (searchClothe) => {
 	const clothesData = await Clothes.findAll({
@@ -35,4 +35,18 @@ let getClothesData = async (searchClothe) => {
 	return clothesData;
 };
 
-module.exports = {getClothesData};
+//////////////////////////////////////////////////////////////////////
+
+let getIdData = async (id) => {
+	const clothesData = getClothesData();
+
+	let dataId = clothesData.find((e) => e.id == id);
+
+	if (dataId) {
+		return dataId;
+	} else {
+		throw Error('Prenda no encontrado');
+	}
+};
+
+module.exports = {getClothesData, getIdData};

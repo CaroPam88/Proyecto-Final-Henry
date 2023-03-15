@@ -1,5 +1,8 @@
 const {Clothes, Color, Size} = require('../db');
-const {getClothesData} = require('../controllers/clothesControllers');
+const {
+	getClothesData,
+	getIdData,
+} = require('../controllers/clothesControllers');
 
 let getProductHandler = async (req, res) => {
 	let clothes = req.query.clothes;
@@ -19,14 +22,20 @@ let getProductHandler = async (req, res) => {
 	}
 };
 
-let getProductByIdHandler = () => {};
-let postProductHandler = () => {};
-let patchProductHandler = () => {};
-patchProductHandler;
+///////////////////////////////////////
+
+let getProductByIdHandler = async (req, res) => {
+	let {id} = req.params;
+
+	try {
+		let clothe = await getIdData(id);
+		res.status(200).json(clothe);
+	} catch (err) {
+		res.status(404).json({error: err.message});
+	}
+};
 
 module.exports = {
 	getProductHandler,
 	getProductByIdHandler,
-	postProductHandler,
-	patchProductHandler,
 };
