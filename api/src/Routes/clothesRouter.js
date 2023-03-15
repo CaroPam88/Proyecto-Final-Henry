@@ -4,22 +4,22 @@ const {
   getProductByIdHandler,
   postProductHandler,
   patchProductHandler,
-} = require("RUTAS EN CREACION"); // en proceso de creacion
+} = require("../handlers/clothesHandlers");
 
-const Router = clothesRouter();
+const clothesRouter = Router();
 
 //RUTA PARA MOSTRAR TODOS LAS PRENDAS SIN DETALLE
 clothesRouter.get("/", getProductHandler);
 
 //RUTA PARA MOSTRAR LAS PRENDAS POR ID JUNTO AL DETALLE DE LA MISMA
-clothesRouter.get("/:id", getProductByIdHandler);
+clothesRouter.get("/:id", );
 
 //RUTA PARA CREAR PRODUCTO O PRENDA NUEVA
 clothesRouter.post("/", postProductHandler);
 
 //RUTA PARA ACTUALIZAR LA PRENDA (ESENCIAL PARA EL MANEJO DE STOCK)
-clothesRouter.patch("/:id", patchProductHandler);
+//clothesRouter.patch("/:id", patchProductHandler);
 
 //Faltando rutas nuevas segun el avance del proyecto
 
-module.exports = videogamesRouter;
+module.exports = clothesRouter;
