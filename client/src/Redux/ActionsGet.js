@@ -18,7 +18,7 @@ const getProductsByName = (name) => {
     return async (dispatch) => {
         try {
             const dbData = (await axios(`/clothes/?name=${name}`)).data;
-            return dispatch(getProducts(dbData));
+            return dispatch(getProdName(dbData));
         } catch (error) {
             alert({ error : error.message });
         };
