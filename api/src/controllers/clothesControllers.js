@@ -1,24 +1,9 @@
 const {Clothes, Size, Colors} = require('../db');
 
+const {clothesBdd} = require('../basesDeDatos/dataGeneral');
+
 let getClothesData = async (searchClothe) => {
-	const clothesData = await Clothes.findAll({
-		include: [
-			{
-				model: Size,
-				attributes: ['size', 'stockSize'],
-				through: {
-					attributes: [],
-				},
-			},
-			{
-				model: Colors,
-				attributes: ['color', 'stockColor'],
-				through: {
-					attributes: [],
-				},
-			},
-		],
-	});
+	const clothesData = await clothesBdd();
 
 	if (searchClothe) {
 		const clothes = clothesData.filter((e) =>
