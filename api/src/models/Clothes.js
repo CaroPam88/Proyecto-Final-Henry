@@ -40,7 +40,11 @@ module.exports = (sequelize) => {
       },
       stockGeneral: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
+      },
+      existing: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
       }
       
     },
@@ -50,3 +54,4 @@ module.exports = (sequelize) => {
     }
   );
 };
+  
