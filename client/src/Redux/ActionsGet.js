@@ -28,7 +28,7 @@ const getProductsByName = (name) => {
 const getProductDetail = (id) => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/clothes/:${id}`)).data;
+            const dbData = (await axios(`/clothes/${id}`)).data;
             return dispatch(getDetail(dbData));
         } catch (error) {
             alert({ error : error.message });
