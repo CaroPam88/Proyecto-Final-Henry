@@ -1,7 +1,7 @@
 export const clothes = [
     {
       id: 1,
-      name: "remera",
+      name: "remera1",
       price: "3500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT54yTi5f1D_8j0J101vSZdf2JOlMrt-0j2exETwgaWzA&s",
@@ -12,7 +12,7 @@ export const clothes = [
 
     {
       id: 2,
-      name: "remera",
+      name: "remera2",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkbO82n56Biook_T4YoFXelgyk49jnK7P3lfLDvg&s",
@@ -22,7 +22,7 @@ export const clothes = [
     },
     {
       id: 3,
-      name: "buzo",
+      name: "buzo3",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwX0K3SddveQkc_yBXY0oq-wMmr0iW7ba2zUazq-8&s",
@@ -32,7 +32,7 @@ export const clothes = [
     },
     {
       id: 4,
-      name: "Sweter",
+      name: "Sweter4",
       price: "7500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDa-4HSx8bVKQjRwqAvUpGOs5a0vGRm-r_DhJHp31&s",
@@ -42,7 +42,7 @@ export const clothes = [
     },
     {
       id: 5,
-      name: "remera",
+      name: "remera5",
       price: "3500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT54yTi5f1D_8j0J101vSZdf2JOlMrt-0j2exETwgaWzA&s",
@@ -53,7 +53,7 @@ export const clothes = [
 
     {
       id: 6,
-      name: "remera",
+      name: "remera6",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkbO82n56Biook_T4YoFXelgyk49jnK7P3lfLDvg&s",
@@ -63,7 +63,7 @@ export const clothes = [
     },
     {
       id: 7,
-      name: "buzo",
+      name: "buzo7",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwX0K3SddveQkc_yBXY0oq-wMmr0iW7ba2zUazq-8&s",
@@ -73,7 +73,7 @@ export const clothes = [
     },
     {
       id: 8,
-      name: "Sweter",
+      name: "Sweter8",
       price: "7500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDa-4HSx8bVKQjRwqAvUpGOs5a0vGRm-r_DhJHp31&s",
@@ -83,7 +83,7 @@ export const clothes = [
     },
     {
       id: 9,
-      name: "remera",
+      name: "remera9",
       price: "3500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT54yTi5f1D_8j0J101vSZdf2JOlMrt-0j2exETwgaWzA&s",
@@ -94,7 +94,7 @@ export const clothes = [
 
     {
       id: 10,
-      name: "remera",
+      name: "remera10",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkbO82n56Biook_T4YoFXelgyk49jnK7P3lfLDvg&s",
@@ -104,7 +104,7 @@ export const clothes = [
     },
     {
       id: 11,
-      name: "buzo",
+      name: "buzo11",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwX0K3SddveQkc_yBXY0oq-wMmr0iW7ba2zUazq-8&s",
@@ -114,7 +114,7 @@ export const clothes = [
     },
     {
       id: 12,
-      name: "Sweter",
+      name: "Sweter12",
       price: "7500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDa-4HSx8bVKQjRwqAvUpGOs5a0vGRm-r_DhJHp31&s",
@@ -124,7 +124,7 @@ export const clothes = [
     },
     {
       id: 13,
-      name: "remera",
+      name: "remera13",
       price: "3500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT54yTi5f1D_8j0J101vSZdf2JOlMrt-0j2exETwgaWzA&s",
@@ -135,7 +135,7 @@ export const clothes = [
 
     {
       id: 14,
-      name: "remera",
+      name: "remera14",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkbO82n56Biook_T4YoFXelgyk49jnK7P3lfLDvg&s",
@@ -145,7 +145,7 @@ export const clothes = [
     },
     {
       id: 15,
-      name: "buzo",
+      name: "buzo15",
       price: "6500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwX0K3SddveQkc_yBXY0oq-wMmr0iW7ba2zUazq-8&s",
@@ -155,7 +155,7 @@ export const clothes = [
     },
     {
       id: 16,
-      name: "Sweter",
+      name: "Sweter16",
       price: "7500",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDa-4HSx8bVKQjRwqAvUpGOs5a0vGRm-r_DhJHp31&s",

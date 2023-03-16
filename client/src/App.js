@@ -15,13 +15,13 @@ function App() {
       
       <Routes>
 
-        <Route exact path="/" element={<Landing />} />
+        <Route path="/" element={<Landing />} />
 
-        <Route exact path="/Form" element={<Form />} />
+        <Route exact path="/form" element={<Form />} />
 
         <Route exact path="/detail/:id" element={<Detail />} />
 
-        <Route exact path="/Home" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
 
       </Routes>
     </div>
