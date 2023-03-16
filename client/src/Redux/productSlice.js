@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {clothes} from '../utils/simulateDB'
 
 const initialState = {
     products:[],
-    filteredProducs:clothes,
+    filteredProducs:[],
     productDetail:[],
     colors:[],
     size:[],
