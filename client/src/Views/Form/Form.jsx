@@ -1,46 +1,179 @@
-// import { useDispatch } from "react-redux";
+ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import validate from "./Validate";
+import postClothes from "../../Redux/ActionsGet"
+// import axios from "axios"
+
+const ropa = [
+  {
+    "id": 1,
+    "name": "product_3",
+    "price": "500",
+    "type": "vestido",
+    "image": "tex",
+    "sex": [
+      "dama"
+    ],
+    "stockGeneral": 50,
+    "existing": true,
+    "sizes": [
+      {
+        "size": "M",
+        "stockSize": 50,
+        "colors": [
+          {
+            "color": "negro",
+            "stockColors": 10
+          },
+          {
+            "color": "blanco",
+            "stockColors": 20
+          },
+          {
+            "color": "azul",
+            "stockColors": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Romina",
+    "price": "3500",
+    "type": "vestido",
+    "image": "text",
+    "sex": [
+      "Woman"
+    ],
+    "stockGeneral": 64,
+    "existing": true,
+    "sizes": [
+      {
+        "size": "L",
+        "stockSize": 64,
+        "colors": [
+          {
+            "color": "negro",
+            "stockColors": 15
+          },
+          {
+            "color": "blanco",
+            "stockColors": 25
+          },
+          {
+            "color": "azul",
+            "stockColors": 24
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Pato",
+    "price": "6500",
+    "type": "remera",
+    "image": "text",
+    "sex": [
+      "Man"
+    ],
+    "stockGeneral": 61,
+    "existing": true,
+    "sizes": [
+      {
+        "size": "M",
+        "stockSize": 61,
+        "colors": [
+          {
+            "color": "negro",
+            "stockColors": 45
+          },
+          {
+            "color": "blanco",
+            "stockColors": 2
+          },
+          {
+            "color": "azul",
+            "stockColors": 14
+          }
+        ]
+      }
+    ]
+  }
+]
+
+let  result = [
+  {
+      "color": "negro",
+      "stockColors": 10
+  },
+  {
+      "color": "blanco",
+      "stockColors": 20
+  },
+  {
+      "color": "azul",
+      "stockColors": 20
+  }
+]
 
 function Form() {
-  // const dispatch = useDispatch()
-
+   const dispatch = useDispatch()
   const [form, setForm] = useState({
     name: "",
     price: "",
     type: "",
     image: "",
-    sex: "",
-    size: [],
+    sex: [],
+    size: "",
     amount:"",
+    stockGeneral:0,
+    stockSize:0,
     colors: [],
+    existing:true,
   });
-
+  const handlerColor = (event) =>{
+    setForm({...form, colors: [form.colors, event.target.value]})
+  }
+  
   const [error, setError] = useState({
     name: "Insert Name",
     price: "Insert Price",
     type: "Choose Type",
     image: "Insert Image",
-    sex: "Choose Sex",
-    size: "Choose Size",
+    genre: "Choose Sex",
+    stockSize: "",
     colors: "Choose Colors",
   });
+  
 
   const handleForm = (event) => {
     setError(validate({ ...form, [event.target.name]: event.target.value }));
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-  // const submitHandler = async (event) => {    
-  //    await axios
-  //      .post("http://localhost:3001/clothes", form)
-  //      .then((response) => alert("Created Stock!"))
-  //      .catch((error) => alert(error));
-  //  };
+  function SubmitHandler(e){
+    e.preventDefault();
+    if (Object.values(error).length > 0) alert("Por favor rellenar todos los campos")
+    else {
+        dispatch(postClothes(form))
+        alert('¡Post creado!')
+    }
+};
 
-console.log(form)
+
+
+// const myProduct = useSelector(state => state.products.productDetail)
+let product = []
+let cuenta =  ropa.map(el => el.sizes).map(elem => elem[0].colors.map(elem=> product.push(elem) ))
+product.push(cuenta);
+
+
+
   return (
-    <div>
-      <form> 
+    <div onSubmit={e => SubmitHandler(e)}>
+      
+      <form > 
         <div>
           <label>LOAD STOCK</label>
         </div>
@@ -84,10 +217,10 @@ console.log(form)
 
         <div>
           <h3>
-            <label>SEX:</label>
+            <label>GENRE:</label>
           </h3>
 
-          <select name="sex" onChange={handleForm}>
+          <select name="genre" onChange={handleForm}>
             <option value="">---</option>
             <option value="Female">Female</option>
             <option value="Male">Male</option>
@@ -101,19 +234,19 @@ console.log(form)
             <label>SIZE:</label>
           </h3>
           <select name="size"  onChange={handleForm}>
-            <option value="">---</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
+           <option value="">---</option>
+           <option value="s">S</option>
+           <option value="m">M</option>
+           <option value="l">L</option>
+           <option value="xl">XL</option>
+           <option value="xxl">XXL</option>
           </select>
           {error.size && <span>{error.size}</span>}
           <div>
             {/* {form.size.map(s => s+",")} */}
           </div>
         </div>
-        {console.log(form.size)}
+       
         <div>
           <h3>
             <label>AMOUNT:</label>
@@ -138,25 +271,22 @@ console.log(form)
           </select>
           {error.amount && <span>{error.amount}</span>}
         </div>
-        {console.log(form.amount)}
+       
         <div>
           <p>COLORS:</p>
-          <select name="colors" onChange={handleForm}>
-            <option value="">---</option>
-            <option value="White">White</option>
-            <option value="Black">Black</option>
-            <option value="Green">Green</option>
-            <option value="Red">Red</option>
-            <option value="Blue">Blue</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Grey">Grey</option>
+          <select name="size"  onChange={(e) => handlerColor(e)} >
+            {product.map((r) =>(
+              <option>{r.color}</option>
+            ) )}
           </select>
           {error.colors && <span>{error.colors}</span>}
-          <div>
-            {/* {form.colors.map(c => c+",")} */}
-          </div>
+          <ul>
+            <li>
+            {form.colors.map(c => c+",")}
+            </li>
+          </ul>
         </div>
-        {console.log(form.colors)}
+        {console.log(form)}
         <button
            
             type="submit"

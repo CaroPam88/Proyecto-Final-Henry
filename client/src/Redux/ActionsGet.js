@@ -1,4 +1,4 @@
-import  { getProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } from './productSlice';
+import  { getProducts, postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } from './productSlice';
 import axios from 'axios';
 
 
@@ -13,6 +13,19 @@ const getAllProducts = () => {
         };
     };
 };
+
+export default function postClothes(input) {
+    return async (dispatch) => {
+        try {
+            const dbData = await axios.post(`http://localhost:3001/clothes`, input);
+            return dispatch(postProducts(dbData.data))
+        } catch (error) {
+          alert({error: error.message});
+        }
+      
+    }
+}
+
 
 const getProductsByName = (name) => {
     return async (dispatch) => {
@@ -76,4 +89,4 @@ const clearSizeState = () => (dispatch) => {
     return dispatch(clearSize(clearState))
 }
 
-export { getAllProducts, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState }
+export { getAllProducts, postClothes, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState }
