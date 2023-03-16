@@ -4,6 +4,8 @@ import Form from "./Views/Form/Form";
 import Detail from "./Views/Detail/Detail";
 import Landing from "./Views/Landing/LandingPage";
 import NavBar from "./Views/NavBar/NavBar";
+import axios from "axios";
+axios.defaults.baseURL = 'http://localhost:3001/';
 
 function App() {
   const location = useLocation();
@@ -17,7 +19,7 @@ function App() {
 
         <Route exact path="/Form" element={<Form />} />
 
-        <Route exact path="/Detail" element={<Detail />} />
+        <Route exact path="/detail/:id" element={<Detail />} />
 
         <Route exact path="/Home" element={<Home />} />
 
