@@ -1,0 +1,7 @@
+.content {
+    display: grid;
+    grid-template-columns: repeat(3, [line1 line2 line3] 200px);
+    justify-content: space-around;
+    width: 100vw;
+    height: 100vh;
+}
