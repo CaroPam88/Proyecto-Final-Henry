@@ -6,7 +6,7 @@ const {
 } = require("../controllers/clothesControllers");
 
 let getProductHandler = async (req, res) => {
-  let clothes = req.query.clothes;
+  let clothes = req.query.name;
 
   if (clothes) {
     try {
