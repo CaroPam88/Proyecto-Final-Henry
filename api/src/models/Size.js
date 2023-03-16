@@ -20,6 +20,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      colors: {
+        type: DataTypes.ARRAY(DataTypes.JSON),
+        allowNull: false,
+      },
     },
     {
       timestamps: false,

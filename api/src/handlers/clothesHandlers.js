@@ -1,68 +1,81 @@
-const {Clothes, Color, Size} = require('../db');
+const { Clothes, Color, Size } = require("../db");
 const {
-	getClothesData,
-	createProduct,
-	getIdData,
-} = require('../controllers/clothesControllers');
+  getClothesData,
+  createProduct,
+  getIdData,
+} = require("../controllers/clothesControllers");
 
 let getProductHandler = async (req, res) => {
-	let clothes = req.query.clothes;
+  let clothes = req.query.clothes;
 
-	if (clothes) {
-		try {
-			let searchClothes = await getClothesData(clothes);
+  if (clothes) {
+    try {
+      let searchClothes = await getClothesData(clothes);
 
-			res.status(200).json(searchClothes);
-		} catch (err) {
-			res.status(404).json({error: err.message});
-		}
-	} else {
-		let allClothes = await getClothesData();
-		res.status(200).json(allClothes);
-	}
+      res.status(200).json(searchClothes);
+    } catch (err) {
+      res.status(404).json({ error: err.message });
+    }
+  } else {
+    let allClothes = await getClothesData();
+    res.status(200).json(allClothes);
+  }
 };
 
 ////////////////////////////////////////////////////
 
 let getProductByIdHandler = async (req, res) => {
-	let {id} = req.params;
+  let { id } = req.params;
 
-	try {
-		let clothe = await getIdData(id);
-		res.status(200).json(clothe);
-	} catch (err) {
-		res.status(404).json({error: err.message});
-	}
+  try {
+    let clothe = await getIdData(id);
+    res.status(200).json(clothe);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
 };
 
 //////////////////////////////////////////////////////
 
 let postProductHandler = async (req, res) => {
-	const {name, price, type, image, sex, stockGeneral, size, color} = req.body;
-	console.log(color);
-	try {
-		const newProduct = await createProduct(
-			name,
-			price,
-			type,
-			image,
-			sex,
-			stockGeneral,
-			size,
-			color
-		);
-		res.status(201).json(newProduct);
-	} catch (error) {
-		res.status(400).json({error: error.message});
-	}
+  const {
+    name,
+    price,
+    type,
+    image,
+    sex,
+    stockGeneral,
+    stockSize,
+    size,
+    colors,
+    existing,
+  } = req.body;
+
+  try {
+    const newProduct = await createProduct(
+      name,
+      price,
+      type,
+      image,
+      sex,
+      stockGeneral,
+      stockSize,
+      size,
+      colors,
+      existing
+    );
+    res.status(201).json(newProduct);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 let patchProductHandler = () => {};
 patchProductHandler;
 
 module.exports = {
-	getProductHandler,
-	getProductByIdHandler,
-	postProductHandler,
-	patchProductHandler,
+  getProductHandler,
+  getProductByIdHandler,
+  postProductHandler,
+  patchProductHandler,
 };
