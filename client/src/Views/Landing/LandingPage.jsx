@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Landing = () => {
+  // const navigate = useNavigate();
+  // const [open, setOpen] = useState(false);
+  // const gotoHome = () => {
+  //   setTimeout(() =>{
+  //     setOpen(true);
+  //     setTimeout(() => navigate("/home"), 1500)
+  //   }, 1300)
+  // };
+  // useEffect(gotoHome)
+
+  
   return (
     <div>
       <Link to="/home">
