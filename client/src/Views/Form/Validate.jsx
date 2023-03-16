@@ -12,7 +12,7 @@ function validate(input) {
     if (!input.price) error.price = "Insert a Price";
     if (!input.image) error.image = "Insert an Image";   
     if (!input.sex) error.sex = "Select a Sex"; 
-    if (!input.size.length) error.size = "Select a Size";
+    if (!input.size) error.size = "Select a Size";
     if (!input.amount) error.amount = "Insert an amount";
     if (!input.colors) error.colors= "Choose a Color";
 

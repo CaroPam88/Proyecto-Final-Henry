@@ -6,6 +6,7 @@ const initialState = {
     productDetail:[],
     colors:[],
     size:[],
+    post:[],
 };
 
 const Slice = createSlice({
@@ -15,6 +16,9 @@ const Slice = createSlice({
         getProducts: (state, action) => {
             state.products = action.payload;
             state.filteredProducs = action.payload;
+        },
+        postProducts:(state, action) => {
+            state.post = action.payload;
         },
         getProdName: (state, action) => {
             state.filteredProducs = action.payload;
@@ -44,5 +48,5 @@ const Slice = createSlice({
     }
 });
 
-export const { getProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } = Slice.actions;
+export const { getProducts,  postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } = Slice.actions;
 export default Slice.reducer;
