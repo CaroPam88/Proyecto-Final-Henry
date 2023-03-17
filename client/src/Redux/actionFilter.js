@@ -32,7 +32,7 @@ const typeFilter = (type, productsFilteredGenre) => {
 const sizeFilter = (size, productsFilteredType) => {
   const result = size === ''
   ? productsFilteredType
-  : productsFilteredType?.filter(cloth => cloth.size === size)
+  : productsFilteredType?.filter(cloth => cloth.sizes.some(s => s.size === size));
   console.log(result);
   return result;
 };
