@@ -5,15 +5,13 @@ const filterAllClothes = (filters) => {
     const {genre, size, color, type} = filters;
     
     const allProducts = getState().products.products;
-    console.log('obtiene',allProducts)
-    // console.log('filtra',allProducts?.map(e => e.sex.filter((clothe) => clothe === genre)))
 
     const productsFilteredGenre = await genreFilter(genre, allProducts);
     const productsFilteredType = await typeFilter(type, productsFilteredGenre);
     const productsFilteredSize = await sizeFilter(size, productsFilteredType);
-    // const productsFilteredColor = await colorFilter(color, productsFilteredSize);
+    const productsFilteredColor = await colorFilter(color, productsFilteredSize);
 
-    return dispatch(filterClothes(productsFilteredSize))
+    return dispatch(filterClothes(productsFilteredColor))
   };
 };
 
@@ -33,7 +31,12 @@ const sizeFilter = (size, productsFilteredType) => {
   const result = size === ''
   ? productsFilteredType
   : productsFilteredType?.filter(cloth => cloth.sizes.some(s => s.size === size));
-  console.log(result);
+  return result;
+};
+const colorFilter = (color, productsFilteredSize) => {
+  const result = color === ''
+  ? productsFilteredSize
+  : productsFilteredSize.filter(e => e.sizes.some(s => s.colors.some(c => c.color === color)));
   return result;
 };
 
