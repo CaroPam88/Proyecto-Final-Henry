@@ -4,7 +4,7 @@ import { Card } from "../../Components/Card/Card.jsx";
 import  "./index.css";
 import 'swiper/css';
 import { useSelector } from "react-redux";
-import style from "../Recomendados/index.module.css"
+import style from "./recomended.module.css"
 
 
 function Recomendados() {

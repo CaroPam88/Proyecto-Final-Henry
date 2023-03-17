@@ -1,0 +1,47 @@
+.loadingView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black; /* background color for the loading view */
+  }
+  
+  .logo {
+    max-width: 200px; /* adjust the size of your logo */
+    animation: blink 1s infinite; /* animation for the logo */
+  }
+  
+  .Spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* animation for the loading spinner */
+    margin-top: 20px;
+  }
+  
+  /* Blink animation for the logo */
+  @keyframes blink {
+    0% {
+      opacity: 0.8;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+  
+  /* Spin animation for the loading spinner */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

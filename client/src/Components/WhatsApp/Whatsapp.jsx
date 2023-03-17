@@ -1,12 +1,12 @@
-import logo from "";
+import logo from "../../Assets/svg/whatsapp.svg";
 import style from "./whatsapp.module.css";
 
 
-const WhatsApp = () => {
+export const WhatsApp = () => {
 
 
     const Mensaje = () => {
-        window.location.href = "";
+        window.location.href = 'https://api.whatsapp.com/send?phone=+5491132379661&text=hola%20mi%20amor';
         
     }
 
@@ -16,5 +16,3 @@ const WhatsApp = () => {
         </div>
     )
 }
-
-export default WhatsApp

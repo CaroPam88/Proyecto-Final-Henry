@@ -1,19 +1,28 @@
-import style from "./index.module.css";
+import style from "./ofertas.module.css";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
-import ofimg1 from '.';
-import ofimg2 from '';
-import ofimg3 from '';
+import ofimg1 from '../../Assets/img/PantalonesHombres/Vintage.png';
+import ofimg2 from '../../Assets/img/SUETER/SUETER/sueter-licrado-azul.jpg';
+import ofimg3 from '../../Assets/img/pantalonesMujer/pantalones/pantalon1.png';
+import { useState, useEffect } from "react";
+import sim from './simulateDB.json';
 
+export function Ofertas() {
+  const ofertaimg = [ofimg1, ofimg2, ofimg3]
+  const [ofertaData, setOfertaData] = useState([]);
 
-export function Ofertas(){
-    const ofertaimg = [ofimg1, ofimg2, ofimg3]
+  useEffect(() => {
+    // Fetch the data from your API or server here
+    fetch('')
+      .then(response => response.json())
+      .then(data => setOfertaData(data));
+  }, []);
 
-    return(
-        <div className={style.container}>
-            <div className={style.swiperContainer}>
-                <Swiper          modules={[Autoplay]}
+  return (
+    <div className={style.container}>
+      <div className={style.swiperContainer}>
+        <Swiper modules={[Autoplay]}
           autoplay={{
             delay: 4000,
             disableOnInteraction: false
@@ -45,16 +54,26 @@ export function Ofertas(){
               spaceBetween: 25,
             },
           }}
-                >
-                    {ofertaimg?.map((p, i)=>
-                    (
-                        <SwiperSlide className='swiper-slice' key={i}>
-                            <img  className = {style.ofertaimg} src={p} alt={"oferta-imagenes"+i}/>
-                        </SwiperSlide>
-                    ))}
+        >
+          {ofertaimg?.map((p, i) =>
+          (
+            <SwiperSlide className='swiper-slice' key={i}>
+              <img className={style.ofertaimg} src={p} alt={"oferta-imagenes" + i} />
+            </SwiperSlide>))},
 
-                </Swiper>
-            </div>
-        </div>
-    );
+          {ofertaData.map((item, i) => (
+            <SwiperSlide className='swiper-slice' key={i}>
+              <div className={style.card}>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+
+
+
+        </Swiper>
+      </div>
+    </div>
+  );
 }

@@ -2,6 +2,8 @@ import { getProductsByName } from "../../Redux/ActionsGet";
 import { useDispatch } from 'react-redux';
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
+import style from '../SearchBar/searchbar.module.css';
+import lupa from '../../Assets/svg/lupa.svg';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -23,10 +25,10 @@ const SearchBar = () => {
     if(path.startsWith('/Detail/') || path.startsWith('/form'))return (<div></div>);
 
     return (
-        <div>
+        <div className={style.searchContainer}>
             <input
                 type='search'
-                placeholder='Search clothes by name...'
+                placeholder='Search'
                 onChange={e => handlerSearch(e)}
                 name='input'
             />

@@ -1,6 +1,6 @@
 import style from './background.module.css';
 
-export default function Background(){
+export function Background(){
     return(
         <div className={style.container}>
             

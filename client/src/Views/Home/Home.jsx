@@ -1,18 +1,17 @@
-import { Hero } from "../../Components/Hero/Hero";
-import { Ofertas } from "../../Components/Ofertas/Ofertas";
-import Recomendados from "../../Components/Recomendados/recomendados.jsx";
-import style from "./index.module.css";
-import { Marquee } from "../../Components/Marquee/marquee"
+import { Hero } from "../../Components/Hero/Hero.jsx";
+import { Ofertas } from "../../Components/Ofertas/Ofertas.jsx";
+import Recomendados from "../../Components/Recomendados/Recomended.jsx";
+import style from "./Home.module.css";
+import { Marquee } from "../../Components/Marquee/Marquee.jsx";
+import {NavBar} from "../../Components/NavBar/NavBar.jsx";
+import Footer from "../../Components/Footer/Footer.jsx"
+import { Card } from "../../Components/Card/Card.jsx";
 
-
-const Home = ()=>{
+export const Home = ()=>{
     return(
         <div className={style.container}>
-            <Hero />
-            <Marquee />
-            <Ofertas />
-            <Recomendados/>
+                <Hero />
+                <Footer />
         </div>
     )
 }
-export default Home;

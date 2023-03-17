@@ -1,17 +1,18 @@
-import style from "./index.module.css";
+import style from "./hero.module.css";
+import React from 'react';
+import imgHome from '../../Assets/img/hero3.jpg';
+
 
 export function Hero() {
+  return (
+    <div className={style.hero}>
+      <div className={style.heroInner}>
+        <h1 className={style.heroTitle}>Dress Me</h1>
+      </div>
+      <div className={style.heroImage}>
+        <img src={imgHome} alt="" className={style.heroImg} />
+      </div>
+    </div>
+  );
+}
 
-    return (
-        <div className={style.container}>
-
-            <div className={style.containerInner}>
-                <h1>Vestite con nosotros!</h1>
-            </div>
-
-            <div className={style.img}>
-                <img src={imgHome} alt="" />
-            </div>
-        </div>
-    )
-} 

@@ -1,0 +1,13 @@
+{
+  "name": "lolo",
+  "size": "M",
+  "price": "1500",
+  "type": "vestido",
+  "image": "https://res.cloudinary.com/de6yc2elf/image/upload/v1678736718/clothes/6-REMERA%20HOMBRE/Remera_lisa_gris_wrsgkq.png",
+  "sex": ["Woman"],
+  "stockGeneral": 0,
+  "stockSize": 0,
+  "colors":[{"color": "negro", "stockColors": 45 }, {"color": "blanco", "stockColors": 2 }, {"color": "azul", "stockColors": 14}],
+  "existing": true
+
+}

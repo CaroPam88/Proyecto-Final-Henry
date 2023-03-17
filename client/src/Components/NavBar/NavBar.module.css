@@ -1,12 +1,129 @@
-.content{
-    display: flex;
-    position: sticky;
+.container {
+  width: 100%;
+  height: 100px; /* increase height to provide more space */
+  display: flex;
+  position: fixed;
+  z-index: 3;
+  backdrop-filter: blur(5px);
+  align-items: center;
+}
+
+.container div {
+  width: 100%;
+}
+
+.logo {
+  height: 80px; /* decrease height to fit within navbar */
+  width: 70%;
+  scale: 60%;
+  margin-right: 80vh;
+  z-index: 1;
+  align-self: center;
+}
+
+
+
+.menuoff {
+  width: 80%;
+  height: 80px; /* decrease height to fit within navbar */
+  scale: 40%;
+  position: relative;
+  z-index: 7;
+  opacity: 4;
+}
+
+
+.carrito{
+    width: 100%;
+    height: 90px;
+    scale: 40%;
     top: 0;
-    width: 100vw;
-    flex-direction: row;
+    right: 0;
+    display: flex;
+    padding-right: 70%;
+
+}
+
+
+
+.containerOpciones{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    transition: all 1200ms ease-out;
+}
+
+.contenedorcarrito{
+    position: relative;
+}
+
+
+
+.opciones{
+    position: absolute;
+    width: 15%;
+    height: 10806px;
+    background-color: white;
+    left: 0px;
+    top: -16px;
+    transition: all 700ms ease-in-out;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 20vh;
+    gap: 14px;
+    justify-content: flex-end;
+    z-index: 2;
+}
+
+.opciones li {
+    align-self: center;
+    width: 100%;
+    height: 20px;
+    text-decoration: none;
+    transition: all 1200ms ease-in-out;
+    list-style: none;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px;
+    background-color: transparent;
+
+}
+
+.opciones li a {
+    text-decoration: none;
+    color: var(--ph0-violeta-1);
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.opcioncerrada {
+    left: -700px;
+    z-index: -1;
+    transition: all 1200ms ease;
+
+}
+
+.span{
+    position: absolute;
+    background-color: rgb(0, 234, 255);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    top: 45px;
+    left: 15px;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
-    background-color: #ffffffff;
-    box-shadow: 1px 1px 3px 1px #0000007c;
-    z-index: 10;
+    font-weight: 900;
+    font-size: 20px;
+    border-radius: 50px;
+    z-index: 40;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    width: 50%;
 }
