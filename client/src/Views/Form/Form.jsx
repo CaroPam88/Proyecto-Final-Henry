@@ -42,13 +42,14 @@ function Form() {
   const genreHandler = (e) => {
     let value = e.target.value;
     let event = e.target.name;
-
-    form.sex?.includes(value) ? alert('The genre has already been chosen')
-    :setError(validate({ ...form, [event]: value }));
-    setForm(prevState => ({
+    if(value === '') alert('Please select a genre');
+    else if(form.sex?.includes(value))  alert('The genre has already been chosen')
+    else{
+      setError(validate({ ...form, [event]: value }))
+      setForm(prevState => ({
       ...prevState,
       sex: [...prevState.sex, value]
-    }));
+    }))};
   };
   const genreDeleteHandler = (e) => {
     const value = e.target.value;
@@ -64,11 +65,20 @@ function Form() {
   };
   const handlerAddColor = (e) => {
     e.preventDefault();
-    setForm({ ...form, colors:[...form.colors, addColor] });
-    setAddColor({
-      color:'',
-      stockColors: 1,
-    })
+    setForm(prevState => ({
+      ...prevState,
+      colors:[...form.colors, addColor],
+    }));
+  };
+  const colorDeleteHandler = (e) => {
+    const key = e.target.key;
+    const index = form.colors?.findIndex(color => color.key === key);
+    if (index !== -1) {
+      const filteredColors = [...form.colors];
+      filteredColors.splice(index, 1);
+      setError(validate({ ...form, colors: filteredColors }));
+      setForm({ ...form, colors: filteredColors });
+    }
   };
 
   function SubmitHandler(e){
@@ -105,7 +115,7 @@ console.log(form);
             <option value="remera">Remera</option>
             <option value="vestido">Vestido</option>
             <option value="chomba">Chomba</option>
-            <option value="pantalón">Pantalón</option>
+            <option value="pantalon">Pantalón</option>
             <option value="short">Short</option>
           </select>
           {error.type && <span>{error.type}</span>}
@@ -123,7 +133,7 @@ console.log(form);
             <option value="Male">Male</option>
           </select>
           {error.sex && <span>{error.sex}</span>}
-          {form.sex?.map((genre, i) => (<button key={i} value={`${genre}`} onClick={e => genreDeleteHandler(e)} >{genre}</button>))}
+          {form.sex?.map((genre, i) => (<button type="button" key={i} value={`${genre}`} onClick={e => genreDeleteHandler(e)} >{genre}</button>))}
         </div>
 
         <div>
@@ -135,6 +145,7 @@ console.log(form);
           <input type='text' name="color" placeholder="Incert color name" onChange={e => handlerColor(e)} />
           <input type='number' name="stockColors" min={1} placeholder="Incert color size" onChange={e => handlerColor(e)} />
           <button onClick={e => handlerAddColor(e)} >Add color date</button>
+          {form.colors?.map((el,i) => <button type="button" key={i} value={i} onClick={e => colorDeleteHandler(e)} >{`${el.color} | ${el.stockColors}`}</button>)}
         </div>
         {!error.name  && !error.price  && !error.type  && !error.image  && !error.sex  && !error.stockSize  && !error.colors && <button type="submit" >Submit</button>}
       </form>
