@@ -96,7 +96,7 @@ console.log(form);
           {error.size && <span>{error.size}</span>}
         </section>
 
-        <input type='number' name="price" onChange={e => handleForm(e)} placeholder='Insert price' />
+        <input type='number' name="price" min={1} onChange={e => handleForm(e)} placeholder='Insert price' />
         {error.price && <span>{error.price}</span>}
 
         <div>
@@ -127,13 +127,13 @@ console.log(form);
         </div>
 
         <div>
-          <input type='number' placeholder="Insert general Stock" name="stockGeneral"  onChange={e => handleForm(e)}/>
+          <input type='number' min={1} placeholder="Insert general Stock" name="stockGeneral"  onChange={e => handleForm(e)}/>
           {error.stockSize && <span>{error.stockSize}</span>}
         </div>
       
         <div>
           <input type='text' name="color" placeholder="Incert color name" onChange={e => handlerColor(e)} />
-          <input type='number' name="stockColors" placeholder="Incert color size" onChange={e => handlerColor(e)} />
+          <input type='number' name="stockColors" min={1} placeholder="Incert color size" onChange={e => handlerColor(e)} />
           <button onClick={e => handlerAddColor(e)} >Add color date</button>
         </div>
         {!error.name  && !error.price  && !error.type  && !error.image  && !error.sex  && !error.stockSize  && !error.colors && <button type="submit" >Submit</button>}
