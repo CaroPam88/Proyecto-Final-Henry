@@ -29,7 +29,6 @@ const Filter = () => {
   }
   // { ...filters, [event.target.value]: event.target.value }
 
-  console.log(colors);
   return (
     <div>
       <select name="genre" onChange={handlerFilter}>
