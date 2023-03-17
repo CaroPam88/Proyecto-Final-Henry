@@ -14,15 +14,25 @@ const getAllProducts = () => {
     };
 };
 
-export default function postClothes(input) {
+const postClothes= ({name, size, price, type, image, sex, stockGeneral, stoockSize, colors}) => {
     return async (dispatch) => {
         try {
-            const dbData = await axios.post(`http://localhost:3001/clothes`, input);
-            return dispatch(postProducts(dbData.data))
+            const product ={
+                name: name,
+                size: size,
+                price: price,
+                type: type,
+                image: image,
+                sex: sex,
+                stockGeneral: stockGeneral,
+                stoockSize: stoockSize,
+                colors:colors,
+            }
+            const dbData = await axios.post(`/clothes/`, product);
+            return dispatch(postProducts(dbData));
         } catch (error) {
-          alert({error: error.message});
+        alert({error: error.message});
         }
-      
     }
 }
 
