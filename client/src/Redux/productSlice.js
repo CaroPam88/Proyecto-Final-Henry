@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     products:[],
-    filteredProducs:[],
+    filteredProducts:[],
     productDetail:[],
     colors:[],
     size:[],
@@ -15,13 +15,13 @@ const Slice = createSlice({
     reducers: {
         getProducts: (state, action) => {
             state.products = action.payload;
-            state.filteredProducs = action.payload;
+            state.filteredProducts = action.payload;
         },
         postProducts:(state, action) => {
             state.post = action.payload;
         },
         getProdName: (state, action) => {
-            state.filteredProducs = action.payload;
+            state.filteredProducts = action.payload;
         },
         getDetail: (state, action) => {
             state.productDetail = action.payload;
@@ -34,7 +34,7 @@ const Slice = createSlice({
         },
         clearProducts: (state, action) => {
             state.products = action.payload;
-            state.filteredProducs = action.payload;
+            state.filteredProducts = action.payload;
         },
         clearDetail: (state, action) => {
             state.productDetail = action.payload;
@@ -45,8 +45,11 @@ const Slice = createSlice({
         clearSize: (state, action) => {
             state.size = action.payload;
         },
+        filterClothes: (state, action) =>{
+            state.filteredProducts = action.payload;
+        }
     }
 });
 
-export const { getProducts,  postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } = Slice.actions;
+export const { getProducts,  postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize, filterClothes } = Slice.actions;
 export default Slice.reducer;

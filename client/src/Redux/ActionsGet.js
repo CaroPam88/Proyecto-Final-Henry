@@ -1,4 +1,4 @@
-import  { getProducts, postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } from './productSlice';
+import  { getProducts, postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize,  } from './productSlice';
 import axios from 'axios';
 
 

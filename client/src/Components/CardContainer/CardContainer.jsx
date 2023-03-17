@@ -8,8 +8,8 @@ import { setCurrentPaged } from "../../Redux/pagedActions";
 
 const CardContainer = () => {
   const { currentPage } = useSelector(state => state.paged);
-  const { filteredProducs } = useSelector(state => state.products);
-  const homeProducts = filteredProducs.slice(0,3);
+  const { filteredProducts } = useSelector(state => state.products);
+  const homeProducts = filteredProducts.slice(0,3);
 
   const [view, setView] = useState({
     mode:'Slice'
@@ -22,7 +22,7 @@ const CardContainer = () => {
   const [ cardPage, setCardPage ] = useState(6);
   const indexOfLastProduct = currentPage * cardPage;
   const indexOfFirstProduct = indexOfLastProduct - cardPage;
-  const currentCardPage = filteredProducs.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentCardPage = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   const pagedHandler = (pagedNum) => {
     setCurrentPaged(pagedNum);
   };
@@ -64,7 +64,7 @@ const CardContainer = () => {
           );
         })}
       </div>
-      { view.mode === 'All' && <Paged cardPage={cardPage} products={filteredProducs.length} currentPage={currentPage} pagedHandler={pagedHandler} />}
+      { view.mode === 'All' && <Paged cardPage={cardPage} products={filteredProducts.length} currentPage={currentPage} pagedHandler={pagedHandler} />}
     </section>
     
   );
