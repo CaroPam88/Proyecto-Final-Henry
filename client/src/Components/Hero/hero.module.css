@@ -30,7 +30,6 @@
   animation: fade-in 2s ease-out forwards;
 }
 
-/* Define the text animation effect */
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -56,7 +55,6 @@
   object-fit: cover;
 }
 
-/* Hidden Scrollbar */
 .hero::-webkit-scrollbar {
   display: none;
 }
@@ -66,7 +64,6 @@
   scrollbar-width: none;
 }
 
-/* Animation Loop */
 @keyframes titleLoop {
   0% {
     transform: scale(1);

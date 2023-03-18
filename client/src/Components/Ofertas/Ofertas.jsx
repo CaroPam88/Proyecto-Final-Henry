@@ -13,7 +13,7 @@ export function Ofertas() {
   const [ofertaData, setOfertaData] = useState([]);
 
   useEffect(() => {
-    // Fetch the data from your API or server here
+    // Fetch 
     fetch('')
       .then(response => response.json())
       .then(data => setOfertaData(data));
