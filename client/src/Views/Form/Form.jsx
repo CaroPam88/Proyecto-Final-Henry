@@ -183,7 +183,9 @@ function Form() {
             value={`${genre}`}
             onClick={(e) => genreDeleteHandler(e)}
             onBlur={handleBlur}
-          ></button>
+          >
+            {genre}
+          </button>
         ))}
         {error.sex ? (
           <span style={styleError}>{error.sex}</span>
