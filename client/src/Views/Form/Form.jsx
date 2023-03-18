@@ -165,8 +165,6 @@ function Form() {
         )}
       </div>
 
-   
-
       <div>
         <select
           name="genre"
