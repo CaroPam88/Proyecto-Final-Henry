@@ -68,7 +68,10 @@ function Form() {
   const handlerColor = (e) => {
     const value = e.target.value;
     const target = e.target.name;
-    setAddColor({ ...addColor, [target]: value });
+
+    if(value === 'color') value.toLowerCase();
+    setAddColor({...addColor, [target] : value });
+
   };
   const handlerAddColor = (e) => {
     e.preventDefault();

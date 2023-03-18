@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import{ filterAllClothes } from "../../Redux/actionFilter"
+import { getAllColors } from "../../Redux/ActionsGet";
 
 const Filter = () => {
   const dispatch = useDispatch();
   
-  // const filterClothes = useSelector((state) => state.products.filteredProducts);
+  const colors = useSelector((state) => state.products.colors);
   
   const [filters, setFilters] = useState({
     genre: "",
@@ -16,12 +17,10 @@ const Filter = () => {
   });
 
   useEffect(() => {
-    dispatch(
-      filterAllClothes(filters)
-    );
+    dispatch(filterAllClothes(filters))
+    dispatch(getAllColors())
   }, [filters, dispatch])
 
-  console.log('state',filters);
   function handlerFilter(event) {
     setFilters({ ...filters,[event.target.name]: event.target.value });
     dispatch(
@@ -58,12 +57,9 @@ const Filter = () => {
       </select>
 
       <select name="color" onChange={handlerFilter}>
-        <option value="">---</option>
-        <option value="white">WHITE</option>
-        <option value="black">BLACK</option>
-        <option value="red">RED</option>
-        <option value="blue">BLUE</option>
-        <option value="green">GREEN</option>
+        <option value="">All colors</option>
+        {colors.map((c, i) => (<option key={i} value={c} >{c}</option>))}
+
       </select>
     </div>
   );

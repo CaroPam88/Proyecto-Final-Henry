@@ -62,8 +62,10 @@ const getProductDetail = (id) => {
 const getAllColors = () => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/colors/`)).data;
-            return dispatch(getColors(dbData));
+            const dbData = (await axios(`/clothes/`)).data;
+            const response =  dbData.flatMap(e => e.sizes.flatMap(s => s.colors.map(col => col.color)));//Se puede agregar un .toLowerCase() para que filtre mejor.
+            const result = [...new Set(response)]
+            return dispatch(getColors(result));
         } catch (error) {
             alert({ error : error.message });
         };
