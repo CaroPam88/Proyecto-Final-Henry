@@ -63,7 +63,7 @@ const getAllColors = () => {
     return async (dispatch) => {
         try {
             const dbData = (await axios(`/clothes/`)).data;
-            const response =  dbData.flatMap(e => e.sizes.flatMap(s => s.colors.map(col => col.color)));//Se puede agregar un .toLowerCase() para que filtre mejor.
+            const response =  dbData.flatMap(e => e.sizes.flatMap(s => s.colors.map(col => col.color)));//Se puede agregar un .toLowerCase() para que no incluya colores repetidos por la mayusculas.
             const result = [...new Set(response)]
             return dispatch(getColors(result));
         } catch (error) {

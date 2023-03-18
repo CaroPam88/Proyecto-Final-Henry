@@ -24,13 +24,6 @@ function Form() {
   ///////////////// Validation ///////////////////////////
   const [error, setError] = useState({});
   const [validated, setValidated] = useState({});
-
-  const handleBlur = (e) => {
-    handleForm(e);
-    setError(validateErro(form));
-    setValidated(validate(form));
-  };
-
   //////////////////////////////////////////////
 
   const [addColor, setAddColor] = useState({
@@ -38,18 +31,21 @@ function Form() {
     stockColors: 1,
   });
 
-  const handleForm = (event) => {
-    setForm({ ...form, [event.target.name]: event.target.value });
+  const handleForm = (e) => {
+    setError(validateErro({ ...form, [e.target.name]: e.target.value }));
+    setValidated(validate({ ...form, [e.target.name]: e.target.value }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const genreHandler = (e) => {
-    let value = e.target.value;
-    let event = e.target.name;
+    const value = e.target.value;
+    const event = e.target.name;
     if (value === "") alert("Please select a genre");
     else if (form.sex?.includes(value))
       alert("The genre has already been chosen");
     else {
-      //  setError(validate({ ...form, [event]: value }));
+      setError(validateErro({ ...form, [event]: value }));
+      setValidated(validate({ ...form, [event]: value }));
       setForm((prevState) => ({
         ...prevState,
         sex: [...prevState.sex, value],
@@ -58,10 +54,12 @@ function Form() {
   };
   const genreDeleteHandler = (e) => {
     const value = e.target.value;
+    const event = e.target.name;
     const filteredGenre = form.sex?.filter(
       (genre) => genre !== value.toString()
     );
-    //setError(validate({ ...form, sex: filteredGenre }));
+    setError(validateErro({ ...form, [event]: value }));
+    setValidated(validate({ ...form, [event]: value }));
     setForm({ ...form, sex: filteredGenre });
   };
 
@@ -75,6 +73,8 @@ function Form() {
   };
   const handlerAddColor = (e) => {
     e.preventDefault();
+    setError(validateErro({ ...form, colors: [...form.colors, addColor] }));
+    setValidated(validate({ ...form, colors: [...form.colors, addColor] }));
     setForm((prevState) => ({
       ...prevState,
       colors: [...form.colors, addColor],
@@ -86,7 +86,8 @@ function Form() {
     if (index !== -1) {
       const filteredColors = [...form.colors];
       filteredColors.splice(index, 1);
-      //setError(validate({ ...form, colors: filteredColors }));
+      setError(validateErro({ ...form, colors: filteredColors }));
+      setValidated(validate({ ...form, colors: filteredColors }));
       setForm({ ...form, colors: filteredColors });
     }
   };
@@ -109,21 +110,13 @@ function Form() {
 
   return (
     <form onSubmit={(e) => SubmitHandler(e)}>
-      <input
-        type="text"
-        name="name"
-        onChange={(e) => handleForm(e)}
-        placeholder="Incert name"
-        onBlur={handleBlur}
-      />
-      {error.name ? (
-        <span style={styleError}>{error.name}</span>
-      ) : (
-        <span style={styleValidet}> {validated.name}</span>
-      )}
+      <input type="text" name="name" onChange={(e) => handleForm(e)} placeholder="Incert name" />
+      {error.name 
+      ? (<span style={styleError}>{error.name}</span>) 
+      : (<span style={styleValidet}> {validated.name}</span>)}
 
       <section>
-        <select name="size" onChange={(e) => handleForm(e)} onBlur={handleBlur}>
+        <select name="size" onChange={(e) => handleForm(e)} >
           <option value="">Insert size</option>
           <option value="S">S</option>
           <option value="M">M</option>
@@ -131,29 +124,18 @@ function Form() {
           <option value="XL">XL</option>
           <option value="XXL">XXL</option>
         </select>
-        {error.size ? (
-          <span style={styleError}>{error.size}</span>
-        ) : (
-          <span style={styleValidet}> {validated.size}</span>
-        )}
+        {error.size 
+        ? (<span style={styleError}>{error.size}</span>)
+        : (<span style={styleValidet}> {validated.size}</span>)}
       </section>
 
-      <input
-        type="number"
-        name="price"
-        min={1}
-        onChange={(e) => handleForm(e)}
-        placeholder="Insert price"
-        onBlur={handleBlur}
-      />
-      {error.price ? (
-        <span style={styleError}>{error.price}</span>
-      ) : (
-        <span style={styleValidet}>{validated.price}</span>
-      )}
+      <input type="number" name="price" min={1} onChange={(e) => handleForm(e)} placeholder="Insert price"/>
+      {error.price 
+      ? (<span style={styleError}>{error.price}</span>) 
+      : (<span style={styleValidet}>{validated.price}</span>)}
 
       <div>
-        <select name="type" onChange={(e) => handleForm(e)} onBlur={handleBlur}>
+        <select name="type" onChange={(e) => handleForm(e)} >
           <option value="">Insert type</option>
           <option value="remera">Remera</option>
           <option value="vestido">Vestido</option>
@@ -161,18 +143,16 @@ function Form() {
           <option value="pantalon">Pantalón</option>
           <option value="short">Short</option>
         </select>
-        {error.type ? (
-          <span style={styleError}>{error.type}</span>
-        ) : (
-          <span style={styleValidet}>{validated.type}</span>
-        )}
+        {error.type 
+        ? (<span style={styleError}>{error.type}</span>) 
+        : (<span style={styleValidet}>{validated.type}</span>)}
       </div>
 
       <div>
         <select
           name="genre"
           onChange={(e) => genreHandler(e)}
-          onBlur={handleBlur}
+          
         >
           <option value="">Inser genre</option>
           <option value="Female">Female</option>
@@ -180,76 +160,34 @@ function Form() {
         </select>
 
         {form.sex?.map((genre, i) => (
-          <button
-            type="button"
-            key={i}
-            value={`${genre}`}
-            onClick={(e) => genreDeleteHandler(e)}
-            onBlur={handleBlur}
-          ></button>
+          <button type="button" key={i} value={`${genre}`} onClick={(e) => genreDeleteHandler(e)}>{genre}</button>
         ))}
-        {error.sex ? (
-          <span style={styleError}>{error.sex}</span>
-        ) : (
-          <span style={styleValidet}>{validated.sex}</span>
-        )}
+        {error.sex 
+        ? (<span style={styleError}>{error.sex}</span>) 
+        : (<span style={styleValidet}>{validated.sex}</span>)}
       </div>
 
       <div>
-        <input
-          type="text"
-          name="color"
-          placeholder="Incert color name"
-          onChange={(e) => handlerColor(e)}
-          onBlur={handleBlur}
-        />
-        <input
-          type="number"
-          name="stockColors"
-          min={1}
-          placeholder="Incert color size"
-          onChange={(e) => handlerColor(e)}
-          onBlur={handleBlur}
-        />
-
+        <input type="text" name="color" placeholder="Incert color name" onChange={(e) => handlerColor(e)}/>
+        <input type="number" name="stockColors" min={1} placeholder="Incert color size" onChange={(e) => handlerColor(e)}/>
         <button onClick={(e) => handlerAddColor(e)}>Add color date</button>
         {form.colors?.map((el, i) => (
-          <button
-            type="button"
-            key={i}
-            value={i}
-            onClick={(e) => colorDeleteHandler(e)}
-          >{`${el.color} | ${el.stockColors}`}</button>
-        ))}
-        {error.colors ? (
-          <span style={styleError}>{error.colors}</span>
-        ) : (
-          <span style={styleValidet}>{validated.colors}</span>
-        )}
+          <button type="button" key={i} value={i} onClick={(e) => colorDeleteHandler(e)}>{`${el.color} | ${el.stockColors}`}</button>))}
+        {error.colors 
+        ? (<span style={styleError}>{error.colors}</span>) 
+        : (<span style={styleValidet}>{validated.colors}</span>)}
       </div>
+
       <div>
-        <input
-          type="file"
-          id="image"
-          name="image"
-          onChange={(e) => handleForm(e)}
-          onBlur={handleBlur}
-        />
-        {error.image ? (
-          <span style={styleError}>{error.image}</span>
-        ) : (
-          <span style={styleValidet}>{validated.image}</span>
-        )}
+        <input type="file" id="image" name="image" onChange={(e) => handleForm(e)}/>
+        {error.image 
+        ? (<span style={styleError}>{error.image}</span>) 
+        : (<span style={styleValidet}>{validated.image}</span>)}
       </div>
-      {!error.name &&
-        !error.price &&
-        !error.type &&
-        !error.image &&
-        !error.sex &&
-        !error.stockSize &&
-        !error.colors &&
-        validated.name && <button type="submit">Submit</button>}
+
+      {!error.name && !error.price && !error.type && !error.image && !error.sex && !error.stockSize && !error.colors && validated.name && <button type="submit">Submit</button>}
     </form>
   );
 }
+
 export default Form;

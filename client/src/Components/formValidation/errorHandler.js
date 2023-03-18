@@ -2,7 +2,7 @@ function validateErro(input) {
   let error = {};
 
   if (!input.name.trim()) error.name = " Insert a Name";
-  else if (!/^[A-Za-z]+$/.test(input.name)) error.name = "The Name is invalid";
+  else if (!/^[A-Za-z\s]+$/.test(input.name)) error.name = "The Name is invalid";
   if (!input.image) error.image = "Insert an Image";
   if (!input.type) error.type = "Insert a Type";
   if (!input.price) error.price = "Insert a Price";
@@ -19,7 +19,7 @@ function validate(input) {
   let validated = {};
 
   if (input.name) validated.name = " ✔ validated";
-  else if (!/^[A-Za-z]+$/.test(input.name)) validated.name = "✔ validated";
+  else if (!/^[A-Za-z\s]+$/.test(input.name)) validated.name = "✔ validated";
   if (input.image) validated.image = "✔ validated";
   if (input.type) validated.type = "✔ validated";
   if (input.price) validated.price = "✔ validated";
