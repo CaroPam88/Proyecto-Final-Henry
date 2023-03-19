@@ -6,7 +6,7 @@ const Card = ({id, name, image, price}) => {
       <img src={image} />
       <p>${price}</p>
       <p>{name}</p>
-      <Link to={`/Detail/${id}` }>
+      <Link to={`/detail/${id}`}>
         <p>view more</p>
       </Link>
     </div>

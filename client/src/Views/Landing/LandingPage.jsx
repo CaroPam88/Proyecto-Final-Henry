@@ -1,19 +1,38 @@
+import style from './LandingPage.module.css';
 import { Link } from "react-router-dom";
+import logo from '../../Assets/svg/logo.svg';
+import { useState, useEffect } from 'react';
+
 
 const Landing = () => {
+  // const navigate = useNavigate();
+  // const [open, setOpen] = useState(false);
+  // const gotoHome = () => {
+  //   setTimeout(() =>{
+  //     setOpen(true);
+  //     setTimeout(() => navigate("/home"), 1500)
+  //   }, 1300)
+  // };
+  // useEffect(gotoHome)
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      window.location.href = '/home';
+    }, 2000); // Change the value to adjust the amount of time to show the loading view
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  
   return (
-    <div>
-      <Link to="/home">
-        <h2>
-          <button>ENTRAR</button>
-        </h2>
-      </Link>
-      <footer>
-        <div>
-          <p>Made with ❤️ por los más lindos</p>
-        </div>
-      </footer>
-    </div>
+<div className={style.loadingView}>
+  <img src={logo} alt="" className={logo} />
+  <div className={style.Spinner}></div>
+</div>
+
+
   );
 };
 export default Landing;
