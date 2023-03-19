@@ -23,7 +23,7 @@ const SearchBar = () => {
 
     const location = useLocation();
     const path = location.pathname;
-    if(path.startsWith('/Detail/') || path.startsWith('/form'))return (<div></div>);
+    if(path.startsWith('/detail/') || path.startsWith('/form'))return (<div></div>);
 
     return (
         <div className={style.searchContainer}>

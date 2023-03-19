@@ -28,19 +28,17 @@ function App() {
   }, [dispatch]);
   return (
         <div className="App">
-              {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
+              {/* {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
                 <NavBar />
-              ) : null}
-              {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
+              ) : null} */}
+              {/* {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
                 <Footer />
-              ) : null}
-              {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
-                <Background />
-              ) : null}
+              ) : null} */}
               <Routes>
                 <Route path="/" element={<LoadingView />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/detalle/:id" element={<Detail />} />
+                <Route path="/detail/:id" element={<Detail />} />
+                <Route path="/form" element={<Form/>} />
 
                 {/* PROTECTED ROUTES FOR ADMIN DASHBOARD */}
                 <Route

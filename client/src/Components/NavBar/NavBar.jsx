@@ -61,6 +61,11 @@ export const NavBar = () => {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/form" onClick={menuopen}>
+                Form
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/productos/all" onClick={menuopen}>
                 Compra
               </NavLink>

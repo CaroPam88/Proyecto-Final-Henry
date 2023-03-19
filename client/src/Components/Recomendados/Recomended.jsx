@@ -1,7 +1,7 @@
 import { Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Card } from "../../Components/Card/Card.jsx";
-import  "./index.css";
+import Card from "../../Components/Card/Card.jsx";
+import  "./recomended.css";
 import 'swiper/css';
 import { useSelector } from "react-redux";
 import style from "./recomended.module.css"
@@ -57,7 +57,7 @@ function Recomendados() {
             ))}
           </Swiper>
         </div>
-        <div class='pagination' />
+        <div className='pagination' />
       </div>
   );
 }

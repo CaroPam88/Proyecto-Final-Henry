@@ -40,4 +40,4 @@ const colorFilter = (color, productsFilteredSize) => {
   return result;
 };
 
-export   {filterAllClothes};
+export {filterAllClothes};
