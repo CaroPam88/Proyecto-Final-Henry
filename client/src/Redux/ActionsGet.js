@@ -1,4 +1,4 @@
-import  { getProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize } from './productSlice';
+import  { getProducts, postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize,  } from './productSlice';
 import axios from 'axios';
 
 
@@ -14,6 +14,29 @@ const getAllProducts = () => {
     };
 };
 
+const postClothes= ({name, size, price, type, image, sex, stockGeneral, stoockSize, colors}) => {
+    return async (dispatch) => {
+        try {
+            const product ={
+                name: name,
+                size: size,
+                price: price,
+                type: type,
+                image: image,
+                sex: sex,
+                stockGeneral: stockGeneral,
+                stoockSize: stoockSize,
+                colors:colors,
+            }
+            const dbData = await axios.post(`/clothes/`, product);
+            return dispatch(postProducts(dbData));
+        } catch (error) {
+        alert({error: error.message});
+        }
+    }
+}
+
+
 const getProductsByName = (name) => {
     return async (dispatch) => {
         try {
@@ -28,7 +51,7 @@ const getProductsByName = (name) => {
 const getProductDetail = (id) => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/clothes/:${id}`)).data;
+            const dbData = (await axios(`/clothes/${id}`)).data;
             return dispatch(getDetail(dbData));
         } catch (error) {
             alert({ error : error.message });
@@ -39,8 +62,10 @@ const getProductDetail = (id) => {
 const getAllColors = () => {
     return async (dispatch) => {
         try {
-            const dbData = (await axios(`/colors/`)).data;
-            return dispatch(getColors(dbData));
+            const dbData = (await axios(`/clothes/`)).data;
+            const response =  dbData.flatMap(e => e.sizes.flatMap(s => s.colors.map(col => col.color)));//Se puede agregar un .toLowerCase() para que filtre mejor.
+            const result = [...new Set(response)]
+            return dispatch(getColors(result));
         } catch (error) {
             alert({ error : error.message });
         };
@@ -76,4 +101,4 @@ const clearSizeState = () => (dispatch) => {
     return dispatch(clearSize(clearState))
 }
 
-export { getAllProducts, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState }
+export { getAllProducts, postClothes, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState }

@@ -43,9 +43,21 @@ const createProduct = async (
 	image,
 	sex,
 	stockGeneral,
+	stockSize,
 	size,
-	color
+	colors,
+	existing
 ) => {
+	const ajuste = colors
+		.map((elem) => elem.stockColors)
+		.reduce((acc, item) => {
+			return acc + parseInt(item);
+		}, 0);
+	stockGeneral = ajuste;
+	stockSize = ajuste;
+
+	existing = stockSize > 0 ? true : false;
+
 	let create = await Clothes.create({
 		name,
 		price,
@@ -53,14 +65,16 @@ const createProduct = async (
 		image,
 		sex,
 		stockGeneral,
+		existing,
 	});
-	let sizeDb = await Size.findAll({where: {size: size}});
+	let createTalla = await Size.create({
+		size,
+		stockSize,
+		colors,
+	});
 
-	create.addSize(sizeDb);
-	console.log(price);
-	let colorDb = await Colors.findAll({where: {color: color}});
+	create.addSize(createTalla);
 
-	create.addColors(colorDb);
 	return {message: 'Product Create !!!!!'};
 };
 
