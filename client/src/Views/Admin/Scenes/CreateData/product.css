@@ -1,0 +1,19 @@
+.box {
+    margin: 20px;
+  }
+  
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .form-product {
+    /* Styles for the input fields and submit button of the product creation form */
+  }
+  

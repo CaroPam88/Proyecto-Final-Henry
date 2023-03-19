@@ -1,0 +1,13 @@
+.container{
+
+    background: rgb(0, 0, 0);
+    background-image: black;
+    background-attachement: fixed;
+    background-size: cover;
+
+    position: fixed;
+    width: 199%;
+    height: 100vh;
+    display: flex;
+    z-index: 1;
+}

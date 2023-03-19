@@ -3,6 +3,8 @@ import { setCurrentPaged } from "../../Redux/pagedActions";
 import { useDispatch } from 'react-redux';
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
+import style from '../SearchBar/searchbar.module.css';
+import lupa from '../../Assets/svg/lupa.svg';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -21,13 +23,13 @@ const SearchBar = () => {
 
     const location = useLocation();
     const path = location.pathname;
-    if(path.startsWith('/Detail/') || path.startsWith('/form'))return (<div></div>);
+    if(path.startsWith('/detail/') || path.startsWith('/form'))return (<div></div>);
 
     return (
-        <div>
+        <div className={style.searchContainer}>
             <input
                 type='search'
-                placeholder='Search clothes by name...'
+                placeholder='Search'
                 onChange={e => handlerSearch(e)}
                 name='input'
             />

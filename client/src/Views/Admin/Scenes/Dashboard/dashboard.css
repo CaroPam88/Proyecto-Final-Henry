@@ -1,0 +1,32 @@
+.box {
+    margin: 20px;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 140px;
+    gap: 20px;
+  }
+  
+  .grid-item {
+    /* Styles for the grid items in the dashboard */
+  }
+  
