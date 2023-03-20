@@ -19,7 +19,7 @@ const cartSlice = createSlice({
           state.cartItems.push(tempProduct);
           state.cartTotalAmount += action.payload.price
         } else {
-         state.cartItems[itemIndex].cartQuantity += 1;
+          state.cartItems[itemIndex].cartQuantity += 1;
           state.cartTotalAmount += action.payload.price
         }
     },

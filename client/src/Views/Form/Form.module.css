@@ -1,4 +1,51 @@
-.form{
-    padding-top: 100px ;
-    z-index: 9;
+.container{
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 200px;
+    width: auto;
+    background-color: antiquewhite;
 }
+.form div{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.form{
+    max-width: 600px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.form input{
+    font-size: 20px;
+    color: black;
+    border-radius: 40px;
+    border-color: blueviolet;
+    box-shadow: violet;
+}
+
+.form select{
+    padding:1vh;
+}
+
+.form button{
+
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    max-width: 600px;
+    text-align: center;
+}
+
+.form select{
+
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+}
+

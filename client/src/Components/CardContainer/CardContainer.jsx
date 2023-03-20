@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import style from './CardContainer.module.css';
 import { useState } from "react";
 import Paged from "../Paged/Paged";
+import Filter from "../FilterBar/FilterBar.jsx";
 import { setCurrentPaged } from "../../Redux/pagedActions";
 
 
@@ -19,7 +20,7 @@ const CardContainer = () => {
       : setView({ mode: 'Slice' })
   }
 
-  const [cardPage, setCardPage] = useState(6);
+  const [cardPage, _setCardPage] = useState(6);
   const indexOfLastProduct = currentPage * cardPage;
   const indexOfFirstProduct = indexOfLastProduct - cardPage;
   const currentCardPage = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -28,44 +29,53 @@ const CardContainer = () => {
   };
 
   return (
-    <section>
-      <h3>Our products</h3>
-      {view.mode === 'Slice'
-        ? <button onClick={() => handlerView()}>View all products </button>
-        : <button onClick={() => handlerView()}>View less products </button>}
-      <div className={style.content}>
-        {view.mode === 'Slice'
-          ? homeProducts?.map((c, i) => {
-            return (
-              <Card
-                key={i}
-                id={c.id}
-                name={c.name}
-                price={c.price}
-                image={c.image}
-                gender={c.gender}
-                colors={[c.colors]}
-                size={[c.size]}
-              />
-            );
-          })
-          : currentCardPage?.map((c, i) => {
-            return (
-              <Card
-                key={i}
-                id={c.id}
-                name={c.name}
-                price={c.price}
-                image={c.image}
-                gender={c.gender}
-                colors={[c.colors]}
-                size={[c.size]}
-              />
-            );
-          })}
-      </div>
-      {view.mode === 'All' && <Paged cardPage={cardPage} products={filteredProducts.length} currentPage={currentPage} pagedHandler={pagedHandler} />}
-    </section>
+    <section className={style.section}>
+                <h3 className={style.sectionTitle}>Our Products</h3>
+                <div className={style.div1}>
+
+                <div className={style.card}>
+                  {view.mode === 'Slice' ? (
+                    homeProducts?.map((product, index) => (
+                      <Card
+                      key={index}
+                        id={product.id}
+                        name={product.name}
+                        price={product.price}
+                        image={product.image}
+                        gender={product.gender}
+                        colors={[product.colors]}
+                        size={[product.size]}
+                        />
+                        ))
+                        ) : (
+                          currentCardPage?.map((product, index) => (
+                      <Card
+                        key={index}
+                        id={product.id}
+                        name={product.name}
+                        price={product.price}
+                        image={product.image}
+                        gender={product.gender}
+                        colors={[product.colors]}
+                        size={[product.size]}
+                        />
+                        ))
+                        )}
+                </div>
+                </div>
+                {view.mode === 'All' && (
+                  <Paged
+                  cardPage={cardPage}
+                  products={filteredProducts.length}
+                    currentPage={currentPage}
+                    pagedHandler={pagedHandler}
+                    />
+                    )}
+                {view.mode === 'All' && <Filter/>}
+                <button className={style.viewButton} onClick={() => handlerView()}>
+                  {view.mode === 'Slice' ? 'View all products' : 'View less products'}
+                </button>
+              </section>
 
   );
 };

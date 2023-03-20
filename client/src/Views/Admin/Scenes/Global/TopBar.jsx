@@ -1,8 +1,3 @@
-
-import { useContext } from "react";
-import { ColorModeContext, tokens } from "../../thema";
-
-
 const TopBar = () => {
 
     return(

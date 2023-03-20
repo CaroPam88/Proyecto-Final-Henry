@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import{ filterAllClothes } from "../../Redux/actionFilter"
 import { getAllColors } from "../../Redux/ActionsGet";
+import { setCurrent } from "../../Redux/pagedSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -26,20 +27,21 @@ const Filter = () => {
     dispatch(
       filterAllClothes(filters)
     );
+    dispatch(setCurrent(1))
   }
   // { ...filters, [event.target.value]: event.target.value }
 
   return (
     <div>
       <select name="genre" onChange={handlerFilter}>
-        <option value="">---</option>
+        <option value="">Genre</option>
         <option value='Female'>Female</option>
         <option value='Male'>Male</option>
       
       </select>
 
       <select name="type" onChange={handlerFilter}>
-        <option value="">---</option>
+        <option value="">Type</option>
         <option value="remera">Remera</option>
         <option value="vestido">Vestido</option>
         <option value="chomba">Chomba</option>
@@ -48,7 +50,7 @@ const Filter = () => {
       </select>
 
       <select name="size" onChange={handlerFilter}>
-        <option value="">---</option>
+        <option value="">Size</option>
         <option value="S">S</option>
         <option value="L">L</option>
         <option value="M">M</option>
