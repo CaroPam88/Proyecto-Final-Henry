@@ -129,39 +129,23 @@ function Form() {
 	};
 
 	return (
-		<form class = {style.form} onSubmit={(e) => SubmitHandler(e)}>
+		<div className={style.container}>
+
+		<form id="contact" className = {style.form} onSubmit={(e) => SubmitHandler(e)}>
+
+
 			<input
 				type="text"
 				name="name"
 				onChange={(e) => handleForm(e)}
-				placeholder="Incert name"
+				placeholder="Insert name"
 				onBlur={handleBlur}
-			/>
+				/>
 			{error.name ? (
 				<span style={styleError}>{error.name}</span>
-			) : (
-				<span style={styleValidet}> {validated.name}</span>
-			)}
-
-			<section>
-				<select
-					name="size"
-					onChange={(e) => handleForm(e)}
-					onBlur={handleBlur}
-				>
-					<option value="">Insert size</option>
-					<option value="S">S</option>
-					<option value="M">M</option>
-					<option value="L">L</option>
-					<option value="XL">XL</option>
-					<option value="XXL">XXL</option>
-				</select>
-				{error.size ? (
-					<span style={styleError}>{error.size}</span>
 				) : (
-					<span style={styleValidet}> {validated.size}</span>
-				)}
-			</section>
+					<span style={styleValidet}> {validated.name}</span>
+					)}
 
 			<input
 				type="number"
@@ -170,13 +154,70 @@ function Form() {
 				onChange={(e) => handleForm(e)}
 				placeholder="Insert price"
 				onBlur={handleBlur}
-			/>
+				/>
 			{error.price ? (
 				<span style={styleError}>{error.price}</span>
-			) : (
-				<span style={styleValidet}>{validated.price}</span>
-			)}
+				) : (
+					<span style={styleValidet}>{validated.price}</span>
+					)}
 
+			<div>
+				<input
+					type="text"
+					name="color"
+					placeholder="Insert color name"
+					onChange={(e) => handlerColor(e)}
+					onBlur={handleBlur}
+					/>
+				<input
+					type="number"
+					name="stockColors"
+					min={1}
+					placeholder="Insert color size"
+					onChange={(e) => handlerColor(e)}
+					onBlur={handleBlur}
+				/>
+
+				<button onClick={(e) => handlerAddColor(e)}>
+					Add color
+				</button>
+				{form.colors?.map((el, i) => (
+					<button
+					type="button"
+						key={i}
+						value={i}
+						onClick={(e) => colorDeleteHandler(e)}
+					>{`${el.color} | ${el.stockColors}`}</button>
+				))}
+				{error.colors ? (
+					<span style={styleError}>{error.colors}</span>
+				) : (
+					<span style={styleValidet}>{validated.colors}</span>
+				)}
+			</div>
+
+
+
+			
+			<select
+								name="size"
+								onChange={(e) => handleForm(e)}
+								onBlur={handleBlur}
+							>
+								<option value="">Insert size</option>
+								<option value="S">S</option>
+								<option value="M">M</option>
+								<option value="L">L</option>
+								<option value="XL">XL</option>
+								<option value="XXL">XXL</option>
+							</select>
+							{error.size ? (
+								<span style={styleError}>{error.size}</span>
+								) : (
+									<span style={styleValidet}> {validated.size}</span>
+									)}
+
+									
 			<div>
 				<select
 					name="type"
@@ -194,7 +235,7 @@ function Form() {
 					<span style={styleError}>{error.type}</span>
 				) : (
 					<span style={styleValidet}>{validated.type}</span>
-				)}
+					)}
 			</div>
 
 			<div>
@@ -202,62 +243,29 @@ function Form() {
 					name="genre"
 					onChange={(e) => genreHandler(e)}
 					onBlur={handleBlur}
-				>
-					<option value="">Inser genre</option>
+					>
+					<option value="">Insert genre</option>
 					<option value="Female">Female</option>
 					<option value="Male">Male</option>
 				</select>
 
 				{form.sex?.map((genre, i) => (
 					<button
-						type="button"
-						key={i}
-						value={`${genre}`}
-						onClick={(e) => genreDeleteHandler(e)}
+					type="button"
+					key={i}
+					value={`${genre}`}
+					onClick={(e) => genreDeleteHandler(e)}
 						onBlur={handleBlur}
 					></button>
 				))}
 				{error.sex ? (
 					<span style={styleError}>{error.sex}</span>
-				) : (
-					<span style={styleValidet}>{validated.sex}</span>
+					) : (
+						<span style={styleValidet}>{validated.sex}</span>
 				)}
 			</div>
 
-			<div>
-				<input
-					type="text"
-					name="color"
-					placeholder="Incert color name"
-					onChange={(e) => handlerColor(e)}
-					onBlur={handleBlur}
-				/>
-				<input
-					type="number"
-					name="stockColors"
-					min={1}
-					placeholder="Incert color size"
-					onChange={(e) => handlerColor(e)}
-					onBlur={handleBlur}
-				/>
 
-				<button onClick={(e) => handlerAddColor(e)}>
-					Add color date
-				</button>
-				{form.colors?.map((el, i) => (
-					<button
-						type="button"
-						key={i}
-						value={i}
-						onClick={(e) => colorDeleteHandler(e)}
-					>{`${el.color} | ${el.stockColors}`}</button>
-				))}
-				{error.colors ? (
-					<span style={styleError}>{error.colors}</span>
-				) : (
-					<span style={styleValidet}>{validated.colors}</span>
-				)}
-			</div>
 			<div>
 				<input
 					type="file"
@@ -265,13 +273,16 @@ function Form() {
 					name="image"
 					onChange={(e) => handleForm(e)}
 					onBlur={handleBlur}
-				/>
+					/>
 				{error.image ? (
 					<span style={styleError}>{error.image}</span>
-				) : (
+					) : (
 					<span style={styleValidet}>{validated.image}</span>
-				)}
+					)}
 			</div>
+
+
+
 			{!error.name &&
 				!error.price &&
 				!error.type &&
@@ -281,6 +292,7 @@ function Form() {
 				!error.colors &&
 				validated.name && <button type="submit">Submit</button>}
 		</form>
+				</div>
 	);
 }
 export default Form;

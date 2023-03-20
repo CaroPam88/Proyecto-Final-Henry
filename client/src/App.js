@@ -28,9 +28,9 @@ function App() {
   }, [dispatch]);
   return (
         <div className="App">
-              {/* {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
+              {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
                 <NavBar />
-              ) : null} */}
+              ) : null}
               {/* {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
                 <Footer />
               ) : null} */}
