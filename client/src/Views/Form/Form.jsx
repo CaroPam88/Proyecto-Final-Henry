@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { validateError, validate, validateColorError } from '../../Components/formValidation/errorHandler';
 import {postClothes} from '../../Redux/ActionsGet';
 import uploadImage from './uploadImage';
-import style from './Form.module.css';
 
 function Form() {
 	const dispatch = useDispatch();
@@ -124,7 +123,7 @@ function Form() {
 	};
 
 	return (
- 
+
     <form onSubmit={(e) => SubmitHandler(e)}>
 		<input type="text" name="name" onChange={(e) => handleForm(e)} placeholder="Incert name"/>
 		{error.name 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetail,
@@ -22,10 +22,6 @@ const Detail = () => {
   }, [dispatch, id]);
 
   const myProduct = useSelector((state) => state.products.productDetail);
-
-  function handleReset(){
-  dispatch(clearProductDetailState());
-  }
 
   return (
               <div className={style.container}>

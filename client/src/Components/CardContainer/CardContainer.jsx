@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import style from './CardContainer.module.css';
 import { useState } from "react";
 import Paged from "../Paged/Paged";
+import Filter from "../FilterBar/FilterBar.jsx";
 import { setCurrentPaged } from "../../Redux/pagedActions";
 
 
@@ -19,7 +20,7 @@ const CardContainer = () => {
       : setView({ mode: 'Slice' })
   }
 
-  const [cardPage, setCardPage] = useState(6);
+  const [cardPage, _setCardPage] = useState(6);
   const indexOfLastProduct = currentPage * cardPage;
   const indexOfFirstProduct = indexOfLastProduct - cardPage;
   const currentCardPage = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -70,6 +71,7 @@ const CardContainer = () => {
                     pagedHandler={pagedHandler}
                     />
                     )}
+                {view.mode === 'All' && <Filter/>}
                 <button className={style.viewButton} onClick={() => handlerView()}>
                   {view.mode === 'Slice' ? 'View all products' : 'View less products'}
                 </button>

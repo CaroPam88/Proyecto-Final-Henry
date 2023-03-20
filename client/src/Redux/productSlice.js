@@ -16,9 +16,7 @@ const Slice = createSlice({
         getProducts: (state, action) => {
             state.products = action.payload;
             state.filteredProducts = action.payload;
-           
         },
-        
         postProducts:(state, action) => {
             state.post = action.payload;
         },

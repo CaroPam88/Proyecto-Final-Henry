@@ -1,13 +1,9 @@
-import { Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Card from "../../Components/Card/Card.jsx";
 import 'swiper/css';
-import { useSelector } from "react-redux";
 import style from "./recomended.module.css";
 import img1 from "../../Assets/img/PantalonesHombres/Vintage.png";
 import img2 from "../../Assets/img/SUETER/SUETER/sueter-camuflaje-en-color-rojo.jpg";
 import img3 from "../../Assets/img/short2/short2/short_nike.png";
-import img4 from "../../Assets/img/PantalonesHombres/Vintage.png";
+
 
 
 

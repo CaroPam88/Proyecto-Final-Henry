@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { tokens } from "../thema";
 
 
