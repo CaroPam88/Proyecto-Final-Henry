@@ -1,4 +1,4 @@
-function validateErro(input) {
+function validateError(input) {
 	let error = {};
 
 	if (!input.name.trim()) error.name = ' Insert a Name';
@@ -16,20 +16,32 @@ function validateErro(input) {
 	return error;
 }
 
+function validateColorError(input) {
+	let colorError = {};
+
+	if(!input.color) colorError.nameColor = 'Insert a name';
+	else if(!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(input.nameColor))  colorError.name = 'Invalid color name';
+	if(!input.stockColors) colorError.sizeColor = 'Insert a stook for color';
+	if(input.stockColors <= 0 ) colorError.sizeColor = 'Invalid a stook for color';
+
+	return colorError;
+};
+
 function validate(input) {
 	let validated = {};
 
-	if (input.name) validated.name = ' ✔ validated';
-	else if (!/^[A-Za-z]+$/.test(input.name)) validated.name = '✔ validated';
-	if (input.image) validated.image = '✔ validated';
-	if (input.type) validated.type = '✔ validated';
-	if (input.price) validated.price = '✔ validated';
-	if (input.image) validated.image = '✔ validated';
-	if (input.sex.length > 0) validated.sex = '✔ validated';
-	if (input.size) validated.size = '✔ validated';
+	if (input.name) validated.name = ' ✔ validated name';
+	else if (!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(input.name)) validated.name = '✔ validated name';
+	if (input.image) validated.image = '✔ validated image';
+	if (input.type) validated.type = '✔ validated type';
+	if (input.price) validated.price = '✔ validated price';
+	if (input.image) validated.image = '✔ validated image';
+	if (input.sex.length > 0) validated.sex = '✔ validated genre';
+	if (input.size) validated.size = '✔ validated stock';
 	if (input.amount) validated.amount = '✔ validated';
-	if (input.colors.length > 0) validated.colors = '✔ validated';
+	if (input.colors.length > 0) validated.colors = '✔ validated color';
 
 	return validated;
 }
-export {validate, validateErro};
+
+export {validate, validateError, validateColorError};
