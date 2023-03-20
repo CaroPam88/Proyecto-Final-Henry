@@ -1,13 +1,16 @@
+.container{
+  background: #fff;
+  
+}
 .center {
-    height: 90vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
   }
   
   .articleCard {
-    width: 350px;
-    height: 220px;
+    max-width: 22%;
+    max-height: 200px;
     border-radius: 12px;
     overflow: hidden;
     position: relative;

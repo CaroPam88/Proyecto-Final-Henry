@@ -5,6 +5,7 @@ import { getAllProducts } from "../../Redux/ActionsGet.js";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import CardContainer from "../../Components/CardContainer/CardContainer.jsx";
+import imgHome from '../../Assets/img/hero3.jpg';
 
 export const Home = ()=>{
     const dispatch = useDispatch()
@@ -13,7 +14,7 @@ export const Home = ()=>{
     }, [dispatch]);
     return(
         <div className={style.container}>
-                
+                <img src={imgHome} alt="" className={style.img} />
                 <Hero />
                 <Recomendados />
                 <CardContainer/>
