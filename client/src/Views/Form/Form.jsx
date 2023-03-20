@@ -124,6 +124,7 @@ function Form() {
 	};
 
 	return (
+ 
     <form onSubmit={(e) => SubmitHandler(e)}>
 		<input type="text" name="name" onChange={(e) => handleForm(e)} placeholder="Incert name"/>
 		{error.name 

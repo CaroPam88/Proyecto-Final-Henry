@@ -21,10 +21,11 @@ export const Home = ()=>{
     }, [dispatch]);
     return(
         <div className={style.container}>
+                
                 <Hero />
+                <Recomendados />
                 <CardContainer/>
                 <Filter/>
-                <Recomendados/>
         </div>
     )
 }

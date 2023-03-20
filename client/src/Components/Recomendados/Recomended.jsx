@@ -1,64 +1,56 @@
 import { Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Card from "../../Components/Card/Card.jsx";
-import  "./recomended.css";
 import 'swiper/css';
 import { useSelector } from "react-redux";
-import style from "./recomended.module.css"
+import style from "./recomended.module.css";
+import img1 from "../../Assets/img/PantalonesHombres/Vintage.png";
+import img2 from "../../Assets/img/SUETER/SUETER/sueter-camuflaje-en-color-rojo.jpg";
+import img3 from "../../Assets/img/short2/short2/short_nike.png";
+import img4 from "../../Assets/img/PantalonesHombres/Vintage.png";
+
 
 
 function Recomendados() {
-  const products = useSelector(state=> state.products.Productos)
   return (
-      <div className={style.container}>
-        <div className={style.swiperContainer}>
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: true
-            }}
-            pagination={{
-              el: ".pagination",
-              clickable: true,
-            }}
-            slidesPerView={2}
-            breakpoints={{
-              "@0.00": {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              "@0.50": {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              "@1.00": {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              "@1.25": {
-                slidesPerView: 2,
-                spaceBetween: 15,
-              },
-              "@1.50": {
-                slidesPerView: 2,
-                spaceBetween: 25,
-              },
-              "@1.75": {
-                slidesPerView: 2,
-                spaceBetween: 25,
-              },
-            }}
-          >
-            {products?.slice(0,8).map((p) => (
-              <SwiperSlide className={style.swiperslice} key={p.title}>
-                <Card producto={p} key={p.title} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+
+      
+      <div>
+        <h2 className={style.centerTitle}>Products based in your interests</h2>
+        <div className={style.center}>
+          <div className={style.articleCard}>
+            <div className={style.content}>
+              <p className={style.title}>Pants / Cargo</p>
+            </div>
+            <img src={img1} alt="" />
+          </div>
+
+          <div className={style.articleCard}>
+            <div className={style.content}>
+              <p className={style.title}>Shirts</p>
+            </div>
+            <img src={img2} alt="" />
+          </div>
+
+          <div className={style.articleCard}>
+            <div className={style.content}>
+              <p className={style.title}>Shorts</p>
+            </div>
+            <img src={img3} alt="" />
+          </div>
+
+          <div className={style.articleCard}>
+            <div className={style.content}>
+              <p className={style.title}>Shirts</p>
+            </div>
+            <img src={img1} alt="" />
+          </div>
+          
         </div>
-        <div className='pagination' />
       </div>
+
+
+      
   );
 }
 
