@@ -4,12 +4,16 @@ const {
 	getProductByIdHandler,
 	postProductHandler,
 	patchProductHandler,
+	getProductByGenderHandler,
 } = require('../handlers/clothesHandlers');
 
 const clothesRouter = Router();
 
 //RUTA PARA MOSTRAR TODOS LAS PRENDAS SIN DETALLE
 clothesRouter.get('/', getProductHandler);
+
+//RUTA QUE MUESTRA FORPA POR GENERO
+clothesRouter.get('/gender/:gender', getProductByGenderHandler);
 
 //RUTA PARA MOSTRAR LAS PRENDAS POR ID JUNTO AL DETALLE DE LA MISMA
 clothesRouter.get('/:id', getProductByIdHandler);

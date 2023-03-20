@@ -78,4 +78,18 @@ const createProduct = async (
 	return {message: 'Product Create !!!!!'};
 };
 
-module.exports = {getClothesData, getIdData, createProduct};
+let getGenderData = async (gender) => {
+	const clothesData = await getClothesData();
+
+	const filteredData = clothesData.filter((item) =>
+		item.sex.includes(gender)
+	);
+
+	if (filteredData.length === 0) {
+		throw new Error('Genero no encontrado');
+	}
+
+	return filteredData;
+};
+
+module.exports = {getClothesData, getIdData, createProduct, getGenderData};
