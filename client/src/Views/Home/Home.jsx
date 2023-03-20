@@ -25,6 +25,7 @@ export const Home = ()=>{
                 <Hero />
                 <Recomendados />
                 <CardContainer/>
+                <Filter/>
         </div>
     )
 }
