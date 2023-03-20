@@ -11,7 +11,7 @@ function Recomendados() {
   return (
 
       
-      <div>
+      <div className={style.container}>
         <h2 className={style.centerTitle}>Products based in your interests</h2>
         <div className={style.center}>
           <div className={style.articleCard}>
