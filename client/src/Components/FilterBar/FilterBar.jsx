@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import{ filterAllClothes } from "../../Redux/actionFilter"
 import { getAllColors } from "../../Redux/ActionsGet";
+import { setCurrent } from "../../Redux/pagedSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const Filter = () => {
     dispatch(
       filterAllClothes(filters)
     );
+    dispatch(setCurrent(1))
   }
   // { ...filters, [event.target.value]: event.target.value }
 
