@@ -1,29 +1,25 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { tokens } from "../../thema";
-import logo from "../../../../Assets/svg/logo.svg";
+// import { useState } from "react";
+
+// const Item = ({title, to, icon, selected, setSelected}) => {
 
 
-const Item = ({title, to, icon, selected, setSelected}) => {
+//     return(
+//         <div class="menu-item" 
+//             style="color: #ffffff;"
+//             onclick="setSelected('title');">
+//           <i class="icon">{icon}</i>
+//           <span class="title">{title}</span>
+//           <a href="{to}"></a>
+//         </div>
 
-
-    return(
-        <div class="menu-item" 
-            style="color: #ffffff;"
-            onclick="setSelected('title');">
-          <i class="icon">{icon}</i>
-          <span class="title">{title}</span>
-          <a href="{to}"></a>
-        </div>
-
-            )
-}
+//             )
+// }
 
 
 const SideBar = () => {
   
-    const [isCollapsed, setIsCollapsed] = useState(true);
-    const [selected, setSelected] = useState("Dashboard");
+    // const [isCollapsed, setIsCollapsed] = useState(true);
+    // const [selected, setSelected] = useState("Dashboard");
     
     
     return(

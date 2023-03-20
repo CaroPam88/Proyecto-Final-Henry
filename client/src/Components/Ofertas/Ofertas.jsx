@@ -6,7 +6,6 @@ import ofimg1 from '../../Assets/img/PantalonesHombres/Vintage.png';
 import ofimg2 from '../../Assets/img/SUETER/SUETER/sueter-licrado-azul.jpg';
 import ofimg3 from '../../Assets/img/pantalonesMujer/pantalones/pantalon1.png';
 import { useState, useEffect } from "react";
-import sim from './simulateDB.json';
 
 export function Ofertas() {
   const ofertaimg = [ofimg1, ofimg2, ofimg3]

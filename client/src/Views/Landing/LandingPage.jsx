@@ -1,5 +1,4 @@
 import style from './LandingPage.module.css';
-import { Link } from "react-router-dom";
 import logo from '../../Assets/svg/logo.svg';
 import { useState, useEffect } from 'react';
 
@@ -14,7 +13,7 @@ const Landing = () => {
   //   }, 1300)
   // };
   // useEffect(gotoHome)
-  const [isLoading, setIsLoading] = useState(true);
+  const [_isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -15,7 +15,7 @@ const Paged = ({ cardPage, products, currentPage }) => {
 
     const handlerPage = (e) => {
         const value = e.target.value;
-        value === '<'
+        value === 'prev'
             ? dispatch(setCurrentPaged(prev))
             : dispatch(setCurrentPaged(next));
     };
@@ -23,23 +23,20 @@ const Paged = ({ cardPage, products, currentPage }) => {
         <nav>
             <ul className={style.pagination}>
 
-                {prev !== 0 && <a onClick={e => handlerPage(e)} value='<'>{'<Prev'}</a>}
+                {prev !== 0 && <button onClick={e => handlerPage(e)} value='prev' className={style.but}>{'<Prev'}</button>}
                 {pagedNum?.map((num, i) => {
 
                     return num === currentPage
-                        ? <a key={i} >
+                        ? <li key={i} >
                             <a key={i} >{num}</a>
-                        </a>
-                        : <a key={i}>
+                        </li>
+                        : <li key={i}>
                             <a key={i} onClick={() => dispatch(setCurrentPaged(num))} >{num}</a>
-                        </a>
+                        </li>
                 })}
-                {next !== pagedNum.length + 1 && <a onClick={e => handlerPage(e)} value='>'>{'Next>'}</a>}
+                {next !== pagedNum.length + 1 && <button onClick={e => handlerPage(e)} value='next' className={style.but}>{'Next>'}</button>}
             </ul>
         </nav>
-
-
-
     )
 };
 

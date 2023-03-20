@@ -12,6 +12,14 @@
     border-radius: 5px;
     justify-content: center;
   }
+  .but {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    justify-content: center;
+  }
   
   .pagination a.active {
     border-radius: 5px;
@@ -23,4 +31,4 @@
     border-radius: 200px;
   }
   
-  .pagination a:hover:not(.active) {background-color: #ddd;}
+  .pagination a:hover:not(.active) .but:hover {background-color: #ddd;}

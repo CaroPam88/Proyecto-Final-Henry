@@ -34,14 +34,14 @@ const Filter = () => {
   return (
     <div>
       <select name="genre" onChange={handlerFilter}>
-        <option value="">---</option>
+        <option value="">Genre</option>
         <option value='Female'>Female</option>
         <option value='Male'>Male</option>
       
       </select>
 
       <select name="type" onChange={handlerFilter}>
-        <option value="">---</option>
+        <option value="">Type</option>
         <option value="remera">Remera</option>
         <option value="vestido">Vestido</option>
         <option value="chomba">Chomba</option>
@@ -50,7 +50,7 @@ const Filter = () => {
       </select>
 
       <select name="size" onChange={handlerFilter}>
-        <option value="">---</option>
+        <option value="">Size</option>
         <option value="S">S</option>
         <option value="L">L</option>
         <option value="M">M</option>
