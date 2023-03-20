@@ -125,7 +125,7 @@ function Form() {
 	return (
 
     <form onSubmit={(e) => SubmitHandler(e)}>
-		<input type="text" name="name" onChange={(e) => handleForm(e)} placeholder="Incert name"/>
+		<input type="text" name="name" onChange={(e) => handleForm(e)} placeholder="Insert name"/>
 		{error.name 
 		? (<span style={styleError}>{error.name}</span>) 
 		: (<span style={styleValidet}> {validated.name}</span>)}
@@ -165,7 +165,7 @@ function Form() {
 			
 		<div>
 			<select name="genre" onChange={(e) => genreHandler(e)}> 
-				<option value="">Inser genre</option> 
+				<option value="">Insert Gender</option> 
 				<option value="Female">Female</option> 
 				<option value="Male">Male</option>
 			</select>
@@ -179,8 +179,8 @@ function Form() {
 		</div>
 			
 		<div>
-			<input type="text" name="color" placeholder="Incert color name" onChange={(e) => handlerColor(e)}/>
-			<input type="number" name="stockColors" min={1} placeholder="Incert color stock" onChange={(e) => handlerColor(e)} />
+			<input type="text" name="color" placeholder="Insert color name" onChange={(e) => handlerColor(e)}/>
+			<input type="number" name="stockColors" min={1} placeholder="Insert color stock" onChange={(e) => handlerColor(e)} />
 			{!colorError.nameColor && !colorError.sizeColor &&  addColor.color !== '' && addColor.stockColors !== 0 && <button onClick={(e) => handlerAddColor(e)}>Add color</button>}
 			{form.colors?.map((el, i) => (
 			<button type="button" key={i} value={i} onClick={(e) => colorDeleteHandler(e)}>{`${el.color} | ${el.stockColors}`}</button>
