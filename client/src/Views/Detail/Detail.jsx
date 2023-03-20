@@ -23,112 +23,75 @@ const Detail = () => {
 
   const myProduct = useSelector((state) => state.products.productDetail);
 
-  //function handleReset(){
-  //dispatch(clearProductDetailState());
-  //}
+  function handleReset(){
+  dispatch(clearProductDetailState());
+  }
 
   return (
+              <div className={style.container}>
+              <h2>{myProduct.name}</h2>
+                        <img src={myProduct.image} alt="" />
+                        <p className={style.cardText}>{myProduct.itemName}</p>
+                        <p className={style.cardText}>{myProduct.itemName}</p>
+                        <p className={style.currentPrice}>{myProduct.price}</p>
+          {myProduct.sizes?.map((size) => (
+            <li>{size && (<> <h2 className= {style.purchaseInfo}>Tamaño: {size.size}</h2>
+                            <h2>Stock por tamaño: {size.stockSize}</h2>
+                            <h2>Colores:</h2>
+                                        {size.colors &&
+                                        size.colors.map((color) => (
+                                          <p>Color: {color.color} - Stock por color:{" "} {color.stockColors}</p>
+                                          ))}
+                                      </>
+                                    )}
+                                  </li>
+                                ))}
 
-  // <div class="container">
-
-  //   <div class="py-10">
-  //     <div class="row">
-  //       <div class="col-12 ml-8  wow fadeInUpSmall animated" data-wow-duration="1s" data-wow-delay=".2s">
-  //         <p class="mb-3 fs-1" style="text-align: center; font-weight:600 ;">Professional Software Quality
-  //           Assessment Application Testing Services </p>
-  //         <h2 class="mb-3 font-weight-bold font-weight-900 fs-2" style="text-align: center; font-weight: 300;">
-  //           Comprehensive testing solutions for your bussiness needs.</h2>
-  //       </div>
-  //     </div>
-  <div>
-
-      <div className={style.card}>
-          <div class={style.cardImage}>
-            <div className={style.cardBody}>
-              <h2 className={style.cardTitle}>{myProduct.name}</h2>
-                <img src={myProduct.image} alt="" />
-              <p className={style.cardText}>{myProduct.itemName}</p>
-              <p className={style.cardText}>{myProduct.itemName}</p>
-              <p className={style.currentPrice}>{myProduct.price}</p>
-              <ul>
-    //                                 {myProduct.sizes?.map((size) => (
-                                      <li>
-                                        {size && (
-                                          <>
-                                            <h2>Tamaño: {size.size}</h2>
-                                            <h2>Stock por tamaño: {size.stockSize}</h2>
-                                            <h2>Colores:</h2>
-                                            {size.colors &&
-                                              size.colors.map((color) => (
-                                                <p>
-                                                  Color: {color.color} - Stock por color:{" "}
-                                                  {color.stockColors}
-                                                </p>
-                                              ))}
-                                          </>
-                                        )}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                  <button className={style.card__button}></button>
-
-
-            </div>
-          </div>
-
-
-
-
-          </div>
-          </div>
-         
-
-
-
-
-    // </div>
-  // </div>
-  // <div className={style.container}>
-    //       <div className={style.imgContainer}>
-    //                       <img src={myProduct.image} alt="god-of-war-figurine"/>
-    //                   </div>
-
-    //     <div class={style.textContainer}>
-    //                   <h2 className={style.itemName}>{myProduct.name}</h2>
-    //                   <div className={style.pricingAndCart}>
-    //                       <div className={style.pricing}>
-    //                           <p className={style.currentPrice}>{myProduct.price}</p>
-    //                           <p className={style.currentPrice}>{myProduct.type}</p>
-    //                           <p className={style.currentPrice}>{myProduct.stockGeneral}</p>
-    //                           <h2 className={style.itemName}>Tamaños</h2>
-    //                           <ul>
-    //                                 {myProduct.sizes?.map((size) => (
-    //                                   <li>
-    //                                     {size && (
-    //                                       <>
-    //                                         <h4>Tamaño: {size.size}</h4>
-    //                                         <h4>Stock por tamaño: {size.stockSize}</h4>
-    //                                         <h4>Colores:</h4>
-    //                                         {size.colors &&
-    //                                           size.colors.map((color) => (
-    //                                             <p>
-    //                                               Color: {color.color} - Stock por color:{" "}
-    //                                               {color.stockColors}
-    //                                             </p>
-    //                                           ))}
-    //                                       </>
-    //                                     )}
-    //                                   </li>
-    //                                 ))}
-    //                               </ul>
-    //                       </div>
-    //                   </div>
-    //               </div>
-    //           </div>
-
-
-
-
-  );
+                                </div>
+  )
 };
+
+
+// <div class = {style.cardWrapper}>
+//   <div class = {style.card}>
+
+//     <div class = {style.productImgs}>
+//       <div class = {style.imgDisplay}>
+//         <div class = {style.imgShowcase}>
+//           <img src = {myProduct.image} alt = ""/>
+
+//         </div>
+//       </div>
+//     <div class = {style.productContent}>
+//       <h2 class = {style.productTitle}>{myProduct.name}</h2>
+//       </div>
+
+//       <div class = {style.productPrice}>
+//         <p class = {style.lastPrice}>Price: <span>{myProduct.prince}</span></p>
+//       </div>
+
+//       <div class = {style.productDetail}>
+//         <h2>about this item: </h2>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p>
+//         <ul>
+//           <li>Color: <span>{color.color}</span></li>
+//           <li>Available: <span>{color.stockColors}</span></li>
+//           <li>Shipping Area: <span>All over the world</span></li>
+//           <li>Shipping Fee: <span>Free</span></li>
+//         </ul>
+//       </div>
+
+//       <div class = {style.p}>
+//         <input type = "number" min = "0" value = "1"/>
+//         <button type = "button" class = "btn">
+//           Add to Cart <i class = "fas fa-shopping-cart"></i>
+//         </button>
+//         <button type = "button" class = "btn">Compare</button>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+
+
 export default Detail;

@@ -1,7 +1,7 @@
 body {
   line-height: 1.5;
   font-size: 16px;
-  font-family: "BasicCommercial LT Italic", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden !important;
   padding: 0;
   margin: 0;
@@ -13,17 +13,12 @@ body {
   background-color: black;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Space Grotesk', sans-serif;
 }
 ::-webkit-scrollbar {
   width: 7px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--smonkey-celeste-1)
-}
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
