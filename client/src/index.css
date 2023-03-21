@@ -27,7 +27,7 @@ code {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rebeccapurple;
+  background: #006f8b;
   cursor: pointer;
 }
 
