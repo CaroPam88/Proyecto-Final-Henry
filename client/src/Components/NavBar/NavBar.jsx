@@ -8,6 +8,7 @@ import menu from '../../Assets/svg/menu.svg'
 import carrito from '../../Assets/svg/carrito.svg';
 import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
+import { useFilter } from "../FilterBar/filterHook";
 
 
 export const NavBar = () => {
@@ -16,8 +17,10 @@ export const NavBar = () => {
   const menuopen = () => {
     setClicked(!clicked);
   };
-  const Category = useSelector((state) => state.products.Categorias);
+  // const Category = useSelector((state) => state.products.Categorias);
   const location = useLocation()
+
+  const { handlerFilter } = useFilter();
 
   return (
     <div className={style.container}>
@@ -46,7 +49,7 @@ export const NavBar = () => {
             className={`${style.opciones} ${clicked ? style.opcioncerrada : null
               }`}
           >
-            {Category?.map((c) => (
+            {/* {Category?.map((c) => (
               <li key={c.nombre}>
                 {location.pathname !== `/productos/${c.nombre.toLowerCase()}` && <NavLink
                   to={`/productos/${c.nombre.toLowerCase()}`}
@@ -55,7 +58,7 @@ export const NavBar = () => {
                   {c.nombre.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())}
                 </NavLink>}
               </li>
-            ))}
+            ))} */}
             <li>
               {location.pathname !== '/home' && <NavLink to="home" onClick={menuopen}>
                 Home
@@ -72,9 +75,13 @@ export const NavBar = () => {
               </NavLink>}
             </li>
             <li>
-              {location.pathname !== '/sobre-nosotros' && <NavLink to="/sobre-nosotros" onClick={menuopen}>
-                Categorias
-              </NavLink>}
+              {location.pathname === '/home' && 
+              <select name="genre" onChange={(e) => handlerFilter(e)} className={style.selections} onClick={(e) => e.stopPropagation()} >
+                <option value="" className={style.options} >Categories</option>
+                <option value='Female' className={style.options} >Female</option>
+                <option value='Male' className={style.options} >Male</option>
+              </select>
+              }
             </li>
             <li>
               {location.pathname !== '/productos/all' && <NavLink to="/productos/all" onClick={menuopen}>
