@@ -108,10 +108,9 @@ export const NavBar = () => {
         </Link>
       </div>
       {/** en estos logout y loginout los puse para ver si todo funciona, pero enrealidad tendria que probar si IsAuthenticated? si es true mostrar el LogoutButton y si no mostrar el LoginButton/*/}
-      <LogoutButton/>
-      <LoginButton/>
+
       {
-        //isAuthenticated ? <LogoutButton/> : <LoginButton/>
+        isAuthenticated ? <LogoutButton/> : <LoginButton/>
       }
     </div>
   );
