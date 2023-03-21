@@ -18,7 +18,7 @@ const filterAllClothes = (filters) => {
 const genreFilter = (genre, allProducts) => {
   const result = genre === ''
     ? allProducts
-    : allProducts.filter(e => e.sex.includes(genre));
+    : allProducts.filter(e => e.sex.some(gen => gen === genre));
   return result;
 };
 const typeFilter = (type, productsFilteredGenre) => {
