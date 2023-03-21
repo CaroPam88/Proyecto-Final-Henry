@@ -15,14 +15,14 @@ const Landing = () => {
   // useEffect(gotoHome)
   const [_isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setIsLoading(false);
-  //     window.location.href = '/home';
-  //   }, 2000); // Change the value to adjust the amount of time to show the loading view
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      window.location.href = '/home';
+    }, 2000); // Change the value to adjust the amount of time to show the loading view
 
-  //   return () => clearTimeout(timer);
-  // }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
   
   return (
