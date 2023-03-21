@@ -15,23 +15,23 @@ const Landing = () => {
   // useEffect(gotoHome)
   const [_isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      window.location.href = '/home';
-    }, 2000); // Change the value to adjust the amount of time to show the loading view
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //     window.location.href = '/home';
+  //   }, 2000); // Change the value to adjust the amount of time to show the loading view
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   
   return (
-<div className={style.loadingView}>
-  <img src={logo} alt="" className={logo} />
-  <div className={style.Spinner}></div>
-</div>
-
-
+    <section className={style.conteiner}>
+      <div className={style.loadingView}>
+        <img src={logo} alt="" className={logo} />
+        <div className={style.Spinner}></div>
+      </div>
+    </section>
   );
 };
 export default Landing;
