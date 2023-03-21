@@ -1,51 +1,85 @@
 .container{
-    padding-top: 100px;
+    top: -5vh;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 200px;
-    width: auto;
-    background-color: antiquewhite;
-}
-.form div{
+    background-size: cover;
+    background-position: center;
     position: relative;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
 }
-.form{
+.img {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    filter: blur(2px);
+    z-index: -10;
+}
+
+.form {
+    position: relative;
+    margin: 20px auto;
+    width: 100%;
     max-width: 600px;
     text-align: center;
     margin: 20px auto;
+    background-color: white;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    align-items: center;
 }
 
-.form input{
+.input {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(83, 91, 89);
     font-size: 20px;
-    color: black;
-    border-radius: 40px;
-    border-color: blueviolet;
-    box-shadow: violet;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.form select{
-    padding:1vh;
+.colorCont {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
-
-.form button{
-
-    border-radius: 30px;
-    background-color: black;
-    color: white;
-    font-size: 15px;
-    padding: 10px;
-    max-width: 600px;
-    text-align: center;
+.colorContInput {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(83, 91, 89);
+    font-size: 20px;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: 48%;
+    box-sizing: border-box;
 }
-
-.form select{
-
-    border-radius: 30px;
-    background-color: black;
-    color: white;
+.inputColor {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(83, 91, 89);
+    font-size: 20px;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: 20%;
+    box-sizing: border-box;
 }
-
+.inputColorDelete {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(83, 91, 89);
+    font-size: 20px;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: 17%;
+    box-sizing: border-box;
+    border: 1px #414040 solid;
+    border-radius: 5px;
+    margin: 2px;
+}

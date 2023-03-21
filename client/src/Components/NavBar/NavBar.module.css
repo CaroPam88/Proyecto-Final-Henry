@@ -9,7 +9,6 @@
   background: linear-gradient(0deg, #ffffff00 0%, #00000023 49%, #00000086 100%);
   align-items: center;
   font-family: 'Space Grotesk', sans-serif;
-  overflow: hidden;
 }
 
 .container div {
@@ -70,7 +69,7 @@
 .opciones{
     position: absolute;
     width: 15%;
-    height: 10806px;
+    height: 125vh;
     background-color: white;
     left: 0px;
     top: -16px;
