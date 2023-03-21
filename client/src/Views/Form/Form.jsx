@@ -2,7 +2,6 @@ import { useForm } from './formHook'
 import imgHome from '../../Assets/img/hero3.jpg';
 import style from './Form.module.css';
 
-
 function Form() {
 	const { form,  addColor,  error,  validated,  colorError,  handleForm, genreHandler, genreDeleteHandler, handlerColor, handlerAddColor, colorDeleteHandler, SubmitHandler } = useForm();
 	let styleError = {
