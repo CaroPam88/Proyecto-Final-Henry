@@ -9,6 +9,15 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import {Auth0Provider} from '@auth0/auth0-react';
+
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+console.log(domain)
+console.log(clientId)
+
+
+
 
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
@@ -18,7 +27,15 @@ root.render(
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
+        <Auth0Provider
+        domain='dev-6qo4xw0ct2poxtul.us.auth0.com' 
+        clientId='DJy8ClwmtkaSFS9qqW5nc1O5rOuLuYjh'
+        authorizationParams={{
+          redirect_uri: window.location.origin
+        }}
+        >
           <App />
+        </Auth0Provider>
         </BrowserRouter>
       </Provider>
     </React.StrictMode>
