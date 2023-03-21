@@ -26,12 +26,12 @@ const Landing = () => {
 
   
   return (
-<div className={style.loadingView}>
-  <img src={logo} alt="" className={logo} />
-  <div className={style.Spinner}></div>
-</div>
-
-
+    <section className={style.conteiner}>
+      <div className={style.loadingView}>
+        <img src={logo} alt="" className={logo} />
+        <div className={style.Spinner}></div>
+      </div>
+    </section>
   );
 };
 export default Landing;
