@@ -13,8 +13,6 @@ function Form() {
 		color: ' #22a922',
 	};
 
-	console.log(form.image);
-
 	return (
 
     <form onSubmit={(e) => SubmitHandler(e)}>

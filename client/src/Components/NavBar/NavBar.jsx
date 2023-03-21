@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import SearchBar from "../SearchBar/SearchBar";
 import style from './NavBar.module.css';
 import { NavLink } from "react-router-dom";
@@ -17,6 +17,7 @@ export const NavBar = () => {
     setClicked(!clicked);
   };
   const Category = useSelector((state) => state.products.Categorias);
+  const location = useLocation()
 
   return (
     <div className={style.container}>
@@ -47,38 +48,38 @@ export const NavBar = () => {
           >
             {Category?.map((c) => (
               <li key={c.nombre}>
-                <NavLink
+                {location.pathname !== `/productos/${c.nombre.toLowerCase()}` && <NavLink
                   to={`/productos/${c.nombre.toLowerCase()}`}
                   onClick={menuopen}
                 >
                   {c.nombre.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())}
-                </NavLink>
+                </NavLink>}
               </li>
             ))}
-             <li>
-              <NavLink to="/productos/all" onClick={menuopen}>
+            <li>
+              {location.pathname !== '/home' && <NavLink to="home" onClick={menuopen}>
                 Home
-              </NavLink>
+              </NavLink>}
             </li>
             <li>
-              <NavLink to="/form" onClick={menuopen}>
+              {location.pathname !== '/form' && <NavLink to="/form" onClick={menuopen}>
                 Form
-              </NavLink>
+              </NavLink>}
             </li>
             <li>
-              <NavLink to="/productos/all" onClick={menuopen}>
+              {location.pathname !== '/productos/all' && <NavLink to="/productos/all" onClick={menuopen}>
                 Compra
-              </NavLink>
+              </NavLink>}
             </li>
             <li>
-              <NavLink to="/sobre-nosotros" onClick={menuopen}>
+              {location.pathname !== '/sobre-nosotros' && <NavLink to="/sobre-nosotros" onClick={menuopen}>
                 Categorias
-              </NavLink>
+              </NavLink>}
             </li>
             <li>
-              <NavLink to="/productos/all" onClick={menuopen}>
+              {location.pathname !== '/productos/all' && <NavLink to="/productos/all" onClick={menuopen}>
                 Nosotros
-              </NavLink>
+              </NavLink>}
             </li>
           </ul>
         </div>
@@ -98,8 +99,6 @@ export const NavBar = () => {
           <img src={carrito} alt="carrito" className={style.carrito} />
         </Link>
       </div>
-      
-     
     </div>
   );
 };

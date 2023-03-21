@@ -5,7 +5,6 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
-    backdrop-filter: blur(2px);
     align-items: center;
     bottom: 30px;
     right: 20px;

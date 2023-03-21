@@ -28,10 +28,10 @@ const Paged = ({ cardPage, products, currentPage }) => {
 
                     return num === currentPage
                         ? <li key={i} >
-                            <a key={i} >{num}</a>
+                            <a key={i} className={style.activeNum}>{num}</a>
                         </li>
                         : <li key={i}>
-                            <a key={i} onClick={() => dispatch(setCurrentPaged(num))} >{num}</a>
+                            <a key={i} onClick={() => dispatch(setCurrentPaged(num))} className={style.noActiveNum} >{num}</a>
                         </li>
                 })}
                 {next !== pagedNum.length + 1 && <button onClick={e => handlerPage(e)} value='next' className={style.but}>{'Next>'}</button>}
