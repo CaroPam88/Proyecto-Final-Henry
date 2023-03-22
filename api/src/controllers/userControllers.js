@@ -1,4 +1,6 @@
 const {Clothes, Size, User} = require('../db');
+const sendEmail = require('../Cofig/mailer');
+const {log} = require('console');
 
 const createUser = async ({name, nickname, email, picture, admin}) => {
 	// Buscar si ya existe un usuario con el mismo correo electrónico
@@ -8,7 +10,9 @@ const createUser = async ({name, nickname, email, picture, admin}) => {
 	}
 
 	// Si no existe, crear un nuevo usuario
-	await User.create({name, nickname, email, picture, admin});
+	let newUser = await User.create({name, nickname, email, picture, admin});
+	console.log(newUser.dataValues);
+	sendEmail(newUser.dataValues);
 	return {message: 'Usuario agregado exitosamente'};
 };
 
@@ -17,4 +21,15 @@ const getUsersData = async () => {
 	return users;
 };
 
-module.exports = {createUser, getUsersData};
+const getUserByEmail = async (email) => {
+	console.log('ESTOY EN EL CONTROLLER');
+
+	let userId = await User.findOne({where: {email}});
+	if (userId) {
+		return userId;
+	} else {
+		throw Error('usuario no encontrado');
+	}
+};
+
+module.exports = {createUser, getUsersData, getUserByEmail};
