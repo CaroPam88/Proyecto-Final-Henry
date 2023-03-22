@@ -20,4 +20,15 @@ const getUsersData = async () => {
 	return users;
 };
 
-module.exports = {createUser, getUsersData};
+const getUserByEmail = async (email) => {
+	console.log('ESTOY EN EL CONTROLLER');
+
+	let userId = await User.findOne({where: {email}});
+	if (userId) {
+		return userId;
+	} else {
+		throw Error('usuario no encontrado');
+	}
+};
+
+module.exports = {createUser, getUsersData, getUserByEmail};
