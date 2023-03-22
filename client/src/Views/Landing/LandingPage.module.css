@@ -1,10 +1,19 @@
+.conteiner {
+  display: flex;
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3%;
+}
 .loadingView {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: black; /* background color for the loading view */
+    width: 90vw;
+    background: black; /* background color for the loading view */
   }
   
   .logo {

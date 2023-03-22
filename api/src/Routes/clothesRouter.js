@@ -3,7 +3,7 @@ const {
 	getProductHandler,
 	getProductByIdHandler,
 	postProductHandler,
-	patchProductHandler,
+	putProductHandler,
 	getProductByGenderHandler,
 } = require('../handlers/clothesHandlers');
 
@@ -22,8 +22,9 @@ clothesRouter.get('/:id', getProductByIdHandler);
 clothesRouter.post('/', postProductHandler);
 
 //RUTA PARA ACTUALIZAR LA PRENDA (ESENCIAL PARA EL MANEJO DE STOCK)
-//clothesRouter.patch("/:id", patchProductHandler);
+clothesRouter.put("/:id", putProductHandler);
 
 //Faltando rutas nuevas segun el avance del proyecto
 
 module.exports = clothesRouter;
+

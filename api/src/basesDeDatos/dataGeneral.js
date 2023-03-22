@@ -81,7 +81,7 @@ const clothesBdd = async () => {
     include: [
       {
         model: Size,
-        attributes: ["size", "stockSize", "colors"],
+        attributes: ["id", "size", "stockSize", "colors"],
         through: {
           attributes: [],
         },
