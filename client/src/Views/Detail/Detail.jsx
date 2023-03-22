@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetail,
@@ -22,31 +22,58 @@ const Detail = () => {
   }, [dispatch, id]);
 
   const myProduct = useSelector((state) => state.products.productDetail);
-
+  console.log( myProduct.sizes?.map((elem) => elem.colors.map(elem => elem.color)));
+  console.log(myProduct);
+  
   return (
-              <div className={style.container}>
-              <h2>{myProduct.name}</h2>
-                        <img src={myProduct.image} alt="" />
-                        <p className={style.cardText}>{myProduct.itemName}</p>
-                        <p className={style.cardText}>{myProduct.itemName}</p>
-                        <p className={style.currentPrice}>{myProduct.price}</p>
-          {myProduct.sizes?.map((size) => (
-            <li>{size && (<> <h2 className= {style.purchaseInfo}>Tamaño: {size.size}</h2>
-                            <h2>Stock por tamaño: {size.stockSize}</h2>
-                            <h2>Colores:</h2>
-                                        {size.colors &&
-                                        size.colors.map((color) => (
-                                          <p>Color: {color.color} - Stock por color:{" "} {color.stockColors}</p>
-                                          ))}
-                                      </>
-                                    )}
-                                  </li>
-                                ))}
-
-                                </div>
-  )
+    
+    <div className={style.container}>
+   
+      
+      <div className={style.containerImg}>
+        <img src={myProduct.image} alt="" className={style.img} />
+      </div>
+      
+     
+      <div className={style.containerInfo}>
+        <h1>{myProduct.name}</h1>
+        <h4 className={style.currentPrice}>$ {myProduct.price}</h4>
+        <ul>
+        <br />
+        <br />
+        <h6>{ myProduct.sex?.map(el => el).join(" - ")}</h6>
+        </ul>
+        <div className={style.detail}>
+     
+     {  myProduct.sizes?.map((elem) => 
+      <>
+       <Link >
+        <li key={myProduct.id} className={style.size}>{elem.size}</li>
+        <li key={myProduct.id} className={style.size}>{elem.size}</li>
+        <li key={myProduct.id} className={style.size}>{elem.size}</li>
+        <li key={myProduct.id} className={style.size}>{elem.size}</li>
+        </Link>
+       <div>
+ 
+       </div>
+       <Link>
+       {elem.colors.map(el => 
+         <li className={style.size} >{el.color}</li>
+         )}
+       </Link>
+       
+      </>
+     
+      
+       )}
+     </div>
+      </div>
+         
+    
+      
+    </div>
+  );
 };
-
 
 // <div class = {style.cardWrapper}>
 //   <div class = {style.card}>
@@ -88,6 +115,5 @@ const Detail = () => {
 //     </div>
 //   </div>
 // </div>
-
 
 export default Detail;

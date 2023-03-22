@@ -11,7 +11,7 @@ function validateError(input) {
 	if (input.sex.length === 0) error.sex = 'Select a Sex';
 	if (!input.size) error.size = 'Select a Size';
 	if (!input.amount) error.amount = 'Insert an amount';
-	if (input.colors.length === 0) error.colors = 'Choose a Color';
+	if (input.colors.length === 0) error.colors = 'Add a Color';
 
 	return error;
 }
@@ -20,7 +20,7 @@ function validateColorError(input) {
 	let colorError = {};
 
 	if(!input.color) colorError.nameColor = 'Insert a name';
-	else if(!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(input.nameColor))  colorError.name = 'Invalid color name';
+	else if(!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(input.color))  colorError.nameColor = 'Invalid color name';
 	if(!input.stockColors) colorError.sizeColor = 'Insert a stook for color';
 	if(input.stockColors <= 0 ) colorError.sizeColor = 'Invalid a stook for color';
 

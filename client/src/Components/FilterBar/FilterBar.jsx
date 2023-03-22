@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import{ filterAllClothes } from "../../Redux/actionFilter"
 import { getAllColors } from "../../Redux/ActionsGet";
 import { setCurrent } from "../../Redux/pagedSlice";
+import style from './filterBar.module.css';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -32,35 +33,35 @@ const Filter = () => {
   // { ...filters, [event.target.value]: event.target.value }
 
   return (
-    <div>
-      <select name="genre" onChange={handlerFilter}>
-        <option value="">Genre</option>
-        <option value='Female'>Female</option>
-        <option value='Male'>Male</option>
+    <div className={style.container}>
+      <select name="genre" onChange={(e) => handlerFilter(e)} className={style.selections} >
+        <option value="" className={style.options} >All genders</option>
+        <option value='Female' className={style.options} >Female</option>
+        <option value='Male' className={style.options} >Male</option>
       
       </select>
 
-      <select name="type" onChange={handlerFilter}>
-        <option value="">Type</option>
-        <option value="remera">Remera</option>
-        <option value="vestido">Vestido</option>
-        <option value="chomba">Chomba</option>
-        <option value="pantalon">Pantalón</option>
-        <option value="short">Short</option>
+      <select name="type" onChange={(e) => handlerFilter(e)} className={style.selections} >
+        <option value="" className={style.options} >All types</option>
+        <option value="remera" className={style.options} >Remera</option>
+        <option value="vestido" className={style.options} >Vestido</option>
+        <option value="chomba" className={style.options} >Chomba</option>
+        <option value="pantalon" className={style.options} >Pantalón</option>
+        <option value="short" className={style.options} >Short</option>
       </select>
 
-      <select name="size" onChange={handlerFilter}>
-        <option value="">Size</option>
-        <option value="S">S</option>
-        <option value="L">L</option>
-        <option value="M">M</option>
-        <option value="XL">XL</option>
-        <option value="XXl">XXL</option>
+      <select name="size" onChange={(e) => handlerFilter(e)} className={style.selections} >
+        <option value="" className={style.options} >All sizes</option>
+        <option value="S" className={style.options} >S</option>
+        <option value="L" className={style.options} >L</option>
+        <option value="M" className={style.options} >M</option>
+        <option value="XL" className={style.options} >XL</option>
+        <option value="XXl" className={style.options} >XXL</option>
       </select>
 
-      <select name="color" onChange={handlerFilter}>
-        <option value="">All colors</option>
-        {colors.map((c, i) => (<option key={i} value={c} >{c}</option>))}
+      <select name="color" onChange={(e) => handlerFilter(e)} className={style.selections} >
+        <option value="" className={style.options} >All colors</option>
+        {colors.map((c, i) => (<option key={i} value={c}  className={style.options} >{c}</option>))}
 
       </select>
     </div>

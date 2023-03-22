@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPaged } from "../../Redux/pagedActions";
 import style from "./paged.module.css";
 
 const Paged = ({ cardPage, products, currentPage }) => {
     const dispatch = useDispatch();
+    const filteredProducts = useSelector(state => state.products.filteredProducts)
     let pagedNum = [];
     for (let i = 1; i <= Math.ceil(products / cardPage); i++) {
         pagedNum.push(i)
@@ -19,6 +20,7 @@ const Paged = ({ cardPage, products, currentPage }) => {
             ? dispatch(setCurrentPaged(prev))
             : dispatch(setCurrentPaged(next));
     };
+    if( filteredProducts.length < 1 ) return <div className={style.pagination}>No products matching selected filters found</div>
     return (
         <nav>
             <ul className={style.pagination}>
@@ -28,10 +30,10 @@ const Paged = ({ cardPage, products, currentPage }) => {
 
                     return num === currentPage
                         ? <li key={i} >
-                            <a key={i} >{num}</a>
+                            <div key={i} className={style.activeNum}>{num}</div>
                         </li>
                         : <li key={i}>
-                            <a key={i} onClick={() => dispatch(setCurrentPaged(num))} >{num}</a>
+                            <div key={i} onClick={() => dispatch(setCurrentPaged(num))} className={style.noActiveNum} >{num}</div>
                         </li>
                 })}
                 {next !== pagedNum.length + 1 && <button onClick={e => handlerPage(e)} value='next' className={style.but}>{'Next>'}</button>}

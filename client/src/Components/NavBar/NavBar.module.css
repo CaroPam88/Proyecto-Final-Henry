@@ -6,6 +6,7 @@
   top: 0;
   z-index: 3;
   backdrop-filter: blur(5px);
+  background: linear-gradient(0deg, #ffffff00 0%, #00000023 49%, #00000086 100%);
   align-items: center;
   font-family: 'Space Grotesk', sans-serif;
 }
@@ -21,6 +22,7 @@
   margin-right: 80vh;
   z-index: 1;
   align-self: center;
+  text-shadow: 0px 0px 5px #000;
 }
 
 
@@ -32,6 +34,7 @@
   position: relative;
   z-index: 2;
   opacity: 4;
+  transition: 1s linear;
 }
 
 
@@ -66,7 +69,7 @@
 .opciones{
     position: absolute;
     width: 15%;
-    height: 10806px;
+    height: 125vh;
     background-color: white;
     left: 0px;
     top: -16px;
