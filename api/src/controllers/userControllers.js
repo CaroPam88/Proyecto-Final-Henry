@@ -1,6 +1,5 @@
 const {Clothes, Size, User} = require('../db');
-const sendEmail = require('../Cofig/mailer');
-const {log} = require('console');
+const sendEmail = require("../Cofig/mailer")
 
 const createUser = async ({name, nickname, email, picture, admin}) => {
 	// Buscar si ya existe un usuario con el mismo correo electrónico
@@ -12,7 +11,7 @@ const createUser = async ({name, nickname, email, picture, admin}) => {
 	// Si no existe, crear un nuevo usuario
 	let newUser = await User.create({name, nickname, email, picture, admin});
 	console.log(newUser.dataValues);
-	sendEmail(newUser.dataValues);
+	sendEmail(newUser.dataValues)
 	return {message: 'Usuario agregado exitosamente'};
 };
 
