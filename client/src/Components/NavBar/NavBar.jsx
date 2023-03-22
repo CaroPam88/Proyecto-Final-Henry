@@ -8,6 +8,12 @@ import menu from '../../Assets/svg/menu.svg'
 import carrito from '../../Assets/svg/carrito.svg';
 import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
+
+import AuthenticationButton from '../../Authentication/Components/AuthenticationButton'
+import LoginButton from '../../Authentication/Components/LoginButton'
+import LogoutButton from '../../Authentication/Components/LogoutButton';
+import {useAuth0, user} from '@auth0/auth0-react';
+import UserProfile from '../../Authentication/ProfileScreen/UserProfile';
 import { useFilter } from "../FilterBar/filterHook";
 
 
@@ -19,6 +25,9 @@ export const NavBar = () => {
   };
   // const Category = useSelector((state) => state.products.Categorias);
   const location = useLocation()
+
+  const {isAuthenticated, user} = useAuth0()
+
 
   const { handlerFilter } = useFilter();
 
@@ -106,6 +115,8 @@ export const NavBar = () => {
           <img src={carrito} alt="carrito" className={style.carrito} />
         </Link>
       </div>
+      {/** en estos logout y loginout los puse para ver si todo funciona, pero enrealidad tendria que probar si IsAuthenticated? si es true mostrar el LogoutButton y si no mostrar el LoginButton/*/}
+      <AuthenticationButton/>
     </div>
   );
 };
