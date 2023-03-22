@@ -11,8 +11,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import {Auth0Provider} from '@auth0/auth0-react';
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+//const domain = process.env.REACT_APP_AUTH0_DOMAIN
+//const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+const domain = "dev-6qo4xw0ct2poxtul.us.auth0.com";
+const clientId = "DJy8ClwmtkaSFS9qqW5nc1O5rOuLuYjh";
 console.log(domain)
 console.log(clientId)
 
