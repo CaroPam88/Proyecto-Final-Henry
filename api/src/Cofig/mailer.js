@@ -10,10 +10,10 @@ const MAIL= "pf.dressme@gmail.com"
 
 
 
-  function mailer() {
-    async function sendMail(infoEmail) {
+  async function sendEmail(user) {
+    
       try {
-        const transporter = nodemailer.createTransport({
+        let transporter = nodemailer.createTransport({
           host: "smtp.gmail.com",
           secure: true, // true for 465, esto dice la pagina de nodemailer
           port: 465,
@@ -23,22 +23,14 @@ const MAIL= "pf.dressme@gmail.com"
           },
         });
   
-        await transporter.sendMail(infoEmail);
-  
-        return { message: "Mail sent" };
-      } catch (error) {
-        return error;
-      }
-    }
-  }  
-    
-  function welcomeMail(user) {
-    const mail = {
-      from: MAIL,
-      to: user.email,
-      subject: `¡Bienvenido/a a DressMe, ${user.name}!`,
-      html: `
-        <h2>Hola ,</h2>
+        
+     
+      let welcomeMail = {
+         from: MAIL,
+        to: user.email,
+        subject: `¡Bienvenido/a a DressMe, ${user.name}!`,
+        html: `
+        <h2>Hola  ${user.name},</h2>
         <h3>¡Bienvenido/a a DressMe! Tu e-commerce de ropa.</h3>
         <p>Aquí encontrarás una amplia variedad de prendas de vestir para complementar tu estilo y personalidad.</p>
         <p>Desde la ropa más casual hasta los outfits más formales, tenemos todo lo que necesitas para lucir a la moda en cualquier ocasión.</p>
@@ -48,32 +40,41 @@ const MAIL= "pf.dressme@gmail.com"
       `,
     };
 
-    sendMail(mail);
-
-    async function buySuccess(info) {
-        const email = info.customer;
-    
-        const mail = {
-          from: MAIL,
-          to: user.email,
-          subject: "Compra confirmada.",
-          html: `<b>Muchas gracias por tu compra!!!! </b>`,
-        };
-    
-        const message = await sendMail(mail);
-    
-        return message;
-      }
+    let info = await transporter.sendMail(welcomeMail);
+    console.log('Correo electrónico enviado');
+  } catch (error) {
+    console.log(error);
   }
+}
 
 
-mailer();
+module.exports = sendEmail;
+
+ 
+
+    // async function buySuccess(info) {
+    //     const email = info.customer;
+    
+    //     const mail = {
+    //       from: MAIL,
+    //       to: user.email,
+    //       subject: "Compra confirmada.",
+    //       html: `<b>Muchas gracias por tu compra!!!! </b>`,
+    //     };
+    
+    //     const message = await sendMail(mail);
+    
+    //     return message;
+    //   }
+//   }
+// }  
 
 
 
 
 
- module.exports = mailer;
+
+
 
 
 
