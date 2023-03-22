@@ -49,7 +49,7 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 //Accedo a los modelos haciendo destructuring
-let {Clothes, Size, Colors} = sequelize.models;
+let {Clothes, Size, Colors, User} = sequelize.models;
 
 /////////////ACA VAN LAS RELACIONES//////////////////////////
 

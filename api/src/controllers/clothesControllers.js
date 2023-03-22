@@ -36,41 +36,13 @@ let getIdData = async (id) => {
 
 /////////////////////////////////////////////
 
-const createProduct = async (
-	name,
-	price,
-	type,
-	image,
-	sex,
-	stockGeneral,
-	stockSize,
-	size,
-	colors,
-	existing
-) => {
-	const ajuste = colors
-		.map((elem) => elem.stockColors)
-		.reduce((acc, item) => {
-			return acc + parseInt(item);
-		}, 0);
-	stockGeneral = ajuste;
-	stockSize = ajuste;
-
-	existing = stockSize > 0 ? true : false;
-
-	let create = await Clothes.create({
+const createProduct = async (name, nickname, email, picture, admin) => {
+	let create = await User.create({
 		name,
-		price,
-		type,
-		image,
-		sex,
-		stockGeneral,
-		existing,
-	});
-	let createTalla = await Size.create({
-		size,
-		stockSize,
-		colors,
+		nickname,
+		email,
+		picture,
+		admin,
 	});
 
 	create.addSize(createTalla);
