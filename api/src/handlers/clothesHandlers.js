@@ -4,6 +4,7 @@ const {
 	createProduct,
 	getIdData,
 	getGenderData,
+	clothesUpdate
 } = require('../controllers/clothesControllers');
 
 let getProductHandler = async (req, res) => {
@@ -82,13 +83,22 @@ let getProductByGenderHandler = async (req, res) => {
 	}
 };
 
-let patchProductHandler = () => {};
-patchProductHandler;
+let putProductHandler = async (req, res) => {
+	let ids = req.body
+    let {id} = req.params
+    try {
+        const  payClothes = await clothesUpdate(ids, id) 
+        res.status(201).json(payClothes);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 
 module.exports = {
 	getProductHandler,
 	getProductByIdHandler,
 	postProductHandler,
-	patchProductHandler,
+	putProductHandler,
 	getProductByGenderHandler,
 };
