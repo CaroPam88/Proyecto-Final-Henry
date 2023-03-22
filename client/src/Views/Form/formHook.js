@@ -28,7 +28,10 @@ export const useForm = () => {
   ///////////////// Validation ///////////////////////////
 	const [error, setError] = useState({});
 	const [validated, setValidated] = useState({});
-	const [colorError, setColorError] = useState({});
+	const [colorError, setColorError] = useState({
+		nameColor: '',
+		sizeColor: '',
+	});
   //////////////////////////////////////////////
 	const handleForm = async (event) => {
 		if (event.target.name === 'image') {

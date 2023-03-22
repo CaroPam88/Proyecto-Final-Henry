@@ -2,13 +2,17 @@
     display: flex;
     justify-content: center;
     color: #fff;
+    padding: 3px;
   }
   
   .activeNum {
+    background-color: #006f8b;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    border-radius: 5px;
     justify-content: center;
   }
   .noActiveNum {
@@ -30,17 +34,14 @@
     justify-content: center;
     border: none;
   }
-  .activeNum {
-    background-color: #4CAF50;
-    color: #fff;
-    border-radius: 5px;
-  }
   
   .noActiveNum:hover {
     background-color: #fff;
     color: #000;
+    cursor: pointer;
   }
   .but:hover {
     background-color: #fff;
     color: #000;
+    cursor: pointer;
   }

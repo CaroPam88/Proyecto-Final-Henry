@@ -9,7 +9,6 @@
   background: linear-gradient(0deg, #ffffff00 0%, #00000023 49%, #00000086 100%);
   align-items: center;
   font-family: 'Space Grotesk', sans-serif;
-  overflow: hidden;
 }
 
 .container div {
@@ -70,7 +69,7 @@
 .opciones{
     position: absolute;
     width: 15%;
-    height: 10806px;
+    height: 125vh;
     background-color: white;
     left: 0px;
     top: -16px;
@@ -94,7 +93,6 @@
     font-family: 'Open Sans', sans-serif;
     padding: 0px;
     background-color: transparent;
-
 }
 
 .opciones li a {
@@ -104,6 +102,7 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
+    margin-left: 5px;
 }
 
 .opcioncerrada {
@@ -133,4 +132,24 @@
     display: flex;
     justify-content: center;
     width: 50%;
+}
+
+.selections {
+    text-decoration: none;
+    color: var(--ph0-violeta-1);
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    justify-content: flex-end;
+    margin-left: 0px;
+    padding-left: 0px;
+    border: none;
+    outline: none;
+}
+.options {
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
 }
