@@ -8,6 +8,8 @@ import CardContainer from "../../Components/CardContainer/CardContainer.jsx";
 import imgHome from '../../Assets/img/hero3.jpg';
 
 export const Home = ()=>{
+    // const user = useSelector(state => state.user.theUser);
+    // console.log(user);
     const dispatch = useDispatch()
     useEffect (()=>{
         dispatch(getAllProducts())
