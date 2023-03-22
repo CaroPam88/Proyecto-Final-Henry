@@ -24,6 +24,5 @@ export const useFilter = () => {
         dispatch(filterAllClothes(filters))
         dispatch(getAllColors())
     }, [filters, dispatch])
-
     return {filters, handlerFilter}
 };

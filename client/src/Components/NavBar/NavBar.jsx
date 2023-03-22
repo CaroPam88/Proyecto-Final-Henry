@@ -10,10 +10,7 @@ import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
 
 import AuthenticationButton from '../../Authentication/Components/AuthenticationButton'
-import LoginButton from '../../Authentication/Components/LoginButton'
-import LogoutButton from '../../Authentication/Components/LogoutButton';
-import {useAuth0, user} from '@auth0/auth0-react';
-import UserProfile from '../../Authentication/ProfileScreen/UserProfile';
+import {useAuth0} from '@auth0/auth0-react';
 import { useFilter } from "../FilterBar/filterHook";
 
 
@@ -23,10 +20,8 @@ export const NavBar = () => {
   const menuopen = () => {
     setClicked(!clicked);
   };
-  // const Category = useSelector((state) => state.products.Categorias);
-  const location = useLocation()
 
-  const {isAuthenticated, user} = useAuth0()
+  const location = useLocation()
 
 
   const { handlerFilter } = useFilter();
@@ -79,8 +74,8 @@ export const NavBar = () => {
               </NavLink>}
             </li>
             <li>
-              {location.pathname !== '/productos/all' && <NavLink to="/productos/all" onClick={menuopen}>
-                Compra
+              {location.pathname !== '/user/profile' && <NavLink to="/user/profile" onClick={menuopen}>
+                profile
               </NavLink>}
             </li>
             <li>
