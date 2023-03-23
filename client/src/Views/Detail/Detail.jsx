@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -22,6 +22,8 @@ const Detail = () => {
     };
   }, [dispatch, id]);
 
+ 
+
   const myProduct = useSelector((state) => state.products.productDetail);
 
   const {
@@ -36,6 +38,12 @@ const Detail = () => {
     buttonAgregarAlCarrito
   } = useDetail(myProduct, id);
 
+  const [pagar, setPagar] = useState(true)
+
+  const onSubmit = async(e) => {
+    e.preventDefault();
+    setPagar(false);
+  }
   return (
     <div className={style.container}>
       <div className={style.containerImg}>
@@ -101,6 +109,7 @@ const Detail = () => {
           >
             Comprar ahora
           </button>
+         {/* { (pagar) ? null : <mercadoPago items = {ids} />} */}
         </div>
 
         <div>

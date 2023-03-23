@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { putClothes } from "../../Redux/ActionsGet";
+
 
 // const validate = (carrito) =>  {
 //     let errors = {};
@@ -195,6 +197,8 @@ export const useDetail = (myProduct, id) => {
       id: myProduct.id,
       price: myProduct ? myProduct.price : "error",
     });
+    dispatch(putClothes(compra))
+    alert ("compra exitosa")
   };
 
   const buttonAgregarAlCarrito = (e) => {
@@ -207,7 +211,7 @@ export const useDetail = (myProduct, id) => {
         price: myProduct ? myProduct.price : "error",
       },
     ]);
- 
+    
   };
   console.log(carrito);
 

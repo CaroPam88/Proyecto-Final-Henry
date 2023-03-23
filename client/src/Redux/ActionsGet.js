@@ -1,4 +1,4 @@
-import  { getProducts, postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize,  } from './productSlice';
+import  { getProducts, postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize, putProduct  } from './productSlice';
 import axios from 'axios';
 
 
@@ -89,6 +89,16 @@ const getAllSize = () => {
     };
 };
 
+
+const putClothes = (data) => async (dispatch) =>{
+try {
+    const dbData = (await axios.put(`/clothes/${data.id}`, data))
+    return dispatch(putProduct(dbData))
+} catch (error) {
+    alert({error: error.message[0]});
+}
+}
+
 //CLEAR STATE FUNCTIONS
 const clearProductsState = () => (dispatch) => {
     const clearState = [];
@@ -107,4 +117,4 @@ const clearSizeState = () => (dispatch) => {
     return dispatch(clearSize(clearState))
 }
 
-export { getAllProducts, postClothes, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState }
+export { getAllProducts, postClothes, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState, putClothes }
