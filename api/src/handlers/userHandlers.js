@@ -2,6 +2,7 @@ const {
 	createUser,
 	getUsersData,
 	getUserByEmail,
+	postInCart,
 } = require('../controllers/userControllers');
 
 let postUserHandler = async (req, res) => {
@@ -33,7 +34,6 @@ let getUserHandler = async (req, res) => {
 };
 
 let getUserByEmailHandler = async (req, res) => {
-	console.log('estoy en el handler');
 	let {email} = req.params;
 
 	try {
@@ -44,4 +44,25 @@ let getUserByEmailHandler = async (req, res) => {
 	}
 };
 
-module.exports = {postUserHandler, getUserHandler, getUserByEmailHandler};
+let postCartItemHandler = async (req, res) => {
+	const {email} = req.params;
+
+	console.log('CLOTHE DEL HANDLES', req.body);
+
+	try {
+		const user = await postInCart(email, req.body);
+		res.status(201).json(user);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({
+			message: 'Error al agregar el artículo al carrito',
+		});
+	}
+};
+
+module.exports = {
+	postUserHandler,
+	getUserHandler,
+	getUserByEmailHandler,
+	postCartItemHandler,
+};

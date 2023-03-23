@@ -7,6 +7,7 @@ const initialState = {
     colors:[],
     size:[],
     post:[],
+    put:[],
 };
 
 const Slice = createSlice({
@@ -47,9 +48,12 @@ const Slice = createSlice({
         },
         filterClothes: (state, action) =>{
             state.filteredProducts = action.payload;
+        },
+        putProduct: (state, action) => {
+            state.put = action.payload;
         }
     }
 });
 
-export const { getProducts,  postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize, filterClothes } = Slice.actions;
+export const { getProducts,  postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize, filterClothes, putProduct } = Slice.actions;
 export default Slice.reducer;
