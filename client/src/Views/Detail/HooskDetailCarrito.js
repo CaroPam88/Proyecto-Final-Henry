@@ -77,7 +77,16 @@ export const useDetail = (myProduct, id) => {
     dispatch(addProductUser(carrito, userSelector.id))
   };
 
+  const [pagar, setPagar] = useState(true)
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    setPagar(false)
+  }
+  console.log(carrito);
+
+
   return {
+    pagar,
     error,
     compra,
     carrito,
@@ -87,5 +96,6 @@ export const useDetail = (myProduct, id) => {
     handlerCantidad,
     handlerSize,
     buttonAgregarAlCarrito,
+    onSubmit,
   };
 };

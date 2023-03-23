@@ -27,9 +27,9 @@ let payMercadoPago = async (ids) => {
             quantity: el.cantidad,
           },)
     })
-    const response = await mercadopago.preferences.create(preference);
+    const response = await( mercadopago.preferences.create(preference));
     const preferenceId = response.body.id
-    return ({preferenceId})
+    return (preferenceId)
 }
   
 module.exports = {payMercadoPago}
