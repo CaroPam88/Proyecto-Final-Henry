@@ -18,10 +18,11 @@ let preference = {
     auto_return: "approved",
   };
 
-let payMercadoPago = async (ids, id) => {
+let payMercadoPago = async (ids) => {
+  
     ids.forEach((el) => {
         preference.items.push( {
-            title: id,
+            title: ids.id,
             unit_price:el.price * el.cantidad,
             quantity: el.cantidad,
           },)
