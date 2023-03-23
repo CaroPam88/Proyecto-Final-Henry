@@ -8,7 +8,7 @@ import {
 import { useEffect } from "react";
 import style from "./Detail.module.css";
 import { useDetail } from "./HooskDetailCarrito";
-
+import MercadoPago from "../../Components/MercadoPago/MercadoPago"
 const Detail = () => {
   const dispatch = useDispatch();
   //const id = props.match.params.id
@@ -27,6 +27,7 @@ const Detail = () => {
   const myProduct = useSelector((state) => state.products.productDetail);
 
   const {
+    pagar,
     error,
     compra,
     carrito,
@@ -35,21 +36,17 @@ const Detail = () => {
     handlerColors,
     handlerCantidad,
     handlerSize,
-    buttonAgregarAlCarrito
+    buttonAgregarAlCarrito,
+    onSubmit,
   } = useDetail(myProduct, id);
 
-  const [pagar, setPagar] = useState(true)
-
-  const onSubmit = async(e) => {
-    e.preventDefault();
-    setPagar(false);
-  }
+  
   return (
     <div className={style.container}>
+    
       <div className={style.containerImg}>
         <img src={myProduct.image} alt="" className={style.img} />
       </div>
-
       <div className={style.containerInfo}>
         <h1>{myProduct.name}</h1>
         <h4 className={style.currentPrice}>$ {myProduct.price}</h4>
@@ -102,18 +99,21 @@ const Detail = () => {
           <button
             onClick={(e) => {
               buttonComprar(e);
+              onSubmit(e)
             }}
             className={style.botonComprar}
           >
             Comprar ahora
           </button>
-         {/* { (pagar) ? null : <mercadoPago items = {ids} />} */}
+         { (pagar) ? null : <MercadoPago items = {compra} />} 
         </div>
 
         <div>
           <button className={style.botonCarrito} onClick={(e)=>buttonAgregarAlCarrito(e)} >Agregar al carrito</button>
         </div>
+      
       </div>
+      
     </div>
   );
 };

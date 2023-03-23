@@ -108,8 +108,10 @@ let putProductHandler = async (req, res) => {
 let postMercadoPago = async (req, res) => {
 	try {
 		let ids = req.body
+		console.log(ids);
 		const  payPago = await payMercadoPago(ids)
-		res.status(204).json(payPago)
+		console.log( payPago );
+		res.send(payPago)
 	} catch (error) {
 		console.log(error.message);
 		res.status(405).json({error:error.message})
