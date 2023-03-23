@@ -14,6 +14,6 @@ userRouter.get('/', getUserHandler);
 
 userRouter.get('/:email', getUserByEmailHandler);
 
-userRouter.post('/cart/:email', postCartItemHandler);
+userRouter.post('/cart/:id', postCartItemHandler);
 
 module.exports = userRouter;

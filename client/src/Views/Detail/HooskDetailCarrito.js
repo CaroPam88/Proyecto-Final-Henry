@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 // import { useSelector } from "react-redux";
 import { putClothes } from "../../Redux/ActionsGet";
+import { addProductUser } from "../../Redux/actionUser";
 
 
 
@@ -19,6 +20,7 @@ export const useDetail = (myProduct, id) => {
   const [carrito, setCarrito] = useState([]);
 
   const dispatch = useDispatch();
+  const userSelector = useSelector(state => state.user.theUser)
 
   const handlerCompraChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +60,7 @@ export const useDetail = (myProduct, id) => {
     dispatch(putClothes(compra))
     alert ("compra exitosa")
   };
-
+  
   const buttonAgregarAlCarrito = (e) => {
     const colores = myProduct ? myProduct.sizes?.flatMap(el => el.colors[0].color): 'no colors';
     const talla = myProduct ? myProduct.sizes?.flatMap(el => el.size) : 'no sizes found';
@@ -72,14 +74,16 @@ export const useDetail = (myProduct, id) => {
         size: talla[0],
       },
     ]);
-    
+    dispatch(addProductUser(carrito, userSelector.id))
   };
+
   const [pagar, setPagar] = useState(true)
   const onSubmit = async (e) => {
     e.preventDefault()
     setPagar(false)
   }
   console.log(carrito);
+
 
   return {
     pagar,

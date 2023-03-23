@@ -45,12 +45,12 @@ let getUserByEmailHandler = async (req, res) => {
 };
 
 let postCartItemHandler = async (req, res) => {
-	const {email} = req.params;
+	const { id } = req.params;
 
 	console.log('CLOTHE DEL HANDLES', req.body);
 
 	try {
-		const user = await postInCart(email, req.body);
+		const user = await postInCart(id, req.body);
 		res.status(201).json(user);
 	} catch (error) {
 		console.error(error);
