@@ -11,7 +11,7 @@ const Detail = () => {
   const dispatch = useDispatch();
   //const id = props.match.params.id
   //const id = 1
-  const { id} = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(getProductDetail(id));

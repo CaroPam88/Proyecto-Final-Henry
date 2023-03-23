@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { putClothes } from "../../Redux/ActionsGet";
 
 
@@ -150,6 +150,7 @@ import { putClothes } from "../../Redux/ActionsGet";
 //   export default PayCreate;
 
 export const useDetail = (myProduct, id) => {
+
   const [error, setError] = useState({});
   const [compra, setCompra] = useState({
     id: id,
@@ -202,13 +203,16 @@ export const useDetail = (myProduct, id) => {
   };
 
   const buttonAgregarAlCarrito = (e) => {
-    buttonComprar(e);
+    const colores = myProduct ? myProduct.sizes?.flatMap(el => el.colors[0].color): 'no colors';
+    const talla = myProduct ? myProduct.sizes?.flatMap(el => el.size) : 'no sizes found';
     setCarrito([
       ...carrito,
       {
         ...compra,
         id: myProduct.id,
         price: myProduct ? myProduct.price : "error",
+        color: colores[0],
+        size: talla[0],
       },
     ]);
     

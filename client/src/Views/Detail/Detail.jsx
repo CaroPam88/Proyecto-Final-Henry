@@ -67,7 +67,6 @@ const Detail = () => {
                   onChange={(e) => handlerColors(e)}
                   id="colors"
                 >
-                  <option value="">---</option>
                   {elem.colors.map((el) => (
                     <option value={el.color} className={style.size}>
                       {el.color}
@@ -76,7 +75,6 @@ const Detail = () => {
                 </select>
               </Link>
               <select onChange={(e) => handlerSize(e)}>
-                <option value="">---</option>
                 <option value={elem.size} className={style.size}>
                   {elem.size}
                 </option>
