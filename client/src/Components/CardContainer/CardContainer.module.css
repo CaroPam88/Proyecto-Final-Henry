@@ -1,5 +1,7 @@
 .section{
   display:grid;
+  justify-content: space-around;
+  width: 100vw;
   margin-top: 100px;
   background-color: #000;
 }

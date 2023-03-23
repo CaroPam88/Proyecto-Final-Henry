@@ -20,7 +20,7 @@ const CardContainer = () => {
       : setView({ mode: 'Slice' })
   }
 
-  const [cardPage, _setCardPage] = useState(6);
+  const [cardPage, _setCardPage] = useState(8);
   const indexOfLastProduct = currentPage * cardPage;
   const indexOfFirstProduct = indexOfLastProduct - cardPage;
   const currentCardPage = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
