@@ -17,16 +17,22 @@ const getAllProducts = () => {
 const postClothes= ({name, size, price, type, image, sex, stockGeneral, stoockSize, colors}) => {
     return async (dispatch) => {
         try {
+            const addColor = colors.map(col => {
+                return {
+                    color : col.color,
+                    stockColors : Number(col.stockColors)
+                }
+            });
             const product ={
                 name: name,
                 size: size,
-                price: price,
+                price: Number(price),
                 type: type,
                 image: image,
                 sex: sex,
-                stockGeneral: stockGeneral,
-                stoockSize: stoockSize,
-                colors:colors,
+                stockGeneral: Number(stockGeneral),
+                stoockSize: Number(stoockSize),
+                colors:addColor,
             }
             const dbData = await axios.post(`/clothes/`, product);
             return dispatch(postProducts(dbData));
