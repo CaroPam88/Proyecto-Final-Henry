@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import LogoutButton from "../Components/LogoutButton";
+import AuthenticationButton from "../Components/AuthenticationButton";
 import style from '../ProfileScreen/UserProfile.module.css'
 import imgHome from '../../Assets/img/hero3.jpg';
 
@@ -26,7 +26,7 @@ const UserProfile = () => {
           <p class={style.p}>E-mail: {user.email}</p>
         </div>
         <div class={style.margin}>
-          <LogoutButton />
+          <AuthenticationButton />
         </div>
       </div>
     )
