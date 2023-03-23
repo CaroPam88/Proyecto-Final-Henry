@@ -1,5 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "../Components/LogoutButton";
+import style from '../ProfileScreen/UserProfile.module.css'
+import imgHome from '../../Assets/img/hero3.jpg';
 
 const UserProfile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -11,19 +13,19 @@ const UserProfile = () => {
 
   return (
     isAuthenticated && (
-      <div>
-        <div>
+      <div class={style.container}>
+        <img src={imgHome} alt="" className={style.imgB} />
+        <div class={style.container2}>
           <img
+            class={style.img}
             src={user.picture}
             alt={user.name}
           />
-          <h1>{user.name}</h1>
-          <p>{user.nickname}</p>
-          <p>{user.email}</p>
+          <h1 class={style.name}>{user.name}</h1>
+          <p class={style.p}>Nombre de Usuario: {user.nickname}</p>
+          <p class={style.p}>E-mail: {user.email}</p>
         </div>
-        <div>
-        </div>
-        <div>
+        <div class={style.margin}>
           <LogoutButton />
         </div>
       </div>
