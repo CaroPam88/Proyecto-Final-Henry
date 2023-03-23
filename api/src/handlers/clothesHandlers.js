@@ -84,19 +84,38 @@ let getProductByGenderHandler = async (req, res) => {
 	}
 };
 
+
+////////////////////////////////////////
+
+
 let putProductHandler = async (req, res) => {
 	
     try {
 		let ids = req.body
     let {id} = req.params
         const  payClothes = await clothesUpdate(ids, id) 
-		const  payPago = await payMercadoPago(ids, id)
-        res.status(201).json(payClothes, payPago);
+		
+        res.status(201).json(payClothes);
     } catch (error) {
 		console.log(error.message);
         res.status(400).json({ error: error.message });
     }
 };
+
+
+///////////////////////////////////////
+
+let postMercadoPago = async (req, res) => {
+	try {
+		let ids = req.body
+		const  payPago = await payMercadoPago(ids)
+		res.status(204).json(payPago)
+	} catch (error) {
+		console.log(error.message);
+		res.status(405).json({error:error.message})
+		
+	}
+}
 
 
 module.exports = {
@@ -105,4 +124,5 @@ module.exports = {
 	postProductHandler,
 	putProductHandler,
 	getProductByGenderHandler,
+	postMercadoPago,
 };
