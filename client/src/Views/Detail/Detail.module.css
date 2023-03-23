@@ -104,16 +104,18 @@
   width: 300px;
   padding: 5px;
   border: none;
-  background-color: rgba(67, 167, 255, 0.433);
+  background-color: #006f8b85;
   border-radius: 10px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  transition: 0.5s;
 }
 
 .botonComprar:hover {
-  background-color: rgb(93, 147, 255);
+  background-color: #006f8b;
   color: rgb(0, 0, 0);
   transform: translateY(-5%);
+  transition: 0.5s;
 }
 
 .botonCarrito {
