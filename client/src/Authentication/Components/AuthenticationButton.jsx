@@ -9,19 +9,16 @@ import { createUser } from '../../Redux/actionUser';
 
 const AuthenticationButton = () => {
   const dispatch = useDispatch()
-  const [userFired, setUserFired] = useState(false);
+  // const [userFired, setUserFired] = useState(false);
   
   const { isAuthenticated, user } = useAuth0();
 
   useEffect(() => {
-    if (isAuthenticated && userFired) {
+    if (isAuthenticated) {
       dispatch(createUser(user));
     }
-  }, [isAuthenticated, userFired, user]);
+  }, [isAuthenticated]);
 
-  if (isAuthenticated && !userFired) {
-    setUserFired(true); 
-  }
 
   return isAuthenticated ? <LogoutButton /> : <LoginButton />;
 };
