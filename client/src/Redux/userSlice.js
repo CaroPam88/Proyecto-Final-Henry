@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     theUser : {},
+    postCartUser: [],
 };
 
 const SliceUSer = createSlice({
@@ -10,8 +11,11 @@ const SliceUSer = createSlice({
     reducers: {
         getTheUser: ( state, action ) => {
             state.theUser = action.payload;
-        }
+        },
+        postCar: (state, action) => {
+            state.postCartUser = action.payload;
+        },
     }
 });
-export const { getTheUser } = SliceUSer.actions;
+export const { getTheUser, postCar } = SliceUSer.actions;
 export default SliceUSer.reducer;

@@ -35,15 +35,15 @@ const getUserByEmail = async (email) => {
 	}
 };
 
-const postInCart = async (email, clothe) => {
+const postInCart = async (id, clothe) => {
 	// Obtener el usuario correspondiente
-	const user = await User.findOne({where: {email}});
+	const user = await User.findOne({where: {id}});
 
 	// Agregar el artículo al carrito del usuario
 	user.cart.push(clothe);
 
 	// Actualizar el registro del usuario en la base de datos
-	await User.update({cart: user.cart}, {where: {email}});
+	await User.update({cart: user.cart}, {where: {id}});
 
 	return user;
 };
