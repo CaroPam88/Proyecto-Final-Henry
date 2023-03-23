@@ -4,8 +4,9 @@ const {
 	createProduct,
 	getIdData,
 	getGenderData,
-	clothesUpdate
+	clothesUpdate,
 } = require('../controllers/clothesControllers');
+const { payMercadoPago } = require('../controllers/mercadopagoControllers')
 
 let getProductHandler = async (req, res) => {
 	let clothes = req.query.name;
@@ -89,7 +90,8 @@ let putProductHandler = async (req, res) => {
 		let ids = req.body
     let {id} = req.params
         const  payClothes = await clothesUpdate(ids, id) 
-        res.status(201).json(payClothes);
+		const  payPago = await payMercadoPago(ids, id)
+        res.status(201).json(payClothes, payPago);
     } catch (error) {
 		console.log(error.message);
         res.status(400).json({ error: error.message });
