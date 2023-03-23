@@ -32,6 +32,21 @@ module.exports = (sequelize) => {
 				allowNull: false,
 				defaultValue: false,
 			},
+			cart: {
+				type: DataTypes.ARRAY(DataTypes.JSON),
+				allowNull: false,
+				defaultValue: [],
+			},
+			buy: {
+				type: DataTypes.ARRAY(DataTypes.JSON),
+				allowNull: false,
+				defaultValue: [],
+			},
+			history: {
+				type: DataTypes.ARRAY(DataTypes.JSON),
+				allowNull: false,
+				defaultValue: [],
+			},
 		},
 		{
 			timestamps: false,
