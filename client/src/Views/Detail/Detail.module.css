@@ -49,7 +49,7 @@
   object-fit: cover;
 }
 .size {
-  display: block;
+  display: none;
   width: auto;
   display: inline-block;
 
@@ -79,3 +79,74 @@
   background: rgb(255, 255, 255);
   color: black;
 }
+
+
+
+.selectColors {
+  margin: 0px 50px 50px;
+  width: 100px;
+  padding: 5px;
+  border: none;
+  background-color: rgb(247, 247, 247);
+  border-radius: none;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.selectColors:hover {
+  background-color: rgb(155, 155, 155);
+  color: rgb(0, 0, 0);
+  transform: translateY(-5%);
+}
+
+.botonComprar {
+  margin: 0px 50px 50px;
+  width: 300px;
+  padding: 5px;
+  border: none;
+  background-color: rgba(67, 167, 255, 0.433);
+  border-radius: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.botonComprar:hover {
+  background-color: rgb(93, 147, 255);
+  color: rgb(0, 0, 0);
+  transform: translateY(-5%);
+}
+
+.botonCarrito {
+  margin: 0px 50px 50px;
+  width: 300px;
+  padding: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.328);
+  border-radius: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.botonCarrito:hover {
+  background-color: rgba(255, 255, 255, 0.702);
+  color: rgb(0, 0, 0);
+  transform: translateY(-5%);
+}
+
+.cantidad {
+  margin: 0px 90px 50px;
+  width: 120px;
+  padding: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.328);
+  border-radius: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.cantidad:hover {
+  background-color: rgba(255, 255, 255, 0.702);
+  color: rgb(0, 0, 0);
+  transform: translateY(-5%);
+}
+
