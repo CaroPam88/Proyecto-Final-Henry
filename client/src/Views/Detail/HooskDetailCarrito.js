@@ -71,6 +71,7 @@ export const useDetail = (myProduct, id) => {
       price: myProduct ? myProduct.price : "error",
       color: compra.color === '' ? colores[0] : compra.color,
       size: compra.size === '' ? talla[0] : compra.size,
+      cantidad: compra.cantidad,
     };
     setCarrito([...carrito, nuevoProducto]);
     dispatch(addProductUser(nuevoProducto, userSelector.id))
