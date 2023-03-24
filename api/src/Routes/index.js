@@ -4,6 +4,7 @@ const clothesRouter = require('./clothesRouter');
 const sizeRouter = require('./sizeRouter');
 const colorsRouter = require('./colorsRouter');
 const userRouter = require('./userRouter');
+const { postMercadoPago } = require('../handlers/clothesHandlers');
 
 const router = Router();
 
@@ -13,5 +14,5 @@ router.use('/clothes', clothesRouter);
 router.use('/size', sizeRouter);
 router.use('/colors', colorsRouter);
 router.use('/user', userRouter);
-
+router.post("/pay", postMercadoPago );
 module.exports = router;
