@@ -63,35 +63,34 @@ export const NavBar = () => {
                 </NavLink>}
               </li>
             ))} */}
-            <li>
-              {location.pathname !== '/home' && <NavLink to="home" onClick={menuopen}>
+            {location.pathname !== '/home' && <li>
+              <NavLink to="home" onClick={menuopen}>
                 Home
-              </NavLink>}
-            </li>
-            <li>
-              {location.pathname !== '/form' && <NavLink to="/form" onClick={menuopen}>
+              </NavLink>
+            </li>}
+            {location.pathname !== '/form' && <li>
+              <NavLink to="/form" onClick={menuopen}>
                 Form
-              </NavLink>}
-            </li>
-            <li>
-              {location.pathname !== '/user/profile' && <NavLink to="/user/profile" onClick={menuopen}>
-                profile
-              </NavLink>}
-            </li>
-            <li>
-              {location.pathname === '/home' && 
+              </NavLink>
+            </li>}
+            {location.pathname !== '/user/profile' && <li>
+              <NavLink to="/user/profile" onClick={menuopen}>
+                Profile
+              </NavLink>
+            </li>}
+            {location.pathname === '/home' && <li>
+              
               <select name="genre" onChange={(e) => handlerFilter(e)} className={style.selections} onClick={(e) => e.stopPropagation()} >
                 <option value="" className={style.options} >Categories</option>
                 <option value='Female' className={style.options} >Female</option>
                 <option value='Male' className={style.options} >Male</option>
               </select>
-              }
-            </li>
-            <li>
-              {location.pathname !== '/productos/all' && <NavLink to="/productos/all" onClick={menuopen}>
+            </li>}
+            {location.pathname !== '/productos/all' && <li>
+              <NavLink to="/productos/all" onClick={menuopen}>
                 Nosotros
-              </NavLink>}
-            </li>
+              </NavLink>
+            </li>}
             <li>
               <AuthenticationButton/>
             </li>
