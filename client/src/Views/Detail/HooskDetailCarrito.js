@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { useSelector } from "react-redux";
 import { putClothes } from "../../Redux/ActionsGet";
 import { addProductUser } from "../../Redux/actionUser";
@@ -10,7 +10,7 @@ import { addProductUser } from "../../Redux/actionUser";
 export const useDetail = (myProduct, id) => {
 
   const [error, setError] = useState({});
-  const [compra, setCompra] = useState({
+  const [compra, setCompra] = useState({  
     id: id,
     price: myProduct.price,
     color: '',
@@ -23,6 +23,7 @@ export const useDetail = (myProduct, id) => {
   const dispatch = useDispatch();
   const userSelector = useSelector(state => state.user.theUser)
 
+  
   const handlerCompraChange = (e) => {
     const { name, value } = e.target;
     setCompra({

@@ -36,7 +36,7 @@
     setClothesInStorage(actualClothes);
   };
 
-  export default {getClothesFromStorage, setClothesInStorage,addClothesToStorage, removeClothesFromStorage}
+  export default {getClothesFromStorage, setClothesInStorage, addClothesToStorage, removeClothesFromStorage}
 
   //Estas constantes se van a exportar para ser usadas en el archivo del carrito de compras. 
   
