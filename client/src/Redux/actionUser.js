@@ -11,10 +11,11 @@ const createUser = (user) => {
         }
     };
 };
-const addProductUser = (carrito, id) => {
+const addProductUser = (elemento, id) => {
     return async (dispatch) => {
         try {
-            const response = (await axios.post(`/user/cart/${id}`, carrito)).data;
+            console.log('post', elemento);
+            const response = (await axios.post(`/user/cart/${id}`, elemento)).data;
             return dispatch(postCar(response));
         } catch (error) {
             alert(`${ error }: { error.message }`);
