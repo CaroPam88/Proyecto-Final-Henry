@@ -98,7 +98,7 @@
 .opciones li a {
     text-decoration: none;
     color: var(--ph0-violeta-1);
-    padding: 0;
+    padding: 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -137,13 +137,12 @@
 .selections {
     text-decoration: none;
     color: var(--ph0-violeta-1);
-    padding: 0;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
     justify-content: flex-end;
     margin-left: 0px;
-    padding-left: 0px;
+    padding-left: 10px;
     border: none;
     outline: none;
 }
@@ -152,4 +151,5 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     font-size: 20px;
+    padding: 10px;
 }
