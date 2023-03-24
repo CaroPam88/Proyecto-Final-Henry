@@ -1,29 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../Redux/actionCart";
-import { useAuth0 } from '@auth0/auth0-react';
 
 const Cart = () => {
     const dispatch = useDispatch();
-    const { isAuthenticated, user } = useAuth0();
-    
-    const [userFired, setUserFired] = useState(false);
+    const theUser = useSelector(state => state.user.theUser)
     let canasta = JSON.parse(localStorage.getItem("cart"))
     
     useEffect(() => {
-        if (isAuthenticated && userFired) {
+        if (theUser) {
             dispatch(getCart());
         }
-    }, [isAuthenticated, userFired, user]);
+    }, [theUser]);
     
-    if (isAuthenticated && !userFired) {
-        setUserFired(true); 
-    }
     
     const cart = useSelector(state => state.cart.cartItems)
     console.log(cart);
     return(<section>
-        {isAuthenticated ? <span>You are logged</span> : <span>You aren't logged</span>}
+        {theUser ? <span>You are logged</span> : <span>You aren't logged</span>}
         <h1>Your Cart</h1>
         {cart
             ? cart?.map((item, i) => <section key={i}>

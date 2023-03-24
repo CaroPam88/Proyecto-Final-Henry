@@ -3,9 +3,10 @@ import { useState } from "react";
 import { putClothes } from "../../Redux/ActionsGet";
 import { addProductUser } from "../../Redux/actionUser";
 import { addCartProduct } from "../../Redux/actionCart";
- 
+import { useAuth0 } from '@auth0/auth0-react'; 
+
 export const useDetail = (myProduct, id) => {
- 
+
   const [compra, setCompra] = useState({  
     id: id,
     name: myProduct.name,
@@ -17,6 +18,8 @@ export const useDetail = (myProduct, id) => {
  
   const dispatch = useDispatch();
   const userSelector = useSelector(state => state.user.theUser)
+  console.log('user',userSelector);
+  const { isAuthenticated } = useAuth0();
   const cart = useSelector(state => state.cart.cartItems)
 
   const saveLocal= (cart)=>{
@@ -61,12 +64,12 @@ export const useDetail = (myProduct, id) => {
       cantidad: compra.cantidad,
     };
     dispatch(addCartProduct(nuevoProducto)); // dispatch addToCart action creator
-    if(!userSelector.length) saveLocal([...cart, nuevoProducto]);
-    else dispatch(addProductUser(nuevoProducto, userSelector.id))
+    if (!userSelector.length && !isAuthenticated) saveLocal([...cart, nuevoProducto]); 
+    else if (userSelector && isAuthenticated) dispatch(addProductUser(nuevoProducto, userSelector.id));
   };
   
   const elCarrito = useSelector(state => state.cart.cartItems)// aca estoy
-  console.log(elCarrito);
+  console.log('elCarrito',elCarrito);
 
   const [pagar, setPagar] = useState(true)
   const onSubmit = async (e) => {
