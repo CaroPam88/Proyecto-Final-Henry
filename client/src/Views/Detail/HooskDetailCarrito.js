@@ -1,71 +1,43 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-// import { useSelector } from "react-redux";
+import { useState } from "react";
 import { putClothes } from "../../Redux/ActionsGet";
 import { addProductUser } from "../../Redux/actionUser";
-
-
-
-
+import { addCartProduct } from "../../Redux/actionCart";
+ 
 export const useDetail = (myProduct, id) => {
-
-  const [error, setError] = useState({});
+ 
   const [compra, setCompra] = useState({  
     id: id,
+    name: myProduct.name,
     price: myProduct.price,
     color: '',
     size: '',
     cantidad: 1,
   });
-  
-  
-  const [carrito, setCarrito] = useState([]);
-  
-
+ 
   const dispatch = useDispatch();
   const userSelector = useSelector(state => state.user.theUser)
-  
+  const cart = useSelector(state => state.cart.cartItems)
 
-  //CON ESTA FUNCION SETEAMOS EL ITEM, PODEMOS REFRESCAR LA PAGINA, Y VAN A PERMANECER
-  //EN EL LOCAL STORAGE PERO SE VAN A BORRAR DEL CARRITO
-  //FUNCION SET ITEM
-  const saveLocal= (carrito)=>{
-    localStorage.setItem("carrito", JSON.stringify(carrito))
+  const saveLocal= (cart)=>{
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
-
-  //FUNCION GET ITEM
-  JSON.parse(localStorage.getItem("carrito"));
-
   
-  const handlerCompraChange = (e) => {
-    const { name, value } = e.target;
-    setCompra({
-      ...compra,
-      [name]: value,
-    });
-  };
 
-  const handlerColors = (e) => {
-    setCompra({
-      ...compra,
-      color: e.target.value,
-    });
-  };
-
-  const handlerCantidad = (e) => {
-    setCompra({
+  const handlerDetail = (e) => {
+    const target = e.target.name;
+    const value = e.target.value;
+    target === 'cantidad' 
+    ? setCompra({
       ...compra,
       cantidad: Number(e.target.value),
-    });
-  };
-
-  const handlerSize = (e) => {
-    setCompra({
+    })
+    : setCompra({
       ...compra,
-      size: e.target.value,
+      [target] : value,
     });
-  };
-
+  }
+ 
   const buttonComprar = (e) => {
     setCompra({
       ...compra,
@@ -75,41 +47,38 @@ export const useDetail = (myProduct, id) => {
     dispatch(putClothes(compra))
     alert ("compra exitosa")
   };
-  
+
   const buttonAgregarAlCarrito = (e) => {
     const colores = myProduct ? myProduct.sizes?.flatMap(el => el.colors[0].color): 'no colors';
     const talla = myProduct ? myProduct.sizes?.flatMap(el => el.size) : 'no sizes found';
     const nuevoProducto = {
       ...compra,
       id: myProduct.id,
+      name: myProduct.name,
       price: myProduct.price,
       color: compra.color === '' ? colores[0] : compra.color,
       size: compra.size === '' ? talla[0] : compra.size,
       cantidad: compra.cantidad,
     };
-    saveLocal([...carrito, nuevoProducto])
-    setCarrito([...carrito, nuevoProducto]);
-    dispatch(addProductUser(nuevoProducto, userSelector.id))
+    dispatch(addCartProduct(nuevoProducto)); // dispatch addToCart action creator
+    if(!userSelector.length) saveLocal([...cart, nuevoProducto]);
+    else dispatch(addProductUser(nuevoProducto, userSelector.id))
   };
+  
+  const elCarrito = useSelector(state => state.cart.cartItems)// aca estoy
+  console.log(elCarrito);
 
   const [pagar, setPagar] = useState(true)
   const onSubmit = async (e) => {
     e.preventDefault()
     setPagar(false)
   }
-
-
-
+ 
   return {
     pagar,
-    error,
     compra,
-    carrito,
-    handlerCompraChange,
     buttonComprar,
-    handlerColors,
-    handlerCantidad,
-    handlerSize,
+    handlerDetail,
     buttonAgregarAlCarrito,
     onSubmit,
   };

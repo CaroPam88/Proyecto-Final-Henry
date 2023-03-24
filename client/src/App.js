@@ -12,9 +12,10 @@ import {WhatsApp} from "./Components/WhatsApp/Whatsapp"
 import Footer from "./Components/Footer/Footer";
 import Index from "./Views/Admin/Index.jsx";
 import DashboardRoute from "./Views/Admin/DashboardRoute";
+import Cart from "./Views/Cart/Cart";
 
 import UserProfile from './Authentication/ProfileScreen/UserProfile'
-import {useAuth0} from '@auth0/auth0-react'
+
 
 
 
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/form" element={<Form/>} />
                 <Route exact path ="/user/profile" element={<UserProfile/>} />
+                <Route exact path="/cart" element={<Cart/>} />
 
                 {/* PROTECTED ROUTES FOR ADMIN DASHBOARD */}
                 <Route

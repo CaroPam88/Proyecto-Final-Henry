@@ -15,8 +15,8 @@ import { useFilter } from "../FilterBar/filterHook";
 
 
 export const NavBar = () => {
+  // const cart = useSelector(state => state.cart?.cartItems ?? [])
   const [clicked, setClicked] = useState(true);
-  const cart = useSelector(state => state.cart?.cartItems ?? [])
   const menuopen = () => {
     setClicked(!clicked);
   };
@@ -80,7 +80,10 @@ export const NavBar = () => {
             </li>}
             {location.pathname === '/home' && <li>
               
-              <select name="genre" onChange={(e) => handlerFilter(e)} className={style.selections} onClick={(e) => e.stopPropagation()} >
+              <select name="genre" onChange={(e) => {
+                handlerFilter(e);
+                menuopen(e);
+                }} className={style.selections} onClick={(e) => e.stopPropagation()} >
                 <option value="" className={style.options} >Categories</option>
                 <option value='Female' className={style.options} >Female</option>
                 <option value='Male' className={style.options} >Male</option>
@@ -107,8 +110,8 @@ export const NavBar = () => {
       <div className={style.search}><SearchBar></SearchBar></div>
 
       <div className={style.contenedorcarrito}>
-        {cart.length ? <span className={style.span}>{cart.length}</span> : null}
-        <Link to="/productos">
+        {/* {cart.length ? <span className={style.span}>{cart.length}</span> : null} */}
+        <Link to="/cart">
           <img src={carrito} alt="carrito" className={style.carrito} />
         </Link>
       </div>
