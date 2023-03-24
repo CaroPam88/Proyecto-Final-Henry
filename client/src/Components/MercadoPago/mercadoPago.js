@@ -14,11 +14,17 @@ export default function Product({ids}) {
             console.log(res);
             if(res.preferenceId){
                 const script = document.createElement('script');
-                script.src = 'https://www.mercadopago.com.co/integrations/v1/web-payment-checkount.js';
+                script.src = 'https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js';
                 script.type = 'text/javascript';
                 script.setAttribute('data-preference-id', res.preferenceId);
-                const form = document.getElementById(FORM_ID);
-                form.appendChild(script)
+                let form = document.getElementById(FORM_ID);
+                if (!form) {
+                    form = document.createElement('form');
+                    form.id = FORM_ID;
+                    form.method = 'GET';
+                    document.body.appendChild(form);
+                }
+                form.appendChild(script);
             }
         },[id, ids],
     )
@@ -30,3 +36,4 @@ export default function Product({ids}) {
         <form id={FORM_ID} method='GET' />
     )
 }
+
