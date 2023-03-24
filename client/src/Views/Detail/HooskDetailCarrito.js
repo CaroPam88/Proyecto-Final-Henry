@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { useSelector } from "react-redux";
 import { putClothes } from "../../Redux/ActionsGet";
 import { addProductUser } from "../../Redux/actionUser";
@@ -10,19 +10,33 @@ import { addProductUser } from "../../Redux/actionUser";
 export const useDetail = (myProduct, id) => {
 
   const [error, setError] = useState({});
-  const [compra, setCompra] = useState({
+  const [compra, setCompra] = useState({  
     id: id,
     price: myProduct.price,
     color: '',
     size: '',
     cantidad: 1,
   });
+  
+  
   const [carrito, setCarrito] = useState([]);
   
 
   const dispatch = useDispatch();
   const userSelector = useSelector(state => state.user.theUser)
+  
 
+  //CON ESTA FUNCION SETEAMOS EL ITEM, PODEMOS REFRESCAR LA PAGINA, Y VAN A PERMANECER
+  //EN EL LOCAL STORAGE PERO SE VAN A BORRAR DEL CARRITO
+  //FUNCION SET ITEM
+  const saveLocal= ()=>{
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+  }
+
+  //FUNCION GET ITEM
+  let carritoLocal = JSON.parse(localStorage.getItem("carrito"))
+
+  
   const handlerCompraChange = (e) => {
     const { name, value } = e.target;
     setCompra({
@@ -75,6 +89,7 @@ export const useDetail = (myProduct, id) => {
     };
     setCarrito([...carrito, nuevoProducto]);
     dispatch(addProductUser(nuevoProducto, userSelector.id))
+    saveLocal()
   };
 
   const [pagar, setPagar] = useState(true)
