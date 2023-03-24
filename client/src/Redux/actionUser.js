@@ -1,4 +1,4 @@
-import { getTheUser, postCar } from './userSlice';
+import { getTheUser, postCar, clearUser } from './userSlice';
 import axios from 'axios';
 
 const createUser = (user) => {
@@ -22,6 +22,11 @@ const addProductUser = (elemento, id) => {
         }
     }
 };
+const clearTheUser = () => {
+    return (dispatch) => {
+        return dispatch(clearUser({}));
+    }
+}
 
 
-export { createUser, addProductUser }
+export { createUser, addProductUser, clearTheUser }
