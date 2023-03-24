@@ -105,7 +105,7 @@ const Detail = () => {
           >
             Comprar ahora
           </button>
-         { (pagar) ? null : <MercadoPago items = {compra} />} 
+         { (pagar) ? null : <MercadoPago ids= {[compra]} />} 
         </div>
 
         <div>

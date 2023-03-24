@@ -69,7 +69,7 @@ export const useDetail = (myProduct, id) => {
     const nuevoProducto = {
       ...compra,
       id: myProduct.id,
-      price: myProduct ? myProduct.price : "error",
+      price: myProduct.price,
       color: compra.color === '' ? colores[0] : compra.color,
       size: compra.size === '' ? talla[0] : compra.size,
       cantidad: compra.cantidad,

@@ -27,7 +27,7 @@ clothesRouter.put("/:id", putProductHandler);
 
 //RUTAS PARA MERCADO PAGO
 
-clothesRouter.post("/pay",postMercadoPago );
+
 
 //Faltando rutas nuevas segun el avance del proyecto
 

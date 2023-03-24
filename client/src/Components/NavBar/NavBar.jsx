@@ -92,6 +92,9 @@ export const NavBar = () => {
                 Nosotros
               </NavLink>}
             </li>
+            <li>
+              <AuthenticationButton/>
+            </li>
           </ul>
         </div>
       </div>
@@ -110,8 +113,6 @@ export const NavBar = () => {
           <img src={carrito} alt="carrito" className={style.carrito} />
         </Link>
       </div>
-      {/** en estos logout y loginout los puse para ver si todo funciona, pero enrealidad tendria que probar si IsAuthenticated? si es true mostrar el LogoutButton y si no mostrar el LoginButton/*/}
-      <AuthenticationButton/>
     </div>
   );
 };

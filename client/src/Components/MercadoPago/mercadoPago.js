@@ -4,28 +4,36 @@ import axios from "axios";
 
 const FORM_ID = 'payment-form';
 
-export default function Product({items}) {
+export default function Product({ids}) {
     const { id } = useParams();
 
     const obtenerPreference = useCallback(
         async() => {
-            const res = await(await (axios.post(`/pay`, items)).data)
+            const response = await(axios.post(`/pay`, ids))
+            const res = await response.data
             console.log(res);
             if(res.preferenceId){
                 const script = document.createElement('script');
+                script.src = 'https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js';
                 script.type = 'text/javascript';
-                script.src = 'https://www.mercadopago.com.co/integrations/v1/web-payment-checkount.js';
                 script.setAttribute('data-preference-id', res.preferenceId);
-                const form = document.getElementById(FORM_ID);
-                form.appendChild(script)
+                let form = document.getElementById(FORM_ID);
+                if (!form) {
+                    form = document.createElement('form');
+                    form.id = FORM_ID;
+                    form.method = 'GET';
+                    document.body.appendChild(form);
+                }
+                form.appendChild(script);
             }
-        },[id, items],
+        },[id, ids],
     )
     useEffect(() => {
         obtenerPreference()
     }, [obtenerPreference])
 
     return(
-        <form id={FORM_ID} method='POST' />
+        <form id={FORM_ID} method='GET' />
     )
 }
+
