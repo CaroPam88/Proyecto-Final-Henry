@@ -17,11 +17,24 @@ export const useDetail = (myProduct, id) => {
     size: '',
     cantidad: 1,
   });
+  
+  
   const [carrito, setCarrito] = useState([]);
   
 
   const dispatch = useDispatch();
   const userSelector = useSelector(state => state.user.theUser)
+  
+
+  //CON ESTA FUNCION SETEAMOS EL ITEM, PODEMOS REFRESCAR LA PAGINA, Y VAN A PERMANECER
+  //EN EL LOCAL STORAGE PERO SE VAN A BORRAR DEL CARRITO
+  //FUNCION SET ITEM
+  const saveLocal= ()=>{
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+  }
+
+  //FUNCION GET ITEM
+  let carritoLocal = JSON.parse(localStorage.getItem("carrito"))
 
   
   const handlerCompraChange = (e) => {
@@ -76,6 +89,7 @@ export const useDetail = (myProduct, id) => {
     };
     setCarrito([...carrito, nuevoProducto]);
     dispatch(addProductUser(nuevoProducto, userSelector.id))
+    saveLocal()
   };
 
   const [pagar, setPagar] = useState(true)
