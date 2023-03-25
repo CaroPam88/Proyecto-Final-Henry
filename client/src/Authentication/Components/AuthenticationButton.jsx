@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
@@ -11,13 +11,18 @@ const AuthenticationButton = () => {
   
   const { isAuthenticated, user } = useAuth0();
   let cart = JSON.parse(localStorage.getItem("cart"))
+  const [repeat, setRepeat] = useState(false)
   const theUser = useSelector(state => state.user.theUser)
   
   useEffect(() => {
     if (isAuthenticated && !theUser.length) dispatch(createUser(user));
-    if (isAuthenticated && theUser.length) dispatch(addProductUser(cart, theUser.id))
-    if (!isAuthenticated && theUser.length) dispatch(clearTheUser())
-  }, [user]);
+    if (isAuthenticated && theUser.id !== {} && repeat) dispatch(addProductUser(cart));
+    if (!isAuthenticated && theUser !== {}) dispatch(clearTheUser());
+  }, [user, repeat]);
+  
+  if(!repeat){
+    setRepeat(true);
+  }
 
   return isAuthenticated ? <LogoutButton /> : <LoginButton />;
 };
