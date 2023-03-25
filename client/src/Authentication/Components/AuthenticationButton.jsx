@@ -18,6 +18,7 @@ const AuthenticationButton = () => {
     if (isAuthenticated && !theUser.id) dispatch(createUser(user))
     .then(() => dispatch(addProductUser(cart)))
     .then(() => dispatch(getCart()))
+    .then(window.localStorage.removeItem("cart"))
     if (!isAuthenticated && theUser.id) dispatch(clearTheUser());
   }, [user]);
 

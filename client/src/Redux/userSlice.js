@@ -12,6 +12,9 @@ const SliceUSer = createSlice({
         getTheUser: ( state, action ) => {
             state.theUser = action.payload;
         },
+        getUserEmail: (state, action) => {
+            state.theUser = action.payload;
+        },
         postCar: (state, action) => {
             state.postCartUser = action.payload;
         },
@@ -20,5 +23,5 @@ const SliceUSer = createSlice({
         },
     }
 });
-export const { getTheUser, postCar, clearUser } = SliceUSer.actions;
+export const { getTheUser, getUserEmail, postCar, clearUser } = SliceUSer.actions;
 export default SliceUSer.reducer;
