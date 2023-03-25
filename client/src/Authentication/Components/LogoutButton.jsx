@@ -7,7 +7,7 @@ const LogoutButton = () => {
   return (
     <div>
       <button
-        class={style.button}
+        className={style.button}
         type="button"
         onClick={() => {
           window.localStorage.removeItem("userStorage");

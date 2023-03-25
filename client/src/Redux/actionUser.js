@@ -15,8 +15,6 @@ const addProductUser = (elemento) => {
     return async (dispatch, getState) => {
         try {
             const { id } = getState().user.theUser;
-            console.log('post', elemento);
-            console.log('id',id);
             const response = (await axios.post(`/user/cart/${id}`, elemento)).data;
             return dispatch(postCar(response));
         } catch (error) {
