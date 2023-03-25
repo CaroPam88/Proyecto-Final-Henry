@@ -15,7 +15,7 @@ const Cart = () => {
     
     
     const cart = useSelector(state => state.cart.cartItems)
-    console.log(cart);
+    console.log('cart',cart);
     return(<section>
         {theUser ? <span>You are logged</span> : <span>You aren't logged</span>}
         <h1>Your Cart</h1>

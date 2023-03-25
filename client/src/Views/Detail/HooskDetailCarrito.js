@@ -65,7 +65,7 @@ export const useDetail = (myProduct, id) => {
     };
     dispatch(addCartProduct(nuevoProducto)); // dispatch addToCart action creator
     if (!userSelector.length && !isAuthenticated) saveLocal([...cart, nuevoProducto]); 
-    else if (userSelector && isAuthenticated) dispatch(addProductUser(nuevoProducto, userSelector.id));
+    else if (userSelector && isAuthenticated) dispatch(addProductUser(nuevoProducto));
   };
   
   const elCarrito = useSelector(state => state.cart.cartItems)// aca estoy
