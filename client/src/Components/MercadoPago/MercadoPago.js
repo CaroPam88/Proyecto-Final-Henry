@@ -35,5 +35,6 @@ export default function Product({ids}) {
     return(
         <form id={FORM_ID} method='GET' />
     )
+    
 }
 
