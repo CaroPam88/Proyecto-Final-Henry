@@ -34,6 +34,7 @@ const Cart = () => {
 						<section key={i}>
 							<h3>{item.id}</h3>
 							<h4>{item.name}</h4>
+							<img src={item.image} alt={item.name} />
 							<p>{item.price}</p>
 							<p>{item.color}</p>
 							<p>{item.size}</p>
@@ -44,6 +45,7 @@ const Cart = () => {
 						<section key={i}>
 							<h3>{item.id}</h3>
 							<h4>{item.name}</h4>
+							<img src={item.image} alt={item.name} />
 							<p>{item.price}</p>
 							<p>{item.color}</p>
 							<p>{item.size}</p>
