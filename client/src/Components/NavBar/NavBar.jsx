@@ -10,12 +10,11 @@ import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
 
 import AuthenticationButton from '../../Authentication/Components/AuthenticationButton'
-import {useAuth0} from '@auth0/auth0-react';
 import { useFilter } from "../FilterBar/filterHook";
 
 
 export const NavBar = () => {
-  // const cart = useSelector(state => state.cart?.cartItems ?? [])
+  const cart = useSelector(state => state.cart?.cartItems ?? [])
   const [clicked, setClicked] = useState(true);
   const menuopen = () => {
     setClicked(!clicked);
@@ -110,7 +109,7 @@ export const NavBar = () => {
       <div className={style.search}><SearchBar></SearchBar></div>
 
       <div className={style.contenedorcarrito}>
-        {/* {cart.length ? <span className={style.span}>{cart.length}</span> : null} */}
+        {cart.length ? <span className={style.span}>{cart.length}</span> : null}
         <Link to="/cart">
           <img src={carrito} alt="carrito" className={style.carrito} />
         </Link>

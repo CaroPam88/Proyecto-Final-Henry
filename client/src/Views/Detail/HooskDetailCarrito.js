@@ -20,7 +20,6 @@ export const useDetail = (myProduct, id) => {
 	const userSelector = useSelector((state) => state.user.theUser);
 	console.log('user', userSelector);
 	const {isAuthenticated} = useAuth0();
-	// const cart = useSelector(state => state.cart.cartItems)
 
 	const saveLocal = (cart) => {
 		localStorage.setItem('cart', JSON.stringify(cart));
@@ -79,7 +78,6 @@ export const useDetail = (myProduct, id) => {
 			dispatch(addProductUser(nuevoProducto));
 	};
 
-	const elCarrito = useSelector((state) => state.cart.cartItems); // aca estoy
 
 	const [pagar, setPagar] = useState(true);
 	const onSubmit = async (e) => {
