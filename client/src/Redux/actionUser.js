@@ -1,4 +1,4 @@
-import { getTheUser, postCar, clearUser } from './userSlice';
+import { getTheUser, getUserEmail, postCar, clearUser } from './userSlice';
 import axios from 'axios';
 
 const createUser = (user) => {
@@ -7,7 +7,7 @@ const createUser = (user) => {
                 const response = (await axios.post('/user/', user)).data;
                 return dispatch(getTheUser(response));
         } catch (error) {
-            alert({ error : error.message });
+            alert(`${ error }: error al crear o buscar el ususario`);
         }
     };
 };
@@ -20,10 +20,21 @@ const addProductUser = (elemento) => {
             const response = (await axios.post(`/user/cart/${id}`, elemento)).data;
             return dispatch(postCar(response));
         } catch (error) {
-            alert(`${ error }: { error.message }`);
+            alert(`${ error }: error al agregar el producto`);
         }
     }
 };
+const getUserByEmail = () => {
+    return async (dispatch, getState) => {
+        try {
+            const { email } = getState().user.theUser;
+            const response = (await axios(`/user/${email}`)).data
+            return dispatch(getUserEmail(response))
+        } catch (error) {
+            alert(`${ error }: error al obtener el ususario`);
+        }
+    }
+}
 const clearTheUser = () => {
     return (dispatch) => {
         return dispatch(clearUser({}));
@@ -31,4 +42,4 @@ const clearTheUser = () => {
 }
 
 
-export { createUser, addProductUser, clearTheUser }
+export { createUser, getUserByEmail, addProductUser, clearTheUser }
