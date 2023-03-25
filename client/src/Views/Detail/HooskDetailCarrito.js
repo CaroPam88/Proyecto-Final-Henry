@@ -9,6 +9,7 @@ export const useDetail = (myProduct, id) => {
 	const [compra, setCompra] = useState({
 		id: id,
 		name: myProduct.name,
+		image: myProduct.image,
 		price: myProduct.price,
 		color: '',
 		size: '',
@@ -64,12 +65,13 @@ export const useDetail = (myProduct, id) => {
 			...compra,
 			id: myProduct.id,
 			name: myProduct.name,
+			image: myProduct.image,
 			price: myProduct.price,
 			color: compra.color === '' ? colores[0] : compra.color,
 			size: compra.size === '' ? talla[0] : compra.size,
 			cantidad: compra.cantidad,
 		};
-		console.log('HOOK', nuevoProducto);
+
 		dispatch(addCartProduct(nuevoProducto)); // dispatch addToCart action creator
 		if (!userSelector.id && !isAuthenticated)
 			saveLocal([...cartLocal, nuevoProducto]);
@@ -78,7 +80,6 @@ export const useDetail = (myProduct, id) => {
 	};
 
 	const elCarrito = useSelector((state) => state.cart.cartItems); // aca estoy
-	console.log('elCarrito', elCarrito);
 
 	const [pagar, setPagar] = useState(true);
 	const onSubmit = async (e) => {
