@@ -2,7 +2,6 @@ import {addToCart, getToCart} from './cartAppSlice';
 
 const addCartProduct = (product) => {
 	return (dispatch) => {
-		console.log(product);
 		return dispatch(addToCart(product));
 	};
 };

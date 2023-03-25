@@ -11,11 +11,13 @@ const Cart = () => {
 	const theUser = useSelector((state) => state.user.theUser);
 
 	useEffect(() => {
-		dispatch(getUserByEmail()).then(() => dispatch(getCart()));
+		if (theUser.id) {
+			dispatch(getUserByEmail()).then(() => dispatch(getCart()));
+		}
 	}, [user]);
 
 	let cart = useSelector((state) => state.cart.cartItems);
-	console.log('CARRITO', cart);
+
 	cart = cart === undefined ? [] : cart;
 
 	let canasta = JSON.parse(localStorage.getItem('cart'));
