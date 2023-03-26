@@ -15,8 +15,12 @@ const addProductUser = (elemento) => {
     return async (dispatch, getState) => {
         try {
             const { id } = getState().user.theUser;
+            if (elemento){
             const response = (await axios.post(`/user/cart/${id}`, elemento)).data;
+            console.log(elemento);
             return dispatch(postCar(response));
+            }
+            
         } catch (error) {
             alert(`${ error }: error al agregar el producto`);
         }
