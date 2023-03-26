@@ -1,11 +1,20 @@
 .button{
-    background-color: #000000;
+    background: #000;
+    border-radius: 20px;
+    height: 40px;
+    text-decoration: none;
     color: #fff;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     border: none;
-    border-radius: 25px;
-    padding: 12px 20px;
-    font-size: 16px;
-    margin-left: -50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: 0.5s;
+}
+.button:hover {
+    background: #006f8b;
+    transition: 0.5s;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -28,14 +28,9 @@ const Detail = () => {
 
   const {
     pagar,
-    error,
     compra,
-    carrito,
-    handlerCompraChange,
+    handlerDetail,
     buttonComprar,
-    handlerColors,
-    handlerCantidad,
-    handlerSize,
     buttonAgregarAlCarrito,
     onSubmit,
   } = useDetail(myProduct, id);
@@ -59,8 +54,9 @@ const Detail = () => {
             <>
               <Link>
                 <select
+                  name='color'
                   className={style.selectColors}
-                  onChange={(e) => handlerColors(e)}
+                  onChange={(e) => handlerDetail(e)}
                   id="colors"
                 >
                   {elem.colors.map((el) => (
@@ -70,7 +66,7 @@ const Detail = () => {
                   ))}
                 </select>
               </Link>
-              <select onChange={(e) => handlerSize(e)}>
+              <select name="size" onChange={(e) => handlerDetail(e)}>
                 <option value={elem.size} className={style.size}>
                   {elem.size}
                 </option>
@@ -82,9 +78,10 @@ const Detail = () => {
         <br />
         <label htmlFor="cantidad">Unidades</label>
         <select
+          name="cantidad"
           className={style.cantidad}
           id="cantidad"
-          onChange={(e) => handlerCantidad(e)}
+          onChange={(e) => handlerDetail(e)}
         >
           <option value="1">1 unidad</option>
           <option value="2">2 unidades</option>
@@ -104,7 +101,7 @@ const Detail = () => {
           >
             Comprar ahora
           </button>
-          {(pagar) ? null : <MercadoPago items={compra} />}
+         { (pagar) ? null : <MercadoPago ids= {[compra]} />} 
         </div>
 
         <div>

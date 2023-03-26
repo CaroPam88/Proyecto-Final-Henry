@@ -40,7 +40,13 @@ const postInCart = async (id, clothe) => {
 	const user = await User.findOne({where: {id}});
 
 	// Agregar el artículo al carrito del usuario
-	user.cart.push(clothe);
+	if (Array.isArray(clothe)) {
+        clothe.forEach((item) => {
+            user.cart?.push(item);
+        });
+    } else {
+        user.cart?.push(clothe);
+    }
 
 	// Actualizar el registro del usuario en la base de datos
 	await User.update({cart: user.cart}, {where: {id}});

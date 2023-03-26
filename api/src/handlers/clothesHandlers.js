@@ -108,7 +108,7 @@ let putProductHandler = async (req, res) => {
 let postMercadoPago = async (req, res) => {
 	try {
 		let ids = req.body
-		console.log(ids);
+		console.log("compras",ids);
 		const  payPago = await payMercadoPago(ids)
 		console.log( payPago );
 		res.send(payPago)

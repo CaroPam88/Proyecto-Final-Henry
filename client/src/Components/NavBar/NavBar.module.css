@@ -98,7 +98,7 @@
 .opciones li a {
     text-decoration: none;
     color: var(--ph0-violeta-1);
-    padding: 0;
+    padding: 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -114,16 +114,16 @@
 
 .span{
     position: absolute;
-    background-color: rgb(0, 234, 255);
-    width: 30px;
-    height: 30px;
+    background-color: #00ccff;
+    width: 25px;
+    height: 25px;
     display: flex;
     top: 45px;
-    left: 15px;
+    right: 65%;
     justify-content: center;
     align-items: center;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 19px;
     border-radius: 50px;
     z-index: 40;
 }
@@ -136,13 +136,13 @@
 
 .selections {
     text-decoration: none;
-    padding: 0;
+    color: var(--ph0-violeta-1);
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
     justify-content: flex-end;
     margin-left: 0px;
-    padding-left: 0px;
+    padding-left: 10px;
     border: none;
     outline: none;
 }
@@ -151,5 +151,5 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     font-size: 20px;
-    color: #000;
+    padding: 10px;
 }

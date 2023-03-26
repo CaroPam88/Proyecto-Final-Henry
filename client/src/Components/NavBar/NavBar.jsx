@@ -10,13 +10,12 @@ import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
 
 import AuthenticationButton from '../../Authentication/Components/AuthenticationButton'
-import {useAuth0} from '@auth0/auth0-react';
 import { useFilter } from "../FilterBar/filterHook";
 
 
 export const NavBar = () => {
-  const [clicked, setClicked] = useState(true);
   const cart = useSelector(state => state.cart?.cartItems ?? [])
+  const [clicked, setClicked] = useState(true);
   const menuopen = () => {
     setClicked(!clicked);
   };
@@ -53,34 +52,49 @@ export const NavBar = () => {
             className={`${style.opciones} ${clicked ? style.opcioncerrada : null
               }`}
           >
-            <li>
-              {location.pathname !== '/home' && <NavLink to="home" onClick={menuopen}>
+            {/* {Category?.map((c) => (
+              <li key={c.nombre}>
+                {location.pathname !== `/productos/${c.nombre.toLowerCase()}` && <NavLink
+                  to={`/productos/${c.nombre.toLowerCase()}`}
+                  onClick={menuopen}
+                >
+                  {c.nombre.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())}
+                </NavLink>}
+              </li>
+            ))} */}
+            {location.pathname !== '/home' && <li>
+              <NavLink to="home" onClick={menuopen}>
                 Home
-              </NavLink>}
-            </li>
-            <li>
-              {location.pathname !== '/form' && <NavLink to="/form" onClick={menuopen}>
+              </NavLink>
+            </li>}
+            {location.pathname !== '/form' && <li>
+              <NavLink to="/form" onClick={menuopen}>
                 Form
-              </NavLink>}
-            </li>
-            <li>
-              {location.pathname !== '/user/profile' && <NavLink to="/user/profile" onClick={menuopen}>
+              </NavLink>
+            </li>}
+            {location.pathname !== '/user/profile' && <li>
+              <NavLink to="/user/profile" onClick={menuopen}>
                 Profile
-              </NavLink>}
-            </li>
-            <li>
-              {location.pathname === '/home' && 
-              <select name="genre" onChange={(e) => handlerFilter(e)} className={style.selections} onClick={(e) => e.stopPropagation()} >
+              </NavLink>
+            </li>}
+            {location.pathname === '/home' && <li>
+              
+              <select name="genre" onChange={(e) => {
+                handlerFilter(e);
+                menuopen(e);
+                }} className={style.selections} onClick={(e) => e.stopPropagation()} >
                 <option value="" className={style.options} >Categories</option>
                 <option value='Female' className={style.options} >Female</option>
                 <option value='Male' className={style.options} >Male</option>
               </select>
-              }
-            </li>
+            </li>}
+            {location.pathname !== '/productos/all' && <li>
+              <NavLink to="/productos/all" onClick={menuopen}>
+                Nosotros
+              </NavLink>
+            </li>}
             <li>
-              {location.pathname !== '/productos/all' && <NavLink to="/productos/all" onClick={menuopen}>
-                About Us
-              </NavLink>}
+              <AuthenticationButton/>
             </li>
           </ul>
         </div>
@@ -96,12 +110,10 @@ export const NavBar = () => {
 
       <div className={style.contenedorcarrito}>
         {cart.length ? <span className={style.span}>{cart.length}</span> : null}
-        <Link to="/productos">
+        <Link to="/cart">
           <img src={carrito} alt="carrito" className={style.carrito} />
         </Link>
       </div>
-      {/** en estos logout y loginout los puse para ver si todo funciona, pero enrealidad tendria que probar si IsAuthenticated? si es true mostrar el LogoutButton y si no mostrar el LoginButton/*/}
-      <AuthenticationButton/>
     </div>
   );
 };

@@ -1,101 +1,96 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-// import { useSelector } from "react-redux";
-import { putClothes } from "../../Redux/ActionsGet";
-import { addProductUser } from "../../Redux/actionUser";
-
-
-
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
+import {putClothes} from '../../Redux/ActionsGet';
+import {addProductUser} from '../../Redux/actionUser';
+import {addCartProduct} from '../../Redux/actionCart';
+import {useAuth0} from '@auth0/auth0-react';
 
 export const useDetail = (myProduct, id) => {
+	const [compra, setCompra] = useState({
+		id: id,
+		name: myProduct.name,
+		image: myProduct.image,
+		price: myProduct.price,
+		color: '',
+		size: '',
+		cantidad: 1,
+	});
 
-  const [error, setError] = useState({});
-  const [compra, setCompra] = useState({
-    id: id,
-    size: "",
-    color: "",
-    price: "",
-    cantidad: 1,
-  });
-  const [carrito, setCarrito] = useState([]);
+	const dispatch = useDispatch();
+	const userSelector = useSelector((state) => state.user.theUser);
+	console.log('user', userSelector);
+	const {isAuthenticated} = useAuth0();
 
-  const dispatch = useDispatch();
-  const userSelector = useSelector(state => state.user.theUser)
+	const saveLocal = (cart) => {
+		localStorage.setItem('cart', JSON.stringify(cart));
+	};
+	let cartLocal = [];
+	if (JSON.parse(localStorage.getItem('cart'))) {
+		cartLocal = JSON.parse(localStorage.getItem('cart'));
+	}
 
-  const handlerCompraChange = (e) => {
-    const { name, value } = e.target;
-    setCompra({
-      ...compra,
-      [name]: value,
-    });
-  };
+	const handlerDetail = (e) => {
+		const target = e.target.name;
+		const value = e.target.value;
+		target === 'cantidad'
+			? setCompra({
+					...compra,
+					cantidad: Number(e.target.value),
+			  })
+			: setCompra({
+					...compra,
+					[target]: value,
+			  });
+	};
 
-  const handlerColors = (e) => {
-    setCompra({
-      ...compra,
-      color: e.target.value,
-    });
-  };
+	const buttonComprar = (e) => {
+		setCompra({
+			...compra,
+			id: myProduct.id,
+			price: myProduct ? myProduct.price : 'error',
+		});
+		dispatch(putClothes(compra));
+		alert('compra exitosa');
+	};
 
-  const handlerCantidad = (e) => {
-    setCompra({
-      ...compra,
-      cantidad: Number(e.target.value),
-    });
-  };
+	const buttonAgregarAlCarrito = (e) => {
+		const colores = myProduct
+			? myProduct.sizes?.flatMap((el) => el.colors[0].color)
+			: 'no colors';
+		const talla = myProduct
+			? myProduct.sizes?.flatMap((el) => el.size)
+			: 'no sizes found';
+		const nuevoProducto = {
+			...compra,
+			id: myProduct.id,
+			name: myProduct.name,
+			image: myProduct.image,
+			price: myProduct.price,
+			color: compra.color === '' ? colores[0] : compra.color,
+			size: compra.size === '' ? talla[0] : compra.size,
+			cantidad: compra.cantidad,
+		};
 
-  const handlerSize = (e) => {
-    setCompra({
-      ...compra,
-      size: e.target.value,
-    });
-  };
-
-  const buttonComprar = (e) => {
-    setCompra({
-      ...compra,
-      id: myProduct.id,
-      price: myProduct ? myProduct.price : "error",
-    });
-    dispatch(putClothes(compra))
-    alert ("compra exitosa")
-  };
-  
-  const buttonAgregarAlCarrito = (e) => {
-    const colores = myProduct ? myProduct.sizes?.flatMap(el => el.colors[0].color): 'no colors';
-    const talla = myProduct ? myProduct.sizes?.flatMap(el => el.size) : 'no sizes found';
-    setCarrito([
-      ...carrito,
-      {
-        ...compra,
-        id: myProduct.id,
-        price: myProduct ? myProduct.price : "error",
-        color: colores[0],
-        size: talla[0],
-      },
-    ]);
-    dispatch(addProductUser(carrito, userSelector.id))
-  };
-
-  const [pagar, setPagar] = useState(true)
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    setPagar(false)
-  }
-  console.log(carrito);
+		dispatch(addCartProduct(nuevoProducto)); // dispatch addToCart action creator
+		if (!userSelector.id && !isAuthenticated)
+			saveLocal([...cartLocal, nuevoProducto]);
+		else if (userSelector.id && isAuthenticated)
+			dispatch(addProductUser(nuevoProducto));
+	};
 
 
-  return {
-    pagar,
-    error,
-    compra,
-    carrito,
-    handlerCompraChange,
-    buttonComprar,
-    handlerColors,
-    handlerCantidad,
-    handlerSize,
-    buttonAgregarAlCarrito,
-    onSubmit,
-  };
+	const [pagar, setPagar] = useState(true);
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		setPagar(false);
+	};
+
+	return {
+		pagar,
+		compra,
+		buttonComprar,
+		handlerDetail,
+		buttonAgregarAlCarrito,
+		onSubmit,
+	};
 };

@@ -1,27 +1,26 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { createUser } from '../../Redux/actionUser';
+import { addProductUser, clearTheUser } from '../../Redux/actionUser';
+import { getCart } from '../../Redux/actionCart'
 
 const AuthenticationButton = () => {
   const dispatch = useDispatch()
-  const [userFired, setUserFired] = useState(false);
   
   const { isAuthenticated, user } = useAuth0();
-
+  let cart = JSON.parse(localStorage.getItem("cart"))
+  const theUser = useSelector(state => state.user.theUser)
+  
   useEffect(() => {
-    if (isAuthenticated && userFired) {
-      dispatch(createUser(user));
-    }
-  }, [isAuthenticated, userFired, user]);
-
-  if (isAuthenticated && !userFired) {
-    setUserFired(true); 
-  }
+    if (isAuthenticated && !theUser.id) dispatch(createUser(user))
+    .then(() => dispatch(addProductUser(cart)))
+    .then(() => dispatch(getCart()))
+    .then(window.localStorage.removeItem("cart"))
+    if (!isAuthenticated && theUser.id) dispatch(clearTheUser());
+  }, [user]);
 
   return isAuthenticated ? <LogoutButton /> : <LoginButton />;
 };

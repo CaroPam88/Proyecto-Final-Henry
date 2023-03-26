@@ -19,17 +19,23 @@ let preference = {
   };
 
 let payMercadoPago = async (ids) => {
-  
-    ids.forEach((el) => {
-        preference.items.push( {
-            title: ids.id,
-            unit_price:el.price * el.cantidad,
-            quantity: el.cantidad,
-          },)
-    })
+  let price = 0;
+   for (let i = 0; i < ids.length; i++) {
+    let price1 = price + parseInt(ids[i].price) * ids[i].cantidad
+    price= price1
+   }
+  let name = "";
+   for (let i = 0; i < ids.length; i++) {
+    name = name + ids[i].name + ", "
+   }
+   preference.items.push({
+    title:name,
+    unit_price: price,
+    quantity: 1,
+   })
     const response = await( mercadopago.preferences.create(preference));
     const preferenceId = response.body.id
-    return (preferenceId)
+    return ({preferenceId})
 }
   
 module.exports = {payMercadoPago}
