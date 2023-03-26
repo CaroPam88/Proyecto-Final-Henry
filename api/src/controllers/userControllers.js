@@ -42,10 +42,10 @@ const postInCart = async (id, clothe) => {
 	// Agregar el artículo al carrito del usuario
 	if (Array.isArray(clothe)) {
         clothe.forEach((item) => {
-            user.cart.push(item);
+            user.cart?.push(item);
         });
     } else {
-        user.cart.push(clothe);
+        user.cart?.push(clothe);
     }
 
 	// Actualizar el registro del usuario en la base de datos
