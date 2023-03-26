@@ -1,89 +1,42 @@
-/* General styles */
 .actions-header {
-    flex: 2.2;
-  }
-  
-  .actions-cell {
-    gap: 12px;
-    display: flex;
-  }
-  
-  .actions-box {
-    display: flex;
-  }
-  
-  .edit-box {
-    background-color: #388e3c;
-  }
-  
-  .delete-box {
-    background-color: red;
-  }
-  
-  .edit-text {
-    margin-left: 5px;
-    color: #f5f5f5;
-  }
-  
-  .delete-icon {
-    color: #fff;
-  }
-  
-  .products-header {
-    margin: 20px;
-  }
-  
-  .products-title {
-    color: #4caf50;
-    margin: 0;
-    font-size: 2rem;
-  }
-  
-  .products-subtitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .products-subtitle-text {
-    color: #757575;
-    margin: 0;
-    font-size: 1rem;
-  }
-  
-  .products-grid {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .data-grid {
-    border: none;
-    height: 75vh;
-  }
-  
-  .name-column--cell {
-    color: #81c784;
-  }
-  
-  .MuiDataGrid-columnHeaders {
-    background-color: #1c313a;
-    border-bottom: none;
-  }
-  
-  .MuiDataGrid-virtualScroller {
-    background-color: #4caf50;
-  }
-  
-  .MuiDataGrid-footerContainer {
-    border-top: none;
-    background-color: #1c313a;
-  }
-  
-  .MuiCheckbox-root {
-    color: #a5d6a7 !important;
-  }
-  
-  .MuiDataGrid-toolbarContainer .MuiButton-text {
-    color: #f5f5f5 !important;
-  }
-  
+  /* add any necessary styles here */
+}
+
+.actions-cell {
+  /* add any necessary styles here */
+}
+
+.actions-box {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.edit-box {
+  background-color: #388e3c;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  padding: 5px;
+}
+
+.edit-text {
+  color: #f5f5f5;
+  margin-left: 5px;
+}
+
+.delete-box {
+  background-color: red;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  padding: 5px;
+}
+
+.delete-icon {
+  transform: scale(110%);
+}

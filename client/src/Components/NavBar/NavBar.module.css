@@ -58,6 +58,7 @@
     height: 10vh;
     z-index: 1;
     transition: all 1200ms ease-out;
+ 
 }
 
 .contenedorcarrito{
@@ -72,15 +73,14 @@
     height: 125vh;
     background-color: white;
     left: 0px;
-    top: -16px;
     transition: all 700ms ease-in-out;
     display: flex;
     flex-direction: column-reverse;
-    padding-top: 20vh;
+    padding-top: 90px;
     gap: 14px;
     justify-content: flex-end;
     z-index: 2;
-    font-family: 'Grote';
+    padding-left: 10px;
 }
 
 .opciones li {

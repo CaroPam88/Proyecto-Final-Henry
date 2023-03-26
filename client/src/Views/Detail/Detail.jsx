@@ -8,7 +8,7 @@ import {
 import { useEffect } from "react";
 import style from "./Detail.module.css";
 import { useDetail } from "./HooskDetailCarrito";
-import MercadoPago from "../../Components/MercadoPago/MercadoPago"
+import MercadoPago from "../../Components/MercadoPago/mercadoPago"
 const Detail = () => {
   const dispatch = useDispatch();
   //const id = props.match.params.id
@@ -22,7 +22,7 @@ const Detail = () => {
     };
   }, [dispatch, id]);
 
- 
+
 
   const myProduct = useSelector((state) => state.products.productDetail);
 
@@ -35,10 +35,10 @@ const Detail = () => {
     onSubmit,
   } = useDetail(myProduct, id);
 
-  
+
   return (
     <div className={style.container}>
-    
+
       <div className={style.containerImg}>
         <img src={myProduct.image} alt="" className={style.img} />
       </div>
@@ -48,7 +48,6 @@ const Detail = () => {
         <ul>
           <br />
           <br />
-          <h6>{myProduct.sex?.map((el) => el).join(" - ")}</h6>
         </ul>
         <div className={style.detail}>
           {myProduct.sizes?.map((elem) => (
@@ -105,11 +104,11 @@ const Detail = () => {
         </div>
 
         <div>
-          <button className={style.botonCarrito} onClick={(e)=>buttonAgregarAlCarrito(e)} >Agregar al carrito</button>
+          <button className={style.botonCarrito} onClick={(e) => buttonAgregarAlCarrito(e)} >Agregar al carrito</button>
         </div>
-      
+
       </div>
-      
+
     </div>
   );
 };

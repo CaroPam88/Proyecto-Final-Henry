@@ -18,13 +18,13 @@ function Form() {
 		<div class={style.container}>
 			<img src={imgHome} alt="" className={style.img} />
 			<form onSubmit={(e) => SubmitHandler(e)} class={style.form} >
-				<input type="text" name="name" onChange={(e) => handleForm(e)} placeholder="Insert name" class={style.input} />
+				<input type="text" name="name" onChange={(e) => handleForm(e)} placeholder="Insert name" className={style.input} />
 				{error.name 
 				? (<span style={styleError}>{error.name}</span>) 
 				: (<span style={styleValidet}> {validated.name}</span>)}
 				
 				<section>
-					<select name="size" onChange={(e) => handleForm(e)} class={style.input} >
+					<select name="size" onChange={(e) => handleForm(e)} className={style.input} >
 						<option value="" >Insert size</option>
 						<option value="S">S</option>
 						<option value="M">M</option>
@@ -37,13 +37,13 @@ function Form() {
 					: (<span style={styleValidet}> {validated.size}</span>)}
 				</section>
 					
-				<input type="number" name="price" min={1} onChange={(e) => handleForm(e)} placeholder="Insert price" class={style.input}/>
+				<input type="number" name="price" min={1} onChange={(e) => handleForm(e)} placeholder="Insert price" className={style.input}/>
 				{error.price 
 				? (<span style={styleError}>{error.price}</span>) 
 				: (<span style={styleValidet}>{validated.price}</span>)}
 				
 				<div>
-					<select name="type" onChange={(e) => handleForm(e)} class={style.input}>
+					<select name="type" onChange={(e) => handleForm(e)} className={style.input}>
 						<option value="">Insert type</option>
 						<option value="remera">Remera</option>
 						<option value="vestido">Vestido</option>
@@ -57,7 +57,7 @@ function Form() {
 				</div>
 					
 				<div>
-					<select name="genre" onChange={(e) => genreHandler(e)} class={style.input}> 
+					<select name="genre" onChange={(e) => genreHandler(e)} className={style.input}> 
 						<option value="">Insert Gender</option> 
 						<option value="Female">Female</option> 
 						<option value="Male">Male</option>
@@ -73,12 +73,12 @@ function Form() {
 					
 				<div>
 					<div className={style.colorCont}>
-						<input type="text" name="color" placeholder="Insert color name" onChange={(e) => handlerColor(e)} class={style.colorContInput}/>
-						<input type="number" name="stockColors" min={1} placeholder="Insert color stock" onChange={(e) => handlerColor(e)} class={style.colorContInput} />	
+						<input type="text" name="color" placeholder="Insert color name" onChange={(e) => handlerColor(e)} className={style.colorContInput}/>
+						<input type="number" name="stockColors" min={1} placeholder="Insert color stock" onChange={(e) => handlerColor(e)} className={style.colorContInput} />	
 					</div>
-					{!colorError.nameColor && !colorError.sizeColor &&  addColor.color !== '' && addColor.stockColors !== 0 && <button onClick={(e) => handlerAddColor(e)} class={style.inputColor}>Add color</button>}
+					{!colorError.nameColor && !colorError.sizeColor &&  addColor.color !== '' && addColor.stockColors !== 0 && <button onClick={(e) => handlerAddColor(e)} className={style.inputColor}>Add color</button>}
 					{form.colors?.map((el, i) => (
-					<button type="button" key={i} value={i} onClick={(e) => colorDeleteHandler(e)} class={style.inputColorDelete} >{`${el.color} | ${el.stockColors}`}</button>
+					<button type="button" key={i} value={i} onClick={(e) => colorDeleteHandler(e)} className={style.inputColorDelete} >{`${el.color} | ${el.stockColors}`}</button>
 					))}
 					{colorError.nameColor || colorError.sizeColor
 					? colorError.nameColor
@@ -89,12 +89,12 @@ function Form() {
 					: (<span style={styleValidet}>{validated.colors}</span>)}
 				</div>
 				<div>
-					<input type="file" id="image" name="image" onChange={(e) => handleForm(e)} class={style.input} />
+					<input type="file" id="image" name="image" onChange={(e) => handleForm(e)} className={style.input} />
 					{error.image 
 					? (<span style={styleError}>{error.image}</span>) 
 					: (<span style={styleValidet}>{validated.image}</span>)}
 				</div>
-				{!error.name && !error.price && !error.type && !error.image && !error.sex && !error.stockSize && !error.colors && validated.name && <button type="submit">Submit</button>}
+				{!error.name && !error.price && !error.type && !error.image && !error.sex && !error.stockSize && !error.colors && validated.name && <button type="submit" className={style.btn}>Submit</button>}
 			</form>
 		</div>
 	);

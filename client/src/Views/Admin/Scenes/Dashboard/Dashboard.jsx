@@ -1,5 +1,5 @@
 import Header from "../../AdminComponents/Headers";
-import style from "./dashboard.css";
+import style from "./dashboard.module.css";
 
 
 
