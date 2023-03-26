@@ -32,10 +32,11 @@
     box-sizing: border-box;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
     align-items: center;
+    border-radius: 10px;
 }
 
 .input {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif, serif;
     color: rgb(83, 91, 89);
     font-size: 20px;
     margin-bottom: 10px;
@@ -51,7 +52,7 @@
     width: 100%;
 }
 .colorContInput {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif, serif;
     color: rgb(83, 91, 89);
     font-size: 20px;
     margin-bottom: 10px;
@@ -61,7 +62,7 @@
     box-sizing: border-box;
 }
 .inputColor {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif, serif;
     color: rgb(83, 91, 89);
     font-size: 20px;
     margin-bottom: 10px;

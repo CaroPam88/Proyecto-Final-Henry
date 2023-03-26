@@ -53,16 +53,6 @@ export const NavBar = () => {
             className={`${style.opciones} ${clicked ? style.opcioncerrada : null
               }`}
           >
-            {/* {Category?.map((c) => (
-              <li key={c.nombre}>
-                {location.pathname !== `/productos/${c.nombre.toLowerCase()}` && <NavLink
-                  to={`/productos/${c.nombre.toLowerCase()}`}
-                  onClick={menuopen}
-                >
-                  {c.nombre.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())}
-                </NavLink>}
-              </li>
-            ))} */}
             <li>
               {location.pathname !== '/home' && <NavLink to="home" onClick={menuopen}>
                 Home
@@ -75,7 +65,7 @@ export const NavBar = () => {
             </li>
             <li>
               {location.pathname !== '/user/profile' && <NavLink to="/user/profile" onClick={menuopen}>
-                profile
+                Profile
               </NavLink>}
             </li>
             <li>
@@ -89,7 +79,7 @@ export const NavBar = () => {
             </li>
             <li>
               {location.pathname !== '/productos/all' && <NavLink to="/productos/all" onClick={menuopen}>
-                Nosotros
+                About Us
               </NavLink>}
             </li>
           </ul>

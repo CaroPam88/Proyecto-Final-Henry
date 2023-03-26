@@ -1,0 +1,50 @@
+.cardRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    
+  }
+  
+  .cardM {
+    display: inline-block;
+    margin: 50px 3px 10px 50px;
+    padding: 60px 20px 30px 60px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px rgba(0,0,0,0.2);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-align: center;
+    width: 720px;
+    height: 256px;
+    background: url(../../Assets/img/mencard.jpg);
+    background-size:cover;
+  }
+  
+
+  .cardW {
+    display: inline-block;
+    margin: 50px 3px 10px 50px;
+    padding: 60px 20px 30px 60px;
+    background: url(../../Assets/img/womencard.jpg);
+    background-size:cover;
+    background-position: 20% ;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px rgba(0,0,0,0.2);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-align: center;
+    width: 720px;
+    height: 256px;
+  }
+  
+
+  .cardRow span{
+    display: flex;
+    color: white;
+    padding-top: 120px;
+    align-items: center;
+    font-size: 24px;
+  }
