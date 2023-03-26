@@ -15,27 +15,31 @@ let preference = {
         failure: "http://localhost:3000/home",
         pending: "http://localhost:3000/home",
     },
-    auto_return: "approved",
   };
 
 let payMercadoPago = async (ids) => {
-  let price = 0;
-   for (let i = 0; i < ids.length; i++) {
-    let price1 = price + parseInt(ids[i].price) * ids[i].cantidad
-    price= price1
-   }
-  let name = "";
-   for (let i = 0; i < ids.length; i++) {
-    name = name + ids[i].name + ", "
-   }
-   preference.items.push({
-    title:name,
-    unit_price: price,
-    quantity: 1,
-   })
-    const response = await( mercadopago.preferences.create(preference));
-    const preferenceId = response.body.id
-    return ({preferenceId})
+   console.log(ids);
+  try {
+    let price = 0;
+    for (let i = 0; i < ids.length; i++) {
+     let price1 = price + (parseInt(ids[i].price) * ids[i].cantidad)
+     price= price1
+    }
+   let name = "";
+    for (let i = 0; i < ids.length; i++) {
+     name = name + ids[i].name + ", "
+    }
+    preference.items.push({
+     title: name,
+     unit_price: price,
+     quantity: 1,
+    })
+     const response = await( mercadopago.preferences.create(preference));
+     const preferenceId = response.body.id
+     return ({preferenceId})
+  } catch (error) {
+    return ("Compra cancelada")
+  }
 }
   
 module.exports = {payMercadoPago}

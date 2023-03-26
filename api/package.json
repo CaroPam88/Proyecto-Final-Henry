@@ -32,7 +32,8 @@
     "pg": "^8.10.0",
     "pg-hstore": "^2.3.4",
     "process": "^0.11.10",
-    "sequelize": "^6.29.3"
+    "sequelize": "^6.29.3",
+    "webpack-dev-server": "^4.13.1"
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.7"

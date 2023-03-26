@@ -93,16 +93,15 @@ const Detail = () => {
         </select>
 
         <div>
-          <button
+          
+         { (pagar) ? <button
             onClick={(e) => {
-              buttonComprar(e);
               onSubmit(e)
             }}
             className={style.botonComprar}
           >
             Comprar ahora
-          </button>
-         { (pagar) ? null : <MercadoPago ids= {[compra]} />} 
+          </button> : <MercadoPago ids= {[compra]} />} 
         </div>
 
         <div>
