@@ -24,7 +24,7 @@ const Detail = () => {
 
 
 
-  const myProduct = useSelector((state) => state.products.productDetail);
+  const myProduct = useSelector((state) => state.products.productDetail)
 
   const {
     pagar,
@@ -36,12 +36,13 @@ const Detail = () => {
     onSubmit,
   } = useDetail(myProduct, id);
 
-  const stockSize = myProduct.sizes?.flatMap(el => el.colors?.filter(color => color.color === nuevoProducto.color));
-  let stock = 0;
-  // stock = stockSize.stockColors !== undefined ? stockSize.stockColor : stock;
+  let stockSize = [];
+  stockSize = myProduct.sizes?.flatMap(el => el.colors?.filter(color => color.color === nuevoProducto.color));
+  let stock = stockSize?.map(el => el.stockColors);
   
-  // console.log(stock);
+  console.log('stock',stock);
   console.log('stockSize',stockSize);
+
   return (
     <div className={style.container}>
 
@@ -78,35 +79,49 @@ const Detail = () => {
             </>
           ))}
         </div>
-        <label htmlFor="cantidad">Unidades</label>
-        <select
-          name="cantidad"
-          className={style.cantidad}
-          id="cantidad"
-          onChange={(e) => handlerDetail(e)}
-        >
-          <option value="1">1 unidad</option>
-          <option value="2">2 unidades</option>
-          <option value="3">3 unidades</option>
-          <option value="4">4 unidades</option>
-          <option value="5">5 unidades</option>
-          <option value="6">6 unidades</option>
-        </select>
-        <span>{stock}</span>
+        <label htmlFor="cantidad">units: </label>
+        {stock && stock[0] 
+        ? stock[0] > 6 
+        ? <select name="cantidad" className={style.cantidad} id="cantidad" onChange={(e) => handlerDetail(e)}>
+            <option value="1">1 unidad</option>
+            <option value="2">2 unidades</option>
+            <option value="3">3 unidades</option>
+            <option value="4">4 unidades</option>
+            <option value="5">5 unidades</option>
+            <option value="6">6 unidades</option>
+          </select>
+        : <select name="cantidad" className={style.cantidad} id="cantidad" onChange={(e) => handlerDetail(e)}>
+            {[...Array(stock[0]+1).keys()].map((value, i) => (
+              <option key={i} value={value}>{value}</option>
+            ))}
+          </select>
+        : <label>No stock for selected color</label>
+        }
+        {stock && stock[0] 
+        ? <p>Stock: {stock}</p> 
+        : <div></div> 
+        }
+
         <div>
-          
-         { (pagar) ? <button
+          {stock && stock[0] ? 
+            (pagar) ? <button
             onClick={(e) => {
               onSubmit(e)
             }}
             className={style.botonComprar}
           >
             Comprar ahora
-          </button> : <MercadoPago ids= {[nuevoProducto]} />} 
+          </button> : <MercadoPago ids= {[nuevoProducto]} />
+          : <div></div>
+          } 
         </div>
 
         <div>
-          <button className={style.botonCarrito} onClick={(e) => buttonAgregarAlCarrito(e)} >Agregar al carrito</button>
+        {stock && stock[0] ? 
+          <button className={style.botonCarrito} onClick={(e) => buttonAgregarAlCarrito(e)} >Add to cart</button>
+        : <button className={style.botonCarrito} >You can't buy it</button>
+        
+        }
         </div>
 
       </div>
