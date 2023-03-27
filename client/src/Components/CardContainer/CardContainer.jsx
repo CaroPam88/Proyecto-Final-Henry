@@ -29,7 +29,7 @@ const CardContainer = () => {
   };
 
   return (
-    <section className={style.section}>
+    <section className={style.section} id="cardContainer">
                 <h3 className={style.sectionTitle}>Our Products</h3>
                 <div className={style.div1}>
 
