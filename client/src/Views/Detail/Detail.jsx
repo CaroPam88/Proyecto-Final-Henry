@@ -8,7 +8,7 @@ import {
 import { useEffect } from "react";
 import style from "./Detail.module.css";
 import { useDetail } from "./HooskDetailCarrito";
-import MercadoPago from "../../Components/MercadoPago/mercadoPago"
+import MercadoPago from "../../Components/MercadoPago/MercadoPago"
 const Detail = () => {
   const dispatch = useDispatch();
   //const id = props.match.params.id
