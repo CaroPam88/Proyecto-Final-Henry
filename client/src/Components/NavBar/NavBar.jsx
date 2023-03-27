@@ -52,16 +52,6 @@ export const NavBar = () => {
             className={`${style.opciones} ${clicked ? style.opcioncerrada : null
               }`}
           >
-            {/* {Category?.map((c) => (
-              <li key={c.nombre}>
-                {location.pathname !== `/productos/${c.nombre.toLowerCase()}` && <NavLink
-                  to={`/productos/${c.nombre.toLowerCase()}`}
-                  onClick={menuopen}
-                >
-                  {c.nombre.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())}
-                </NavLink>}
-              </li>
-            ))} */}
             {location.pathname !== '/home' && <li>
               <NavLink to="home" onClick={menuopen}>
                 Home
