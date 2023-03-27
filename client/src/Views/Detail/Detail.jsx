@@ -20,7 +20,7 @@ const Detail = () => {
     return () => {
       dispatch(clearProductDetailState());
     };
-  }, [dispatch, id]);
+  }, []);
 
  
 
@@ -31,6 +31,7 @@ const Detail = () => {
     compra,
     handlerDetail,
     buttonComprar,
+    nuevoProducto,
     buttonAgregarAlCarrito,
     onSubmit,
   } = useDetail(myProduct, id);
@@ -101,7 +102,7 @@ const Detail = () => {
             className={style.botonComprar}
           >
             Comprar ahora
-          </button> : <MercadoPago ids= {[compra]} />} 
+          </button> : <MercadoPago ids= {[nuevoProducto]} />} 
         </div>
 
         <div>
