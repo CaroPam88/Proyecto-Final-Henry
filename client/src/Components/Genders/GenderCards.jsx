@@ -1,19 +1,26 @@
 import React from "react";
 import style from './genders.module.css';
 import { useFilter } from "../FilterBar/filterHook";
+import {Link} from "react-scroll"
 
 const GenderCard = () => {
   const {handlerFilter} = useFilter();
     return(
       <div className={style.cardRow}>
-        <label className={style.cardM}>
-          <input type="radio" name="genre" value="Male" onClick={e => handlerFilter(e)} />
+        <Link 
+        className={style.cardM}
+        to="cardContainer">
+          <div  onClick={() => handlerFilter({target: { name: "genre", value: "Male"}})} >
           <span>Men Wearing</span>
-        </label>
-        <label className={style.cardW}>
-          <input type="radio" name="genre" value="Female" onClick={e => handlerFilter(e)} />
+        </div>
+        </Link>
+        <Link 
+        className={style.cardW}
+        to="cardContainer">
+          <div  onClick={() => handlerFilter({target: { name: "genre", value: "Female"}})} >
           <span>Woman Wearing</span>
-        </label>
+        </div>
+        </Link>
       </div>
     );
 }
