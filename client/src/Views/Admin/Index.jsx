@@ -6,7 +6,6 @@ import TopBar from "./Scenes/Global/TopBar";
 import './admin.css'
 import Products from "./Scenes/Data/Products";
 import ProductCreated from "./Scenes/CreateData/ProductCreated.jsx";
-import EditProduct from "./Scenes/EditData/EditProduct";
 
 
 
@@ -24,7 +23,6 @@ export default function Index(){
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/createProduct" element={<ProductCreated />} />
-                <Route path="/editProduct/:id" element={<EditProduct />} />
               </Routes>
             </main>
           </div>

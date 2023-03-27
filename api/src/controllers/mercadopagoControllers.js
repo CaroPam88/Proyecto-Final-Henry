@@ -18,11 +18,11 @@ let preference = {
   };
 
 let payMercadoPago = async (ids) => {
-   console.log(ids);
+   console.log('ids',ids);
   try {
     let price = 0;
     for (let i = 0; i < ids.length; i++) {
-     let price1 = price + (parseInt(ids[i].price) * ids[i].cantidad)
+     let price1 = price + (parseInt(ids[i].price) * parseInt(ids[i].cantidad))
      price= price1
     }
    let name = "";
@@ -31,14 +31,22 @@ let payMercadoPago = async (ids) => {
     }
     preference.items.push({
      title: name,
-     unit_price: price,
+     unit_price: parseInt(price),
      quantity: 1,
     })
      const response = await( mercadopago.preferences.create(preference));
      const preferenceId = response.body.id
+     preference = {
+      items: [],
+      back_urls:{
+          success: "http://localhost:3000/home",
+          failure: "http://localhost:3000/home",
+          pending: "http://localhost:3000/home",
+      },
+    };
      return ({preferenceId})
   } catch (error) {
-    return ("Compra cancelada")
+    return (`${error}`)
   }
 }
   

@@ -9,9 +9,10 @@ export default function Product({ids}) {
     console.log("compra front",ids);
     const obtenerPreference = useCallback(
         async() => {
+            console.log('ids',ids);
             const response = await(axios.post(`/pay`, ids))
             const res = await response.data
-            console.log(res);
+            console.log('res',res);
             if(res.preferenceId){
                 const script = document.createElement('script');
                 script.src = 'https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js';
@@ -26,7 +27,7 @@ export default function Product({ids}) {
                 }
                 form.appendChild(script);
             }
-        },[id, ids],
+        },[],
     )
     useEffect(() => {
         obtenerPreference()
