@@ -14,11 +14,11 @@ export const useFilter = () => {
         type: "",
     });
     function handlerFilter(event) {
-        setFilters({ ...filters,[event.target.name]: event.target.value });
+        setFilters(prevFilters => ({ ...prevFilters, [event.target.name]: event.target.value }));
         dispatch(
             filterAllClothes(filters)
         );
-        dispatch(setCurrent(1))
+        dispatch(setCurrent(1));
     }
     useEffect(() => {
         dispatch(filterAllClothes(filters))
