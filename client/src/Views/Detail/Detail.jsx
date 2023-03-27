@@ -35,7 +35,7 @@ const Detail = () => {
     onSubmit,
   } = useDetail(myProduct, id);
 
-  
+  {console.log(compra)}
   return (
     <div className={style.container}>
     
@@ -94,13 +94,14 @@ const Detail = () => {
 
         <div>
           
-         { (pagar) ? <button
+         {   (pagar) ? <button
             onClick={(e) => {
               onSubmit(e)
             }}
             className={style.botonComprar}
           >
             Comprar ahora
+           
           </button> : <MercadoPago ids= {[compra]} />} 
         </div>
 
