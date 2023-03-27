@@ -3,6 +3,7 @@ const {
 	getUsersData,
 	getUserByEmail,
 	postInCart,
+	deleteItem,
 } = require('../controllers/userControllers');
 
 let postUserHandler = async (req, res) => {
@@ -45,9 +46,7 @@ let getUserByEmailHandler = async (req, res) => {
 };
 
 let postCartItemHandler = async (req, res) => {
-	const { id } = req.params;
-
-	console.log('CLOTHE DEL HANDLES', req.body);
+	const {id} = req.params;
 
 	try {
 		const user = await postInCart(id, req.body);
@@ -60,9 +59,22 @@ let postCartItemHandler = async (req, res) => {
 	}
 };
 
+let deleteCartItemHandler = async (req, res) => {
+	const {userId, itemId} = req.params;
+
+	try {
+		const deletedItem = await deleteItem(userId, itemId);
+		res.status(200).json(deletedItem);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send('Error interno del servidor');
+	}
+};
+
 module.exports = {
 	postUserHandler,
 	getUserHandler,
 	getUserByEmailHandler,
 	postCartItemHandler,
+	deleteCartItemHandler,
 };
