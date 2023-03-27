@@ -3,9 +3,6 @@ import {Home} from "./Views/Home/Home";
 import Form from "./Views/Form/Form";
 import Detail from "./Views/Detail/Detail";
 import { NavBar }from "./Components/NavBar/NavBar";
-import { useDispatch } from "react-redux";
-import { getAllProducts, getProductsByName, getProductDetail } from "./Redux/ActionsGet";
-import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import LoadingView from "./Views/Landing/LandingPage";
 import {WhatsApp} from "./Components/WhatsApp/Whatsapp"
@@ -22,12 +19,7 @@ import UserProfile from './Authentication/ProfileScreen/UserProfile'
 function App() {
 
   const { pathname } = useLocation();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    getAllProducts(dispatch);
-    getProductsByName(dispatch);
-    getProductDetail(dispatch);
-  }, [dispatch]);
+
   return (
         <div className="App">
               {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
@@ -38,9 +30,9 @@ function App() {
               ) : null} */}
               <Routes>
                 <Route path="/" element={<LoadingView />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/detail/:id" element={<Detail />} />
-                <Route path="/form" element={<Form/>} />
+                <Route exact path="/home" element={<Home />} />
+                <Route exact path="/detail/:id" element={<Detail />} />
+                <Route exact path="/form" element={<Form/>} />
                 <Route exact path ="/user/profile" element={<UserProfile/>} />
                 <Route exact path="/cart" element={<Cart/>} />
 

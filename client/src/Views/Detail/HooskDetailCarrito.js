@@ -6,26 +6,37 @@ import {addCartProduct} from '../../Redux/actionCart';
 import {useAuth0} from '@auth0/auth0-react';
 
 export const useDetail = (myProduct, id) => {
-	const colores = myProduct
-			? myProduct.sizes?.flatMap((el) => el.colors[0].color)
-			: 'no colors';
-		const talla = myProduct
-			? myProduct.sizes?.flatMap((el) => el.size)
-			: 'no sizes found';
+	
 	const [compra, setCompra] = useState({
-
-	     	id: myProduct.id,
-			name: myProduct.name,
-			image: myProduct.image,
-			price: myProduct.price,
-			color: "",
-			size: "",
-			cantidad: 1,
+		id: id,
+		name: myProduct.name,
+		image: myProduct.image,
+		price: myProduct.price,
+		color: '',
+		size: '',
+		cantidad: 1,
 	});
+	
+	const colores = myProduct
+	? myProduct.sizes?.flatMap((el) => el.colors[0].color)
+	: 'no colors';
+	const talla = myProduct
+	? myProduct.sizes?.flatMap((el) => el.size)
+	: 'no sizes found';
+	const nuevoProducto = {
+		...compra,
+		id: myProduct.id,
+		name: myProduct.name,
+		image: myProduct.image,
+		price: parseInt(myProduct.price),
+		color: compra.color === '' ? `${colores}` : compra.color,
+		size: compra.size === '' ? `${talla}` : compra.size,
+		cantidad: compra.cantidad,
+	};
 
 	const dispatch = useDispatch();
 	const userSelector = useSelector((state) => state.user.theUser);
-	console.log('user', userSelector);
+
 	const {isAuthenticated} = useAuth0();
 
 	const saveLocal = (cart) => {
@@ -51,30 +62,30 @@ export const useDetail = (myProduct, id) => {
 	};
 
 	const buttonComprar = (e) => {
-        const colores = myProduct
-        ? myProduct.sizes?.flatMap((el) => el.colors[0].color)
-        : 'no colors';
-        const talla = myProduct
-        ? myProduct.sizes?.flatMap((el) => el.size)
-        : 'no sizes found';
-        const nuevoProducto = {
-            ...compra,
-            id: myProduct.id,
-            name: myProduct.name,
-            image: myProduct.image,
-            price: myProduct.price,
-            color: compra.color === '' ? colores[0] : compra.color,
-            size: compra.size === '' ? talla[0] : compra.size,
-            cantidad: compra.cantidad,
-        };
-        setCompra({
-            ...compra,
-            id: myProduct.id,
-            price: myProduct ? myProduct.price : 'error',
-        });
-        dispatch(putClothes(nuevoProducto));
-        alert('compra exitosa');
-    };
+		const colores = myProduct
+		? myProduct.sizes?.flatMap((el) => el.colors[0].color)
+		: 'no colors';
+		const talla = myProduct
+		? myProduct.sizes?.flatMap((el) => el.size)
+		: 'no sizes found';
+		const nuevoProducto = {
+			...compra,
+			id: myProduct.id,
+			name: myProduct.name,
+			image: myProduct.image,
+			price: myProduct.price,
+			color: compra.color === '' ? colores[0] : compra.color,
+			size: compra.size === '' ? talla[0] : compra.size,
+			cantidad: compra.cantidad,
+		};
+		setCompra({
+			...compra,
+			id: myProduct.id,
+			price: myProduct ? myProduct.price : 'error',
+		});
+		dispatch(putClothes(nuevoProducto));
+		alert('compra exitosa');
+	};
 
 	const buttonAgregarAlCarrito = (e) => {
 		const colores = myProduct
@@ -112,6 +123,7 @@ export const useDetail = (myProduct, id) => {
 		pagar,
 		compra,
 		buttonComprar,
+		nuevoProducto,
 		handlerDetail,
 		buttonAgregarAlCarrito,
 		onSubmit,
