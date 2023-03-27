@@ -38,7 +38,7 @@ export const useDetail = (myProduct, id) => {
 	const dispatch = useDispatch();
 	const userSelector = useSelector((state) => state.user.theUser);
 
-	const {isAuthenticated} = useAuth0();
+	const {isAuthenticated, loginWithRedirect} = useAuth0();
 
 	const saveLocal = (cart) => {
 		localStorage.setItem('cart', JSON.stringify(cart));
@@ -116,8 +116,16 @@ export const useDetail = (myProduct, id) => {
 
 	const [pagar, setPagar] = useState(true);
 	const onSubmit = async (e) => {
-		e.preventDefault();
-		setPagar(false);
+		try {
+			e.preventDefault();
+			if (userSelector.id) {
+				setPagar(false);
+			} else {
+				loginWithRedirect();
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return {
