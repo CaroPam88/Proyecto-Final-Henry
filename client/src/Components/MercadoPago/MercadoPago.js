@@ -27,7 +27,7 @@ export default function Product({ids}) {
                 }
                 form.appendChild(script);
             }
-        },[id, ids],
+        },[],
     )
     useEffect(() => {
         obtenerPreference()
