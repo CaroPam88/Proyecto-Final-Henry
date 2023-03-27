@@ -8,7 +8,7 @@ import {
 import { useEffect } from "react";
 import style from "./Detail.module.css";
 import { useDetail } from "./HooskDetailCarrito";
-import MercadoPago from "../../Components/MercadoPago/mercadoPago"
+import MercadoPago from "../../Components/MercadoPago/MercadoPago"
 const Detail = () => {
   const dispatch = useDispatch();
   //const id = props.match.params.id
@@ -36,7 +36,12 @@ const Detail = () => {
     onSubmit,
   } = useDetail(myProduct, id);
 
-
+  const stockSize = myProduct.sizes?.flatMap(el => el.colors?.filter(color => color.color === nuevoProducto.color));
+  let stock = 0;
+  // stock = stockSize.stockColors !== undefined ? stockSize.stockColor : stock;
+  
+  // console.log(stock);
+  console.log('stockSize',stockSize);
   return (
     <div className={style.container}>
 
@@ -53,7 +58,6 @@ const Detail = () => {
         <div className={style.detail}>
           {myProduct.sizes?.map((elem) => (
             <>
-              <Link>
                 <select
                   name='color'
                   className={style.selectColors}
@@ -66,7 +70,6 @@ const Detail = () => {
                     </option>
                   ))}
                 </select>
-              </Link>
               <select name="size" onChange={(e) => handlerDetail(e)}>
                 <option value={elem.size} className={style.size}>
                   {elem.size}
@@ -75,8 +78,6 @@ const Detail = () => {
             </>
           ))}
         </div>
-
-        <br />
         <label htmlFor="cantidad">Unidades</label>
         <select
           name="cantidad"
@@ -91,7 +92,7 @@ const Detail = () => {
           <option value="5">5 unidades</option>
           <option value="6">6 unidades</option>
         </select>
-
+        <span>{stock}</span>
         <div>
           
          { (pagar) ? <button

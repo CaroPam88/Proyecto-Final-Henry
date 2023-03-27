@@ -62,10 +62,8 @@ const Cart = () => {
 							<p>{item.color}</p>
 							<p>{item.size}</p>
 							<p>{item.cantidad}</p>
-							
 						</section>
-						
-				  ))
+				))
 				: canasta?.map((item, i) => (
 						<section key={i}>
 							<h3>{item.id}</h3>
