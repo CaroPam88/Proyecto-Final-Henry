@@ -53,7 +53,7 @@ const Cart = () => {
       <h1 className={style.h1}>Your Cart</h1>
       {cart.length
         ? cart.map((item, i) => (
-            <section key={i}>
+            
                <div className={style.itemContainer}>
               <div className={style.imgContainer}>
                 <img className={style.img} src={item.image} alt={item.name} />
@@ -71,7 +71,7 @@ const Cart = () => {
                 <p className={style.p}>Cantidad: {item.cantidad}</p>
               </div>
             </div>
-            </section>
+          
           ))
         : canasta?.map((item, i) => (
             <div className={style.itemContainer}>
