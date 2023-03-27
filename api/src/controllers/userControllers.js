@@ -1,4 +1,4 @@
-const {Clothes, Size, User} = require('../db');
+const {Clothes, Size, User, Op} = require('../db');
 const sendEmail = require('../Cofig/mailer');
 
 const createUser = async ({name, nickname, email, picture, admin}) => {
@@ -27,7 +27,7 @@ const getUsersData = async () => {
 
 const getUserByEmail = async (email) => {
 	let userEmail = await User.findOne({where: {email}});
-	console.log(userEmail);
+
 	if (userEmail) {
 		return userEmail;
 	} else {
@@ -35,18 +35,22 @@ const getUserByEmail = async (email) => {
 	}
 };
 
+const {v4: uuidv4} = require('uuid');
+
 const postInCart = async (id, clothe) => {
 	// Obtener el usuario correspondiente
 	const user = await User.findOne({where: {id}});
 
 	// Agregar el artículo al carrito del usuario
 	if (Array.isArray(clothe)) {
-        clothe.forEach((item) => {
-            user.cart.push(item);
-        });
-    } else {
-        user.cart.push(clothe);
-    }
+		clothe.forEach((item) => {
+			item.cartIndex = uuidv4();
+			user.cart.push(item);
+		});
+	} else {
+		clothe.cartIndex = uuidv4();
+		user.cart.push(clothe);
+	}
 
 	// Actualizar el registro del usuario en la base de datos
 	await User.update({cart: user.cart}, {where: {id}});
@@ -54,4 +58,31 @@ const postInCart = async (id, clothe) => {
 	return user;
 };
 
-module.exports = {createUser, getUsersData, getUserByEmail, postInCart};
+const deleteItem = async (userId, itemId) => {
+	console.log('ID_USER IN CONTROLLER', userId);
+	console.log('ID_ITEM IN CONTROLLER', itemId);
+
+	const user = await User.findOne({where: {id: userId}});
+
+	if (!user) {
+		throw new Error(
+			`No se pudo encontrar el usuario con ID ${userId} que contenga el artículo con ID ${itemId}`
+		);
+	}
+
+	console.log('USER', user);
+
+	const updatedUser = await user.update({
+		cart: user.cart.filter((item) => item.cartIndex !== itemId),
+	});
+
+	return updatedUser;
+};
+
+module.exports = {
+	createUser,
+	getUsersData,
+	getUserByEmail,
+	postInCart,
+	deleteItem,
+};
