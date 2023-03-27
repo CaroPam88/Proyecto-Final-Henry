@@ -6,6 +6,7 @@ import {addCartProduct} from '../../Redux/actionCart';
 import {useAuth0} from '@auth0/auth0-react';
 
 export const useDetail = (myProduct, id) => {
+	console.log("useDetail function called");
 	
 	const [compra, setCompra] = useState({
 		id: id,

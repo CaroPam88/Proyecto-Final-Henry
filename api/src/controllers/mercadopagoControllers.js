@@ -36,6 +36,14 @@ let payMercadoPago = async (ids) => {
     })
      const response = await( mercadopago.preferences.create(preference));
      const preferenceId = response.body.id
+     preference = {
+      items: [],
+      back_urls:{
+          success: "http://localhost:3000/home",
+          failure: "http://localhost:3000/home",
+          pending: "http://localhost:3000/home",
+      },
+    };
      return ({preferenceId})
   } catch (error) {
     return (`${error}`)
