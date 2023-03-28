@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="row" >
         <div className="col-lg-2 col-sm-6">
           <div className="widget widget-about">
-            <img src={logo} alt="" />
+            <img src={logo} alt="" className={style.img}/>
             <p className={style.p}>DressMe es un hermoso PF y tienda online de ropa, vestite acá!</p>
           </div>
         </div>
