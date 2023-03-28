@@ -8,6 +8,10 @@ import {useAuth0} from '@auth0/auth0-react';
 export const useDetail = (myProduct, id) => {
 	console.log("useDetail function called");
 	
+	const [viewInput, setViewInput] = useState(false);
+	const [viewInputValue, setViewInputValue] = useState({
+		cantidad: 7,
+	});
 	const [compra, setCompra] = useState({
 		id: id,
 		name: myProduct.name,
@@ -32,7 +36,7 @@ export const useDetail = (myProduct, id) => {
 		price: parseInt(myProduct.price),
 		color: compra.color === '' ? `${colores}` : compra.color,
 		size: compra.size === '' ? `${talla}` : compra.size,
-		cantidad: compra.cantidad,
+		cantidad: compra.cantidad > 0 ? compra.cantidad : 1,
 	};
 
 	const dispatch = useDispatch();
@@ -47,19 +51,29 @@ export const useDetail = (myProduct, id) => {
 	if (JSON.parse(localStorage.getItem('cart'))) {
 		cartLocal = JSON.parse(localStorage.getItem('cart'));
 	}
-
+	const handlerSetViewValue = (e) => {
+		const value = e.target.value;
+		setViewInputValue({cantidad: value});
+	};
 	const handlerDetail = (e) => {
 		const target = e.target.name;
 		const value = e.target.value;
+		if(value === 'otherValue'){
+			setCompra({
+				...compra,
+				cantidad: 7,
+			});
+			setViewInput(true)
+		};
 		target === 'cantidad'
 			? setCompra({
 					...compra,
 					cantidad: Number(e.target.value),
-			  })
+			})
 			: setCompra({
 					...compra,
 					[target]: value,
-			  });
+			});
 	};
 
 	const buttonComprar = (e) => {
@@ -77,7 +91,7 @@ export const useDetail = (myProduct, id) => {
 			price: myProduct.price,
 			color: compra.color === '' ? colores[0] : compra.color,
 			size: compra.size === '' ? talla[0] : compra.size,
-			cantidad: compra.cantidad,
+			cantidad: compra.cantidad > 0 ? compra.cantidad : 1,
 		};
 		setCompra({
 			...compra,
@@ -103,7 +117,7 @@ export const useDetail = (myProduct, id) => {
 			price: myProduct.price,
 			color: compra.color === '' ? colores[0] : compra.color,
 			size: compra.size === '' ? talla[0] : compra.size,
-			cantidad: compra.cantidad,
+			cantidad: compra.cantidad > 0 ? compra.cantidad : 1,
 		};
 
 		dispatch(addCartProduct(nuevoProducto)); // dispatch addToCart action creator
@@ -131,6 +145,11 @@ export const useDetail = (myProduct, id) => {
 	return {
 		pagar,
 		compra,
+		viewInput,
+		viewInputValue,
+		setViewInput,
+		setViewInputValue,
+		handlerSetViewValue,
 		buttonComprar,
 		nuevoProducto,
 		handlerDetail,
