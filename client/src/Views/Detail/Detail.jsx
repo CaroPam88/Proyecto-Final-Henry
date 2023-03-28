@@ -43,10 +43,6 @@ const Detail = () => {
   stockSize = myProduct.sizes?.flatMap(el => el.colors?.filter(color => color.color === nuevoProducto.color));
   let stock = stockSize?.map(el => el.stockColors);
   
-  console.log('stock',stock);
-  console.log('stockSize',stockSize);
-
-  console.log(nuevoProducto);
   return (
     <div className={style.container}>
 
