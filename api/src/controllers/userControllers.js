@@ -59,9 +59,6 @@ const postInCart = async (id, clothe) => {
 };
 
 const deleteItem = async (userId, itemId) => {
-	console.log('ID_USER IN CONTROLLER', userId);
-	console.log('ID_ITEM IN CONTROLLER', itemId);
-
 	const user = await User.findOne({where: {id: userId}});
 
 	if (!user) {
@@ -70,13 +67,40 @@ const deleteItem = async (userId, itemId) => {
 		);
 	}
 
-	console.log('USER', user);
-
 	const updatedUser = await user.update({
 		cart: user.cart.filter((item) => item.cartIndex !== itemId),
 	});
 
 	return updatedUser;
+};
+
+let putItem = async (userId, cartIndex, newCantidad) => {
+	const user = await User.findByPk(userId);
+	const cart = user.cart;
+
+	const productIndex = await cart.findIndex(
+		(item) => item.cartIndex === cartIndex
+	);
+
+	if (productIndex === -1) {
+		throw new Error('Producto no encontrado en el carrito.');
+	}
+
+	// Creo una nueva matriz de carrito con la cantidad actualizada
+	const updatedCart = cart.map((item, index) => {
+		if (index === productIndex) {
+			return {
+				...item,
+				cantidad: newCantidad,
+			};
+		} else {
+			return item;
+		}
+	});
+
+	await user.update({cart: updatedCart});
+
+	return user;
 };
 
 module.exports = {
@@ -85,4 +109,5 @@ module.exports = {
 	getUserByEmail,
 	postInCart,
 	deleteItem,
+	putItem,
 };
