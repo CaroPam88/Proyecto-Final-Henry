@@ -28,8 +28,10 @@ const Cart = () => {
 	const [pagar, setPagar] = useState(true);
 
 	let handleDelete = (index) => {
-		dispatch(deleteTheItem(index));
+		dispatch(deleteTheItem(index));    
 	};
+  
+
 
 	const onSubmit = async (e) => {
 		try {
@@ -96,7 +98,8 @@ const Cart = () => {
 							</div>
 							<div className={style.descriptionContainer}>
 								<div className={style.buttonContainer}>
-									<button className={style.botonEliminar}>
+									<button className={style.botonEliminar}
+                  >
 										X
 									</button>
 								</div>
