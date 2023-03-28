@@ -17,8 +17,9 @@
   }
   
   .logo {
-    max-width: 200px; /* adjust the size of your logo */
-    animation: blink 1s infinite; /* animation for the logo */
+    width: 100%; /* adjust the size of your logo */
+    height: auto;
+    animation: blink 3s infinite; /* animation for the logo */
   }
   
   .Spinner {
@@ -34,13 +35,25 @@
   /* Blink animation for the logo */
   @keyframes blink {
     0% {
-      opacity: 0.8;
+      opacity: 0.2;
+      transition: 0.36s;
     }
-    20% {
+    25% {
+      opacity: 0.6;
+      transition: 0.36s;
+    }
+    50% {
       opacity: 1;
+      transform: scale(1.05);
+      transition: 0.36s;
+    }
+    75% {
+      opacity: 0.6;
+      transition: 0.36s;
     }
     100% {
       opacity: 0.2;
+      transition: 0.36s;
     }
   }
   

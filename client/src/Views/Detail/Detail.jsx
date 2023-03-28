@@ -8,11 +8,9 @@ import {
 import { useEffect } from "react";
 import style from "./Detail.module.css";
 import { useDetail } from "./HooskDetailCarrito";
-import MercadoPago from "../../Components/MercadoPago/mercadoPago"
+import MercadoPago from "../../Components/MercadoPago/MercadoPago"
 const Detail = () => {
   const dispatch = useDispatch();
-  //const id = props.match.params.id
-  //const id = 1
   const { id } = useParams();
 
   useEffect(() => {
@@ -24,11 +22,16 @@ const Detail = () => {
 
 
 
-  const myProduct = useSelector((state) => state.products.productDetail);
+  const myProduct = useSelector((state) => state.products.productDetail)
 
   const {
     pagar,
     compra,
+    viewInput,
+    viewInputValue,
+		setViewInput,
+		setViewInputValue,
+    handlerSetViewValue,
     handlerDetail,
     buttonComprar,
     nuevoProducto,
@@ -36,6 +39,10 @@ const Detail = () => {
     onSubmit,
   } = useDetail(myProduct, id);
 
+  let stockSize = [];
+  stockSize = myProduct.sizes?.flatMap(el => el.colors?.filter(color => color.color === nuevoProducto.color));
+  let stock = stockSize?.map(el => el.stockColors);
+  
   return (
     <div className={style.container}>
 
@@ -52,7 +59,6 @@ const Detail = () => {
         <div className={style.detail}>
           {myProduct.sizes?.map((elem) => (
             <>
-              <Link>
                 <select
                   name='color'
                   className={style.selectColors}
@@ -65,7 +71,6 @@ const Detail = () => {
                     </option>
                   ))}
                 </select>
-              </Link>
               <select name="size" onChange={(e) => handlerDetail(e)}>
                 <option value={elem.size} className={style.size}>
                   {elem.size}
@@ -74,38 +79,60 @@ const Detail = () => {
             </>
           ))}
         </div>
-
-        <br />
-        <label htmlFor="cantidad">Unidades</label>
-        <select
-          name="cantidad"
-          className={style.cantidad}
-          id="cantidad"
-          onChange={(e) => handlerDetail(e)}
-        >
-          <option value="1">1 unidad</option>
-          <option value="2">2 unidades</option>
-          <option value="3">3 unidades</option>
-          <option value="4">4 unidades</option>
-          <option value="5">5 unidades</option>
-          <option value="6">6 unidades</option>
-        </select>
+        <label htmlFor="cantidad">units: </label>
+        {stock && stock[0] 
+        ? stock[0] > 6 
+        ? <select name="cantidad" className={style.cantidad} id="cantidad" onChange={(e) => {
+          setViewInput(false);
+          handlerDetail(e)
+          }}>
+            <option value="1">1 unidad</option>
+            <option value="2">2 unidades</option>
+            <option value="3">3 unidades</option>
+            <option value="4">4 unidades</option>
+            <option value="5">5 unidades</option>
+            <option value="6">6 unidades</option>
+            <option value="otherValue">Other value...</option>
+          </select>
+        : <select name="cantidad" className={style.cantidad} id="cantidad" onChange={(e) => handlerDetail(e)}>
+            {[...Array(stock[0]+1).keys()].map((value, i) => (
+              <option key={i} value={value}>{value}</option>
+            ))}
+          </select>
+        : <label>No stock for selected color</label>
+        }
+        {viewInput && stock && stock[0]
+        ? <input type='number' name="cantidad"  min={7} max={stock[0]} value={viewInputValue.cantidad} placeholder='Insert the value' onChange={(e) => {
+          handlerSetViewValue(e);
+          handlerDetail(e);
+        }} />
+        :<div></div>
+        }
+        {stock && stock[0] 
+        ? <p>Stock: {stock}</p> 
+        : <div></div> 
+        }
 
         <div>
-          
-         {   (pagar) ? <button
+          {stock && stock[0] ? 
+            (pagar) ? <button
             onClick={(e) => {
               onSubmit(e)
             }}
             className={style.botonComprar}
           >
             Comprar ahora
-           
-          </button> : <MercadoPago ids= {[nuevoProducto]} />} 
+          </button> : <MercadoPago ids= {[nuevoProducto]} />
+          : <div></div>
+          } 
         </div>
 
         <div>
-          <button className={style.botonCarrito} onClick={(e) => buttonAgregarAlCarrito(e)} >Agregar al carrito</button>
+        {stock && stock[0] ? 
+          <button className={style.botonCarrito} onClick={(e) => buttonAgregarAlCarrito(e)} >Add to cart</button>
+        : <button className={style.botonCarrito} >You can't buy it</button>
+        
+        }
         </div>
 
       </div>

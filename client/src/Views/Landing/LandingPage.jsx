@@ -19,7 +19,7 @@ const Landing = () => {
     const timer = setTimeout(() => {
       setIsLoading(false);
       window.location.href = '/home';
-    }, 2000); // Change the value to adjust the amount of time to show the loading view
+    }, 3500); // Change the value to adjust the amount of time to show the loading view
 
     return () => clearTimeout(timer);
   }, []);
@@ -28,7 +28,7 @@ const Landing = () => {
   return (
     <section className={style.conteiner}>
       <div className={style.loadingView}>
-        <img src={logo} alt="" className={logo} />
+        <img src={logo} alt="" className={style.logo} />
         <div className={style.Spinner}></div>
       </div>
     </section>
