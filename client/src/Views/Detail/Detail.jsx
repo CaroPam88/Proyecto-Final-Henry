@@ -11,8 +11,6 @@ import { useDetail } from "./HooskDetailCarrito";
 import MercadoPago from "../../Components/MercadoPago/MercadoPago"
 const Detail = () => {
   const dispatch = useDispatch();
-  //const id = props.match.params.id
-  //const id = 1
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,6 +27,11 @@ const Detail = () => {
   const {
     pagar,
     compra,
+    viewInput,
+    viewInputValue,
+		setViewInput,
+		setViewInputValue,
+    handlerSetViewValue,
     handlerDetail,
     buttonComprar,
     nuevoProducto,
@@ -43,6 +46,7 @@ const Detail = () => {
   console.log('stock',stock);
   console.log('stockSize',stockSize);
 
+  console.log(nuevoProducto);
   return (
     <div className={style.container}>
 
@@ -82,13 +86,17 @@ const Detail = () => {
         <label htmlFor="cantidad">units: </label>
         {stock && stock[0] 
         ? stock[0] > 6 
-        ? <select name="cantidad" className={style.cantidad} id="cantidad" onChange={(e) => handlerDetail(e)}>
+        ? <select name="cantidad" className={style.cantidad} id="cantidad" onChange={(e) => {
+          setViewInput(false);
+          handlerDetail(e)
+          }}>
             <option value="1">1 unidad</option>
             <option value="2">2 unidades</option>
             <option value="3">3 unidades</option>
             <option value="4">4 unidades</option>
             <option value="5">5 unidades</option>
             <option value="6">6 unidades</option>
+            <option value="otherValue">Other value...</option>
           </select>
         : <select name="cantidad" className={style.cantidad} id="cantidad" onChange={(e) => handlerDetail(e)}>
             {[...Array(stock[0]+1).keys()].map((value, i) => (
@@ -96,6 +104,13 @@ const Detail = () => {
             ))}
           </select>
         : <label>No stock for selected color</label>
+        }
+        {viewInput && stock && stock[0]
+        ? <input type='number' name="cantidad"  min={7} max={stock[0]} value={viewInputValue.cantidad} placeholder='Insert the value' onChange={(e) => {
+          handlerSetViewValue(e);
+          handlerDetail(e);
+        }} />
+        :<div></div>
         }
         {stock && stock[0] 
         ? <p>Stock: {stock}</p> 
