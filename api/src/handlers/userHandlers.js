@@ -74,11 +74,10 @@ let deleteCartItemHandler = async (req, res) => {
 
 let putCartItemHandler = async (req, res) => {
 	const {userId, cartIndex} = req.params;
-	const {cantidad} = req.body;
+	let {cantidad} = req.body;
 
 	try {
 		let newCart = await putItem(userId, cartIndex, cantidad);
-		console.log('NEW CART', newCart);
 
 		res.status(200).json(newCart);
 	} catch (error) {
