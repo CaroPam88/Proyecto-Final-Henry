@@ -103,6 +103,15 @@ let putItem = async (userId, cartIndex, newCantidad) => {
 	return user;
 };
 
+async function moveCartToBuy(userId) {
+	const user = await User.findOne({where: {id: userId}});
+
+	user.buy.push(...user.cart);
+	user.cart = [];
+
+	await user.save();
+}
+
 module.exports = {
 	createUser,
 	getUsersData,
@@ -110,4 +119,5 @@ module.exports = {
 	postInCart,
 	deleteItem,
 	putItem,
+	moveCartToBuy,
 };
