@@ -5,8 +5,9 @@ const {
 	getIdData,
 	getGenderData,
 	clothesUpdate,
+	generalUpdate,
 } = require('../controllers/clothesControllers');
-const { payMercadoPago } = require('../controllers/mercadopagoControllers')
+const {payMercadoPago} = require('../controllers/mercadopagoControllers');
 
 let getProductHandler = async (req, res) => {
 	let clothes = req.query.name;
@@ -84,42 +85,60 @@ let getProductByGenderHandler = async (req, res) => {
 	}
 };
 
-
 ////////////////////////////////////////
 
-
 let putProductHandler = async (req, res) => {
-	
-    try {
-		let ids = req.body
-    let {id} = req.params
-        const  payClothes = await clothesUpdate(ids, id) 
-		
-        res.status(201).json(payClothes);
-    } catch (error) {
-		console.log(error.message);
-        res.status(400).json({ error: error.message });
-    }
-};
+	try {
+		let ids = req.body;
+		let {id} = req.params;
+		const payClothes = await clothesUpdate(ids, id);
 
+		res.status(201).json(payClothes);
+	} catch (error) {
+		console.log(error.message);
+		res.status(400).json({error: error.message});
+	}
+};
 
 ///////////////////////////////////////
 
 let postMercadoPago = async (req, res) => {
 	try {
-		let ids = req.body
-		let id = ids.id
-		console.log("back",ids);
-		const  payPago = await payMercadoPago(ids)
-		await clothesUpdate(ids, id)
-		res.send(payPago)
+		let ids = req.body;
+		let id = ids.id;
+		console.log('back', ids);
+		const payPago = await payMercadoPago(ids);
+		await clothesUpdate(ids, id);
+		res.send(payPago);
 	} catch (error) {
 		console.log(error.message);
-		res.status(405).json({error:error.message})
-		
+		res.status(405).json({error: error.message});
 	}
-}
+};
 
+let UpdateClothes = async (req, res) => {
+	let {idItem} = req.params;
+	const {name, price, type, image, sex, size, colors} = req.body;
+
+	console.log(req.body);
+
+	try {
+		let clothe = await generalUpdate(
+			idItem,
+			name,
+			price,
+			type,
+			image,
+			sex,
+			size,
+			colors
+		);
+		res.status(200).json(clothe);
+	} catch (error) {
+		console.log(error);
+		res.status(404).json({error: error.message});
+	}
+};
 
 module.exports = {
 	getProductHandler,
@@ -128,4 +147,19 @@ module.exports = {
 	putProductHandler,
 	getProductByGenderHandler,
 	postMercadoPago,
+	UpdateClothes,
 };
+
+// await Clothes.update(
+// 	{
+// 		stockGeneral: req.body.stockGeneral,
+// 		stockSize: req.body.stockSize,
+// 		size: req.body.size,
+// 		colors: req.body.colors,
+// 	},
+// 	{
+// 		where: {
+// 			id: idItem,
+// 		},
+// 	}
+// );
