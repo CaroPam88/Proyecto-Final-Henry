@@ -5,7 +5,8 @@
   height: 100vh;
   align-items: center;
   justify-content: space-around;
-  padding: 3%;
+  margin: 0;
+  padding: 0;
 }
 .loadingView {
     display: flex;
@@ -14,6 +15,8 @@
     align-items: center;
     width: 90vw;
     background: black; /* background color for the loading view */
+    margin: 0;
+    padding: 0;
   }
   
   .logo {

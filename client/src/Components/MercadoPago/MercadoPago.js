@@ -1,11 +1,15 @@
 import React, { useEffect, useCallback} from 'react';
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import axios from "axios";
+import { addCurrentPurechase } from '../../Redux/actionCart';
+import { useDispatch } from 'react-redux';
 
 const FORM_ID = 'payment-form';
 
 export default function Product({ids}) {
-    const { id } = useParams();
+    // const { id } = useParams();
+    const dispatch = useDispatch();
+    dispatch(addCurrentPurechase(ids))
     console.log("compra front",ids);
     const obtenerPreference = useCallback(
         async() => {

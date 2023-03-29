@@ -59,9 +59,9 @@ const Cart = () => {
 	return (
 		<section clasName={style.section}>
 			{theUser.id ? (
-				<span>You are logged</span>
+				<span className={style.logged}>You are logged</span>
 			) : (
-				<span>You aren't logged</span>
+				<span className={style.noLogged}>You aren't logged</span>
 			)}
 			<h1 className={style.h1}>Your Cart</h1>
 			{cart.length

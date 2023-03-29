@@ -5,6 +5,7 @@ const initialState = {
 	localStorageCart: [],
 	cartTotalAmount: 0,
 	localCartTotalAmount: 0,
+	currentPurchase: [],
 };
 
 const cartSlice = createSlice({
@@ -39,8 +40,13 @@ const cartSlice = createSlice({
 			state.localStorageCart = action.payload;
 			state.localCartTotalAmount = action.payload.length;
 		},
+		addToCurrentPurechase: (state, action) => {
+			state.currentPurchase = [...action.payload];
+		},
+		clearToCurrentPurechase: (state, action) => {
+			state.currentPurchase = action.payload;
+		},
 	},
 });
-export const { addToCart, addToLocalCart, getToCart, getToLocalCart, clearCart, clearLocalCart, filterLocalCart } =
-	cartSlice.actions;
+export const { addToCart, addToLocalCart, addToCurrentPurechase, getToCart, getToLocalCart, clearCart, clearLocalCart, clearToCurrentPurechase, filterLocalCart } = cartSlice.actions;
 export default cartSlice.reducer;
