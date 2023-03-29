@@ -45,7 +45,6 @@ const Detail = () => {
   stockSize = myProduct.sizes?.flatMap(el => el.colors?.filter(color => color.color === nuevoProducto.color));
   let stock = stockSize?.map(el => el.stockColors);
 
-
 return (
   <div className={style.container}>
 <div className={style.detail}>
@@ -115,7 +114,6 @@ return (
       ? <p className={style.p}>Stock: {stock}</p> 
       : <div></div> 
       }
-
       <div>
         {stock && stock[0] ? 
           (pagar) ? <button

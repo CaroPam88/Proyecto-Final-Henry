@@ -1,7 +1,11 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCart} from '../../Redux/actionCart';
-import {getUserByEmail, deleteTheItem} from '../../Redux/actionUser';
+import {
+	getUserByEmail,
+	deleteTheItem,
+	changeCantInTheItem,
+} from '../../Redux/actionUser';
 import {useAuth0} from '@auth0/auth0-react';
 import style from './Cart.module.css';
 import MercadoPago from '../../Components/MercadoPago/MercadoPago';
@@ -32,6 +36,11 @@ const Cart = () => {
 	};
   
 
+
+	const handleChangeCant = (item, change) => {
+		let obj = {cantidad: item.cantidad + change};
+		dispatch(changeCantInTheItem(item.cartIndex, obj));
+	};
 
 	const onSubmit = async (e) => {
 		try {
@@ -82,7 +91,24 @@ const Cart = () => {
 								<p className={style.p}>Color: {item.color}</p>
 								<p className={style.p}>Talle: {item.size}</p>
 								<p className={style.p}>
-									Cantidad: {item.cantidad}
+									Cantidad:
+									<button
+										className={style.cantButton}
+										onClick={() =>
+											handleChangeCant(item, -1)
+										}
+									>
+										-
+									</button>
+									{item.cantidad}
+									<button
+										className={style.cantButton}
+										onClick={() =>
+											handleChangeCant(item, 1)
+										}
+									>
+										+
+									</button>
 								</p>
 							</div>
 						</div>

@@ -4,6 +4,7 @@ import {
 	postCar,
 	clearUser,
 	deleteItem,
+	changeCantItem,
 } from './userSlice';
 import axios from 'axios';
 
@@ -25,7 +26,6 @@ const addProductUser = (elemento) => {
 				const response = (
 					await axios.post(`/user/cart/${id}`, elemento)
 				).data;
-				console.log(elemento);
 				return dispatch(postCar(response));
 			}
 		} catch (error) {
@@ -64,10 +64,26 @@ const deleteTheItem = (idItem) => {
 	};
 };
 
+const changeCantInTheItem = (idItem, cantidad) => {
+	return async (dispatch, getState) => {
+		try {
+			const {id} = getState().user.theUser;
+			// const {idItem} = getState().cart.cart;
+			const response = (
+				await axios.put(`/user/cart/${id}/${idItem}`, cantidad)
+			).data;
+			return dispatch(changeCantItem(response));
+		} catch (error) {
+			alert(`${error}: error al cambiar la cantidad`);
+		}
+	};
+};
+
 export {
 	createUser,
 	getUserByEmail,
 	addProductUser,
 	clearTheUser,
 	deleteTheItem,
+	changeCantInTheItem,
 };

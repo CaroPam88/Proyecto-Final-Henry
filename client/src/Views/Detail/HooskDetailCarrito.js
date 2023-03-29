@@ -6,7 +6,6 @@ import {addCartProduct} from '../../Redux/actionCart';
 import {useAuth0} from '@auth0/auth0-react';
 
 export const useDetail = (myProduct, id) => {
-	console.log("useDetail function called");
 	
 	const [viewInput, setViewInput] = useState(false);
 	const [viewInputValue, setViewInputValue] = useState({
@@ -98,7 +97,7 @@ export const useDetail = (myProduct, id) => {
 			id: myProduct.id,
 			price: myProduct ? myProduct.price : 'error',
 		});
-		dispatch(putClothes(nuevoProducto));
+		// dispatch(putClothes(nuevoProducto));
 		alert('compra exitosa');
 	};
 
