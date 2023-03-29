@@ -6,6 +6,7 @@ const {
 	putProductHandler,
 	getProductByGenderHandler,
 	postMercadoPago,
+	UpdateClothes,
 } = require('../handlers/clothesHandlers');
 
 const clothesRouter = Router();
@@ -23,13 +24,13 @@ clothesRouter.get('/:id', getProductByIdHandler);
 clothesRouter.post('/', postProductHandler);
 
 //RUTA PARA ACTUALIZAR LA PRENDA (ESENCIAL PARA EL MANEJO DE STOCK)
-clothesRouter.put("/:id", putProductHandler);
+clothesRouter.put('/:id', putProductHandler);
+
+//RUTA PARA MODIFICAR CUALQUIER PROPIEDAD DE LA PRENDE( SOLO LO PUEDE HACER EL USUARIO ADMIN)
+clothesRouter.put('/admin/:idItem', UpdateClothes);
 
 //RUTAS PARA MERCADO PAGO
-
-
 
 //Faltando rutas nuevas segun el avance del proyecto
 
 module.exports = clothesRouter;
-
