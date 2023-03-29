@@ -1,4 +1,4 @@
-import { addToCart, addToLocalCart, getToCart, getToLocalCart, clearCart, clearLocalCart, filterLocalCart } from './cartAppSlice';
+import { addToCart, addToLocalCart, addToCurrentPurechase, getToCart, getToLocalCart, clearCart, clearLocalCart, clearToCurrentPurechase, filterLocalCart } from './cartAppSlice';
 
 //===================================================BD CART===================================================\\
 const addCartProduct = (product) => {
@@ -39,5 +39,20 @@ const clearLocalStorageCart = () => {
 		return dispatch(clearLocalCart(defaultCart))
 	}
 };
+//==============================================CURRENT PURECHASE==============================================\\
+//Agrega el array al estado global del slice de cartAppSlice, en el apartado de currentPurechase, espera un array.
+const addCurrentPurechase = (arr) => {
+	return (dispatch) => {
+		dispatch(addToCurrentPurechase(arr));
+	}
+};
+//Limpia el estado globar currentPurechase del slice cartAppSlice, igualandolo a un array vacio.
+const clearCurrentPurechase = () => {
+	return (dispatch) => {
+		const defaultPurechase = [];
+		return dispatch(clearToCurrentPurechase(defaultPurechase))
+	}
+};
 
-export {addCartProduct, getCart, addLocalCart, getLocalCart, clearLocalStorageCart, deleteLocalCartItem};
+
+export {addCartProduct, getCart, addLocalCart, getLocalCart, clearLocalStorageCart, deleteLocalCartItem, addCurrentPurechase, clearCurrentPurechase};
