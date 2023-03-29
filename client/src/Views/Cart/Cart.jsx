@@ -1,11 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCart} from '../../Redux/actionCart';
-import {
-	getUserByEmail,
-	deleteTheItem,
-	changeCantInTheItem,
-} from '../../Redux/actionUser';
+import { getUserByEmail, deleteTheItem, changeCantInTheItem } from '../../Redux/actionUser';
 import {useAuth0} from '@auth0/auth0-react';
 import style from './Cart.module.css';
 import MercadoPago from '../../Components/MercadoPago/MercadoPago';
@@ -13,17 +9,20 @@ import MercadoPago from '../../Components/MercadoPago/MercadoPago';
 const Cart = () => {
 	const dispatch = useDispatch();
 
-	const {user, loginWithRedirect} = useAuth0();
+	const {loginWithRedirect} = useAuth0();
 	const theUser = useSelector((state) => state.user.theUser);
 
-	let cart = useSelector((state) =>
-		state.cart.cartItems ? state.cart.cartItems : 'vacio'
-	);
-	useEffect(() => {
+	let cart = useSelector((state) => state.cart.cartItems ? state.cart.cartItems : []);
+
+	const fetchCart = () => {
 		if (theUser.id) {
 			dispatch(getUserByEmail()).then(() => dispatch(getCart()));
 		}
-	}, [user, cart]);
+	};
+	
+	useEffect(() => {
+		fetchCart()
+	}, []);
 
 	cart = cart === undefined ? [] : cart;
 
@@ -32,9 +31,8 @@ const Cart = () => {
 	const [pagar, setPagar] = useState(true);
 
 	let handleDelete = (index) => {
-		dispatch(deleteTheItem(index));    
+		dispatch(deleteTheItem(index)).then(() => fetchCart());
 	};
-  
 
 
 	const handleChangeCant = (item, change) => {
@@ -112,7 +110,7 @@ const Cart = () => {
 								</p>
 							</div>
 						</div>
-				  ))
+					))
 				: canasta?.map((item, i) => (
 						<div className={style.itemContainer}>
 							<div className={style.imgContainer}>
@@ -124,8 +122,7 @@ const Cart = () => {
 							</div>
 							<div className={style.descriptionContainer}>
 								<div className={style.buttonContainer}>
-									<button className={style.botonEliminar}
-                  >
+									<button className={style.botonEliminar}>
 										X
 									</button>
 								</div>
@@ -140,7 +137,7 @@ const Cart = () => {
 								</p>
 							</div>
 						</div>
-				  ))}
+					))}
 			{pagar ? (
 				<button
 					onClick={(e) => {
