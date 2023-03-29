@@ -85,7 +85,7 @@ function MyComponent() {
   <GoogleMap
    mapContainerStyle={containerStyle}
    center={center}
-   zoom={15}
+   zoom={14}
    onLoad={map => {
 
     setMap(map);
