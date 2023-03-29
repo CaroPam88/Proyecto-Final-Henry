@@ -16,6 +16,11 @@ const position = {
   lng: -58.37479336006881,
 }
 
+const position2 = {
+   lat: -34.60366820600605,
+   lng: -58.381527515343535,
+}
+
 const divStyle = {
   background: `white`,
  
@@ -28,7 +33,43 @@ const onLoad = infoWindow => {
 
 
 function MyComponent() {
-  const [selectedMarker, setSelectedMarker] = useState(null);
+ const [selectedMarker, setSelectedMarker] = useState(null);
+ const [markers, setMarkers] = useState([
+  {
+    position: {
+      lat: -34.599136724205856,
+      lng: -58.37479336006881
+    },
+    info: {
+      name: "DressMe Principal",
+      address: "Av. Córdoba 550, CABA, Argentina",
+      postal:"C1054"
+    }
+  },
+  {
+    position: {
+      lat: -34.60366820600605,
+      lng: -58.381527515343535
+    },
+    info: {
+      name: "DressMe Corrientes",
+      address: "Av. Corrientes 400, CABA, Argentina",
+      postal:"C1043"
+    }
+  },
+  {
+    position: {
+      lat: -34.604022042476845,
+      lng: -58.38626321471586
+    },
+    info: {
+      name: "DressMe Florida",
+      address: "Florida 100, CABA, Argentina",
+      postal:"C1005AAB"
+    }
+  }
+]);
+
  const { isLoaded } = useJsApiLoader({
   id: 'google-map-script',
   googleMapsApiKey: "AIzaSyBFT0EzQ-RoQBWnUxtyTS53uhgGjqULgcY"
@@ -52,27 +93,28 @@ function MyComponent() {
   onUnmount={onUnmount}
   >
    { /* Child components, such as markers, info windows, etc. */}
-   <Marker
-      position={position}
-      onClick={() => setSelectedMarker(position)}
-    />
-    {selectedMarker && (
-      <InfoWindow
-        position={selectedMarker}
-        onCloseClick={() => setSelectedMarker(null)}
-        onLoad={infoWindow => console.log('infoWindow: ', infoWindow)}
-      >
-        <div style={divStyle}>
-          <h6>DressMe</h6>
-          <p>Av. Córdoba 550</p>
-          <p>C1054 CABA</p>
-          <p>Argentina</p>
-        </div>
-      </InfoWindow>
-    )}
-   <></>
-  </GoogleMap>
- ) : <></>;
+   {markers.map((marker, index) => (
+        <Marker
+          key={index}
+          position={marker.position}
+          onClick={() => setSelectedMarker(index)}
+        />
+      ))}
+      {selectedMarker !== null && (
+        <InfoWindow
+          position={markers[selectedMarker].position}
+          onCloseClick={() => setSelectedMarker(null)}
+        >
+          <div style={divStyle}>
+            <h6>{markers[selectedMarker].info.name}</h6>
+            <p>{markers[selectedMarker].info.address}</p>
+            <p>{markers[selectedMarker].info.postal}</p>
+          </div>
+        </InfoWindow>
+      )}
+    </GoogleMap>
+  ) : <></>;
 }
+
 
 export default React.memo(MyComponent);
