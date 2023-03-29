@@ -114,7 +114,7 @@ const Detail = () => {
         }
 
         <div>
-          {stock && stock[0] ? 
+          {
             (pagar) ? <button
             onClick={(e) => {
               onSubmit(e)
@@ -123,7 +123,7 @@ const Detail = () => {
           >
             Comprar ahora
           </button> : <MercadoPago ids= {[nuevoProducto]} />
-          : <div></div>
+        
           } 
         </div>
 

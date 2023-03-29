@@ -97,7 +97,7 @@ export const useDetail = (myProduct, id) => {
 			id: myProduct.id,
 			price: myProduct ? myProduct.price : 'error',
 		});
-		dispatch(putClothes(nuevoProducto));
+		// dispatch(putClothes(nuevoProducto));
 		alert('compra exitosa');
 	};
 
