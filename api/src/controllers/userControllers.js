@@ -103,6 +103,15 @@ let putItem = async (userId, cartIndex, newCantidad) => {
 	return user;
 };
 
+const deleteTheUser = async (userId) => {
+	await User.destroy({
+		where: {id: userId},
+	});
+
+	let user = await User.findAll();
+	return user;
+};
+
 async function moveCartToBuy(userId) {
 	const user = await User.findOne({where: {id: userId}});
 
@@ -120,4 +129,5 @@ module.exports = {
 	deleteItem,
 	putItem,
 	moveCartToBuy,
+	deleteTheUser,
 };
