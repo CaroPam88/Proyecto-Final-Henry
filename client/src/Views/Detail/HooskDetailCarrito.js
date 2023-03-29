@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import {putClothes} from '../../Redux/ActionsGet';
 import {addProductUser} from '../../Redux/actionUser';
-import {addCartProduct} from '../../Redux/actionCart';
+import {addCartProduct, addLocalCart} from '../../Redux/actionCart';
 import {useAuth0} from '@auth0/auth0-react';
 
 export const useDetail = (myProduct, id) => {
@@ -40,16 +40,13 @@ export const useDetail = (myProduct, id) => {
 
 	const dispatch = useDispatch();
 	const userSelector = useSelector((state) => state.user.theUser);
+	let cartLocal = useSelector(state => state.cart.localStorageCart)
 
 	const {isAuthenticated, loginWithRedirect} = useAuth0();
 
 	const saveLocal = (cart) => {
 		localStorage.setItem('cart', JSON.stringify(cart));
 	};
-	let cartLocal = [];
-	if (JSON.parse(localStorage.getItem('cart'))) {
-		cartLocal = JSON.parse(localStorage.getItem('cart'));
-	}
 	const handlerSetViewValue = (e) => {
 		const value = e.target.value;
 		setViewInputValue({cantidad: value});
@@ -119,11 +116,12 @@ export const useDetail = (myProduct, id) => {
 			cantidad: compra.cantidad > 0 ? compra.cantidad : 1,
 		};
 
-		dispatch(addCartProduct(nuevoProducto)); // dispatch addToCart action creator
-		if (!userSelector.id && !isAuthenticated)
-			saveLocal([...cartLocal, nuevoProducto]);
-		else if (userSelector.id && isAuthenticated)
-			dispatch(addProductUser(nuevoProducto));
+		if (!userSelector.id && !isAuthenticated){
+			saveLocal([...cartLocal, nuevoProducto])
+			dispatch(addLocalCart(nuevoProducto));
+		}else if (userSelector.id && isAuthenticated)
+			dispatch(addProductUser(nuevoProducto))
+			.then(() => dispatch(addCartProduct(nuevoProducto))); // dispatch addToCart action creator
 	};
 
 
