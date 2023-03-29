@@ -4,6 +4,7 @@ const {
 	getUserByEmail,
 	postInCart,
 	deleteItem,
+	putItem,
 } = require('../controllers/userControllers');
 
 let postUserHandler = async (req, res) => {
@@ -71,10 +72,27 @@ let deleteCartItemHandler = async (req, res) => {
 	}
 };
 
+let putCartItemHandler = async (req, res) => {
+	const {userId, cartIndex} = req.params;
+	let {cantidad} = req.body;
+
+	try {
+		let newCart = await putItem(userId, cartIndex, cantidad);
+
+		res.status(200).json(newCart);
+	} catch (error) {
+		console.error(error);
+		return res
+			.status(500)
+			.json({message: 'Error al actualizar la cantidad del producto.'});
+	}
+};
+
 module.exports = {
 	postUserHandler,
 	getUserHandler,
 	getUserByEmailHandler,
 	postCartItemHandler,
 	deleteCartItemHandler,
+	putCartItemHandler,
 };
