@@ -5,6 +5,7 @@ const {
 	postInCart,
 	deleteItem,
 	putItem,
+	deleteTheUser,
 } = require('../controllers/userControllers');
 
 let postUserHandler = async (req, res) => {
@@ -21,7 +22,7 @@ let postUserHandler = async (req, res) => {
 		res.status(200).json(newUser);
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({message: 'Internal Server Error'});
+		res.status(500).json({message: 'Error al crear User'});
 	}
 };
 
@@ -31,7 +32,7 @@ let getUserHandler = async (req, res) => {
 		res.status(200).json(allUsers);
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({message: 'Internal server error'});
+		res.status(500).json({message: 'Error al traer usuarios'});
 	}
 };
 
@@ -68,7 +69,7 @@ let deleteCartItemHandler = async (req, res) => {
 		res.status(200).json(deletedItem);
 	} catch (error) {
 		console.error(error);
-		return res.status(500).send('Error interno del servidor');
+		return res.status(500).send('Error al borrar cart');
 	}
 };
 
@@ -88,6 +89,18 @@ let putCartItemHandler = async (req, res) => {
 	}
 };
 
+let deleteUser = async (req, res) => {
+	const {userId} = req.params;
+
+	try {
+		const deletedUser = await deleteTheUser(userId);
+		res.status(200).json(deletedUser);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send('Error al borrar el usuario');
+	}
+};
+
 module.exports = {
 	postUserHandler,
 	getUserHandler,
@@ -95,4 +108,5 @@ module.exports = {
 	postCartItemHandler,
 	deleteCartItemHandler,
 	putCartItemHandler,
+	deleteUser,
 };

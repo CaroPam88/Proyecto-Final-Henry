@@ -6,6 +6,7 @@ const {
 	postCartItemHandler,
 	deleteCartItemHandler,
 	putCartItemHandler,
+	deleteUser,
 } = require('../handlers/userHandlers');
 
 const userRouter = Router();
@@ -21,5 +22,7 @@ userRouter.post('/cart/:id', postCartItemHandler);
 userRouter.delete('/cart/:userId/:itemId', deleteCartItemHandler);
 
 userRouter.put('/cart/:userId/:cartIndex', putCartItemHandler);
+
+userRouter.delete('/:userId', deleteUser);
 
 module.exports = userRouter;
