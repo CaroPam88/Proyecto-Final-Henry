@@ -10,6 +10,7 @@ import Footer from "./Components/Footer/Footer";
 import Index from "./Views/Admin/Index.jsx";
 import DashboardRoute from "./Views/Admin/DashboardRoute";
 import Cart from "./Views/Cart/Cart";
+import Contact from "./Views/Contact/Contact"
 
 import UserProfile from './Authentication/ProfileScreen/UserProfile'
 
@@ -35,6 +36,7 @@ function App() {
                 <Route exact path="/form" element={<Form/>} />
                 <Route exact path ="/user/profile" element={<UserProfile/>} />
                 <Route exact path="/cart" element={<Cart/>} />
+                <Route exact path="/contact" element={<Contact/>} />
 
                 {/* PROTECTED ROUTES FOR ADMIN DASHBOARD */}
                 <Route

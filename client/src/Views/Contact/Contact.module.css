@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+.p{
+    
+    font-family: 'Roboto';
+    padding-top: 20px;
+    color: white;
+    text-align: start;
+    text-decoration: none;
+  }
+
+  .titulo{
+    font-size: 5vh;
+    font-family: 'Roboto';
+    padding-top: 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
