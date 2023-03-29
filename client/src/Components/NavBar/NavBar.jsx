@@ -9,6 +9,7 @@ import carrito from '../../Assets/svg/carrito.svg';
 import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
 
+
 import AuthenticationButton from '../../Authentication/Components/AuthenticationButton'
 import { useFilter } from "../FilterBar/filterHook";
 
@@ -78,8 +79,8 @@ export const NavBar = () => {
                 <option value='Male' className={style.options} >Male</option>
               </select>
             </li>}
-            {location.pathname !== '/productos/all' && <li>
-              <NavLink to="/productos/all" onClick={menuopen}>
+            {location.pathname !== '/nosotros' && <li>
+              <NavLink to="/nosotros" onClick={menuopen}>
                 Nosotros
               </NavLink>
             </li>}
