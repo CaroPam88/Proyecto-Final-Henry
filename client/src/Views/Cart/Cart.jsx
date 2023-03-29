@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCart} from '../../Redux/actionCart';
+import {getCart, getLocalCart, deleteLocalCartItem} from '../../Redux/actionCart';
 import { getUserByEmail, deleteTheItem, changeCantInTheItem } from '../../Redux/actionUser';
 import {useAuth0} from '@auth0/auth0-react';
 import style from './Cart.module.css';
@@ -13,25 +13,28 @@ const Cart = () => {
 	const theUser = useSelector((state) => state.user.theUser);
 
 	let cart = useSelector((state) => state.cart.cartItems ? state.cart.cartItems : []);
+	let canasta = useSelector((state) => state.cart.localStorageCart ? state.cart.localStorageCart : []);
+
 
 	const fetchCart = () => {
-		if (theUser.id) {
-			dispatch(getUserByEmail()).then(() => dispatch(getCart()));
-		}
+		if (theUser.id) dispatch(getUserByEmail()).then(() => dispatch(getCart()));
+		else dispatch(getLocalCart());
 	};
 	
 	useEffect(() => {
 		fetchCart()
 	}, []);
 
-	cart = cart === undefined ? [] : cart;
-
-	let canasta = JSON.parse(localStorage.getItem('cart'));
 
 	const [pagar, setPagar] = useState(true);
 
 	let handleDelete = (index) => {
-		dispatch(deleteTheItem(index)).then(() => fetchCart());
+		if (theUser.id) dispatch(deleteTheItem(index)).then(() => fetchCart());
+		// if(!theUser.id) console.log(index);
+		if(!theUser.id) {
+		dispatch(deleteLocalCartItem(index));
+		fetchCart();
+		}
 	};
 
 
@@ -63,7 +66,7 @@ const Cart = () => {
 			<h1 className={style.h1}>Your Cart</h1>
 			{cart.length
 				? cart.map((item, i) => (
-						<div className={style.itemContainer}>
+						<div key={i} className={style.itemContainer}>
 							<div className={style.imgContainer}>
 								<img
 									className={style.img}
@@ -112,7 +115,7 @@ const Cart = () => {
 						</div>
 					))
 				: canasta?.map((item, i) => (
-						<div className={style.itemContainer}>
+						<div key={i} className={style.itemContainer}>
 							<div className={style.imgContainer}>
 								<img
 									className={style.img}
@@ -122,7 +125,7 @@ const Cart = () => {
 							</div>
 							<div className={style.descriptionContainer}>
 								<div className={style.buttonContainer}>
-									<button className={style.botonEliminar}>
+									<button className={style.botonEliminar} onClick={() => handleDelete(i)}>
 										X
 									</button>
 								</div>

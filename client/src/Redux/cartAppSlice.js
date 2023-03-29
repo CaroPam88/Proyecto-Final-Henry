@@ -2,7 +2,9 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
 	cartItems: [],
+	localStorageCart: [],
 	cartTotalAmount: 0,
+	localCartTotalAmount: 0,
 };
 
 const cartSlice = createSlice({
@@ -13,38 +15,32 @@ const cartSlice = createSlice({
 			state.cartItems = [...state.cartItems, action.payload];
 			state.cartTotalAmount = state.cartTotalAmount + 1;
 		},
+		addToLocalCart: (state, action) => {
+			state.localStorageCart = [...state.localStorageCart, action.payload];
+			state.localCartTotalAmount = state.localCartTotalAmount + 1;
+		},
 		getToCart: (state, action) => {
 			state.cartItems = action.payload;
+			state.cartTotalAmount = action.payload.length;
 		},
-		removeFromCart(state, action) {
-			const nextCartItems = state.cartItems.filter(
-				(cartItem) => cartItem.id !== action.payload.id
-			);
-			state.cartItems = nextCartItems;
-			state.cartTotalAmount -=
-				action.payload.price * action.payload.cartQuantity;
-		},
-		decreaseCart(state, action) {
-			const itemIndex = state.cartItems.findIndex(
-				(cartItem) => cartItem.id === action.payload.id
-			);
-			if (state.cartItems[itemIndex].cartQuantity > 1) {
-				state.cartItems[itemIndex].cartQuantity -= 1;
-				state.cartTotalAmount -= action.payload.price;
-			} else if (state.cartItems[itemIndex].cartQuantity === 1) {
-				const nextCartItems = state.cartItems.filter(
-					(cartItem) => cartItem.id !== action.payload.id
-				);
-				state.cartItems = nextCartItems;
-				state.cartTotalAmount -= action.payload.price;
-			}
+		getToLocalCart: (state, action) => {
+			state.localStorageCart = action.payload;
+			state.localCartTotalAmount = action.payload.length;
 		},
 		clearCart(state, action) {
 			state.cartItems = [];
 			state.cartTotalAmount = 0;
 		},
+		clearLocalCart: (state, action) => {
+			state.localStorageCart = action.payload;
+			state.localCartTotalAmount = 0;
+		},
+		filterLocalCart: (state, action) => {
+			state.localStorageCart = action.payload;
+			state.localCartTotalAmount = action.payload.length;
+		},
 	},
 });
-export const {addToCart, getToCart, removeFromCart, decreaseCart, clearCart} =
+export const { addToCart, addToLocalCart, getToCart, getToLocalCart, clearCart, clearLocalCart, filterLocalCart } =
 	cartSlice.actions;
 export default cartSlice.reducer;
