@@ -6,7 +6,7 @@ const FORM_ID = 'payment-form';
 
 export default function Product({ids}) {
     const { id } = useParams();
-
+    console.log("compra front",ids);
     const obtenerPreference = useCallback(
         async() => {
             console.log('ids',ids);

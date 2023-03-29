@@ -92,19 +92,23 @@ let getGenderData = async (gender) => {
 
 //////////////////////////////////////////////
 
-const clothesUpdate = async (ids, id) => {
-  ////////// llamamos al modelos y lo guardamos en una variable (dataDb) que nos va ayudar a modificar su valor
 
-  let dataDb = await Size.findByPk(id);
+
+const clothesUpdates = async (ids) => {
+  ////////// llamamos al modelos y lo guardamos en una variable (dataDb) que nos va ayudar a modificar su valor
+  let data = ids
+  let dataDb = await Size.findByPk(data.id);
   //la siguiente variable tendra el valor modificado y es la que vamos a usar como el dato final
   let aux = dataDb;
   let aux2 = dataDb;
-
+ 
+  console.log(data.color);
   //hacemos la logica que busque el color al que vamos a cambiar su stock
-  dataDb = dataDb.colors.filter((elem) => elem.color === ids.color);
-
+  console.log(dataDb.colors.filter((elem) => elem.color === data.color));
+  dataDb = dataDb.colors.filter((elem) => elem.color === data.color);
+  console.log(dataDb);
   //hacemos la segunda logica que cambia el stock del color encontrado y que modifica el stock
-  if (dataDb[0].stockColors < ids.cantidad) {
+  if (dataDb[0].stockColors < data.cantidad) {
     return [
       { message: `solo tenemos ${dataDb[0].stockColors} en stock` },
       { status: 401 },
@@ -113,7 +117,7 @@ const clothesUpdate = async (ids, id) => {
     alert;
     return [{ message: "Nuestro stock esta en 0" }, { status: 400 }];
   } else {
-    dataDb[0].stockColors -= ids.cantidad;
+    dataDb[0].stockColors -= data.cantidad;
   }
 
   //al terminar estos cambios estaran guradados en la variable "aux"
@@ -131,7 +135,7 @@ const clothesUpdate = async (ids, id) => {
     },
     {
       where: {
-        id: id,
+        id: data.id,
       },
     }
   );
@@ -143,15 +147,21 @@ const clothesUpdate = async (ids, id) => {
     },
     {
       where: {
-        id: id,
+        id: data.id,
       },
     }
   );
 };
+
+let clothesUpdate = async (ids) => {
+  const update = await ids.map(el => {return clothesUpdates(el)} )
+} 
+
 module.exports = {
   getClothesData,
   getIdData,
   createProduct,
   getGenderData,
   clothesUpdate,
+
 };
