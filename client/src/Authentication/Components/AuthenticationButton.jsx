@@ -5,7 +5,7 @@ import LogoutButton from './LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import { createUser } from '../../Redux/actionUser';
 import { addProductUser, clearTheUser } from '../../Redux/actionUser';
-import { getCart, clearLocalStorageCart } from '../../Redux/actionCart'
+import { getCart, getLocalCart, clearLocalStorageCart } from '../../Redux/actionCart'
 
 const AuthenticationButton = () => {
   const dispatch = useDispatch()
@@ -20,6 +20,7 @@ const AuthenticationButton = () => {
     .then(() => dispatch(getCart()))
     .then(window.localStorage.removeItem("cart"))
     .then(() => dispatch(clearLocalStorageCart()))
+    if(!isAuthenticated && !theUser.id) dispatch(getLocalCart())
     if (!isAuthenticated && theUser.id) dispatch(clearTheUser());
   }, [user]);
 
