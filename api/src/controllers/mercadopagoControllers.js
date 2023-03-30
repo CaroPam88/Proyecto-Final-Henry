@@ -24,7 +24,7 @@ let preference = {
 let payMercadoPago = async (ids) => {
   let id = ids.id
   let data = ids
-
+  // await clothesUpdate(data, id)
   try {
     let price = 0;
     for (let i = 0; i < ids.length; i++) {
@@ -45,7 +45,7 @@ let payMercadoPago = async (ids) => {
      preference = {
       items: [],
       back_urls:{
-          success: "http://localhost:3000/home",
+          success: "http://localhost:3000/cart",
           failure: "http://localhost:3000/home",
           pending: "http://localhost:3000/home",
       },
