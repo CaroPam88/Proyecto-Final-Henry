@@ -2,6 +2,7 @@
 
 .ico{
   color: red;
+  margin-right: 2vh;
 }
 .p{
   font-size: 2.5vh;
@@ -10,6 +11,7 @@
     color: white;
     text-align: start;
     text-decoration: none;
+    
   }
 
   .titulo{
@@ -31,11 +33,12 @@
   }
 
   .h3{
+    margin-top: 1vh;
     font-size: 3vh;
     font-family: 'Roboto';
     color: white;
     text-align: start;
     text-decoration: none;
-    margin-left: 3vh;
+    margin-left: 2vh;
 
   }
