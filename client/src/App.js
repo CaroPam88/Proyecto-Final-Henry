@@ -34,11 +34,11 @@ function App() {
                 <Route path="/" element={<LoadingView />} />
                 <Route exact path="/home" element={<Home />} />
                 <Route exact path="/detail/:id" element={<Detail />} />
-                <Route exact path="/form" element={<Form/>} />
-                <Route exact path ="/user/profile" element={<UserProfile/>} />
-                <Route exact path="/cart" element={<Cart/>} />
-                <Route exact path="/nosotros" element={<Contact/>} />
-                <Route exact path="/contact" element={<Contact/>} />
+                <Route exact path="/form" element={<Form />} />
+                <Route exact path ="/user/profile" element={<UserProfile />} />
+                <Route exact path="/cart" element={<Cart />} />
+                <Route exact path="/nosotros" element={<Nosotros />} />
+                <Route exact path="/contact" element={<Contact />} />
 
                 {/* PROTECTED ROUTES FOR ADMIN DASHBOARD */}
                 <Route
