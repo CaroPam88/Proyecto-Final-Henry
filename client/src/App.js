@@ -37,6 +37,7 @@ function App() {
                 <Route exact path="/form" element={<Form/>} />
                 <Route exact path ="/user/profile" element={<UserProfile/>} />
                 <Route exact path="/cart" element={<Cart/>} />
+                <Route exact path="/nosotros" element={<Contact/>} />
                 <Route exact path="/contact" element={<Contact/>} />
 
                 {/* PROTECTED ROUTES FOR ADMIN DASHBOARD */}
