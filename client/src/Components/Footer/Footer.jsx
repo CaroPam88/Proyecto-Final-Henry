@@ -17,9 +17,10 @@ const Footer = () => {
           
             <div className="nav-links">
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Comprá</a></li>
-                <li><a href="#">Nosotros</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/cart">Carrito</a></li>
+                <li><a href="/nosotros">Nosotros</a></li>
+                <li><a href="/Contact">Locales</a></li>
                 <li><a target= "_blank" href=" https://www.facebook.com/profile.php?id=100091284420748">Contact</a></li>
               </ul>
             </div>
