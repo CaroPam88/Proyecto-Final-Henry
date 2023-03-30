@@ -9,12 +9,14 @@ import carrito from '../../Assets/svg/carrito.svg';
 import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
 
+
 import AuthenticationButton from '../../Authentication/Components/AuthenticationButton'
 import { useFilter } from "../FilterBar/filterHook";
 
 
 export const NavBar = () => {
   const cart = useSelector(state => state.cart?.cartItems ?? [])
+  const localCart = useSelector(state => state.cart?.localStorageCart ?? [])
   const [clicked, setClicked] = useState(true);
   const menuopen = () => {
     setClicked(!clicked);
@@ -29,19 +31,9 @@ export const NavBar = () => {
     <div className={style.container}>
       <div className={style.menu}>
         {clicked ? (
-          <img
-            src={menu}
-            alt="icon nav"
-            className={style.menuoff}
-            onClick={menuopen}
-          />
+          <img src={menu} alt="icon nav" className={style.menuoff} onClick={menuopen}/>
         ) : (
-          <img
-            src={closemenu}
-            alt="icon nav"
-            className={style.menuoff}
-            onClick={menuopen}
-          />
+          <img src={closemenu} alt="icon nav" className={style.menuoff} onClick={menuopen}/>
         )}
         <div
           className={`${style.containerOpciones} ${clicked ? style.opcioncerrada : null
@@ -78,8 +70,8 @@ export const NavBar = () => {
                 <option value='Male' className={style.options} >Male</option>
               </select>
             </li>}
-            {location.pathname !== '/productos/all' && <li>
-              <NavLink to="/productos/all" onClick={menuopen}>
+            {location.pathname !== '/nosotros' && <li>
+              <NavLink to="/nosotros" onClick={menuopen}>
                 Nosotros
               </NavLink>
             </li>}
@@ -99,7 +91,10 @@ export const NavBar = () => {
       <div className={style.search}><SearchBar></SearchBar></div>
 
       <div className={style.contenedorcarrito}>
-        {cart.length ? <span className={style.span}>{cart.length}</span> : null}
+        {cart && cart.length 
+        ? <span className={style.span}>{cart.length}</span> 
+        : <span className={style.span}>{localCart.length}</span> 
+        }
         <Link to="/cart">
           <img src={carrito} alt="carrito" className={style.carrito} />
         </Link>
