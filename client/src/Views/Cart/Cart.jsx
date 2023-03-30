@@ -58,39 +58,30 @@ const Cart = () => {
 
 	return (
 		<section clasName={style.section}>
-			{theUser.id ? (
-				<span className={style.logged}>You are logged</span>
-			) : (
-				<span className={style.noLogged}>You aren't logged</span>
-			)}
-			<h1 className={style.h1}>Your Cart</h1>
+			<img src='https://th.bing.com/th/id/R.ef110efa08c015b6beeadefa42eec32f?rik=xjNp1PX96ZPSqQ&riu=http%3a%2f%2fwww.llopmoda.com%2fwp-content%2fuploads%2f2017%2f11%2fslider_home_01.jpg&ehk=70QnEZPwYPw4EueKdodqV1uxiV1fq6Kgx4zb8MrHKxA%3d&risl=&pid=ImgRaw&r=0' alt='background' className={style.found} />
+			<div className={style.tittleContent}>
+				{theUser.id ? (
+					<span className={style.logged}>You are logged</span>
+				) : (
+					<span className={style.noLogged}>You aren't logged</span>
+				)}
+				<h1 className={style.h1}>Your Cart:</h1>
+			</div>
+			<div className={style.cardContainer}>
 			{cart.length
 				? cart.map((item, i) => (
 						<div key={i} className={style.itemContainer}>
 							<div className={style.imgContainer}>
-								<img
-									className={style.img}
-									src={item.image}
-									alt={item.name}
-								/>
+								<img className={style.img} src={item.image} alt={item.name}/>
 							</div>
 							<div className={style.descriptionContainer}>
-								<div className={style.buttonContainer}>
-									<button
-										className={style.botonEliminar}
-										onClick={() =>
-											handleDelete(item.cartIndex)
-										}
-									>
-										X
-									</button>
-								</div>
 								<h4 className={style.h4}>{item.name}</h4>
-								<p className={style.p}>
-									Precio: <strong>${item.price}</strong>
-								</p>
-								<p className={style.p}>Color: {item.color}</p>
-								<p className={style.p}>Talle: {item.size}</p>
+								<div className={style.porpsContent}>
+									<p className={style.p}>Precio: <strong>{item.price}</strong>
+									</p>
+									<p className={style.p}>Color: {item.color}</p>
+									<p className={style.p}>Talle: {item.size}</p>
+								</div>
 								<p className={style.p}>
 									Cantidad:
 									<button
@@ -112,37 +103,43 @@ const Cart = () => {
 									</button>
 								</p>
 							</div>
+							<div className={style.buttonContainer}>
+								<button
+									className={style.botonEliminar}
+									onClick={() =>
+										handleDelete(item.cartIndex)
+									}
+								>
+									X
+								</button>
+							</div>
 						</div>
 					))
 				: canasta?.map((item, i) => (
 						<div key={i} className={style.itemContainer}>
 							<div className={style.imgContainer}>
-								<img
-									className={style.img}
-									src={item.image}
-									alt={item.name}
-								/>
+								<img className={style.img} src={item.image} alt={item.name}/>
 							</div>
 							<div className={style.descriptionContainer}>
-								<div className={style.buttonContainer}>
-									<button className={style.botonEliminar} onClick={() => handleDelete(i)}>
-										X
-									</button>
-								</div>
 								<h4 className={style.h4}>{item.name}</h4>
-								<p className={style.p}>
-									Precio: <strong>${item.price}</strong>
-								</p>
-								<p className={style.p}>Color: {item.color}</p>
-								<p className={style.p}>Talle: {item.size}</p>
-								<p className={style.p}>
-									Cantidad: {item.cantidad}
-								</p>
+								<div className={style.porpsContent}>
+									<p className={style.p}>Precio: <strong>{item.price}</strong>
+									</p>
+									<p className={style.p}>Color: {item.color}</p>
+									<p className={style.p}>Talle: {item.size}</p>
+								</div>
+							</div>
+							<div className={style.buttonContainer}>
+								<button className={style.botonEliminar} onClick={() => handleDelete(i)}>
+									X
+								</button>
 							</div>
 						</div>
 					))}
+			</div>
 			{pagar ? (
-				<button
+				cart.length || canasta.length
+				?<button
 					onClick={(e) => {
 						onSubmit(e);
 					}}
@@ -150,7 +147,9 @@ const Cart = () => {
 				>
 					Confirmar
 				</button>
-			) : (
+				: <div className={style.empty}>Your cart is empty :(</div> 
+			)
+			: (
 				<MercadoPago ids={cart} />
 			)}
 		</section>
