@@ -89,6 +89,16 @@ const getAllSize = () => {
     };
 };
 
+const putUpdate = (data) => async (dispatch) => {
+    try {
+        const update = await(axios.put("/", data))
+        return dispatch(putUpdate(update))
+    } catch (error) {
+        alert({error: error.message[0]});
+    }
+  }
+
+
 
 const putClothes = (data) => async (dispatch) =>{
 try {
@@ -117,4 +127,4 @@ const clearSizeState = () => (dispatch) => {
     return dispatch(clearSize(clearState))
 }
 
-export { getAllProducts, postClothes, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState, putClothes }
+export { getAllProducts, putUpdate, postClothes, getProductsByName, getProductDetail, getAllColors, getAllSize, clearProductsState, clearProductDetailState, clearColorsState, clearSizeState, putClothes }
