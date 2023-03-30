@@ -24,7 +24,7 @@ clothesRouter.get('/:id', getProductByIdHandler);
 clothesRouter.post('/', postProductHandler);
 
 //RUTA PARA ACTUALIZAR LA PRENDA (ESENCIAL PARA EL MANEJO DE STOCK)
-clothesRouter.put('/', putProductHandler);
+clothesRouter.put('/:id', putProductHandler);
 
 //RUTA PARA MODIFICAR CUALQUIER PROPIEDAD DE LA PRENDE( SOLO LO PUEDE HACER EL USUARIO ADMIN)
 clothesRouter.put('/admin/:idItem', UpdateClothes);

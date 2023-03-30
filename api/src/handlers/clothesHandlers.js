@@ -90,7 +90,8 @@ let getProductByGenderHandler = async (req, res) => {
 let putProductHandler = async (req, res) => {
 	try {
 		let ids = req.body;
-		const payClothes = await clothesUpdate(ids);
+		let {id} = req.params;
+		const payClothes = await clothesUpdate(ids, id);
 
 		res.status(201).json(payClothes);
 	} catch (error) {
