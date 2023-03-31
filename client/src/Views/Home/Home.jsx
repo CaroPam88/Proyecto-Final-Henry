@@ -16,12 +16,14 @@ export const Home = ()=>{
     const dispatch = useDispatch();
 
     const update = window.location.href.includes("approved")
-    console.log('update',update);
+    const lastReference =  document.referrer;
+    console.log('lastReference',lastReference);
 
     const stockController = async () => {
         if(theUser.id && update && currentPurechase){
             await dispatch(putClothes(currentPurechase))
-            .then(window.localStorage.removeItem("currentPurechase"))//Coprobamos que exista el usuario preguntando por su propiedad id, ejecutamos la funcion que envia los productos comprados a la db, si esto funciona, se limpia lo/s ultimo/s productos comprados.
+            .then(window.localStorage.removeItem("currentPurechase"))
+            
         }
     }
 
@@ -29,7 +31,6 @@ export const Home = ()=>{
         dispatch(getAllProducts())
         stockController()
         }, [dispatch, currentPurechase]);
-    console.log('currentPurechase',currentPurechase);
     return(
         <div className={style.container}>
                 <img src={imgHome} alt="" className={style.img} />

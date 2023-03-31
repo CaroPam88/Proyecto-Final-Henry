@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCart, getLocalCart, deleteLocalCartItem, changeCant} from '../../Redux/actionCart';
-import { getUserByEmail, deleteTheItem, changeCantInTheItem } from '../../Redux/actionUser';
+import { deleteTheItem, changeCantInTheItem } from '../../Redux/actionUser';
 import {useAuth0} from '@auth0/auth0-react';
 import style from './Cart.module.css';
 import MercadoPago from '../../Components/MercadoPago/MercadoPago';
@@ -21,7 +21,7 @@ const Cart = () => {
 	// console.log("cart",cart)
 	const fetchCart = () => {
 		theUser.id
-		? dispatch(getUserByEmail()).then(() => dispatch(getCart()))
+		? dispatch(getCart())
 		: dispatch(getLocalCart());
 	};
 	
