@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCart, getLocalCart, deleteLocalCartItem} from '../../Redux/actionCart';
+import {getCart, getLocalCart, deleteLocalCartItem, changeCant} from '../../Redux/actionCart';
 import { getUserByEmail, deleteTheItem, changeCantInTheItem } from '../../Redux/actionUser';
 import {useAuth0} from '@auth0/auth0-react';
 import style from './Cart.module.css';
@@ -17,8 +17,9 @@ const Cart = () => {
 
 
 	const fetchCart = () => {
-		if (theUser.id) dispatch(getUserByEmail()).then(() => dispatch(getCart()));
-		else dispatch(getLocalCart());
+		theUser.id
+		? dispatch(getUserByEmail()).then(() => dispatch(getCart()))
+		: dispatch(getLocalCart());
 	};
 	
 	useEffect(() => {
@@ -30,7 +31,6 @@ const Cart = () => {
 
 	let handleDelete = (index) => {
 		if (theUser.id) dispatch(deleteTheItem(index)).then(() => fetchCart());
-		// if(!theUser.id) console.log(index);
 		if(!theUser.id) {
 		dispatch(deleteLocalCartItem(index));
 		fetchCart();
@@ -39,8 +39,13 @@ const Cart = () => {
 
 
 	const handleChangeCant = (item, change) => {
-		let obj = {cantidad: item.cantidad + change};
-		dispatch(changeCantInTheItem(item.cartIndex, obj));
+		if (theUser.id){
+			let obj = {cantidad: item.cantidad + change};
+			dispatch(changeCantInTheItem(item.cartIndex, obj)).then(() => fetchCart());
+		} else {
+			dispatch(changeCant(item, change));
+			fetchCart();
+		}
 	};
 
 	const onSubmit = async (e) => {
@@ -77,21 +82,15 @@ const Cart = () => {
 							<div className={style.descriptionContainer}>
 								<h4 className={style.h4}>{item.name}</h4>
 								<div className={style.porpsContent}>
-									<p className={style.p}>Precio: <strong>{item.price}</strong>
+									<p className={style.p}>Price: <strong>{item.price}</strong>
 									</p>
 									<p className={style.p}>Color: {item.color}</p>
-									<p className={style.p}>Talle: {item.size}</p>
+									<p className={style.p}>Size: {item.size}</p>
 								</div>
 								<p className={style.p}>
-									Cantidad:
-									<button
-										className={style.cantButton}
-										onClick={() =>
-											handleChangeCant(item, -1)
-										}
-									>
-										-
-									</button>
+									Quantity:
+									{item.cantidad > 1 ? <button className={style.cantButton} onClick={() => handleChangeCant(item, -1) }>	-	</button>
+									:<button className={style.cantButton}>	- 	</button>}
 									{item.cantidad}
 									<button
 										className={style.cantButton}
@@ -123,11 +122,25 @@ const Cart = () => {
 							<div className={style.descriptionContainer}>
 								<h4 className={style.h4}>{item.name}</h4>
 								<div className={style.porpsContent}>
-									<p className={style.p}>Precio: <strong>{item.price}</strong>
+									<p className={style.p}>Price: <strong>{item.price}</strong>
 									</p>
 									<p className={style.p}>Color: {item.color}</p>
-									<p className={style.p}>Talle: {item.size}</p>
+									<p className={style.p}>Size: {item.size}</p>
 								</div>
+								<p className={style.p}>
+									Quantity:
+									{item.cantidad > 1 ? <button className={style.cantButton} onClick={() => handleChangeCant(i, -1) }>	-	</button>
+									:<button className={style.cantButton}>	- 	</button>}
+									{item.cantidad}
+									<button
+										className={style.cantButton}
+										onClick={() =>
+											handleChangeCant(i, 1)
+										}
+									>
+										+
+									</button>
+								</p>
 							</div>
 							<div className={style.buttonContainer}>
 								<button className={style.botonEliminar} onClick={() => handleDelete(i)}>
@@ -145,7 +158,7 @@ const Cart = () => {
 					}}
 					className={style.botonComprar}
 				>
-					Confirmar
+					Confirm
 				</button>
 				: <div className={style.empty}>Your cart is empty :(</div> 
 			)

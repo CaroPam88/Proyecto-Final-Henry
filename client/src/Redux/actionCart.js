@@ -1,4 +1,4 @@
-import { addToCart, addToLocalCart, getToCart, getToLocalCart, clearLocalCart, filterLocalCart } from './cartAppSlice';
+import { addToCart, addToLocalCart, getToCart, getToLocalCart, clearLocalCart, filterLocalCart, changeCantToItem } from './cartAppSlice';
 
 //===================================================BD CART===================================================\\
 const addCartProduct = (product) => {
@@ -32,6 +32,18 @@ const deleteLocalCartItem = (index) => {
 			return dispatch(filterLocalCart(newLocalCart))
 	}
 };
+const changeCant = (index, change) => {
+	return (dispatch, getState) => {
+		const currentLocalStorage = getState().cart.localStorageCart;
+		const itemToUpdate = { ...currentLocalStorage[index] }; // Hacer una copia del objeto en la posición index
+		itemToUpdate.cantidad += change; // Modificar la propiedad cantidad del objeto copiado
+		const updatedCart = [...currentLocalStorage]; // Hacer una copia del array original
+		updatedCart[index] = itemToUpdate; // Reemplazar el objeto original con el objeto modificado
+		console.log(updatedCart); // Verificar que el array fue modificado correctamente
+		localStorage.setItem('cart', JSON.stringify(updatedCart))
+		return dispatch(changeCantToItem(updatedCart)); 
+	};
+};
 const clearLocalStorageCart = () => {
 	return (dispatch) => {
 		const defaultCart = [];
@@ -42,4 +54,4 @@ const clearLocalStorageCart = () => {
 
 
 
-export {addCartProduct, getCart, addLocalCart, getLocalCart, clearLocalStorageCart, deleteLocalCartItem};
+export {addCartProduct, getCart, addLocalCart, getLocalCart, clearLocalStorageCart, deleteLocalCartItem, changeCant};

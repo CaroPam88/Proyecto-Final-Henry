@@ -39,7 +39,11 @@ const cartSlice = createSlice({
 			state.localStorageCart = action.payload;
 			state.localCartTotalAmount = action.payload.length;
 		},
+		changeCantToItem: (state, action) => {
+			state.localStorageCart = action.payload;
+			state.localCartTotalAmount = action.payload.length;
+		},
 	},
 });
-export const { addToCart, addToLocalCart, getToCart, getToLocalCart, clearCart, clearLocalCart, filterLocalCart } = cartSlice.actions;
+export const { addToCart, addToLocalCart, getToCart, getToLocalCart, clearCart, clearLocalCart, filterLocalCart, changeCantToItem } = cartSlice.actions;
 export default cartSlice.reducer;
