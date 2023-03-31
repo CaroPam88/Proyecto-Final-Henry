@@ -4,7 +4,7 @@ import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import { createUser } from '../../Redux/actionUser';
-import { addProductUser, clearTheUser } from '../../Redux/actionUser';
+import { addProductUser, getUserByEmail, clearTheUser } from '../../Redux/actionUser';
 import { getCart, getLocalCart, clearLocalStorageCart } from '../../Redux/actionCart'
 
 const AuthenticationButton = () => {
@@ -17,9 +17,10 @@ const AuthenticationButton = () => {
   useEffect(() => {
     if (isAuthenticated && !theUser.id) dispatch(createUser(user))
     .then(() => dispatch(addProductUser(cart)))
-    .then(() => dispatch(getCart()))
     .then(window.localStorage.removeItem("cart"))
     .then(() => dispatch(clearLocalStorageCart()))
+    .then(() => dispatch(getUserByEmail()))
+    .then(() => dispatch(getCart()))
     if(!isAuthenticated && !theUser.id) dispatch(getLocalCart())
     if (!isAuthenticated && theUser.id) dispatch(clearTheUser());
   }, [user]);
