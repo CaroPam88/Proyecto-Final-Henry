@@ -99,8 +99,18 @@ body {
 .label{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+/* .rating .fa-regular {
+  color: #ccc;
+}
 
+.rating .fa-solid {
+  color: gold;
+}
 
+.rating .selected .fa-regular,
+.rating .selected .fa-solid {
+  color: black;
+} */
 
 
 
