@@ -95,7 +95,7 @@ let getGenderData = async (gender) => {
 //////////////////////////////////////////////
 
 const clothesUpdates = async (ids) => {
-	////////// llamamos al modelos y lo guardamos en una variable (dataDb) que nos va ayudar a modificar su valor
+	//llamamos al modelos y lo guardamos en una variable (dataDb) que nos va ayudar a modificar su valor
 	let data = ids;
 	let dataDb = await Size.findByPk(data.id);
 	//la siguiente variable tendra el valor modificado y es la que vamos a usar como el dato final
@@ -152,9 +152,7 @@ const clothesUpdates = async (ids) => {
 };
 
 let clothesUpdate = async (ids) => {
-	const update = await ids.map((el) => {
-		return clothesUpdates(el);
-	});
+	await ids.forEach(el => clothesUpdates(el));
 };
 
 const generalUpdate = async (

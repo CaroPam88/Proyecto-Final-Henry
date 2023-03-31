@@ -1,5 +1,4 @@
 const {axios} = require("axios")
-const {clothesUpdate} = require("./clothesControllers")
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
 // Agrega credenciales
@@ -41,11 +40,11 @@ let payMercadoPago = async (ids) => {
      quantity: 1,
     })
      const response = await( mercadopago.preferences.create(preference));
-     const preferenceId = response.body.id
+     const preferenceId = response.body.id;
      preference = {
       items: [],
       back_urls:{
-          success: "http://localhost:3000/cart",
+          success: "http://localhost:3000/home",
           failure: "http://localhost:3000/home",
           pending: "http://localhost:3000/home",
       },

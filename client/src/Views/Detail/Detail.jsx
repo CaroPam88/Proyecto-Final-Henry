@@ -39,7 +39,6 @@ console.log(myProduct)
     setViewInputValue,
     handlerSetViewValue,
     handlerDetail,
-    buttonComprar,
     nuevoProducto,
     buttonAgregarAlCarrito,
     onSubmit,

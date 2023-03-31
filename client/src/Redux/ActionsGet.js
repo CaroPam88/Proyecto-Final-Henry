@@ -91,12 +91,13 @@ const getAllSize = () => {
 
 
 const putClothes = (data) => async (dispatch) =>{
-try {
-    const dbData = (await axios.put(`/clothes/${data.id}`, data))
-    return dispatch(putProduct(dbData))
-} catch (error) {
-    alert({error: error.message[0]});
-}
+    try {
+        console.log('soy el put');
+        const dbData = (await axios.put(`/clothes/`, data)).data;
+        return dispatch(putProduct(dbData))
+    } catch (error) {
+        alert({error: error.message});
+    }
 }
 
 //CLEAR STATE FUNCTIONS
