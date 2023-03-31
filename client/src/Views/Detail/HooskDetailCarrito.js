@@ -72,32 +72,6 @@ export const useDetail = (myProduct, id) => {
 			});
 	};
 
-	const buttonComprar = (e) => {
-		const colores = myProduct
-		? myProduct.sizes?.flatMap((el) => el.colors[0].color)
-		: 'no colors';
-		const talla = myProduct
-		? myProduct.sizes?.flatMap((el) => el.size)
-		: 'no sizes found';
-		const nuevoProducto = {
-			...compra,
-			id: myProduct.id,
-			name: myProduct.name,
-			image: myProduct.image,
-			price: myProduct.price,
-			color: compra.color === '' ? colores[0] : compra.color,
-			size: compra.size === '' ? talla[0] : compra.size,
-			cantidad: compra.cantidad > 0 ? compra.cantidad : 1,
-		};
-		setCompra({
-			...compra,
-			id: myProduct.id,
-			price: myProduct ? myProduct.price : 'error',
-		});
-		// dispatch(putClothes(nuevoProducto));
-		alert('compra exitosa');
-	};
-
 	const buttonAgregarAlCarrito = (e) => {
 		const colores = myProduct
 			? myProduct.sizes?.flatMap((el) => el.colors[0].color)
@@ -147,7 +121,6 @@ export const useDetail = (myProduct, id) => {
 		setViewInput,
 		setViewInputValue,
 		handlerSetViewValue,
-		buttonComprar,
 		nuevoProducto,
 		handlerDetail,
 		buttonAgregarAlCarrito,

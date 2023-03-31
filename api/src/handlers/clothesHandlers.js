@@ -90,9 +90,7 @@ let getProductByGenderHandler = async (req, res) => {
 let putProductHandler = async (req, res) => {
 	try {
 		let ids = req.body;
-		let {id} = req.params;
-		const payClothes = await clothesUpdate(ids, id);
-
+		const payClothes = await clothesUpdate(ids);
 		res.status(201).json(payClothes);
 	} catch (error) {
 		console.log(error.message);
@@ -108,7 +106,6 @@ let postMercadoPago = async (req, res) => {
 		let id = ids.id;
 		console.log('back', ids);
 		const payPago = await payMercadoPago(ids);
-		await clothesUpdate(ids, id);
 		res.send(payPago);
 	} catch (error) {
 		console.log(error.message);

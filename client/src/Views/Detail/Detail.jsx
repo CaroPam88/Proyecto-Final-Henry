@@ -35,7 +35,6 @@ const Detail = () => {
 		setViewInputValue,
     handlerSetViewValue,
     handlerDetail,
-    buttonComprar,
     nuevoProducto,
     buttonAgregarAlCarrito,
     onSubmit,
