@@ -1,4 +1,5 @@
 import { addToCart, addToLocalCart, getToCart, getToLocalCart, clearLocalCart, filterLocalCart, changeCantToItem } from './cartAppSlice';
+import axios from 'axios';
 
 //===================================================BD CART===================================================\\
 const addCartProduct = (product) => {
@@ -8,7 +9,9 @@ const addCartProduct = (product) => {
 };
 const getCart = () => {
 	return async (dispatch, getState) => {
-		const userCart = getState().user.theUser.cart;
+		const id = getState().user.theUser.id;
+		const userCart = (await axios(`user/thecart/${id}`)).data;
+		
 		return dispatch(getToCart(userCart));
 	};
 };

@@ -17,10 +17,9 @@ const AuthenticationButton = () => {
   useEffect(() => {
     if (isAuthenticated && !theUser.id) dispatch(createUser(user))
     .then(() => dispatch(addProductUser(cart)))
+    .then(() => dispatch(getCart()))
     .then(window.localStorage.removeItem("cart"))
     .then(() => dispatch(clearLocalStorageCart()))
-    .then(() => dispatch(getUserByEmail()))
-    .then(() => dispatch(getCart()))
     if(!isAuthenticated && !theUser.id) dispatch(getLocalCart())
     if (!isAuthenticated && theUser.id) dispatch(clearTheUser());
   }, [user]);
