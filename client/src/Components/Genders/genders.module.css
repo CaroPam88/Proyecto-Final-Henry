@@ -15,17 +15,18 @@
     text-align: center;
     width: 45%;
     height: 256px;
-    background: url(../../Assets/img/mencard.jpg);
+    background: url(../../Assets/img/man.jpg);
     background-size:cover;
+    background-position: center bottom;
     transition: 0.3s;
   }
   
 
   .cardW {
     display: inline-block;
-    background: url(../../Assets/img/womencard.jpg);
+    background: url(../../Assets/img/woman.jpg);
     background-size:cover;
-    background-position: 20% ;
+    background-position: center bottom;
     border-radius: 10px;
     box-shadow: 0px 0px 40px rgba(0,0,0,0.2);
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",

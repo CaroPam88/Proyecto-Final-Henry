@@ -61,11 +61,11 @@ const Cart = () => {
 			<img src='https://th.bing.com/th/id/R.ef110efa08c015b6beeadefa42eec32f?rik=xjNp1PX96ZPSqQ&riu=http%3a%2f%2fwww.llopmoda.com%2fwp-content%2fuploads%2f2017%2f11%2fslider_home_01.jpg&ehk=70QnEZPwYPw4EueKdodqV1uxiV1fq6Kgx4zb8MrHKxA%3d&risl=&pid=ImgRaw&r=0' alt='background' className={style.found} />
 			<div className={style.tittleContent}>
 				{theUser.id ? (
-					<span className={style.logged}>You are logged</span>
+					<span className={style.logged}>Estás Loggueado!</span>
 				) : (
-					<span className={style.noLogged}>You aren't logged</span>
+					<span className={style.noLogged}>No estás Loggueado!</span>
 				)}
-				<h1 className={style.h1}>Your Cart:</h1>
+				<h1 className={style.h1}>Tu Carrito:</h1>
 			</div>
 			<div className={style.cardContainer}>
 			{cart.length
@@ -147,7 +147,7 @@ const Cart = () => {
 				>
 					Confirmar
 				</button>
-				: <div className={style.empty}>Your cart is empty :(</div> 
+				: <div className={style.empty}>Tu Carrito está vacío:(</div> 
 			)
 			: (
 				<MercadoPago ids={cart} />
