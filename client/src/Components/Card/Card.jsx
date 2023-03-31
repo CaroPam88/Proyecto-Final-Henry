@@ -9,7 +9,7 @@ const Card = ({id, name, image, price}) => {
       <p className={style.cardText}>${price}</p>
       </div>
       <Link to={`/detail/${id}`}>
-        <button className={style.viewButton}>View more</button>
+        <button className={style.viewButton}>Ver más</button>
       </Link>
     </div>
   );

@@ -11,14 +11,14 @@ const GenderCard = () => {
         className={style.cardM}
         to="cardContainer">
           <div  onClick={() => handlerFilter({target: { name: "genre", value: "Male"}})} >
-          <span>Men Wearing</span>
+          <span>Ropa de Hombre</span>
         </div>
         </Link>
         <Link 
         className={style.cardW}
         to="cardContainer">
           <div  onClick={() => handlerFilter({target: { name: "genre", value: "Female"}})} >
-          <span>Woman Wearing</span>
+          <span>Ropa de Mujer</span>
         </div>
         </Link>
       </div>

@@ -18,7 +18,7 @@ const Filter = () => {
       </select> */}
 
       <select name="type" onChange={(e) => handlerFilter(e)} className={style.selections} >
-        <option value="" className={style.options} >All types</option>
+        <option value="" className={style.options} >Productos</option>
         <option value="remera" className={style.options} >Remera</option>
         <option value="vestido" className={style.options} >Vestido</option>
         <option value="chomba" className={style.options} >Chomba</option>
@@ -27,7 +27,7 @@ const Filter = () => {
       </select>
 
       <select name="size" onChange={(e) => handlerFilter(e)} className={style.selections} >
-        <option value="" className={style.options} >All sizes</option>
+        <option value="" className={style.options} >Talles</option>
         <option value="S" className={style.options} >S</option>
         <option value="L" className={style.options} >L</option>
         <option value="M" className={style.options} >M</option>
@@ -36,7 +36,7 @@ const Filter = () => {
       </select>
 
       <select name="color" onChange={(e) => handlerFilter(e)} className={style.selections} >
-        <option value="" className={style.options} >All colors</option>
+        <option value="" className={style.options} >Colores</option>
         {colors.map((c, i) => (<option key={i} value={c}  className={style.options} >{c}</option>))}
 
       </select>
