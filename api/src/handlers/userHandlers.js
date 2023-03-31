@@ -6,6 +6,7 @@ const {
 	deleteItem,
 	putItem,
 	deleteTheUser,
+	getUserCart,
 } = require('../controllers/userControllers');
 
 let postUserHandler = async (req, res) => {
@@ -101,6 +102,18 @@ let deleteUser = async (req, res) => {
 	}
 };
 
+let getCart = async (req, res) => {
+	const {userId} = req.params;
+
+	console.log(userId);
+	try {
+		const cart = await getUserCart(userId);
+		res.status(200).json(cart);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send('Error al traer el carrito');
+	}
+};
 module.exports = {
 	postUserHandler,
 	getUserHandler,
@@ -109,4 +122,5 @@ module.exports = {
 	deleteCartItemHandler,
 	putCartItemHandler,
 	deleteUser,
+	getCart,
 };

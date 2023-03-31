@@ -36,6 +36,7 @@ const getUserByEmail = async (email) => {
 };
 
 const {v4: uuidv4} = require('uuid');
+const {log} = require('console');
 
 const postInCart = async (id, clothe) => {
 	// Obtener el usuario correspondiente
@@ -121,6 +122,17 @@ async function moveCartToBuy(userId) {
 	await user.save();
 }
 
+const getUserCart = async (userId) => {
+	const user = await User.findOne({
+		where: {id: userId},
+		attributes: ['cart'], // solo devuelve la propiedad "cart" del usuario
+	});
+
+	console.log(user);
+
+	return user.cart;
+};
+
 module.exports = {
 	createUser,
 	getUsersData,
@@ -130,4 +142,5 @@ module.exports = {
 	putItem,
 	moveCartToBuy,
 	deleteTheUser,
+	getUserCart,
 };
