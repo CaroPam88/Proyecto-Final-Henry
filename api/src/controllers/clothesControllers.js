@@ -94,65 +94,105 @@ let getGenderData = async (gender) => {
 
 //////////////////////////////////////////////
 
+// const clothesUpdates = async (ids) => {
+// 	//llamamos al modelos y lo guardamos en una variable (dataDb) que nos va ayudar a modificar su valor
+// 	let data = ids;
+// 	let dataDb = await Size.findByPk(data.id);
+// 	//la siguiente variable tendra el valor modificado y es la que vamos a usar como el dato final
+// 	let aux = dataDb;
+// 	let aux2 = dataDb;
+
+// 	//hacemos la logica que busque el color al que vamos a cambiar su stock
+// 	dataDb = dataDb.colors.filter((elem) => elem.color === data.color);
+
+// 	//hacemos la segunda logica que cambia el stock del color encontrado y que modifica el stock
+// 	if (dataDb[0].stockColors < data.cantidad) {
+// 		return [
+// 			{message: `solo tenemos ${dataDb[0].stockColors} en stock`},
+// 			{status: 401},
+// 		];
+// 	} else if (dataDb[0].stockColors === 0) {
+// 		alert;
+// 		return [{message: 'Nuestro stock esta en 0'}, {status: 400}];
+// 	} else {
+// 		dataDb[0].stockColors -= data.cantidad;
+// 	}
+
+// 	//al terminar estos cambios estaran guradados en la variable "aux"
+
+// 	//hacemos la logica que va cambiar a los demas stock
+// 	aux2 = aux2.colors
+// 		.map((elem) => Number(elem.stockColors))
+// 		.reduce((acc, item) => (acc += item));
+
+// 	await Size.update(
+// 		//por ultimo le damos el valor a colors de "aux.colors" el cual tiene el nuevo stock modificado
+// 		{
+// 			colors: aux.colors,
+// 			stockSize: Number(aux2),
+// 		},
+// 		{
+// 			where: {
+// 				id: data.id,
+// 			},
+// 		}
+// 	);
+// 	// actualizamos el modelo Clothes y le actualizamos el stock general
+
+// 	await Clothes.update(
+// 		{
+// 			stockGeneral: Number(aux2),
+// 		},
+// 		{
+// 			where: {
+// 				id: data.id,
+// 			},
+// 		}
+// 	);
+// };
+
+// let clothesUpdate = async (ids) => {
+// 	await ids.forEach( el => clothesUpdates(el));
+// };
 const clothesUpdates = async (ids) => {
-	//llamamos al modelos y lo guardamos en una variable (dataDb) que nos va ayudar a modificar su valor
-	let data = ids;
-	let dataDb = await Size.findByPk(data.id);
-	//la siguiente variable tendra el valor modificado y es la que vamos a usar como el dato final
-	let aux = dataDb;
-	let aux2 = dataDb;
+    const size = await Size.findByPk(ids.id);
+    const clothes = await Clothes.findByPk(ids.id);
 
-	//hacemos la logica que busque el color al que vamos a cambiar su stock
-	dataDb = dataDb.colors.filter((elem) => elem.color === data.color);
+    const updatedColors = size.colors.map((colorObj) => {
+        if (colorObj.color === ids.color) {
+            colorObj.stockColors -= ids.cantidad;
+        }
+        return colorObj;
+    });
 
-	//hacemos la segunda logica que cambia el stock del color encontrado y que modifica el stock
-	if (dataDb[0].stockColors < data.cantidad) {
-		return [
-			{message: `solo tenemos ${dataDb[0].stockColors} en stock`},
-			{status: 401},
-		];
-	} else if (dataDb[0].stockColors === 0) {
-		alert;
-		return [{message: 'Nuestro stock esta en 0'}, {status: 400}];
-	} else {
-		dataDb[0].stockColors -= data.cantidad;
-	}
+    size.stockSize -= ids.cantidad;
 
-	//al terminar estos cambios estaran guradados en la variable "aux"
+    clothes.stockGeneral -= ids.cantidad;
 
-	//hacemos la logica que va cambiar a los demas stock
-	aux2 = aux2.colors
-		.map((elem) => Number(elem.stockColors))
-		.reduce((acc, item) => (acc += item));
-
-	await Size.update(
-		//por ultimo le damos el valor a colors de "aux.colors" el cual tiene el nuevo stock modificado
-		{
-			colors: aux.colors,
-			stockSize: Number(aux2),
-		},
-		{
-			where: {
-				id: data.id,
-			},
-		}
-	);
-	// actualizamos el modelo Clothes y le actualizamos el stock general
-
-	await Clothes.update(
-		{
-			stockGeneral: Number(aux2),
-		},
-		{
-			where: {
-				id: data.id,
-			},
-		}
-	);
+    await Size.update(
+        {
+            colors: updatedColors,
+            stockSize: size.stockSize,
+        },
+        {
+            where: {
+                id: size.id,
+            },
+        }
+    );
+    await clothes.save();
 };
 
-let clothesUpdate = async (ids) => {
-	await ids.forEach(el => clothesUpdates(el));
+const clothesUpdate = async (items) => {
+    const itemIds = items.map((item) => ({
+        id: item.id,
+        color: item.color,
+        cantidad: item.cantidad,
+    }));
+
+    for (const itemId of itemIds) {
+        await clothesUpdates(itemId);
+    }
 };
 
 const generalUpdate = async (

@@ -14,8 +14,11 @@ const Cart = () => {
 
 	let cart = useSelector((state) => state.cart.cartItems ? state.cart.cartItems : []);
 	let canasta = useSelector((state) => state.cart.localStorageCart ? state.cart.localStorageCart : []);
-
-
+    
+	let idUser = [{idUser: theUser.id}]
+	
+	// cart = [...cart, ...idUser] // concatena cart con id de usuario 
+	// console.log("cart",cart)
 	const fetchCart = () => {
 		theUser.id
 		? dispatch(getUserByEmail()).then(() => dispatch(getCart()))

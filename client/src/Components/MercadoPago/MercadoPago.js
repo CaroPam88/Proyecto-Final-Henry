@@ -5,7 +5,7 @@ import axios from "axios";
 const FORM_ID = 'payment-form';
 
 export default function Product({ids}) {
-    console.log('aca mercado');
+    console.log('aca mercado ids', ids);
     const obtenerPreference = useCallback(
         async() => {
             const response = await(axios.post(`/pay`, ids))
