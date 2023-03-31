@@ -62,13 +62,16 @@ function Form() {
 						<option value="Female">Mujer</option> 
 						<option value="Male">Hombre</option>
 					</select>
-					
-					{form.sex?.map((genre, i) => (
-						<button type="button" key={i} value={`${genre}`} onClick={(e) => genreDeleteHandler(e)} >{genre}</button>
-					))}
-					{error.sex 
-					? (<span style={styleError}>{error.sex}</span>) 
-					: (<span style={styleValidet}>{validated.sex}</span>)}
+					<div className={style.genreCont}>
+						<div>
+							{form.sex?.map((genre, i) => (
+								<button type="button" key={i} value={`${genre}`} className={style.inputColorDelete} onClick={(e) => genreDeleteHandler(e)} >{genre}</button>
+							))}
+						</div>
+						{error.sex 
+						? (<span style={styleError}>{error.sex}</span>) 
+						: (<span style={styleValidet}>{validated.sex}</span>)}
+					</div>
 				</div>
 					
 				<div>
@@ -76,10 +79,14 @@ function Form() {
 						<input type="text" name="color" placeholder="Coloque un Color" onChange={(e) => handlerColor(e)} className={style.colorContInput}/>
 						<input type="number" name="stockColors" min={1} placeholder="Elije el Stock por Color" onChange={(e) => handlerColor(e)} className={style.colorContInput} />	
 					</div>
-					{!colorError.nameColor && !colorError.sizeColor &&  addColor.color !== '' && addColor.stockColors !== 0 && <button onClick={(e) => handlerAddColor(e)} className={style.inputColor}>Agregue un Color</button>}
-					{form.colors?.map((el, i) => (
-					<button type="button" key={i} value={i} onClick={(e) => colorDeleteHandler(e)} className={style.inputColorDelete} >{`${el.color} | ${el.stockColors}`}</button>
-					))}
+					<div className={style.contentCol}>
+						{!colorError.nameColor && !colorError.sizeColor &&  addColor.color !== '' && addColor.stockColors !== 0 && <button onClick={(e) => handlerAddColor(e)} className={style.inputColor}>Agregue un Color</button>}
+						<div>
+							{form.colors?.map((el, i) => (
+							<button type="button" key={i} value={i} onClick={(e) => colorDeleteHandler(e)} className={style.inputColorDelete} >{`${el.color} | ${el.stockColors}`}</button>
+							))}
+						</div>
+					</div>
 					{colorError.nameColor || colorError.sizeColor
 					? colorError.nameColor
 					? (<span style={styleError} >{colorError.nameColor}</span>)
