@@ -4,20 +4,19 @@ import {
 	changeTheUserlocked,
 } from '../../../../../Redux/actionUser';
 import {useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import style from './DetailUser.module.css';
+import hero3 from '../../../../../Assets/img/hero3.jpg';
 
 function DetailUser() {
 	const dispatch = useDispatch();
 	const {id} = useParams();
 	const user = useSelector((state) => state.user.userId);
 
-	console.log(user);
-
 	useEffect(() => {
 		dispatch(getUserByTheId(id));
 
-	}, [user.locked]);
+	}, []);
 
 	let handleLock = (id) => {
 		dispatch(changeTheUserlocked(id)).then(() =>
@@ -27,11 +26,15 @@ function DetailUser() {
 
 	return (
 		<section>
+			<img src={hero3} alt="found" className={style.found} />
 			<div className={style.container}>
+			<Link to='/admin/allUsers' className={style.return} >
+                    <h6>{'<<'}</h6>
+            </Link>
 				<div className={style.details}>
 					<div className={style.detailsContainer}>
+						<h3>Carrito</h3>
 						<div className={style.cartContainer}>
-							<h3>Carrito</h3>
 							<table className={style.tableCart}>
 								<thead>
 									<tr>
@@ -53,8 +56,8 @@ function DetailUser() {
 								</tbody>
 							</table>
 						</div>
+						<h3>Historial de Compras</h3>
 						<div className={style.historyContainer}>
-							<h3>Historial de Compras</h3>
 							<table className={style.tableHistory}>
 								<thead>
 									<tr>
@@ -93,12 +96,12 @@ function DetailUser() {
 							{user.locked ? 'Deshabilitado' : 'Habilitado'}{' '}
 							<label
 								className={style.switch}
-								onClick={() => handleLock(user.id)}
 							>
 								<input
 									type="checkbox"
 									className={style.checkbox}
 									checked={user.locked}
+									onChange={() => handleLock(user.id)}
 								/>
 								<div className={style.slider}></div>
 							</label>
