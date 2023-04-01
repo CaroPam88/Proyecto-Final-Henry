@@ -90,7 +90,7 @@ console.log(myProduct)
             ))}
           </div>
           <label className={style.label} htmlFor="cantidad">
-            Unidades:{" "}
+            Units:{" "}
           </label>
           {stock && stock[0] ? (
             stock[0] > 6 ? (
@@ -103,12 +103,12 @@ console.log(myProduct)
                   handlerDetail(e);
                 }}
               >
-                <option value="1">1 unidad</option>
-                <option value="2">2 unidades</option>
-                <option value="3">3 unidades</option>
-                <option value="4">4 unidades</option>
-                <option value="5">5 unidades</option>
-                <option value="6">6 unidades</option>
+                <option value="1">1 unit</option>
+                <option value="2">2 units</option>
+                <option value="3">3 units</option>
+                <option value="4">4 units</option>
+                <option value="5">5 units</option>
+                <option value="6">6 units</option>
                 <option value="otherValue">Other value...</option>
               </select>
             ) : (
@@ -158,7 +158,7 @@ console.log(myProduct)
                     onSubmit(e);
                   }}
                 >
-                  Comprar ahora
+                  Buy It Now!
                 </button>
               ) : (
                 <MercadoPago ids={[nuevoProducto]} />
@@ -174,11 +174,11 @@ console.log(myProduct)
                 className={style.button}
                 onClick={(e) => buttonAgregarAlCarrito(e)}
               >
-                Agregar al Carrito
+                Add to the Cart
               </button>
             ) : (
               <button className={style.button}>
-                Por favor Elige tus medidas y colores
+                Please choose your Size and Color 
               </button>
             )}
           </div>

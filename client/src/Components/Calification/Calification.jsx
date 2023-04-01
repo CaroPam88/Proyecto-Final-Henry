@@ -63,7 +63,7 @@ const SatisfactionPopup = () => {
       className={style.Modal}
     >
       <h2 className={style.h2}>
-        ¿Qué tan satisfecho está con su experiencia en esta página?
+      How satisfied are you with your experience on this page?
       </h2>
       <div className={style.stars}>
         {[1, 2, 3, 4, 5].map((value) => (
@@ -75,7 +75,7 @@ const SatisfactionPopup = () => {
         ))}
       </div>
       <button onClick={handleSubmit} className={style.button}>
-        Enviar calificación
+        Send ❤️
       </button>
     </Modal>
   );
