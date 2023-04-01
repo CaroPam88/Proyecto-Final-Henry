@@ -1,5 +1,8 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {getUserByTheId} from '../../../../../Redux/actionUser';
+import {
+	getUserByTheId,
+	changeTheUserlocked,
+} from '../../../../../Redux/actionUser';
 import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import style from './DetailUser.module.css';
@@ -7,46 +10,95 @@ import style from './DetailUser.module.css';
 function DetailUser() {
 	const dispatch = useDispatch();
 	const {id} = useParams();
+	const user = useSelector((state) => state.user.userId);
+
+	console.log(user);
 
 	useEffect(() => {
 		dispatch(getUserByTheId(id));
-	}, []);
+	}, [id]);
 
-	const user = useSelector((state) => state.user.userId);
+	// let handleLock = (id) => {
+	// 	dispatch(changeTheUserlocked(id));
+	// };
 
 	return (
-		<div className={style.container}>
-			<div className={style.card}>
-				<h2 className={style.name}>{user.name}</h2>
-				<p className={style.email}>{user.email}</p>
-				<p className={style.nickname}>{user.nickname}</p>
-				<img
-					className={style.picture}
-					src={user.picture}
-					alt={user.name}
-				/>
+		<section>
+			<div className={style.container}>
+				<div className={style.details}>
+					<div className={style.detailsContainer}>
+						<div className={style.cartContainer}>
+							<h3>Carrito</h3>
+							<table className={style.tableCart}>
+								<thead>
+									<tr>
+										<th>Producto</th>
+										<th>Cantidad</th>
+										<th>Precio</th>
+									</tr>
+								</thead>
+								<tbody>
+									{user.cart?.map((item) => (
+										<tr key={item.cartIndex}>
+											<td>{item.name}</td>
+											<td>{item.cantidad}</td>
+											<td>${item.price}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+						<div className={style.historyContainer}>
+							<h3>Historial de Compras</h3>
+							<table className={style.tableHistory}>
+								<thead>
+									<tr>
+										<th>Producto</th>
+										<th>Cantidad</th>
+										<th>Precio</th>
+									</tr>
+								</thead>
+								<tbody>
+									{user.history?.map((item) => (
+										<tr key={item.cartIndex}>
+											<td>{item.name}</td>
+											<td>{item.cantidad}</td>
+											<td>${item.price}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div className={`${style.card} ${style.details}`}>
+						<img
+							className={style.picture}
+							src={user.picture}
+							alt={user.name}
+						/>
+						<div className={style.userinfo}>
+							<h2 className={style.name}>{user.name}</h2>
+							<p className={style.email}>Email: {user.email}</p>
+							<p className={style.nickname}>
+								Apodo: {user.nickname}
+							</p>
+							Estado:
+							{user.locked ? 'Deshabilitado' : 'Habilitado'}{' '}
+							<label
+								className={style.switch}
+								// onClick={handleLock(user.id)}
+							>
+								<input
+									type="checkbox"
+									className={style.checkbox}
+								/>
+								<div className={style.slider}></div>
+							</label>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div className={style.cart}>
-				<h3>Carrito</h3>
-				<ul>
-					{user.cart.map((item) => (
-						<li key={item.cartIndex}>
-							{item.name} ({item.cantidad}) - ${item.price}
-						</li>
-					))}
-				</ul>
-			</div>
-			<div className={style.history}>
-				<h3>Historial de Compras</h3>
-				<ul>
-					{user.history.map((item) => (
-						<li key={item.cartIndex}>
-							{item.name} ({item.cantidad}) - ${item.price}
-						</li>
-					))}
-				</ul>
-			</div>
-		</div>
+		</section>
 	);
 }
 

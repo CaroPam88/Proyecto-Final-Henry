@@ -35,6 +35,9 @@ const SliceUSer = createSlice({
 		getUserById: (state, action) => {
 			state.userId = action.payload;
 		},
+		changelocked: (state, action) => {
+			state.userId = action.payload;
+		},
 	},
 });
 export const {
@@ -46,5 +49,6 @@ export const {
 	changeCantItem,
 	getAllUsers,
 	getUserById,
+	changelocked,
 } = SliceUSer.actions;
 export default SliceUSer.reducer;
