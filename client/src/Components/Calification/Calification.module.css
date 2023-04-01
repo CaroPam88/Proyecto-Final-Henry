@@ -21,6 +21,7 @@
     text-align: center;
     z-index: 9999;
   }
+  
   .button{
     background-color: black;
     color: #fff;
@@ -37,6 +38,7 @@
     z-index: 9999;
 
   }
+
   .button:hover {
     background-color: #006f8b;;
     transform: scale(1.1);  

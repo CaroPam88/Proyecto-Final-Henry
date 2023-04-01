@@ -45,7 +45,7 @@ export const Home = ()=>{
 
     return(
         <div className={style.container}>
-            {showSatisfactionPopup && <SatisfactionPopup />} {/* mostrar el popup solo si showSatisfactionPopup es true */}
+            {showSatisfactionPopup && <SatisfactionPopup />} {/* mostrar el popup solo si showSatisfactionPopup es true sino no se muestra */}
             <img src={imgHome} alt="" className={style.img} />
             <Hero />
             <GenderCard />

@@ -11,6 +11,8 @@ import { useDetail } from "./HooskDetailCarrito";
 import MercadoPago from "../../Components/MercadoPago/MercadoPago";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+//elimino la puntuacion porque va en el home)
+
 
 const Detail = () => {
   const dispatch = useDispatch();
