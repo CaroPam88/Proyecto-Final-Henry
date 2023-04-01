@@ -158,6 +158,7 @@ const putTheLockUser = async (userId) => {
 	const user = await User.findByPk(userId);
 
 	await user.update({locked: !user.locked});
+
 	return user;
 };
 
