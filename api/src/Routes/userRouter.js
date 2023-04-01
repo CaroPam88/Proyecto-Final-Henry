@@ -8,6 +8,7 @@ const {
 	putCartItemHandler,
 	deleteUser,
 	getCart,
+	getUserById,
 } = require('../handlers/userHandlers');
 
 const userRouter = Router();
@@ -27,5 +28,7 @@ userRouter.put('/cart/:userId/:cartIndex', putCartItemHandler);
 userRouter.delete('/:userId', deleteUser);
 
 userRouter.get('/thecart/:userId', getCart);
+
+userRouter.get('/id/:userId', getUserById);
 
 module.exports = userRouter;

@@ -1,0 +1,33 @@
+/* AllUsers.module.css */
+
+.users-table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 1.2rem;
+}
+
+.users-table th,
+.users-table td {
+	padding: 0.8rem;
+	text-align: left;
+}
+
+.users-table th {
+	background-color: #d5dbe5;
+	font-weight: bold;
+}
+
+.users-table tbody tr:nth-child(odd) {
+	background-color: #f7f8fc;
+}
+
+.users-table tbody tr:hover {
+	background-color: #e9eff5;
+}
+
+.perfil_Img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+}

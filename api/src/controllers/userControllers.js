@@ -148,6 +148,12 @@ const getUserCart = async (userId) => {
 	return user.cart;
 };
 
+const getTheUserById = async (userId) => {
+	console.log(userId);
+	const user = await User.findByPk(userId);
+	return user;
+};
+
 module.exports = {
 	createUser,
 	getUsersData,
@@ -160,4 +166,5 @@ module.exports = {
 	getUserCart,
 	moveCartToBuy,
 	moveDetailToBuy,
+	getTheUserById,
 };

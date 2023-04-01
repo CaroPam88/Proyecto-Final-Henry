@@ -5,6 +5,8 @@ import {
 	clearUser,
 	deleteItem,
 	changeCantItem,
+	getAllUsers,
+	getUserById,
 } from './userSlice';
 import axios from 'axios';
 
@@ -79,6 +81,27 @@ const changeCantInTheItem = (idItem, cantidad) => {
 	};
 };
 
+const getAllTheUsers = () => {
+	return async (dispatch) => {
+		try {
+			const response = (await axios.get('/user')).data;
+			return dispatch(getAllUsers(response));
+		} catch (error) {
+			alert(`${error}: error al obtener los usuarios`);
+		}
+	};
+};
+const getUserByTheId = (userId) => {
+	return async (dispatch) => {
+		try {
+			const response = (await axios.get(`/user/id/${userId}`)).data;
+			return dispatch(getUserById(response));
+		} catch (error) {
+			alert(`${error}: error al obtener el usuario`);
+		}
+	};
+};
+
 export {
 	createUser,
 	getUserByEmail,
@@ -86,4 +109,6 @@ export {
 	clearTheUser,
 	deleteTheItem,
 	changeCantInTheItem,
+	getAllTheUsers,
+	getUserByTheId,
 };
