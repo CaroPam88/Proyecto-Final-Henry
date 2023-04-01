@@ -16,11 +16,14 @@ function DetailUser() {
 
 	useEffect(() => {
 		dispatch(getUserByTheId(id));
-	}, [id]);
 
-	// let handleLock = (id) => {
-	// 	dispatch(changeTheUserlocked(id));
-	// };
+	}, [user.locked]);
+
+	let handleLock = (id) => {
+		dispatch(changeTheUserlocked(id)).then(() =>
+			dispatch(getUserByTheId(id))
+		);
+	};
 
 	return (
 		<section>
@@ -35,6 +38,7 @@ function DetailUser() {
 										<th>Producto</th>
 										<th>Cantidad</th>
 										<th>Precio</th>
+										<th>Color</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -43,6 +47,7 @@ function DetailUser() {
 											<td>{item.name}</td>
 											<td>{item.cantidad}</td>
 											<td>${item.price}</td>
+											<td>{item.color}</td>
 										</tr>
 									))}
 								</tbody>
@@ -56,6 +61,7 @@ function DetailUser() {
 										<th>Producto</th>
 										<th>Cantidad</th>
 										<th>Precio</th>
+										<th>Color</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -64,6 +70,7 @@ function DetailUser() {
 											<td>{item.name}</td>
 											<td>{item.cantidad}</td>
 											<td>${item.price}</td>
+											<td>{item.color}</td>
 										</tr>
 									))}
 								</tbody>
@@ -86,11 +93,12 @@ function DetailUser() {
 							{user.locked ? 'Deshabilitado' : 'Habilitado'}{' '}
 							<label
 								className={style.switch}
-								// onClick={handleLock(user.id)}
+								onClick={() => handleLock(user.id)}
 							>
 								<input
 									type="checkbox"
 									className={style.checkbox}
+									checked={user.locked}
 								/>
 								<div className={style.slider}></div>
 							</label>
