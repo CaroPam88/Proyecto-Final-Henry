@@ -16,6 +16,7 @@ function DetailUser() {
 
 	useEffect(() => {
 		dispatch(getUserByTheId(id));
+
 	}, [user.locked]);
 
 	let handleLock = (id) => {
