@@ -10,6 +10,7 @@ import {
 	clearColors,
 	clearSize,
 	putProduct,
+	disableToProduct,
 } from './productSlice';
 import axios from 'axios';
 
@@ -18,7 +19,12 @@ const getAllProducts = () => {
 	return async (dispatch) => {
 		try {
 			const dbData = (await axios(`/clothes/`)).data;
-			return dispatch(getProducts(dbData));
+			const result = dbData.sort((a,b) => {
+				if(a.id > b.id) return 1;
+                if(b.id > a.id) return -1;
+                return 0;
+			})
+			return dispatch(getProducts(result));
 		} catch (error) {
 			alert({error: error.message});
 		}
@@ -121,6 +127,19 @@ const putClothes = (data) => async (dispatch, getState) => {
 	}
 };
 
+const disableProduct = (id) => {
+	return async (dispatch, getState) => {
+		try{
+			const filteredProducts = getState().product?.filteredProducts;
+			const response = (await axios.put(`/clothes/exist/${id}`)).data;
+			const updateProducts = filteredProducts[id-1].existing = !filteredProducts[id-1].existing;
+			return dispatch(disableToProduct(updateProducts))
+		}catch (error) {
+			return {error : error.message}
+		}
+	}
+};
+
 // const putClothes = (data) => async (dispatch) =>{
 //     try {
 //         console.log('soy el put');
@@ -161,4 +180,5 @@ export {
 	clearColorsState,
 	clearSizeState,
 	putClothes,
+	disableProduct,
 };

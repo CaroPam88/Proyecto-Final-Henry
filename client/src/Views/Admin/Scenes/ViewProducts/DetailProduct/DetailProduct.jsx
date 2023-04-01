@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProductDetail, clearProductDetailState } from "../../../../../Redux/ActionsGet";
+import { getProductDetail, clearProductDetailState, disableProduct } from "../../../../../Redux/ActionsGet";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from './DetailProduct.module.css';
@@ -17,6 +17,12 @@ const DetailProduct = () => {
         };
     }, []);
     const detail = useSelector((state) => state.products.productDetail);
+
+    const handlerExisting = (e, id) => {
+        dispatch(disableProduct(id))
+        .then(() => dispatch(getProductDetail(id)))
+        
+    }
     return (
         <section>
             <img src={hero3} alt='found' className={style.found} />
@@ -37,6 +43,7 @@ const DetailProduct = () => {
                 </Link>
                     <h3>Nombre: {detail.name}</h3>
                     <section className={style.twoInfo}>
+                        <p>Id: {detail.id}</p>
                         <div className={style.genders}>
                             <p>Genero: </p>
                             {detail.sex?.map((el, i) => <p key={i} >{el}</p>)}
@@ -67,7 +74,7 @@ const DetailProduct = () => {
                     <section className={style.buttonCont} >
                         <div>Deshabilitado: </div>
                         <label className={style.switch}>
-                            <input type="checkbox" className={style.checkbox}/>
+                            <input type="checkbox" className={style.checkbox} checked={!detail.existing} onChange={(e) => {handlerExisting(e, detail.id)}}/>
                             <div className={style.slider}></div>
                         </label>
                         <button className={style.button} >modificar</button>
