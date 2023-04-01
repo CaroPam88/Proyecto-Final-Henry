@@ -39,7 +39,7 @@ function App() {
                 <Route exact path="/contact" element={<Contact />} />
 
                 <Route exact path="/admin/allProducts" element={<AllProducts />} />
-                <Route exact path="/admin/detail/:id" element={<DetailProduct />} />
+                <Route exact path="/admin/product/detail/:id" element={<DetailProduct />} />
               </Routes>
               {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
                 <Footer />
