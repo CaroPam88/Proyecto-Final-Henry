@@ -5,7 +5,7 @@
 	z-index: -10;
 }
 
-.users-table {
+/* .users-table {
 	border-collapse: collapse;
 	width: 100%;
 	font-size: 1.2rem;
@@ -28,6 +28,50 @@
 
 .users-table tbody tr:hover {
 	background-color: #e9eff5;
+} */
+/* Estilos de la tabla /
+/* .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+  } */
+
+/* / Estilos de las celdas / .users-table td, */
+.users-table th {
+	padding: 12px;
+	border: none;
+	text-align: center;
+	font-size: 15px;
+	width: 30%;
+}
+
+/* / Estilos de las celdas de encabezado /  */
+.users-table th {
+	background-color: #ffffff8f;
+	color: #444;
+	font-weight: bold;
+	backdrop-filter: blur(5px);
+	border-bottom: 2px solid #2b2a2a48;
+}
+
+/* / Estilos de las filas /  */
+.users-table tr {
+	background-color: #9b99997c;
+	border: none;
+	margin: 1px;
+	padding: 2px;
+	backdrop-filter: blur(5px);
+	transition: all 0.3s ease;
+}
+
+/* / Estilos de las filas impares */
+.users-table tr:nth-child(odd) {
+	background-color: #a0a0a08c;
+	backdrop-filter: blur(5px);
+}
+.users-table tr:hover {
+	background: #ffffffce;
+	transition: 0.5s;
 }
 
 .perfil_Img {

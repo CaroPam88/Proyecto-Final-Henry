@@ -15,11 +15,17 @@ function AllUsers() {
 
 	useEffect(() => {
 		dispatch(getAllTheUsers());
-	}, [users.locked]);
+	}, []);
+
+	let handleLock = (id) => {
+		dispatch(changeTheUserlocked(id)).then(() =>
+			dispatch(getAllTheUsers())
+		);
+	};
 
 	return (
 		<section>
-			{/* <img src={hero3} alt="found" className={style.found} /> */}
+			<img src={hero3} alt="found" className={style.found} />
 			<table className={style['users-table']}>
 				<thead>
 					<tr>
@@ -45,11 +51,13 @@ function AllUsers() {
 							<td>{user.nickname}</td>
 							<td>{user.email}</td>
 							<td>
-								{user.blocked ? 'Deshabilitado' : 'Habilitado'}{' '}
+								{user.locked ? 'Deshabilitado' : 'Habilitado'}{' '}
 								<label className={style.switch}>
 									<input
 										type="checkbox"
 										className={style.checkbox}
+										onClick={() => handleLock(user.id)}
+										checked={user.locked}
 									/>
 									<div className={style.slider}></div>
 								</label>
