@@ -10,7 +10,7 @@ import style from "./Detail.module.css";
 import { useDetail } from "./HooskDetailCarrito";
 import MercadoPago from "../../Components/MercadoPago/MercadoPago";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { StarRating } from "../../Components/Calification/Calification";
+
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -57,10 +57,7 @@ console.log(myProduct)
           <img src={myProduct.image} alt="" className={style.img} />
         </div>
         <div className={style.description}>
-          <h3 className={style.name}>{myProduct.name}</h3>
-          <StarRating rating={myProduct.rating} />
-
-        
+          <h3 className={style.name}>{myProduct.name}</h3>      
 
           <h2 className={style.price}>$ {myProduct.price}</h2>
           {/* <ul>
