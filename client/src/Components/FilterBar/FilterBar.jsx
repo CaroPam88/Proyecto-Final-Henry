@@ -18,16 +18,16 @@ const Filter = () => {
       </select> */}
 
       <select name="type" onChange={(e) => handlerFilter(e)} className={style.selections} >
-        <option value="" className={style.options} >Productos</option>
-        <option value="remera" className={style.options} >Remera</option>
-        <option value="vestido" className={style.options} >Vestido</option>
+        <option value="" className={style.options} >Products</option>
+        <option value="remera" className={style.options} >T-shirt</option>
+        <option value="vestido" className={style.options} >Dress</option>
         <option value="chomba" className={style.options} >Chomba</option>
-        <option value="pantalon" className={style.options} >Pantalón</option>
+        <option value="pantalon" className={style.options} >Pants</option>
         <option value="short" className={style.options} >Short</option>
       </select>
 
       <select name="size" onChange={(e) => handlerFilter(e)} className={style.selections} >
-        <option value="" className={style.options} >Talles</option>
+        <option value="" className={style.options} >Size</option>
         <option value="S" className={style.options} >S</option>
         <option value="L" className={style.options} >L</option>
         <option value="M" className={style.options} >M</option>
@@ -36,7 +36,7 @@ const Filter = () => {
       </select>
 
       <select name="color" onChange={(e) => handlerFilter(e)} className={style.selections} >
-        <option value="" className={style.options} >Colores</option>
+        <option value="" className={style.options} >Colors</option>
         {colors.map((c, i) => (<option key={i} value={c}  className={style.options} >{c}</option>))}
 
       </select>

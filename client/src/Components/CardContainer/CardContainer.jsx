@@ -34,7 +34,7 @@ const CardContainer = () => {
   return (
     <section className={style.section} id="cardContainer">
 
-      <h3 className={style.sectionTitle}>Nuestros Productos</h3>
+      <h3 className={style.sectionTitle}>Our Products</h3>
 
       <div className={style.div1}>
         <div className={style.card}>
@@ -78,7 +78,7 @@ const CardContainer = () => {
       {view.mode === "All" && <Filter />}
       <button className={style.viewButton} onClick={() => handlerView()}>
 
-        {view.mode === "Slice" ? "Ver todos los Productos" : "Ver menos Productos"}
+        {view.mode === "Slice" ? "View all Products" : "View less Products"}
 
       </button>
     </section>
