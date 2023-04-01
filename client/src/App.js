@@ -36,6 +36,7 @@ function App() {
 				<Route exact path="/nosotros" element={<Nosotros />} />
 				<Route exact path="/contact" element={<Contact />} />
 
+
 				<Route
 					exact
 					path="/admin/allProducts"
@@ -52,6 +53,8 @@ function App() {
 					path="/admin/detailUser/:id"
 					element={<DetailUser />}
 				/>
+              <Route exact path="/admin/allProducts" element={<AllProducts />} />
+                <Route exact path="/admin/product/detail/:id" element={<DetailProduct />} />
 			</Routes>
 			{pathname !== '/' && pathname.split('/')[1] !== 'dashboard' ? (
 				<Footer />
@@ -61,6 +64,7 @@ function App() {
 			) : null}
 		</div>
 	);
+
 }
 
 export default App;
