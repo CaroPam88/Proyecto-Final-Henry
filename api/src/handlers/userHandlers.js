@@ -8,6 +8,7 @@ const {
 	deleteTheUser,
 	getUserCart,
 	getTheUserById,
+	putTheLockUser,
 } = require('../controllers/userControllers');
 
 let postUserHandler = async (req, res) => {
@@ -126,6 +127,19 @@ let getUserById = async (req, res) => {
 		return res.status(500).send('Error al traer el usuario');
 	}
 };
+
+let changeLockedState = async (req, res) => {
+	const {userId} = req.params;
+
+	try {
+		const updatedUser = await putTheLockUser(userId);
+		res.status(200).json(updatedUser);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send('Error al cambiar el estado del usuario');
+	}
+};
+
 module.exports = {
 	postUserHandler,
 	getUserHandler,
@@ -136,4 +150,5 @@ module.exports = {
 	deleteUser,
 	getCart,
 	getUserById,
+	changeLockedState,
 };

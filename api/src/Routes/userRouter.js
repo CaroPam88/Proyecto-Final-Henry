@@ -9,6 +9,7 @@ const {
 	deleteUser,
 	getCart,
 	getUserById,
+	changeLockedState,
 } = require('../handlers/userHandlers');
 
 const userRouter = Router();
@@ -24,6 +25,8 @@ userRouter.post('/cart/:id', postCartItemHandler);
 userRouter.delete('/cart/:userId/:itemId', deleteCartItemHandler);
 
 userRouter.put('/cart/:userId/:cartIndex', putCartItemHandler);
+
+userRouter.put('/locked/:userId', changeLockedState);
 
 userRouter.delete('/:userId', deleteUser);
 

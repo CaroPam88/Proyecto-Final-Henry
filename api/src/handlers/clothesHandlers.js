@@ -6,6 +6,7 @@ const {
 	getGenderData,
 	clothesUpdate,
 	generalUpdate,
+	changeItemExisting,
 } = require('../controllers/clothesControllers');
 const {
 	moveCartToBuy,
@@ -148,6 +149,17 @@ let UpdateClothes = async (req, res) => {
 	}
 };
 
+let changeExisting = async (req, res) => {
+	let {idItem} = req.params;
+
+	try {
+		let clothe = await changeItemExisting(idItem);
+		res.status(200).json(clothe);
+	} catch (error) {
+		alert(`${error}: error al agregar el producto`);
+	}
+};
+
 module.exports = {
 	getProductHandler,
 	getProductByIdHandler,
@@ -156,6 +168,7 @@ module.exports = {
 	getProductByGenderHandler,
 	postMercadoPago,
 	UpdateClothes,
+	changeExisting,
 };
 
 // await Clothes.update(

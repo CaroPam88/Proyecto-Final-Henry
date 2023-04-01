@@ -1,4 +1,9 @@
-/* AllUsers.module.css */
+.found {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: -10;
+}
 
 .users-table {
 	border-collapse: collapse;
@@ -9,7 +14,7 @@
 .users-table th,
 .users-table td {
 	padding: 0.8rem;
-	text-align: left;
+	text-align: center;
 }
 
 .users-table th {
@@ -30,4 +35,54 @@
 	height: 50px;
 	border-radius: 50%;
 	object-fit: cover;
+}
+
+.info {
+	display: block;
+	text-align: center;
+}
+
+/*======================================================*/
+/* Estilos del Doggle Swich */
+.checkbox {
+	display: none;
+}
+
+.slider {
+	width: 30px;
+	height: 20px;
+	background-color: lightgray;
+	border-radius: 20px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	border: 4px solid transparent;
+	transition: 0.3s;
+	box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.25) inset;
+	cursor: pointer;
+}
+
+.slider::before {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	transform: translateX(-10px);
+	border-radius: 20px;
+	transition: 0.3s;
+	box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+}
+
+.checkbox:checked ~ .slider::before {
+	transform: translateX(10px);
+	box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+}
+
+.checkbox:checked ~ .slider {
+	background-color: #0395b9;
+}
+
+.checkbox:active ~ .slider::before {
+	transform: translate(0);
 }

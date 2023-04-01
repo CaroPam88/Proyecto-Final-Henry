@@ -7,6 +7,7 @@ import {
 	changeCantItem,
 	getAllUsers,
 	getUserById,
+	changelocked,
 } from './userSlice';
 import axios from 'axios';
 
@@ -102,6 +103,17 @@ const getUserByTheId = (userId) => {
 	};
 };
 
+const changeTheUserlocked = (userId) => {
+	return async (dispatch) => {
+		try {
+			const response = await axios.put(`/user/locked/${userId}`);
+			return dispatch(changelocked(response));
+		} catch (error) {
+			alert(`${error}: error al cambiar el estado del usuario`);
+		}
+	};
+};
+
 export {
 	createUser,
 	getUserByEmail,
@@ -111,4 +123,5 @@ export {
 	changeCantInTheItem,
 	getAllTheUsers,
 	getUserByTheId,
+	changeTheUserlocked,
 };

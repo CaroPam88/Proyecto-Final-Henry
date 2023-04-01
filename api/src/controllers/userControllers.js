@@ -154,6 +154,13 @@ const getTheUserById = async (userId) => {
 	return user;
 };
 
+const putTheLockUser = async (userId) => {
+	const user = await User.findByPk(userId);
+
+	await user.update({locked: !user.locked});
+	return user;
+};
+
 module.exports = {
 	createUser,
 	getUsersData,
@@ -167,4 +174,5 @@ module.exports = {
 	moveCartToBuy,
 	moveDetailToBuy,
 	getTheUserById,
+	putTheLockUser,
 };
