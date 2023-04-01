@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getAllProducts } from "../../../../../Redux/ActionsGet";
+import { getAllProducts, disableProduct } from "../../../../../Redux/ActionsGet";
 import { useDispatch, useSelector } from "react-redux";
 import style from './AllProducts.module.css'
 import { Link } from "react-router-dom";
@@ -8,10 +8,17 @@ import hero3 from '../../../../../Assets/img/hero3.jpg';
 
 const AllProducts = () => {
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(getAllProducts());
     },[])
-    const products = useSelector(state => state.products.filteredProducts)
+    const products = useSelector(state => state.products.filteredProducts);
+
+    const handlerExisting = (e, id) => {
+        dispatch(disableProduct(id))
+        .then(() => dispatch(getAllProducts()))
+        
+    }
 
     return (<section>
         <img src={hero3} alt='found' className={style.found} />
@@ -37,7 +44,7 @@ const AllProducts = () => {
                     <td>{product.stockGeneral}</td>
                     <td>
                         <label className={style.switch}>
-                            <input type="checkbox" className={style.checkbox}/>
+                            <input type="checkbox" className={style.checkbox} name={i} checked={!product.existing} onChange={(e) => {handlerExisting(e, product.id)}}/>
                             <div className={style.slider}></div>
                         </label>
                     </td>
