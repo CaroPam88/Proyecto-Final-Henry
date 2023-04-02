@@ -1,65 +1,61 @@
-import { Route, useLocation, Routes } from "react-router-dom";
-import {Home} from "./Views/Home/Home";
-import Form from "./Views/Form/Form";
-import Detail from "./Views/Detail/Detail";
-import { NavBar }from "./Components/NavBar/NavBar";
+import {Route, useLocation, Routes} from 'react-router-dom';
+import {Home} from './Views/Home/Home';
+import Form from './Views/Admin/Scenes/Form/Form';
+import Detail from './Views/Detail/Detail';
+import {NavBar} from './Components/NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.css';
-import LoadingView from "./Views/Landing/LandingPage";
-import {WhatsApp} from "./Components/WhatsApp/Whatsapp"
-import Footer from "./Components/Footer/Footer";
-import Index from "./Views/Admin/Index.jsx";
-import DashboardRoute from "./Views/Admin/DashboardRoute";
-import Cart from "./Views/Cart/Cart";
-import Contact from "./Views/Contact/Contact"
-import Nosotros from "./Components/Nosotros/Nosotros";
+import LoadingView from './Views/Landing/LandingPage';
+import {WhatsApp} from './Components/WhatsApp/Whatsapp';
+import Footer from './Components/Footer/Footer';
+import Cart from './Views/Cart/Cart';
+import Contact from './Views/Contact/Contact';
+import Nosotros from './Components/Nosotros/Nosotros';
 
-import UserProfile from './Authentication/ProfileScreen/UserProfile'
+import DashBoard from './Views/Admin/Scenes/Dashboard/Dasboard';
+import AllProducts from './Views/Admin/Scenes/ViewProducts/AllProducts/AllProducts';
+import DetailProduct from './Views/Admin/Scenes/ViewProducts/DetailProduct/DetailProduct';
+import AllUsers from './Views/Admin/Scenes/ViewUsers/AllUsers/AllUsers';
+import DetailUser from './Views/Admin/Scenes/ViewUsers/DetailUser/DetailUser';
 
-
-
+import UserProfile from './Authentication/ProfileScreen/UserProfile';
 
 function App() {
+	const {pathname} = useLocation();
 
-  const { pathname } = useLocation();
+	return (
+		<div className="App">
+			{pathname !== '/' && pathname.split('/')[1] !== 'dashboard' ? (
+				<NavBar />
+			) : null}
+			<Routes>
+				<Route path="/" element={<LoadingView />} />
+				<Route exact path="/home" element={<Home />} />
+				<Route exact path="/detail/:id" element={<Detail />} />
+				<Route exact path="/form" element={<Form />} />
+				<Route exact path="/user/profile" element={<UserProfile />} />
+				<Route exact path="/cart" element={<Cart />} />
+				<Route exact path="/nosotros" element={<Nosotros />} />
+				<Route exact path="/contact" element={<Contact />} />
 
-  return (
-        <div className="App">
-              {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
-                <NavBar />
-              ) : null}
-              {/* {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
-                <Footer />
-              ) : null} */}
-              <Routes>
-                <Route path="/" element={<LoadingView />} />
-                <Route exact path="/home" element={<Home />} />
-                <Route exact path="/detail/:id" element={<Detail />} />
-                <Route exact path="/form" element={<Form />} />
-                <Route exact path ="/user/profile" element={<UserProfile />} />
-                <Route exact path="/cart" element={<Cart />} />
-                <Route exact path="/nosotros" element={<Nosotros />} />
-                <Route exact path="/contact" element={<Contact />} />
 
-                {/* PROTECTED ROUTES FOR ADMIN DASHBOARD */}
-                <Route
-                  path="/dashboard/*"
-                  element={
-                    <DashboardRoute>
-                      <Index />
-                    </DashboardRoute>
-                  }
-                />
-                {/* Redirect to landing if don´t match */}
-                <Route path="*" element={<Home />} />
-              </Routes>
-              {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
-                <Footer />
-              ) : null}
-              {pathname !== "/" && pathname.split("/")[1] !== "dashboard" ? (
-                <WhatsApp />
-              ) : null}
-            </div>
-  );
+				<Route exact path="/admin/dashboard" element={<DashBoard />} />
+				<Route exact path="/admin/allProducts" element={<AllProducts />} />
+				<Route exact path="/admin/allusers" element={<AllUsers />} />
+				<Route exact path="/admin/detail/:id" element={<DetailProduct />} />
+				<Route exact path="/admin/detailUser/:id" element={<DetailUser />} />
+				<Route exact path="/admin/allProducts" element={<AllProducts />} />
+				<Route exact path="/admin/product/detail/:id" element={<DetailProduct />} />
+				
+			</Routes>
+			{pathname !== '/' && pathname.split('/')[1] !== 'dashboard' ? (
+				<Footer />
+			) : null}
+			{pathname !== '/' && pathname.split('/')[1] !== 'dashboard' ? (
+				<WhatsApp />
+			) : null}
+		</div>
+	);
+
 }
 
 export default App;

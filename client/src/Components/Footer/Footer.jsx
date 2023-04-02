@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="col-lg-2 col-sm-6">
           <div className="widget widget-about">
             <img src={logo} alt="" className={style.img}/>
-            <p className={style.p}>DressMe es un hermoso PF y tienda online de ropa, vestite acá!</p>
+            <p className={style.p}>DressMe is a beautiful Final Proyect & Clothe´s Ecommerce, Dress here❤️</p>
           </div>
         </div>
 
@@ -18,9 +18,9 @@ const Footer = () => {
             <div className="nav-links">
               <ul>
                 <li><a href="/home">Home</a></li>
-                <li><a href="/cart">Carrito</a></li>
-                <li><a href="/nosotros">Nosotros</a></li>
-                <li><a href="/Contact">Locales</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/nosotros">About Us</a></li>
+                <li><a href="/Contact">Locals</a></li>
                 <li><a target= "_blank" href=" https://www.facebook.com/profile.php?id=100091284420748">Contact</a></li>
               </ul>
             </div>

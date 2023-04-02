@@ -10,7 +10,9 @@ import style from "./Detail.module.css";
 import { useDetail } from "./HooskDetailCarrito";
 import MercadoPago from "../../Components/MercadoPago/MercadoPago";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { StarRating } from "../../Components/Calification/Calification";
+
+//elimino la puntuacion porque va en el home)
+
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -57,10 +59,7 @@ console.log(myProduct)
           <img src={myProduct.image} alt="" className={style.img} />
         </div>
         <div className={style.description}>
-          <h3 className={style.name}>{myProduct.name}</h3>
-          <StarRating rating={myProduct.rating} />
-
-        
+          <h3 className={style.name}>{myProduct.name}</h3>      
 
           <h2 className={style.price}>$ {myProduct.price}</h2>
           {/* <ul>
@@ -91,7 +90,7 @@ console.log(myProduct)
             ))}
           </div>
           <label className={style.label} htmlFor="cantidad">
-            Unidades:{" "}
+            Units:{" "}
           </label>
           {stock && stock[0] ? (
             stock[0] > 6 ? (
@@ -104,12 +103,12 @@ console.log(myProduct)
                   handlerDetail(e);
                 }}
               >
-                <option value="1">1 unidad</option>
-                <option value="2">2 unidades</option>
-                <option value="3">3 unidades</option>
-                <option value="4">4 unidades</option>
-                <option value="5">5 unidades</option>
-                <option value="6">6 unidades</option>
+                <option value="1">1 unit</option>
+                <option value="2">2 units</option>
+                <option value="3">3 units</option>
+                <option value="4">4 units</option>
+                <option value="5">5 units</option>
+                <option value="6">6 units</option>
                 <option value="otherValue">Other value...</option>
               </select>
             ) : (
@@ -159,7 +158,7 @@ console.log(myProduct)
                     onSubmit(e);
                   }}
                 >
-                  Comprar ahora
+                  Buy It Now!
                 </button>
               ) : (
                 <MercadoPago ids={[nuevoProducto]} />
@@ -175,11 +174,11 @@ console.log(myProduct)
                 className={style.button}
                 onClick={(e) => buttonAgregarAlCarrito(e)}
               >
-                Agregar al Carrito
+                Add to the Cart
               </button>
             ) : (
               <button className={style.button}>
-                Por favor Elige tus medidas y colores
+                Please choose your Size and Color 
               </button>
             )}
           </div>

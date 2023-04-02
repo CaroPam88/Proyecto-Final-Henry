@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import {  useNavigate  } from 'react-router-dom';
-import { validateError, validate, validateColorError } from '../../Components/formValidation/errorHandler';
-import {postClothes} from '../../Redux/ActionsGet';
+import { validateError, validate, validateColorError } from '../../../../Components/formValidation/errorHandler';
+import {postClothes} from '../../../../Redux/ActionsGet';
 import uploadImage from './uploadImage';
 
 export const useForm = () => {

@@ -7,6 +7,7 @@ const {
 	getProductByGenderHandler,
 	postMercadoPago,
 	UpdateClothes,
+	changeExisting,
 } = require('../handlers/clothesHandlers');
 
 const clothesRouter = Router();
@@ -28,6 +29,10 @@ clothesRouter.put('/', putProductHandler);
 
 //RUTA PARA MODIFICAR CUALQUIER PROPIEDAD DE LA PRENDE( SOLO LO PUEDE HACER EL USUARIO ADMIN)
 clothesRouter.put('/admin/:idItem', UpdateClothes);
+
+//RUTA PARA MODIFICAR EXISTENCIA
+
+clothesRouter.put('/exist/:idItem', changeExisting);
 
 //RUTAS PARA MERCADO PAGO
 

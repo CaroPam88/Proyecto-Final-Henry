@@ -113,14 +113,29 @@ const deleteTheUser = async (userId) => {
 	return user;
 };
 
-async function moveCartToBuy(userId) {
-	const user = await User.findOne({where: {id: userId}});
+const moveCartToBuy = async (userId) => {
+	console.log(userId);
+	const user = await User.findOne({where: {id: userId.idUser}});
 
-	user.buy.push(...user.cart);
-	user.cart = [];
+	console.log('ESTOY EN CART:');
 
-	await user.save();
-}
+	let historial;
+
+	user.history !== []
+		? (historial = [...user.history, ...user.cart])
+		: (historial = [...user.cart]);
+
+	await user.update({cart: [], history: historial});
+};
+
+const moveDetailToBuy = async (userId, ids) => {
+	const user = await User.findOne({where: {id: userId.idUser}});
+
+	console.log('ESTOY EN DETAIL:');
+
+	let historial = [...user.history, ...ids];
+	await user.update({history: historial});
+};
 
 const getUserCart = async (userId) => {
 	const user = await User.findOne({
@@ -133,6 +148,20 @@ const getUserCart = async (userId) => {
 	return user.cart;
 };
 
+const getTheUserById = async (userId) => {
+	console.log(userId);
+	const user = await User.findByPk(userId);
+	return user;
+};
+
+const putTheLockUser = async (userId) => {
+	const user = await User.findByPk(userId);
+
+	await user.update({locked: !user.locked});
+
+	return user;
+};
+
 module.exports = {
 	createUser,
 	getUsersData,
@@ -143,4 +172,8 @@ module.exports = {
 	moveCartToBuy,
 	deleteTheUser,
 	getUserCart,
+	moveCartToBuy,
+	moveDetailToBuy,
+	getTheUserById,
+	putTheLockUser,
 };

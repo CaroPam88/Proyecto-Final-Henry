@@ -182,44 +182,44 @@ let getGenderData = async (gender) => {
 // 	await ids.forEach( el => clothesUpdates(el));
 // };
 const clothesUpdates = async (ids) => {
-    const size = await Size.findByPk(ids.id);
-    const clothes = await Clothes.findByPk(ids.id);
+	const size = await Size.findByPk(ids.id);
+	const clothes = await Clothes.findByPk(ids.id);
 
-    const updatedColors = size.colors.map((colorObj) => {
-        if (colorObj.color === ids.color) {
-            colorObj.stockColors -= ids.cantidad;
-        }
-        return colorObj;
-    });
+	const updatedColors = size.colors.map((colorObj) => {
+		if (colorObj.color === ids.color) {
+			colorObj.stockColors -= ids.cantidad;
+		}
+		return colorObj;
+	});
 
-    size.stockSize -= ids.cantidad;
+	size.stockSize -= ids.cantidad;
 
-    clothes.stockGeneral -= ids.cantidad;
+	clothes.stockGeneral -= ids.cantidad;
 
-    await Size.update(
-        {
-            colors: updatedColors,
-            stockSize: size.stockSize,
-        },
-        {
-            where: {
-                id: size.id,
-            },
-        }
-    );
-    await clothes.save();
+	await Size.update(
+		{
+			colors: updatedColors,
+			stockSize: size.stockSize,
+		},
+		{
+			where: {
+				id: size.id,
+			},
+		}
+	);
+	await clothes.save();
 };
 
 const clothesUpdate = async (items) => {
-    const itemIds = items.map((item) => ({
-        id: item.id,
-        color: item.color,
-        cantidad: item.cantidad,
-    }));
+	const itemIds = items.map((item) => ({
+		id: item.id,
+		color: item.color,
+		cantidad: item.cantidad,
+	}));
 
-    for (const itemId of itemIds) {
-        await clothesUpdates(itemId);
-    }
+	for (const itemId of itemIds) {
+		await clothesUpdates(itemId);
+	}
 };
 
 const generalUpdate = async (
@@ -266,6 +266,13 @@ const generalUpdate = async (
 	return {message: 'Product actualizado'};
 };
 
+const changeItemExisting = async (itemID) => {
+	let product = await Clothes.findByPk(itemID);
+	product.existing = !product.existing;
+	await product.save();
+	return product;
+};
+
 module.exports = {
 	getClothesData,
 	getIdData,
@@ -274,4 +281,5 @@ module.exports = {
 	clothesUpdate,
 	generalUpdate,
 	createRating
+	changeItemExisting,
 };

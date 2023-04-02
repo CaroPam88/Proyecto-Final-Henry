@@ -8,8 +8,14 @@ const {
 	clothesUpdate,
 	generalUpdate,
 	createRating,
+	changeItemExisting,
 } = require('../controllers/clothesControllers');
+const {
+	moveCartToBuy,
+	moveDetailToBuy,
+} = require('../controllers/userControllers');
 const {payMercadoPago} = require('../controllers/mercadopagoControllers');
+const {log} = require('console');
 
 let getProductHandler = async (req, res) => {
 	let clothes = req.query.name;
@@ -92,8 +98,13 @@ let getProductByGenderHandler = async (req, res) => {
 let putProductHandler = async (req, res) => {
 	try {
 		let ids = req.body;
-		console.log("Con user", ids);
+		let userId = ids.pop();
+		console.log('IDS', ids);
+		console.log('USERID', userId);
+
 		const payClothes = await clothesUpdate(ids);
+
+		ids[0].cartIndex ? moveCartToBuy(userId) : moveDetailToBuy(userId, ids);
 		res.status(201).json(payClothes);
 	} catch (error) {
 		console.log(error.message);
@@ -106,8 +117,8 @@ let putProductHandler = async (req, res) => {
 let postMercadoPago = async (req, res) => {
 	try {
 		let ids = req.body;
-		let id = ids.id;
 		console.log('back', ids);
+		let id = ids.id;
 		const payPago = await payMercadoPago(ids);
 		res.send(payPago);
 	} catch (error) {
@@ -157,6 +168,17 @@ let UpdateClothes = async (req, res) => {
 	}
 };
 
+let changeExisting = async (req, res) => {
+	let {idItem} = req.params;
+
+	try {
+		let clothe = await changeItemExisting(idItem);
+		res.status(200).json(clothe);
+	} catch (error) {
+		alert(`${error}: error al agregar el producto`);
+	}
+};
+
 module.exports = {
 	getProductHandler,
 	getProductByIdHandler,
@@ -165,7 +187,6 @@ module.exports = {
 	getProductByGenderHandler,
 	postMercadoPago,
 	UpdateClothes,
-	ratingUser
 };
 
 // await Clothes.update(

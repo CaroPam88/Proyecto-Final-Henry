@@ -28,11 +28,11 @@ const SearchBar = () => {
         <div className={style.searchContainer}>
             <input
                 type='search'
-                placeholder='Buscar'
+                placeholder='Search'
                 onChange={e => handlerSearch(e)}
                 name='input'
             />
-            <button type='submit' value={name} onClick={e => handlerSearch(e)} name='submit' >Buscar</button>
+            <button type='submit' value={name} onClick={e => handlerSearch(e)} name='submit' >Search</button>
         </div>
     );
 };

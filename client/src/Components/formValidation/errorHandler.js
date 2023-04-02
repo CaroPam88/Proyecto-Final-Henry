@@ -1,17 +1,17 @@
 function validateError(input) {
 	let error = {};
 
-	if (!input.name.trim()) error.name = ' Coloque un Nombre';
+	if (!input.name.trim()) error.name = 'Insert Name';
 	else if (!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(input.name))
-		error.name = 'El nombre no es válido';
-	if (!input.image) error.image = 'Cargue una Imagen';
-	if (!input.type) error.type = 'Elija un Tipo';
-	if (!input.price) error.price = 'Coloque un Precio';
-	if (!input.image) error.image = 'Cargue una imagen';
-	if (input.sex.length === 0) error.sex = 'Escoja un Género';
-	if (!input.size) error.size = 'Seleccione un Talle';
-	if (!input.amount) error.amount = 'Coloque una Cantidad';
-	if (input.colors.length === 0) error.colors = 'Agregue un Color';
+		error.name = 'The name is not Valid';
+	if (!input.image) error.image = 'Insert an Image';
+	if (!input.type) error.type = 'Choose a Type';
+	if (!input.price) error.price = 'Insert a Price';
+	if (!input.image) error.image = 'Insert an Image';
+	if (input.sex.length === 0) error.sex = 'Choose a Gender';
+	if (!input.size) error.size = 'Insert a Size';
+	if (!input.amount) error.amount = 'Insert an Amount';
+	if (input.colors.length === 0) error.colors = 'Insert a Color';
 
 	return error;
 }

@@ -59,7 +59,7 @@ export const NavBar = () => {
                 Profile
               </NavLink>
             </li>}
-            {location.pathname === '/home' && <li>
+            {/* {location.pathname === '/home' && <li>
               
               <select name="genre" onChange={(e) => {
                 handlerFilter(e);
@@ -69,10 +69,10 @@ export const NavBar = () => {
                 <option value='Female' className={style.options} >Female</option>
                 <option value='Male' className={style.options} >Male</option>
               </select>
-            </li>}
+            </li>} */}
             {location.pathname !== '/nosotros' && <li>
               <NavLink to="/nosotros" onClick={menuopen}>
-                Nosotros
+                About Us
               </NavLink>
             </li>}
             <li>

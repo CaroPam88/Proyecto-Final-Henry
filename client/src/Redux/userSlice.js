@@ -3,6 +3,8 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
 	theUser: {},
 	postCartUser: [],
+	allUsers: [],
+	userId: {},
 };
 
 const SliceUSer = createSlice({
@@ -27,6 +29,15 @@ const SliceUSer = createSlice({
 		changeCantItem: (state, action) => {
 			state.postCartUser = action.payload;
 		},
+		getAllUsers: (state, action) => {
+			state.allUsers = action.payload;
+		},
+		getUserById: (state, action) => {
+			state.userId = action.payload;
+		},
+		changelocked: (state, action) => {
+			state.userId = action.payload;
+		},
 	},
 });
 export const {
@@ -36,5 +47,8 @@ export const {
 	clearUser,
 	deleteItem,
 	changeCantItem,
+	getAllUsers,
+	getUserById,
+	changelocked,
 } = SliceUSer.actions;
 export default SliceUSer.reducer;

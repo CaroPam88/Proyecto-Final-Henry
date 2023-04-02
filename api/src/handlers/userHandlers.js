@@ -7,6 +7,8 @@ const {
 	putItem,
 	deleteTheUser,
 	getUserCart,
+	getTheUserById,
+	putTheLockUser,
 } = require('../controllers/userControllers');
 
 let postUserHandler = async (req, res) => {
@@ -114,6 +116,30 @@ let getCart = async (req, res) => {
 		return res.status(500).send('Error al traer el carrito');
 	}
 };
+
+let getUserById = async (req, res) => {
+	const {userId} = req.params;
+	try {
+		const user = await getTheUserById(userId);
+		res.status(200).json(user);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send('Error al traer el usuario');
+	}
+};
+
+let changeLockedState = async (req, res) => {
+	const {userId} = req.params;
+
+	try {
+		const updatedUser = await putTheLockUser(userId);
+		res.status(200).json(updatedUser);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send('Error al cambiar el estado del usuario');
+	}
+};
+
 module.exports = {
 	postUserHandler,
 	getUserHandler,
@@ -123,4 +149,6 @@ module.exports = {
 	putCartItemHandler,
 	deleteUser,
 	getCart,
+	getUserById,
+	changeLockedState,
 };
