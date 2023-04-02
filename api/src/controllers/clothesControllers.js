@@ -1,4 +1,4 @@
-const {Clothes, Size, Colors} = require('../db');
+const {Clothes, Size, Colors, Rating} = require('../db');
 
 const {clothesBdd} = require('../basesDeDatos/dataGeneral');
 
@@ -33,6 +33,36 @@ let getIdData = async (id) => {
 		throw Error('Prenda no encontrado');
 	}
 };
+
+
+const createRating = async (num) => {
+   // const newRows = await Rating.create({ratin:([Number(num)])}); creamos el primer valor en ratin
+   
+   // Traemos el modelo Rating y le agregamos el rating recibido por parámetro
+  
+	let newRow = await Rating.findAll();
+	 newRow[0].ratin.push(Number(num))
+    // console.log("newr",newRow);
+
+	// // await Rating.destroy({where:{}})
+	// // console.log("arr", ratingArray);
+
+     let ratingArray =  [...newRow[0].ratin]
+
+     console.log("arrs", ratingArray);
+
+	// // Calcular la suma y el promedio de los números en la matriz.
+	const suma = ratingArray.reduce((sum, value) => sum + value, 0);
+	const promedio = suma /  ratingArray.length;
+   
+	// // Actualizar la fila recién creada con la matriz actualizada.
+	await Rating.update({ ratin: newRow[0].ratin}, { where : {}});
+
+	
+	//Devolver el promedio calculado.
+	return promedio;
+  };
+
 
 /////////////////////////////////////////////
 
@@ -253,5 +283,6 @@ module.exports = {
 	getGenderData,
 	clothesUpdate,
 	generalUpdate,
+	createRating,
 	changeItemExisting,
 };
