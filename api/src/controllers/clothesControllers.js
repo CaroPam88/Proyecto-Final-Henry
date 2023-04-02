@@ -36,27 +36,30 @@ let getIdData = async (id) => {
 
 
 const createRating = async (num) => {
-   console.log("rating", num);
-	// Traemos el modelo Rating
-	const newRow = await Rating.findAll();
-    console.log(newRow);
-	 const ratingArray = newRow.map(el => el.ratin)
-	// await Rating.destroy({where:{}})
-	// console.log("arr", ratingArray);
+   // const newRows = await Rating.create({ratin:([Number(num)])}); creamos el primer valor en ratin
+   
+   // Traemos el modelo Rating y le agregamos el rating recibido por parámetro
+  
+	let newRow = await Rating.findAll();
+	 newRow[0].ratin.push(Number(num))
+    // console.log("newr",newRow);
 
-	ratingArray.push(Number(num))
+	// // await Rating.destroy({where:{}})
+	// // console.log("arr", ratingArray);
 
-	console.log("arr", ratingArray);
+     let ratingArray =  [...newRow[0].ratin]
 
-	// Calcular la suma y el promedio de los números en la matriz.
+     console.log("arrs", ratingArray);
+
+	// // Calcular la suma y el promedio de los números en la matriz.
 	const suma = ratingArray.reduce((sum, value) => sum + value, 0);
 	const promedio = suma /  ratingArray.length;
    
-	// Actualizar la fila recién creada con la matriz actualizada.
-	await Rating.update({ ratin:  ratingArray}, { where : {}});
+	// // Actualizar la fila recién creada con la matriz actualizada.
+	await Rating.update({ ratin: newRow[0].ratin}, { where : {}});
 
-	console.log("promedio", promedio);
-	// Devolver el promedio calculado.
+	
+	//Devolver el promedio calculado.
 	return promedio;
   };
 
@@ -280,6 +283,6 @@ module.exports = {
 	getGenderData,
 	clothesUpdate,
 	generalUpdate,
-	createRating
+	createRating,
 	changeItemExisting,
 };

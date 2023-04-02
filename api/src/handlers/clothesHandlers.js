@@ -187,6 +187,8 @@ module.exports = {
 	getProductByGenderHandler,
 	postMercadoPago,
 	UpdateClothes,
+	changeExisting,
+	ratingUser
 };
 
 // await Clothes.update(
