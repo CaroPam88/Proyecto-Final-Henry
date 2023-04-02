@@ -1,71 +1,49 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllTheUsers } from "../../../../../Redux/actionUser";
-import { PieChart, Pie, Cell, Legend } from "recharts"
 
-const PieAllProductsSales = () => {
-    
-  const dispatch = useDispatch();
+import { PieChart, ResponsiveContainer, Tooltip, Pie, Cell} from 'recharts';
+import React from 'react';
+import { useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import { getAllProducts } from '../../../../../Redux/ActionsGet';
 
-    useEffect(() => {
-        dispatch(getAllTheUsers());
-      }, [dispatch]);
-    
-  const allUsers = useSelector(state => state.user.allUsers);
-  console.log(allUsers);
- 
+export const PieAllProductsExist = () => {
 
-  
+    let dispatch = useDispatch();
 
-  
-  // Función para obtener los datos de los productos vendidos
-  const getAllProductsSales = () => {
-    if (!allUsers || allUsers.length === 0) {
-      return [];
+    useEffect (()=>{
+    dispatch(getAllProducts());
+    }, [dispatch]);
+
+    const clothes = useSelector((state) => state.products.products)
+
+    let nameAndStock = clothes.map(el => {return {name: el.name, stock:el.stockGeneral}}) 
+    console.log(nameAndStock);
+    let data = [];
+    for(let i = 0; i < nameAndStock.length; i++){
+        data.push(nameAndStock[i])
     }
-  
-    const productsSale = {};
-    allUsers.forEach((user) => {
-      user.history.forEach((sale) => {
-        if (productsSale[sale.name]) {
-          productsSale[sale.name] += sale.cantidad;
-        } else {
-          productsSale[sale.name] = sale.cantidad;
-        }
-      });
-    });
-  
-    
-  
-    return Object.keys(productsSale).map((nameProduct) => ({
-      name: nameProduct,
-      value: productsSale[nameProduct],
-    }));
-  };
-  
-
-  
-
-  // Configuración para los colores de las partes del gráfico
-  const colors = ['#0088FE', '#006f8b', '#9eb6e9', '#140858', '#4215e3'];
-
-  // Renderizar el gráfico de torta
-  console.log("getAllProductsSales():", getAllProductsSales());
-  return (
-    <div>
-      <h2>Products Sales:</h2>
-      <PieChart width={400} height={400}>
-        <Legend />
-        {/* el legend es para los nombres abajo */}
-        <Pie data={getAllProductsSales()} dataKey="value" nameKey="name">
-            
-          {getAllProductsSales().map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-          ))}
-        </Pie>
-      </PieChart>
-    </div>
-  );
+    console.log("data", data);
+    const colors = ['#ce93d8','#5c6bc0','#b39ddb','#4dd0e1','#d500f9']
+    return (
+      <div style={{width: '100%', height: 500}}>
+          <ResponsiveContainer>
+            <PieChart>
+                <Pie
+                
+               dataKey="stock"
+               data={data}
+               innerRadius={60}
+               outerRadius={85}
+               fill='#006f8b'
+               >
+                {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={colors[index % colors.length]}/>
+                ))
+            }
+                </Pie>
+            <Tooltip/>
+            </PieChart>
+        </ResponsiveContainer>
+      </div>
+      );
 }
 
-export default PieAllProductsSales;
