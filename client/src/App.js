@@ -11,6 +11,7 @@ import Cart from './Views/Cart/Cart';
 import Contact from './Views/Contact/Contact';
 import Nosotros from './Components/Nosotros/Nosotros';
 
+import DashBoard from './Views/Admin/Scenes/Dashboard/Dasboard';
 import AllProducts from './Views/Admin/Scenes/ViewProducts/AllProducts/AllProducts';
 import DetailProduct from './Views/Admin/Scenes/ViewProducts/DetailProduct/DetailProduct';
 import AllUsers from './Views/Admin/Scenes/ViewUsers/AllUsers/AllUsers';
@@ -37,6 +38,7 @@ function App() {
 				<Route exact path="/contact" element={<Contact />} />
 
 
+				<Route exact path="/admin/dashboard" element={<DashBoard />} />
 				<Route exact path="/admin/allProducts" element={<AllProducts />} />
 				<Route exact path="/admin/allusers" element={<AllUsers />} />
 				<Route exact path="/admin/detail/:id" element={<DetailProduct />} />
