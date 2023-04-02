@@ -12,10 +12,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .heroTitle {
+  z-index: 1;
   font-size: 5rem;
   font-weight: bold;
   color: white;

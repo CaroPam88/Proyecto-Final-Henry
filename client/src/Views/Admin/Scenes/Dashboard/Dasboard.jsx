@@ -1,7 +1,14 @@
-import { BarTypesExist } from "../../Components/Grafics/Existencias/BarTypesExist";
+// import { BarTypesExist } from "../../Components/Grafics/Existencias/BarTypesExist";
+import { Pie } from "recharts";
+
 const DashBoard = () => {
     return (
-        <BarTypesExist/>
+        <div>
+        <h1>DASHBOARD</h1>
+        
+
+       
+        </div>
     )
 }
 export default DashBoard;
