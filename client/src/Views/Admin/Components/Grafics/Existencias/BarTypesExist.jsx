@@ -1,10 +1,10 @@
+import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
 import { useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import { getAllProducts } from '../../../../../Redux/ActionsGet';
-// import { CategoryScale, Chart } from "chart.js";
-// Chart.register(CategoryScale);
+
+
 
 
 export const BarTypesExist = () => {
@@ -40,28 +40,33 @@ export const BarTypesExist = () => {
     let StockShort= shorts.map(el => el.stockGeneral)
     let StockShorts = StockShort.reduce((sum, value) => sum + value, 0);
 
-const data = {
-    labels:['Pantalones', 'Camisas', 'Remeras', 'Vestidos', 'Shorts'],
-    datasets: [{
-        label:"Types Products",
-        backgroundColor: 'rgba(0, 255, 0, 2',
-        borderColor: "black",
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(0, 255, 0, 0, 2)',
-        hoverBorderColor: '#FFFF000',
-        data: [StockPantalones, StockCamisas, StockRemeras, StockVestidos, StockShorts]
-    }]
-};
-console.log("data", data);
-const opciones = {
-    maintainAspectRatio: false,
-    respoinsive: true,
-}
+const data = [
+    {Prenda: "Pantalones", StockGeneral: StockPantalones},
+    {Prenda: "Camisas", StockGeneral: StockCamisas },
+    {Prenda: "Remeras", StockGeneral: StockRemeras},
+    {Prenda: "Vestidos", StockGeneral: StockVestidos},
+    {Prenda: "Shorts", StockGeneral: StockShorts},
+]
 
 return (
-    <div>
-        <h2> Products Types </h2>
-        <Bar data={data} opciones={opciones} />
-    </div>
+    <ResponsiveContainer width="100%" aspect={2}>
+        <BarChart data={data}
+           width={500}
+           height={300}
+           margin={{
+            top:5,
+            right:30,
+            left:20,
+            bottom:5
+           }}
+        >
+        <CartesianGrid strokeDasharray='4 1 2'/>
+        <XAxis dataKey="Prenda"/>
+        <YAxis />
+        <Tooltip/>
+        <Legend />
+        <Bar dataKey="StockGeneral" />
+        </BarChart>
+    </ResponsiveContainer>
   );
 }
