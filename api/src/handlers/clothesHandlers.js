@@ -1,4 +1,5 @@
 const {Clothes, Color, Size} = require('../db');
+const { Rating } = require('../models/Rating')
 const {
 	getClothesData,
 	createProduct,
@@ -6,6 +7,7 @@ const {
 	getGenderData,
 	clothesUpdate,
 	generalUpdate,
+	createRating,
 } = require('../controllers/clothesControllers');
 const {payMercadoPago} = require('../controllers/mercadopagoControllers');
 
@@ -114,6 +116,23 @@ let postMercadoPago = async (req, res) => {
 	}
 };
 
+/////////////////////////////////////
+
+
+let ratingUser = async (req, res) => {
+	const { num }= req.params
+	
+	try {
+		const newRating = await createRating(num)
+		console.log("new", newRating);
+		res.status(200).json(newRating)
+	} catch(error) {
+		res.status(405).json({error: error.message});
+	}
+}
+
+////////////////////////////////////
+
 let UpdateClothes = async (req, res) => {
 	let {idItem} = req.params;
 	const {name, price, type, image, sex, size, colors} = req.body;
@@ -146,6 +165,7 @@ module.exports = {
 	getProductByGenderHandler,
 	postMercadoPago,
 	UpdateClothes,
+	ratingUser
 };
 
 // await Clothes.update(
