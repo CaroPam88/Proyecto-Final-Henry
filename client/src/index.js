@@ -24,7 +24,7 @@ const clientId = "DJy8ClwmtkaSFS9qqW5nc1O5rOuLuYjh";
 
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
-    
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     
