@@ -15,6 +15,13 @@ import SatisfactionPopup from "../../Components/Calification/Calification.jsx";
 export const Home = ()=>{
 
     const theUser = useSelector(state => state.user.theUser);//Nos traemos user para despues limitar que solo se ejecute la funcion si estamos loggeados.
+    console.log(theUser);
+    if(theUser.id){
+      if(theUser.admin){
+        window.location.href = "/admin/dashboard"
+      }
+    }
+    
     const currentPurechase = JSON.parse(localStorage.getItem('currentPurechase'));
     const dispatch = useDispatch();
 
@@ -42,6 +49,14 @@ export const Home = ()=>{
         dispatch(getAllProducts());
         stockController();
     }, [dispatch, currentPurechase]);
+
+    if(theUser.id){
+      if(theUser.admin){
+        return(
+          <div> </div>
+        )
+      }
+    }
 
     return(
         <div className={style.container}>
