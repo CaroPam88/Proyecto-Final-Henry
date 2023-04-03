@@ -45,6 +45,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   
   /* Estilos de las celdas */
@@ -55,6 +56,7 @@
     text-align: center;
     font-size: 15px;
     width: 30%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   
   /* Estilos de las celdas de encabezado */
@@ -64,6 +66,7 @@
     font-weight: bold;
     backdrop-filter: blur(5px);
     border-bottom: 2px solid #2b2a2a48;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   
   /* Estilos de las filas */
@@ -74,12 +77,14 @@
     padding: 2px;
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   
   /* Estilos de las filas impares */
   .users-table tr:nth-child(odd) {
     background-color: #a8a8a880;
     backdrop-filter: blur(5px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   .users-table tr:hover{
     background: #ffffffce;

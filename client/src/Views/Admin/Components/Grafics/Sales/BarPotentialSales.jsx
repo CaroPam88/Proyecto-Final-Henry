@@ -27,7 +27,7 @@ const BarPotentialSales = () => {
     })
 
     return (
-        <ResponsiveContainer width='100%' aspect={2} >
+        <ResponsiveContainer width='100%' aspect={1.6} >
             <BarChart data={data} width={500} height={200} margin={{top:5,left:5,right:5,bottom:5}} >
                 <CartesianGrid strokeDasharray='4 1 2' />
                 <XAxis dataKey='name' />

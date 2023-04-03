@@ -40,7 +40,7 @@ const CardContainer = () => {
         <div className={style.card}>
           {view.mode === "Slice"
             ? homeProducts?.map((product, index) => { 
-            if (product.stockGeneral !== 0){  return(
+            if (product.stockGeneral !== 0 && product.existing){  return(
                
                 <Card
                   key={index}
@@ -53,7 +53,7 @@ const CardContainer = () => {
                   size={[product.size]}
                 />
               ) }})
-            : currentCardPage?.map((product, index) => product.stockGeneral !== 0 && (
+            : currentCardPage?.map((product, index) => product.stockGeneral !== 0 && product.existing && (
                 <Card
                   key={index}
                   id={product.id}

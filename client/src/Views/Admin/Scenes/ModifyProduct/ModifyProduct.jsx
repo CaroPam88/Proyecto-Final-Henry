@@ -7,6 +7,10 @@ import hero3 from '../../../../Assets/img/hero3.jpg';
 import {useNavigate} from 'react-router-dom';
 import uploadImage from '../Form/uploadImage';
 
+import { createUser } from '../../../../Redux/actionUser';
+import { useAuth0 } from '@auth0/auth0-react';
+import NotAdmin from '../../Components/NotAdmin/NotAdmin';
+
 function ProductForm() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -20,8 +24,12 @@ function ProductForm() {
 	let types = ['vestido', 'remera', 'chomba', 'pantalon', 'short'];
 	let talles = ['S', 'M', 'L', 'XL', 'XXL'];
 
+	const theUser = useSelector(state => state.user.theUser)
+    const { isAuthenticated,user } = useAuth0();
+
 	useEffect(() => {
 		dispatch(getProductDetail(id));
+		if (isAuthenticated && !theUser.id) dispatch(createUser(user))
 	}, []);
 
 	//////////////////////////////////////////////////////////
@@ -163,7 +171,10 @@ function ProductForm() {
 		navigate(`/admin/product/detail/${id}`);
 	};
 
-	return (
+	if (!theUser.admin) return (
+        <NotAdmin />
+    )
+    else return (
 		<section className={style.productFormContainer} name>
 			<img src={hero3} alt="found" className={style.founds} />
 			<form className={style.formContainer} onSubmit={handleSubmit}>
