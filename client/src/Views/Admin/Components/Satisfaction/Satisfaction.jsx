@@ -24,6 +24,7 @@ const StarsRating = () => {
   const renderStars = () => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
+
       if (i < Math.floor(averageRating)) {
         stars.push(<FontAwesomeIcon key={i} icon={faStar} className={style.star} />);
       } else if (i === Math.floor(averageRating) && averageRating % 1 >= 0.5) {
@@ -34,7 +35,6 @@ const StarsRating = () => {
     }
     return stars;
   };
-  
 
   return (
     <div>
@@ -51,7 +51,3 @@ const StarsRating = () => {
 };
 
 export default StarsRating;
-
-
-  
-  
