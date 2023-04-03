@@ -29,6 +29,9 @@
     font-size: 25px;
     text-align: center;
 }
+p {
+    color: #fff;
+ }
 .navigation {
     display: flex;
     flex-direction: column;
