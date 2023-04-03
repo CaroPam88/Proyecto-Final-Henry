@@ -10,7 +10,7 @@ const StarsRating = () => {
   useEffect(() => {
     const fetchAverageRating = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/rating');
+        const response = await axios('/rating');
         const { data } = response;
         console.log('response', data);
         setAverageRating(data);

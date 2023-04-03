@@ -10,6 +10,7 @@ import imgHome from '../../Assets/img/hero3.jpg';
 import  GenderCard  from "../../Components/Genders/GenderCards.jsx";
 import { putClothes } from "../../Redux/ActionsGet.js";
 import SatisfactionPopup from "../../Components/Calification/Calification.jsx";
+import { getCart } from "../../Redux/actionCart.js";
 
 
 export const Home = ()=>{
@@ -34,6 +35,7 @@ export const Home = ()=>{
         if (theUser.id && update && currentPurechase) {
           setShowSatisfactionPopup(true); // cambiar el estado a true para mostrar el popup
           await dispatch(putClothes(currentPurechase))
+          .then(() => {dispatch(getCart())})
             .then(() => {
               window.localStorage.removeItem("currentPurechase");
             })
