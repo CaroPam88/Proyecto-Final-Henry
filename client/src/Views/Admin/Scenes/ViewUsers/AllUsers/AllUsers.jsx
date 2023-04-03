@@ -8,13 +8,20 @@ import style from './AllUsers.module.css';
 import {Link} from 'react-router-dom';
 import hero3 from '../../../../../Assets/img/hero3.jpg';
 
+import { createUser } from "../../../../../Redux/actionUser";
+import { useAuth0 } from '@auth0/auth0-react';
+import NotAdmin from "../../../Components/NotAdmin/NotAdmin";
+
 function AllUsers() {
 	let dispatch = useDispatch();
 
 	let users = useSelector((state) => state.user.allUsers);
+	const theUser = useSelector(state => state.user.theUser)
+    const { isAuthenticated,user } = useAuth0();
 
 	useEffect(() => {
 		dispatch(getAllTheUsers());
+		if (isAuthenticated && !theUser.id) dispatch(createUser(user))
 	}, [users.locked]);
 
 	let handleLock = (e,id) => {
@@ -22,7 +29,11 @@ function AllUsers() {
 		.then(() =>dispatch(getAllTheUsers()));
 	};
 
-	return (
+
+	if (!theUser.admin) return (
+        <NotAdmin />
+    )
+    else return (
 		<section>
 			<img src={hero3} alt="found" className={style.found} />
 			<div className={style.return}>
@@ -33,12 +44,12 @@ function AllUsers() {
 			<table className={style['users-table']}>
 				<thead>
 					<tr>
-						<th>Foto de Pefil</th>
-						<th>Nombre</th>
-						<th>Apodo</th>
+						<th>Photo</th>
+						<th>Name</th>
+						<th>NickName</th>
 						<th>Email</th>
-						<th>Bloqueado</th>
-						<th>Info de compra</th>
+						<th>Block</th>
+						<th>Shopping Information</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -68,7 +79,7 @@ function AllUsers() {
 							<td>
 								<Link to={`/admin/detailUser/${user.id}`}>
 									<span className={style.info}>
-										Mas informacion
+										More Information
 									</span>
 								</Link>
 							</td>

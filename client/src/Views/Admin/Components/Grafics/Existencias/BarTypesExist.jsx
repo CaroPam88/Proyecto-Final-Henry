@@ -47,7 +47,7 @@ const data = [
 ]
 
 return (
-    <ResponsiveContainer width="100%" aspect={2}>
+    <ResponsiveContainer width="100%" aspect={1.5}>
         <BarChart data={data}
            width={500}
            height={300}

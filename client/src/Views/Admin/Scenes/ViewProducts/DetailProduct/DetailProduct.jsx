@@ -7,12 +7,19 @@ import style from './DetailProduct.module.css';
 import hero3 from '../../../../../Assets/img/hero3.jpg';
 import PieColors from "../../../Components/Grafics/Detail/PieColors";
 
+import { createUser } from "../../../../../Redux/actionUser";
+import { useAuth0 } from '@auth0/auth0-react';
+import NotAdmin from "../../../Components/NotAdmin/NotAdmin";
+
 const DetailProduct = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const theUser = useSelector(state => state.user.theUser)
+    const { isAuthenticated,user } = useAuth0();
 
     useEffect(() => {
         dispatch(getProductDetail(id));
+        if (isAuthenticated && !theUser.id) dispatch(createUser(user))
         return () => {
             dispatch(clearProductDetailState());
         };
@@ -24,7 +31,11 @@ const DetailProduct = () => {
         .then(() => dispatch(getProductDetail(id)))
         
     }
-    return (
+
+    if (!theUser.admin) return (
+        <NotAdmin />
+    )
+    else return (
         <section>
             <img src={hero3} alt='found' className={style.found} />
             <section className={style.content}>

@@ -8,10 +8,13 @@ import {Link, useParams} from 'react-router-dom';
 import style from './DetailUser.module.css';
 import hero3 from '../../../../../Assets/img/hero3.jpg';
 
+import NotAdmin from "../../../Components/NotAdmin/NotAdmin";
+
 function DetailUser() {
 	const dispatch = useDispatch();
 	const {id} = useParams();
 	const user = useSelector((state) => state.user.userId);
+	const theUser = useSelector(state => state.user.theUser)
 
 	useEffect(() => {
 		dispatch(getUserByTheId(id));
@@ -24,7 +27,10 @@ function DetailUser() {
 		);
 	};
 
-	return (
+	if (!theUser.admin) return (
+        <NotAdmin />
+    )
+    else return (
 		<section>
 			<img src={hero3} alt="found" className={style.found} />
 			<div className={style.container}>
@@ -33,14 +39,14 @@ function DetailUser() {
             </Link>
 				<div className={style.details}>
 					<div className={style.detailsContainer}>
-						<h3>Carrito</h3>
+						<h3>Cart</h3>
 						<div className={style.cartContainer}>
 							<table className={style.tableCart}>
 								<thead>
 									<tr>
-										<th>Producto</th>
-										<th>Cantidad</th>
-										<th>Precio</th>
+										<th>Product</th>
+										<th>Amount</th>
+										<th>Price</th>
 										<th>Color</th>
 									</tr>
 								</thead>
@@ -56,14 +62,14 @@ function DetailUser() {
 								</tbody>
 							</table>
 						</div>
-						<h3>Historial de Compras</h3>
+						<h3>Shopping History</h3>
 						<div className={style.historyContainer}>
 							<table className={style.tableHistory}>
 								<thead>
 									<tr>
-										<th>Producto</th>
-										<th>Cantidad</th>
-										<th>Precio</th>
+										<th>Product</th>
+										<th>Amount</th>
+										<th>Price</th>
 										<th>Color</th>
 									</tr>
 								</thead>
@@ -90,10 +96,10 @@ function DetailUser() {
 							<h2 className={style.name}>{user.name}</h2>
 							<p className={style.email}>Email: {user.email}</p>
 							<p className={style.nickname}>
-								Apodo: {user.nickname}
+								NickName: {user.nickname}
 							</p>
-							Estado:
-							{user.locked ? 'Deshabilitado' : 'Habilitado'}{' '}
+							State:
+							{user.locked ? 'Disabled' : 'Enabled'}{' '}
 							<label
 								className={style.switch}
 							>
