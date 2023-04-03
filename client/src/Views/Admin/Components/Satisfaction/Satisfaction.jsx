@@ -37,7 +37,7 @@ const StarsRating = () => {
   };
 
   return (
-    <div>
+    <div className={style.cont}>
       {averageRating ? (
         <div>
           <p className={style.text}>Our Customer's Satisfaction: </p>

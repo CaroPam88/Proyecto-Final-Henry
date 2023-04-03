@@ -49,11 +49,6 @@ export const NavBar = () => {
                 Home
               </NavLink>
             </li>}
-            {location.pathname !== '/form' && <li>
-              <NavLink to="/form" onClick={menuopen}>
-                Form
-              </NavLink>
-            </li>}
             {location.pathname !== '/user/profile' && <li>
               <NavLink to="/user/profile" onClick={menuopen}>
                 Profile

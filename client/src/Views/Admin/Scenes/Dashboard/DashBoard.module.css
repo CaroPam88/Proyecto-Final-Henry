@@ -44,7 +44,7 @@
 }
 .graficBar {
     height: 100%;
-    width: 40%;
+    width: 60%;
     z-index: 1;
 }
 .graficPie {
@@ -62,6 +62,11 @@ p {
     border: none;
 }
 .links {
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    left: -15%;
+    left: 80%;
+    top: -100%;
 }
