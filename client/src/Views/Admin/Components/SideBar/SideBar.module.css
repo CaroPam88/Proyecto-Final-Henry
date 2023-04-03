@@ -1,0 +1,64 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    width: 20vw;
+    height: 100vh;
+    background: #000000d7;
+    backdrop-filter: blur(10px);
+    color: #fff;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    overflow: hidden;
+}
+.adminInfo {
+    display: flex;
+    flex-direction: column;
+    height: 35%;
+    width: 100%;
+    align-items: center;
+    color: #fff;
+}
+.img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+.name {
+    font-size: 25px;
+    text-align: center;
+}
+.navigation {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    color: #fff;
+}
+.button {
+    display: flex;
+    padding: 5px;
+    width: 90%;
+    height: 25%;
+    border: none;
+    background: #00000000;
+    color: #fff;
+    border-bottom: solid 1px #2c2c2c;
+    border-top: solid 1px #2c2c2c;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.button:hover {
+    background: #fff;
+    color: #2c2c2c;
+    width: 100%;
+    border-top: solid 2px #fff;
+    border-bottom: solid 2px #fff;
+    transition: 0.6s;
+}

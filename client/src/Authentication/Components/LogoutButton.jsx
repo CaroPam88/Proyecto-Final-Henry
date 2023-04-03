@@ -14,7 +14,7 @@ const LogoutButton = () => {
           logout({ returnTo: '/' });
         }}
       >
-        Cerrar Sesion
+      Logout
       </button>
     </div>
   );

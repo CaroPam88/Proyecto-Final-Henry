@@ -13,13 +13,13 @@
     justify-content: center;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    z-index: 2;
   }
   
   .h2 {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    z-index: 9999;
+    
   }
   
   .button{
@@ -35,12 +35,12 @@
     display: block; 
     margin: 20px auto;
     font-family: Arial, Helvetica, sans-serif;
-    z-index: 9999;
+    
 
   }
 
   .button:hover {
     background-color: #006f8b;;
     transform: scale(1.1);  
-    z-index: 9999;
+     
   }

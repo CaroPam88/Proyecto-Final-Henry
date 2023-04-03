@@ -13,7 +13,7 @@ const PieColors = () => {
             name: col.color,
             value: col.stockColors,
         }})
-    const colorsPie = [ '#7754f7', '#54f7b8', '#eef85d', '#f79d54', '#f754dc','#006f8b', '#f75454', '#87f766', '#66c9f7', '#f7ac66']
+    const colorsPie = [ '#7754f7', '#54f7b8', '#eef85d', '#f79d54', '#f754dc','#006f8b', '#f75454', '#87f766', '#66c9f7', '#f7ac66'];
 
     return (
         <div style={{ width: '100%', height: '100%' }}>
