@@ -44,9 +44,9 @@ let payMercadoPago = async (ids) => {
      preference = {
       items: [],
       back_urls:{
-          success: "http://localhost:3000/home",
-          failure: "http://localhost:3000/home",
-          pending: "http://localhost:3000/home",
+          success: "https://proyecto-final-henry-nu.vercel.app/home",
+          failure: "https://proyecto-final-henry-nu.vercel.app/home",
+          pending: "https://proyecto-final-henry-nu.vercel.app/home",
       },
     };
    console.log(preference);
