@@ -42,7 +42,8 @@ const SatisfactionPopup = () => {
       } else {
         console.error("Error submitting rating");
       }
-      window.alert("¡Gracias por su calificación!");
+      
+      // window.alert("¡Gracias por su calificación!");
     } catch (error) {
       console.error(error);
       window.alert(

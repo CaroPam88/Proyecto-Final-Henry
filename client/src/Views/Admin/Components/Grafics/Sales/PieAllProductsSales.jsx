@@ -58,5 +58,4 @@ const PieAllProductsSales = () => {
         </div>
     );
 }
- 
 export default PieAllProductsSales;
