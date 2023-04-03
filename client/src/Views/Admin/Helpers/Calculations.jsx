@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllTheUsers } from "../../../Redux/actionUser";
 import { getAllProducts } from "../../../Redux/ActionsGet";
+import style from './Calculation.module.css';
 
 const Calculations = () => {
     const dispatch = useDispatch();
@@ -30,10 +31,17 @@ const Calculations = () => {
     }, 0);
     console.log('sales',Sales);
 
+    const allSales = allUsers.flatMap((user) => user.history?.flatMap(history => Number(history.price) * Number(history.cantidad)));
+    const selling = allSales.reduce((total, current) => {
+        return total + current;
+    }, 0);
+    console.log('selling',selling);
+
     return (
-        <div>
-            <Link to='/admin/allProducts'>Total stook: {Stock}</Link>
-            <Link to='/admin/allUsers'>Total sales: {Sales}</Link>
+        <div className={style.cont}>
+            <Link to='/admin/allProducts' className={style.dateStock} >Total stook: {Stock}</Link>
+            <Link to='/admin/allUsers' className={style.dateSale} >Total sales: {Sales}</Link>
+            <Link to='/admin/allUsers' className={style.dateRaised} >Total raised: ${selling}</Link>
         </div>
     )
 }
