@@ -4,6 +4,41 @@
     height: 100vh;
     z-index: -10;
 }
+.return{
+  display: flex;
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: #006f8b;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  padding: 10px;
+  margin: 1%;
+  text-decoration: none;
+  z-index: 10;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.return:hover {
+  transform: scale(1.1);
+  text-decoration: none;
+  color: #fff;
+  background-color: #0395b9;
+}
+.Link {
+  position: relative;
+  top: 3px;
+  left: 0px;
+  color: #fff;
+}
+.Link:hover {
+  color: #fff;
+}
 
 /* Estilos de la tabla */
 .users-table {
