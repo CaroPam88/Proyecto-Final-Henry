@@ -10,6 +10,7 @@ import hero3 from '../../../../Assets/img/hero3.jpg'
 
 
 const DashBoard = () => {
+    
     return (
         <div className={style.cont}>
             <img src={hero3} alt='found' className={style.found} />
@@ -41,9 +42,9 @@ const DashBoard = () => {
                         <PieAllProductsExist />
                     </div>
                 </div>
-            </div>
             <div className={style.links}>
                 <Calculations />
+            </div>
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import AuthenticationButton from '../../../../Authentication/Components/AuthenticationButton'
 import style from './SideBar.module.css';
 import { Link } from "react-router-dom";
+import StarsRating from "../Satisfaction/Satisfaction";
 
 const SideBar = () => {
 
@@ -17,7 +18,7 @@ const SideBar = () => {
             <p>{theAdmin.email}</p>
             </section>
             <section className={style.navigation}>
-                <Link to={'/admin/dashboard'} className={style.button}>DashBoard</Link>
+                <StarsRating />
                 <Link to={'/admin/allProducts'} className={style.button}>All Products</Link>
                 <Link to={'/admin/allUsers'} className={style.button}>All Users</Link>
                 <Link to={'/form'} className={style.button}>Create Product</Link>
