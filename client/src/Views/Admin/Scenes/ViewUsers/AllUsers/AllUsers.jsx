@@ -33,12 +33,12 @@ function AllUsers() {
 			<table className={style['users-table']}>
 				<thead>
 					<tr>
-						<th>Foto de Pefil</th>
-						<th>Nombre</th>
-						<th>Apodo</th>
+						<th>Photo</th>
+						<th>Name</th>
+						<th>NickName</th>
 						<th>Email</th>
-						<th>Bloqueado</th>
-						<th>Info de compra</th>
+						<th>Block</th>
+						<th>Shopping Information</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -68,7 +68,7 @@ function AllUsers() {
 							<td>
 								<Link to={`/admin/detailUser/${user.id}`}>
 									<span className={style.info}>
-										Mas informacion
+										More Information
 									</span>
 								</Link>
 							</td>
