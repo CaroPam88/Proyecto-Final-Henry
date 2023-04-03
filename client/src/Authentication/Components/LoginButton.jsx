@@ -11,7 +11,7 @@ const LoginButton = () =>{
             className={style.button}
             onClick={ () =>  loginWithRedirect()}
             >
-                Ingresar
+                Login
             </button>
         </div>
     )

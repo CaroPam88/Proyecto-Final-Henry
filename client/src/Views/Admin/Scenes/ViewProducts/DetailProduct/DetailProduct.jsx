@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from './DetailProduct.module.css';
 import hero3 from '../../../../../Assets/img/hero3.jpg';
+import PieColors from "../../../Components/Grafics/Detail/PieColors";
 
 const DetailProduct = () => {
     const dispatch = useDispatch();
@@ -31,11 +32,14 @@ const DetailProduct = () => {
                     <section className={style.imgContent}>
                         <img src={detail.image} alt={detail.name} className={style.image} />
                     </section>
-                    <section className={style.oneInfo}>
+                    <div className={style.oneInfo}>
                         <h3>Nombre: {detail.name}</h3>
                         <p>Tipo: {detail.type}</p>
                         <p>Precio: ${detail.price}</p>
-                    </section>
+                    </div>
+                    <div className={style.grap}>
+                        <PieColors />
+                    </div>
                 </section>
                 <section className={style.sectionTwo}>
                 <Link to='/admin/allProducts' className={style.return} >
@@ -52,22 +56,24 @@ const DetailProduct = () => {
                         {detail.sizes?.map((el, i) => {
                             return (<div key={i}>
                                 <p>Talle: {el.size} | Stock por talle: {el.stockSize}</p>
-                                <table className={style['colors-table']}>
-                                    <thead>
-                                        <tr>
-                                            <th>color</th>
-                                            <th>Stock del color</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {el.colors?.map((col, i) => {
-                                            return <tr key={i}>
-                                                <td>{col.color}</td>
-                                                <td>{col.stockColors}</td>
+                                <div className={style.tableCont} >
+                                    <table className={style['colors-table']}>
+                                        <thead>
+                                            <tr>
+                                                <th>color</th>
+                                                <th>Stock del color</th>
                                             </tr>
-                                        })}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {el.colors?.map((col, i) => {
+                                                return <tr key={i}>
+                                                    <td>{col.color}</td>
+                                                    <td>{col.stockColors}</td>
+                                                </tr>
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>)
                         })}
                     </section>

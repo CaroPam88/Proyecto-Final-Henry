@@ -17,8 +17,6 @@ export const BarTypesExist = () => {
 
     const clothes = useSelector((state) => state.products.products)
    
-    console.log("clothes", clothes);
-   
     let pantalones = clothes.filter(el => el.type.includes("pantalon"))
     let camisas = clothes.filter(el => el.type.includes("camisa"))
     let remeras = clothes.filter(el => el.type.includes("remera"))
@@ -65,7 +63,7 @@ return (
         <YAxis />
         <Tooltip/>
         <Legend />
-        <Bar dataKey="StockGeneral" />
+        <Bar dataKey="StockGeneral" fill="#006f8b" />
         </BarChart>
     </ResponsiveContainer>
   );

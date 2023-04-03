@@ -18,13 +18,14 @@ import AllUsers from './Views/Admin/Scenes/ViewUsers/AllUsers/AllUsers';
 import DetailUser from './Views/Admin/Scenes/ViewUsers/DetailUser/DetailUser';
 
 import UserProfile from './Authentication/ProfileScreen/UserProfile';
+import SideBar from './Views/Admin/Components/SideBar/SideBar';
 
 function App() {
 	const {pathname} = useLocation();
 
 	return (
 		<div className="App">
-			{pathname !== '/' && pathname.split('/')[1] !== 'dashboard' ? (
+			{pathname !== '/' && !pathname.includes('/admin') ? (
 				<NavBar />
 			) : null}
 			<Routes>
@@ -36,7 +37,6 @@ function App() {
 				<Route exact path="/cart" element={<Cart />} />
 				<Route exact path="/nosotros" element={<Nosotros />} />
 				<Route exact path="/contact" element={<Contact />} />
-
 
 				<Route exact path="/admin/dashboard" element={<DashBoard />} />
 				<Route exact path="/admin/allProducts" element={<AllProducts />} />
