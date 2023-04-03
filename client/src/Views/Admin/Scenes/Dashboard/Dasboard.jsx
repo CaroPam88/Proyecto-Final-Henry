@@ -8,6 +8,7 @@ import Calculations from '../../Helpers/Calculations';
 import style from './DashBoard.module.css';
 import hero3 from '../../../../Assets/img/hero3.jpg'
 
+
 const DashBoard = () => {
     return (
         <div className={style.cont}>
@@ -15,6 +16,7 @@ const DashBoard = () => {
             <div >
                 <SideBar />
             </div>
+            
             <div className={style.grafics}>
                 {/* <div>
                     <BarClothesTypeSales />
