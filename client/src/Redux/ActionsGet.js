@@ -11,6 +11,7 @@ import {
 	clearSize,
 	putProduct,
 	disableToProduct,
+	modifyProduct,
 } from './productSlice';
 import axios from 'axios';
 
@@ -139,6 +140,16 @@ const disableProduct = (id) => {
 		}
 	}
 };
+const modifyTheProduct = (id, product) => {
+    return async (dispatch) => {
+        try {
+            const dbData = await axios.put(`/clothes/admin/${id}`, product);
+            return dispatch(modifyProduct(dbData));
+        } catch (error) {
+            alert({error: error.message});
+        }
+    };
+};
 
 // const putClothes = (data) => async (dispatch) =>{
 //     try {
@@ -181,4 +192,5 @@ export {
 	clearSizeState,
 	putClothes,
 	disableProduct,
+	modifyTheProduct,
 };
