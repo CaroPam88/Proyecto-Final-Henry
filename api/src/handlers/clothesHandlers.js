@@ -9,6 +9,7 @@ const {
 	generalUpdate,
 	createRating,
 	changeItemExisting,
+	ratingNew
 } = require('../controllers/clothesControllers');
 const {
 	moveCartToBuy,
@@ -144,6 +145,18 @@ let ratingUser = async (req, res) => {
 
 ////////////////////////////////////
 
+let ratingGet = async (req, res) => {
+	try {
+		const Rating = await ratingNew()
+		res.status(200).json(Rating)
+	}catch{
+		res.status(405).json({error: error.message});
+	}
+}
+
+///////////////////////////////////
+
+
 let UpdateClothes = async (req, res) => {
 	let {idItem} = req.params;
 	const {name, price, type, image, sex, size, colors} = req.body;
@@ -188,7 +201,8 @@ module.exports = {
 	postMercadoPago,
 	UpdateClothes,
 	changeExisting,
-	ratingUser
+	ratingUser,
+	ratingGet
 };
 
 // await Clothes.update(
