@@ -1,0 +1,109 @@
+.founds {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -10;
+}
+
+.productFormContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.formContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.formContainer label {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.formContainer label > input,
+.formContainer label > select {
+	margin-top: 5px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.formContainer label > select {
+	padding-right: 25px;
+	background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23202020' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 5px) center;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.formContainer label > select::-ms-expand {
+	display: none;
+}
+
+.colorInputContainer {
+	display: flex;
+	align-items: center;
+}
+
+.colorInput {
+	width: 100px;
+	margin-right: 10px;
+}
+
+.stockInput {
+	width: 50px;
+}
+
+.submitButton {
+	margin-top: 20px;
+	padding: 10px;
+	background-color: #1565c0;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.submitButton:hover {
+	background-color: #0d47a1;
+}
+
+img {
+	width: 50%;
+	height: auto;
+}
+
+.formRow {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.sexdiv {
+	display: inline-block;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0;
+}
+
+.formLabel {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+input[type='checkbox'] {
+	margin-left: 8px;
+	margin-right: 4px;
+}
