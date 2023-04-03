@@ -55,8 +55,11 @@ const Slice = createSlice({
         disableToProduct: (state, action) => {
             state.filteredProducts = action.payload;
         },
+        modifyProduct: (state, action) => {
+            state.productDetail = action.payload;
+        },
     }
 });
 
-export const { getProducts,  postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize, filterClothes, putProduct, disableToProduct } = Slice.actions;
+export const { getProducts,  postProducts, getProdName, getDetail, getColors, getSize, clearProducts, clearDetail, clearColors, clearSize, filterClothes, putProduct, disableToProduct, modifyProduct } = Slice.actions;
 export default Slice.reducer;

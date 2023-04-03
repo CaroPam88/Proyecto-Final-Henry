@@ -83,7 +83,7 @@ const DetailProduct = () => {
                             <input type="checkbox" className={style.checkbox} checked={!detail.existing} onChange={(e) => {handlerExisting(e, detail.id)}}/>
                             <div className={style.slider}></div>
                         </label>
-                        <Link to={`/admin/product/modify2/${id}`}>
+                        <Link to={`/admin/product/ModifyProduct/${id}`}>
                             <button className={style.button}>modificar</button>
                         </Link>
                     </section>
