@@ -66,6 +66,24 @@ const createRating = async (num) => {
 
 /////////////////////////////////////////////
 
+
+////////////////////////////////////////////
+
+
+const ratingNew = async () => {
+	let data = await Rating.findAll();
+	let rating = data[0].ratin
+
+	const suma = rating.reduce((sum, value) => sum + value, 0);
+	const promedio = suma /  rating.length;
+
+	console.log(promedio);
+	
+	return promedio
+}
+
+
+///////////////////////////////////////////
 const createProduct = async (
 	name,
 	price,
@@ -285,4 +303,5 @@ module.exports = {
 	generalUpdate,
 	createRating,
 	changeItemExisting,
+	ratingNew
 };
