@@ -34,10 +34,10 @@ export const Home = ()=>{
 
     const stockController = async () => {
         if (theUser.id && update && currentPurechase) {
+          setShowSatisfactionPopup(true); // cambiar el estado a true para mostrar el popup
           await dispatch(putClothes(currentPurechase))
             .then(() => {
               window.localStorage.removeItem("currentPurechase");
-              setShowSatisfactionPopup(true); // cambiar el estado a true para mostrar el popup
             })
             .catch((error) => {
               console.log(error);

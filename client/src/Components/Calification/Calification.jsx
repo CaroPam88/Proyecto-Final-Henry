@@ -39,6 +39,7 @@ const SatisfactionPopup = () => {
       );
       if (response.status === 200) {
         console.log("Rating submitted successfully");
+        handleCloseModal();
         window.location.href = "/home"
       } else {
         console.error("Error submitting rating");
