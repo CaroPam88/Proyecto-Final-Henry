@@ -6,11 +6,18 @@ import { Link } from "react-router-dom";
 import hero3 from '../../../../../Assets/img/hero3.jpg';
 
 
+import { createUser } from "../../../../../Redux/actionUser";
+import { useAuth0 } from '@auth0/auth0-react';
+import NotAdmin from "../../../Components/NotAdmin/NotAdmin";
+
 const AllProducts = () => {
     const dispatch = useDispatch();
+    const theUser = useSelector(state => state.user.theUser)
+    const { isAuthenticated,user } = useAuth0();
 
     useEffect(() => {
         dispatch(getAllProducts());
+        if (isAuthenticated && !theUser.id) dispatch(createUser(user))
     },[])
     const products = useSelector(state => state.products.filteredProducts);
 
@@ -20,7 +27,10 @@ const AllProducts = () => {
         
     }
 
-    return (<section>
+    if (!theUser.admin) return (
+        <NotAdmin />
+    )
+    else return (<section>
         <img src={hero3} alt='found' className={style.found} />
         <div className={style.return}>
             <Link to={'/admin/dashboard'} className={style.Link} >

@@ -8,10 +8,13 @@ import {Link, useParams} from 'react-router-dom';
 import style from './DetailUser.module.css';
 import hero3 from '../../../../../Assets/img/hero3.jpg';
 
+import NotAdmin from "../../../Components/NotAdmin/NotAdmin";
+
 function DetailUser() {
 	const dispatch = useDispatch();
 	const {id} = useParams();
 	const user = useSelector((state) => state.user.userId);
+	const theUser = useSelector(state => state.user.theUser)
 
 	useEffect(() => {
 		dispatch(getUserByTheId(id));
@@ -24,7 +27,10 @@ function DetailUser() {
 		);
 	};
 
-	return (
+	if (!theUser.admin) return (
+        <NotAdmin />
+    )
+    else return (
 		<section>
 			<img src={hero3} alt="found" className={style.found} />
 			<div className={style.container}>

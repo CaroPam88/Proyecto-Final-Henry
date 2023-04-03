@@ -1,17 +1,33 @@
 import { BarTypesExist } from '../../Components/Grafics/Existencias/BarTypesExist';
 import { PieAllProductsExist } from '../../Components/Grafics/Existencias/PieAllProductsExist';
 import BarPotentialSales from '../../Components/Grafics/Sales/BarPotentialSales';
-// import BarClothesTypeSales from '../../Components/Grafics/Sales/BarPotentialSalesType';
 import PieAllProductsSales from '../../Components/Grafics/Sales/PieAllProductsSales';
 import SideBar from '../../Components/SideBar/SideBar';
 import Calculations from '../../Helpers/Calculations';
 import style from './DashBoard.module.css';
 import hero3 from '../../../../Assets/img/hero3.jpg'
 
+import { createUser } from '../../../../Redux/actionUser';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import NotAdmin from '../../Components/NotAdmin/NotAdmin';
+
+
 
 const DashBoard = () => {
-    
-    return (
+    const dispatch = useDispatch();
+
+    const theUser = useSelector(state => state.user.theUser)
+    const { isAuthenticated,user } = useAuth0();
+
+    useEffect(() => {
+        if (isAuthenticated && !theUser.id) dispatch(createUser(user))
+    })
+    if (!theUser.admin) return (
+        <NotAdmin />
+    )
+    else return (
         <div className={style.cont}>
             <img src={hero3} alt='found' className={style.found} />
             <div >
@@ -19,9 +35,6 @@ const DashBoard = () => {
             </div>
             
             <div className={style.grafics}>
-                {/* <div>
-                    <BarClothesTypeSales />
-                </div> */}
                 <div className={style.sales}>
                     <div className={style.graficBar} >
                         <p>Potential sales:</p>

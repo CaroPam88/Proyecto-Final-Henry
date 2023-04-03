@@ -51,14 +51,11 @@ export const Home = ()=>{
     }, [dispatch, currentPurechase]);
 
     if(theUser.id){
-      if(theUser.admin){
-        return(
-          <div> </div>
+      if(theUser.admin) return (
+          <div></div>
         )
-      }
-    }
-
-    return(
+    } 
+    else return(
         <div className={style.container}>
             {showSatisfactionPopup && <SatisfactionPopup />} {/* mostrar el popup solo si showSatisfactionPopup es true sino no se muestra */}
             <img src={imgHome} alt="" className={style.img} />
