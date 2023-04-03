@@ -35,8 +35,8 @@ export const Home = ()=>{
         if (theUser.id && update && currentPurechase) {
           setShowSatisfactionPopup(true); // cambiar el estado a true para mostrar el popup
           await dispatch(putClothes(currentPurechase))
-          .then(() => {dispatch(getCart())})
             .then(() => {
+              dispatch(getCart())
               window.localStorage.removeItem("currentPurechase");
             })
             .catch((error) => {
