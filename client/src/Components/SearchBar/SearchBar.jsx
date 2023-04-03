@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
 import style from '../SearchBar/searchbar.module.css';
+import {Link} from "react-scroll"
 
 
 const SearchBar = () => {
@@ -32,7 +33,7 @@ const SearchBar = () => {
                 onChange={e => handlerSearch(e)}
                 name='input'
             />
-            <button type='submit' value={name} onClick={e => handlerSearch(e)} name='submit' >Search</button>
+            <Link to = "cardContainer"><button type='submit' value={name} onClick={e => handlerSearch(e)} name='submit' >Search</button></Link>
         </div>
     );
 };
