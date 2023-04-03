@@ -54,8 +54,10 @@ const Cart = () => {
 	const onSubmit = async (e) => {
 		try {
 			e.preventDefault();
-			if (theUser.id) {
+			if (theUser.id && !theUser.admin) {
 				setPagar(false);
+			} else if (theUser.admin){
+				alert('You are the administrator, you can not buy')
 			} else {
 				loginWithRedirect();
 			}
