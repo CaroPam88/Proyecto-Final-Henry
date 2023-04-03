@@ -21,7 +21,7 @@ const Filter = () => {
         <option value="" className={style.options} >Products</option>
         <option value="remera" className={style.options} >T-shirt</option>
         <option value="vestido" className={style.options} >Dress</option>
-        <option value="chomba" className={style.options} >Chomba</option>
+        <option value="chomba" className={style.options} >Polo</option>
         <option value="pantalon" className={style.options} >Pants</option>
         <option value="short" className={style.options} >Short</option>
       </select>
