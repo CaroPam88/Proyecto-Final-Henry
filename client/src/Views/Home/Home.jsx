@@ -15,7 +15,7 @@ import SatisfactionPopup from "../../Components/Calification/Calification.jsx";
 export const Home = ()=>{
 
     const theUser = useSelector(state => state.user.theUser);//Nos traemos user para despues limitar que solo se ejecute la funcion si estamos loggeados.
-    console.log(theUser);
+
     if(theUser.id){
       if(theUser.admin){
         window.location.href = "/admin/dashboard"
@@ -26,8 +26,6 @@ export const Home = ()=>{
     const dispatch = useDispatch();
 
     const update = window.location.href.includes("approved")
-    const lastReference =  document.referrer;
-    console.log('lastReference',lastReference);
 
     const [showSatisfactionPopup, setShowSatisfactionPopup] = useState(false); 
     // variable de estado para controlar la visualización del popup
