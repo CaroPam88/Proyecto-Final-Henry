@@ -1,0 +1,62 @@
+.cardRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .cardM {
+    display: inline-block;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px rgba(0,0,0,0.2);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-align: center;
+    width: 45%;
+    height: 256px;
+    background: url(../../Assets/img/man.jpg);
+    background-size:cover;
+    background-position: center bottom;
+    transition: 0.3s;
+  }
+  
+
+  .cardW {
+    display: inline-block;
+    background: url(../../Assets/img/woman.jpg);
+    background-size:cover;
+    background-position: center bottom;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px rgba(0,0,0,0.2);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-align: center;
+    width: 45%;
+    height: 256px;
+    transition: 0.3s;
+  }
+  
+
+  .cardRow span{
+    display: flex;
+    color: white;
+    padding-top: 120px;
+    align-items: center;
+    font-size: 24px;
+  }
+  .cardM input[type="radio"] {
+    opacity: 0%;
+  }
+  .cardW input[type="radio"] {
+    opacity: 0%;
+  }
+
+  .cardM:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+  }
+  .cardW:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+  }

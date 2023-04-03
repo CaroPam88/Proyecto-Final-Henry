@@ -1,0 +1,67 @@
+.found {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+}
+.cont {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.contGrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.grafics {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+    background: #3b3b3baf;
+    backdrop-filter: blur(5px);
+    padding: 3%;
+    margin: 5px;
+}
+.sales {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    padding: 5px;
+}
+.exist {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+}
+.graficBar {
+    height: 100%;
+    width: 40%;
+    z-index: 1;
+}
+.graficPie {
+    position: relative;
+    left: -15%;
+    top: -5%;
+    height: 100%;
+    width: 100%;
+}
+p {
+    position: relative;
+    top: 8%;
+    text-align: center;
+    color: #000;
+    border: none;
+}
+.links {
+    position: relative;
+    left: -15%;
+}

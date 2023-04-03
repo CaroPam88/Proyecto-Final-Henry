@@ -1,0 +1,143 @@
+.container{
+    top: -5vh;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.img {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    filter: blur(2px);
+    z-index: -10;
+}
+
+.form {
+    position: relative;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin: 20px auto;
+    background-color: #ffffff64;
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    align-items: center;
+    border-radius: 10px;
+}
+
+.input {
+    font-family: 'Roboto', sans-serif, serif;
+    color: rgb(83, 91, 89);
+    background: #ffffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 3px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 2px 1px #414040;
+}
+.genreCont{
+    display: flex;
+    flex-direction: column;
+}
+.colorCont {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.colorContInput {
+    font-family: 'Roboto', sans-serif, serif;
+    background: #fff;
+    color: rgb(83, 91, 89);
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-left: 1px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: 48%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    padding: 3px;
+    box-shadow: 0 0 2px 1px #414040;
+}
+.contentCol{
+    display: flex;
+    flex-direction: column;
+}
+.inputColor {
+    position: block;
+    font-family: 'Roboto', sans-serif, serif;
+    font-size: 16px;
+    background: #fff;
+    color: rgb(83, 91, 89);
+    margin-bottom: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: auto;
+    box-sizing: border-box;
+    outline: none;
+    padding: 3px;
+    border: none;
+    cursor: pointer;
+    transition: 1s;
+    box-shadow: 0 0 2px 1px #414040;
+}
+.inputColorDelete {
+    font-family: 'Times New Roman', Times, serif;
+    background: #fff;
+    color: rgb(83, 91, 89);
+    font-size: 20px;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    width: 17%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    margin: 2px;
+    box-shadow: 0 0 2px 1px #414040;
+    transition: 0.3s;
+}
+
+.inputColor:hover {
+    background: #006f8b;
+    text-shadow: 0 0 3px 1px #414040;
+    color: #ffffff;
+    transition: 1s;
+}
+.inputColorDelete:hover {
+    animation: delete 2s linear infinite;
+}
+@keyframes delete {
+    0%{
+        background: #ff3d3d;
+    }
+    25%{
+        background: #fff;
+    }
+    50%{
+        background: #ff3d3d;
+    }
+    75%{
+        background: #fff;
+    }
+    100%{
+        background: #ff3d3d;
+    }
+}

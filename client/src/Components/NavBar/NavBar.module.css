@@ -1,0 +1,155 @@
+.container {
+  width: 100%;
+  height: 100px; /* increase height to provide more space */
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(0deg, #ffffff00 0%, #00000023 49%, #00000086 100%);
+  align-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.container div {
+  width: 100%;
+}
+
+.logo {
+  height: 80px; /* decrease height to fit within navbar */
+  width: 70%;
+  scale: 40%;
+  margin-right: 80vh;
+  z-index: 1;
+  align-self: center;
+  text-shadow: 0px 0px 5px #000;
+}
+
+
+
+.menuoff {
+  width: 30%;
+  height: 10%; /* decrease height to fit within navbar */
+  scale: 40%;
+  position: relative;
+  z-index: 2;
+  opacity: 4;
+  transition: 1s linear;
+}
+
+
+.carrito{
+    width: 100%;
+    height: 90px;
+    scale: 40%;
+    top: 0;
+    right: 0;
+    display: flex;
+    padding-right: 70%;
+
+}
+
+
+
+.containerOpciones{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 1;
+    transition: all 1200ms ease-out;
+ 
+}
+
+.contenedorcarrito{
+    position: relative;
+}
+
+
+
+.opciones{
+    position: absolute;
+    width: 15%;
+    height: 125vh;
+    background-color: white;
+    left: 0px;
+    transition: all 700ms ease-in-out;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 90px;
+    gap: 14px;
+    justify-content: flex-end;
+    z-index: 2;
+    padding-left: 10px;
+}
+
+.opciones li {
+    align-self: center;
+    width: 100%;
+    height: 20px;
+    text-decoration: none;
+    transition: all 1200ms ease-in-out;
+    list-style: none;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px;
+    background-color: transparent;
+}
+
+.opciones li a {
+    text-decoration: none;
+    color: var(--ph0-violeta-1);
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.opcioncerrada {
+    left: -700px;
+    z-index: -1;
+    transition: all 1200ms ease;
+
+}
+
+.span{
+    position: absolute;
+    background-color: #00ccff;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    top: 45px;
+    right: 65%;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 19px;
+    border-radius: 50px;
+    z-index: 40;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.selections {
+    text-decoration: none;
+    color: var(--ph0-violeta-1);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    justify-content: flex-end;
+    margin-left: 0px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+}
+.options {
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 10px;
+}

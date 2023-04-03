@@ -1,0 +1,47 @@
+  .pagination {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    padding: 3px;
+  }
+  
+  .activeNum {
+    background-color: #006f8b;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    justify-content: center;
+  }
+  .noActiveNum {
+    background-color: #000;
+    color: #fff;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    justify-content: center;
+  }
+  .but {
+    background-color: #000;
+    color: #fff;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    justify-content: center;
+    border: none;
+  }
+  
+  .noActiveNum:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+  }
+  .but:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+  }

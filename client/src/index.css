@@ -1,0 +1,33 @@
+body {
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden !important;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: relative;
+
+  min-height: 100vh;
+  max-width: 100%;
+  background-color: black;
+}
+code {
+  font-family: 'Space Grotesk', sans-serif;
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:rgb(0, 0, 0)
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #006f8b;
+  cursor: pointer;
+}
+

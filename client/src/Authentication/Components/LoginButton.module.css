@@ -1,0 +1,20 @@
+.button{
+    background: #000;
+    border-radius: 20px;
+    height: 40px;
+    text-decoration: none;
+    color: #fff;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    transition: 0.5s;
+}
+.button:hover {
+    background: #006f8b;
+    transition: 0.5s;
+}
