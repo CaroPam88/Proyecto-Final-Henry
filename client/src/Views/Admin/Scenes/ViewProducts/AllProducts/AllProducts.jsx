@@ -30,12 +30,12 @@ const AllProducts = () => {
         <table className={style['users-table']}>
             <thead>
                 <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
                     <th>Stock</th>
-                    <th>Deshabilitado</th>
-                    <th>Ver mas</th>
+                    <th>Disable</th>
+                    <th>View More</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,7 +54,7 @@ const AllProducts = () => {
                         </label>
                     </td>
                     <td>
-                        <Link to={`/admin/product/detail/${product.id}`}>Ver mas</Link>
+                        <Link to={`/admin/product/detail/${product.id}`}>View More</Link>
                     </td>
                 </tr>
                 })}

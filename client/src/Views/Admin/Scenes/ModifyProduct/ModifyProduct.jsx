@@ -169,7 +169,7 @@ function ProductForm() {
 			<form className={style.formContainer} onSubmit={handleSubmit}>
 				<div className={style.formRow}>
 					<label className={style.formLabel}>
-						Nombre:
+						Name:
 						<input
 							className={style.formInput}
 							type="text"
@@ -180,7 +180,7 @@ function ProductForm() {
 				</div>
 				<div className={style.formRow}>
 					<label className={style.formLabel}>
-						TamaÃ±o:
+						Size:
 						<select
 							className={style.formSelect}
 							value={size}
@@ -199,7 +199,7 @@ function ProductForm() {
 				</div>
 				<div className={style.formRow}>
 					<label className={style.formLabel}>
-						Precio:
+						Price:
 						<input
 							className={style.formInput}
 							type="text"
@@ -210,7 +210,7 @@ function ProductForm() {
 				</div>
 				<div>
 					<label className={style.formLabel}>
-						Tipo:
+						Type:
 						<select
 							name=""
 							id=""
@@ -230,7 +230,7 @@ function ProductForm() {
 				</div>
 				<div className={style.formRow}>
 					<label className={style.formLabel}>
-						Imagen:
+						Image:
 						<input
 							className={style.formInput}
 							type="file"
@@ -242,7 +242,7 @@ function ProductForm() {
 				</div>
 				<div className={style.formRow}>
 					<label className={style.formLabel}>
-						Genero:
+						Genre:
 						<span className={style.checkboxLabel}>
 							<label htmlFor="male">
 								Male
@@ -290,7 +290,7 @@ function ProductForm() {
 							placeholder="Stock"
 						/>
 						<button type="button" onClick={handleNewColorSubmit}>
-							Agregar color
+							Add a color
 						</button>
 					</form>
 					{colors?.map((color, index) => (
@@ -318,14 +318,14 @@ function ProductForm() {
 							<button
 								onClick={(e) => handleColorDelete(e, index)}
 							>
-								Eliminar
+								Delete
 							</button>
 						</div>
 					))}
 				</div>
 				<div className={style.formRow}>
 					<button type="submit" className={style.submitButton}>
-						Guardar cambios
+						Save Changes
 					</button>
 				</div>
 			</form>
