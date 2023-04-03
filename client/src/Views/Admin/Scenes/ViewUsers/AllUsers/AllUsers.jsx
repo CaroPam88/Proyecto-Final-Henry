@@ -25,6 +25,11 @@ function AllUsers() {
 	return (
 		<section>
 			<img src={hero3} alt="found" className={style.found} />
+			<div className={style.return}>
+            <Link to={'/admin/dashboard'} className={style.Link} >
+            <h6>{'<<'}</h6>
+            </Link>
+        </div>
 			<table className={style['users-table']}>
 				<thead>
 					<tr>
