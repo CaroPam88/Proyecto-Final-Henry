@@ -50,11 +50,7 @@ export const Home = ()=>{
         stockController();
     }, [dispatch, currentPurechase]);
 
-    if(theUser.id){
-      if(theUser.admin) return (
-          <div></div>
-        )
-    } 
+    if(theUser.id && theUser.admin) return (<div></div>)
     else return(
         <div className={style.container}>
             {showSatisfactionPopup && <SatisfactionPopup />} {/* mostrar el popup solo si showSatisfactionPopup es true sino no se muestra */}
