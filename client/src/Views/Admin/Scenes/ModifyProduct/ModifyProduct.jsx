@@ -286,6 +286,7 @@ function ProductForm() {
 				</div>
 				<div>
 					<form onSubmit={handleNewColorSubmit}>
+						<label className={style.formLabel}>Modify Color:</label>
 						<input
 							type="text"
 							name="color"
