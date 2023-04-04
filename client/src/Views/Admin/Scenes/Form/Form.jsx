@@ -26,8 +26,8 @@ function Form() {
 
     useEffect(() => {
         if (isAuthenticated && !theUser.id) dispatch(createUser(user))
-    })
-    if (!theUser.admin) return (
+    },[])
+    if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     ) 
 	else return (

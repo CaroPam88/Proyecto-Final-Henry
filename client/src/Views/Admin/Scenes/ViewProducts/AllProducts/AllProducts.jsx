@@ -27,7 +27,7 @@ const AllProducts = () => {
         
     }
 
-    if (!theUser.admin) return (
+    if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
     else return (<section>

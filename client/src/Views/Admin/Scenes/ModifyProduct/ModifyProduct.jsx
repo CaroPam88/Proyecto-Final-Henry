@@ -171,7 +171,7 @@ function ProductForm() {
 		navigate(`/admin/product/detail/${id}`);
 	};
 
-	if (!theUser.admin) return (
+	if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
     else return (

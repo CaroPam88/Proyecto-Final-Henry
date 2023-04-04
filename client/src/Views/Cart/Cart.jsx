@@ -56,9 +56,11 @@ const Cart = () => {
 			e.preventDefault();
 			if (theUser.id && !theUser.admin && !theUser.locked) {
 				setPagar(false);
-			} else if (theUser.admin){
-				alert('You are the administrator or you are locked, you can not buy')
-			} else {
+			} else if (theUser.admin) {
+				alert('You are the administrator, you can not buy')
+			} else if (theUser.locked) { 
+				alert('You are locked, you can not buy, please contact pf.dressme@gmail.com')
+			}else {
 				loginWithRedirect();
 			}
 		} catch (error) {

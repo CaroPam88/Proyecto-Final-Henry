@@ -22,9 +22,10 @@ const DashBoard = () => {
     const { isAuthenticated,user } = useAuth0();
 
     useEffect(() => {
-        if (isAuthenticated && !theUser.id) dispatch(createUser(user))
-    })
-    if (!theUser.admin) return (
+        if (isAuthenticated) dispatch(createUser(user))
+    },[]);
+
+    if ( theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
     else return (
