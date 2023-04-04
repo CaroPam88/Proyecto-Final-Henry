@@ -23,6 +23,7 @@ export const Home = ()=>{
       }
     }
     
+    const [home, setHome] = useState(true);
     const currentPurechase = JSON.parse(localStorage.getItem('currentPurechase'));
     const dispatch = useDispatch();
 
@@ -32,12 +33,13 @@ export const Home = ()=>{
     // variable de estado para controlar la visualización del popup
 
     const stockController = async () => {
-        if (theUser.id && update && currentPurechase) {
+        if (theUser.id && update && currentPurechase && home) {
           setShowSatisfactionPopup(true); // cambiar el estado a true para mostrar el popup
+          setHome(false);
           await dispatch(putClothes(currentPurechase))
             .then(() => {
-              dispatch(getCart())
               window.localStorage.removeItem("currentPurechase");
+              dispatch(getCart())
             })
             .catch((error) => {
               console.log(error);
