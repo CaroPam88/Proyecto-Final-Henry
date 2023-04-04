@@ -8,6 +8,7 @@ import menu from '../../Assets/svg/menu.svg'
 import carrito from '../../Assets/svg/carrito.svg';
 import closemenu from '../../Assets/svg/closemenu.svg';
 import logo from '../../Assets/svg/logo.svg';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 import AuthenticationButton from '../../Authentication/Components/AuthenticationButton'
@@ -18,6 +19,7 @@ export const NavBar = () => {
   const cart = useSelector(state => state.cart?.cartItems ?? [])
   const localCart = useSelector(state => state.cart?.localStorageCart ?? [])
   const [clicked, setClicked] = useState(true);
+  const { isAuthenticated } = useAuth0();
   const menuopen = () => {
     setClicked(!clicked);
   };
@@ -50,7 +52,7 @@ export const NavBar = () => {
                 Home
               </NavLink>
             </li>}
-            {location.pathname !== '/user/profile' && user.id && <li>
+            {location.pathname !== '/user/profile' && user.id && isAuthenticated && <li>
               <NavLink to="/user/profile" onClick={menuopen}>
                 Profile
               </NavLink>
