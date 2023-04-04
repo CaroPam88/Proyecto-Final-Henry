@@ -10,12 +10,13 @@ import imgHome from '../../Assets/img/hero3.jpg';
 import  GenderCard  from "../../Components/Genders/GenderCards.jsx";
 import { putClothes } from "../../Redux/ActionsGet.js";
 import SatisfactionPopup from "../../Components/Calification/Calification.jsx";
+import { getCart } from "../../Redux/actionCart.js";
 
 
 export const Home = ()=>{
 
     const theUser = useSelector(state => state.user.theUser);//Nos traemos user para despues limitar que solo se ejecute la funcion si estamos loggeados.
-    console.log(theUser);
+
     if(theUser.id){
       if(theUser.admin){
         window.location.href = "/admin/dashboard"
@@ -26,8 +27,6 @@ export const Home = ()=>{
     const dispatch = useDispatch();
 
     const update = window.location.href.includes("approved")
-    const lastReference =  document.referrer;
-    console.log('lastReference',lastReference);
 
     const [showSatisfactionPopup, setShowSatisfactionPopup] = useState(false); 
     // variable de estado para controlar la visualización del popup
@@ -37,6 +36,7 @@ export const Home = ()=>{
           setShowSatisfactionPopup(true); // cambiar el estado a true para mostrar el popup
           await dispatch(putClothes(currentPurechase))
             .then(() => {
+              dispatch(getCart())
               window.localStorage.removeItem("currentPurechase");
             })
             .catch((error) => {
@@ -50,11 +50,7 @@ export const Home = ()=>{
         stockController();
     }, [dispatch, currentPurechase]);
 
-    if(theUser.id){
-      if(theUser.admin) return (
-          <div></div>
-        )
-    } 
+    if(theUser.id && theUser.admin) return (<div></div>)
     else return(
         <div className={style.container}>
             {showSatisfactionPopup && <SatisfactionPopup />} {/* mostrar el popup solo si showSatisfactionPopup es true sino no se muestra */}

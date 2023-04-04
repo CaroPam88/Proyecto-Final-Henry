@@ -10,7 +10,7 @@ const StarsRating = () => {
   useEffect(() => {
     const fetchAverageRating = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/rating');
+        const response = await axios('https://proyecto-final-henry-production-015e.up.railway.app/rating');
         const { data } = response;
         console.log('response', data);
         setAverageRating(data);
@@ -39,9 +39,11 @@ const StarsRating = () => {
   return (
     <div className={style.cont}>
       {averageRating ? (
-        <div>
+        <div className={style.contStart}>
           <p className={style.text}>Our Customer's Satisfaction: </p>
-          {renderStars()}
+          <div>
+            {renderStars()}
+          </div>
         </div>
       ) : (
         <p className={style.text}>Loading...</p>
