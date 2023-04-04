@@ -1,4 +1,4 @@
-.container{
+/* .container{
 height: 100vh;
 padding: 10px;
 border-radius: 10px;
@@ -56,4 +56,150 @@ margin-top: 3px;
     object-fit: cover;
     filter: blur(2px);
     z-index: -10;
+} */
+
+.container {
+	margin: auto;
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.found {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	margin-bottom: 20px;
+}
+
+.profile {
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.profileImage {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 20px;
+}
+
+.profileImage img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.profileInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.history,
+.cart {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.history h3,
+.cart h3 {
+	margin-bottom: 10px;
+}
+
+.item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+}
+
+.item img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	margin-right: 20px;
+}
+
+.itemInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.cart {
+	margin-bottom: 60px;
+}
+
+.authentication {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+}
+
+.authentication button {
+	margin-left: 20px;
+	background-color: #4caf50;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.authentication button:hover {
+	background-color: #3e8e41;
+}
+
+.imgclothe {
+	width: 100px;
+}
+
+.loader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: row;
+}
+
+.circle {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #555;
+	margin: 5px;
+	animation: loaderAnimation 0.6s linear infinite;
+}
+
+@keyframes loaderAnimation {
+	0% {
+		transform: scale(0.4);
+	}
+	20% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.4);
+	}
+}
+
+.linkcart {
+	display: inline-block;
+	margin-left: 10px;
 }
