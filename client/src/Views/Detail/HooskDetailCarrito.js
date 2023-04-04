@@ -103,8 +103,10 @@ export const useDetail = (myProduct, id) => {
 	const onSubmit = async (e) => {
 		try {
 			e.preventDefault();
-			if (userSelector.id) {
+			if (userSelector.id && !userSelector.admin && !userSelector.locked) {
 				setPagar(false);
+			} else if (userSelector.admin){
+				alert('You are the administrator or you are locked, you can not buy')
 			} else {
 				loginWithRedirect();
 			}

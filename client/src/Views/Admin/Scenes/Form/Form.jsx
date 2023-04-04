@@ -2,6 +2,12 @@ import { useForm } from './formHook'
 import imgHome from '../../../../Assets/img/hero3.jpg';
 import style from './Form.module.css';
 
+import { createUser } from '../../../../Redux/actionUser';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import NotAdmin from '../../Components/NotAdmin/NotAdmin';
+
 function Form() {
 	const { form,  addColor,  error,  validated,  colorError,  handleForm, genreHandler, genreDeleteHandler, handlerColor, handlerAddColor, colorDeleteHandler, SubmitHandler } = useForm();
 	let styleError = {
@@ -13,8 +19,18 @@ function Form() {
 		fontWeight: 'bold',
 		color: ' #22a922',
 	};
+	const dispatch = useDispatch();
 
-	return (
+    const theUser = useSelector(state => state.user.theUser)
+    const { isAuthenticated,user } = useAuth0();
+
+    useEffect(() => {
+        if (isAuthenticated && !theUser.id) dispatch(createUser(user))
+    })
+    if (!theUser.admin) return (
+        <NotAdmin />
+    ) 
+	else return (
 		<div class={style.container}>
 			<img src={imgHome} alt="" className={style.img} />
 			<form onSubmit={(e) => SubmitHandler(e)} class={style.form} >

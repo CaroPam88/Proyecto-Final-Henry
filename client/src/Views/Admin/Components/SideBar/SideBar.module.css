@@ -29,6 +29,9 @@
     font-size: 25px;
     text-align: center;
 }
+p {
+    color: #fff;
+ }
 .navigation {
     display: flex;
     flex-direction: column;
@@ -47,12 +50,12 @@
     background: #00000000;
     color: #fff;
     border-bottom: solid 1px #2c2c2c;
-    border-top: solid 1px #2c2c2c;
     font-size: 20px;
     text-align: center;
     align-items: center;
     justify-content: center;
     transition: 0.3s;
+    margin: 0%;
 }
 .button:hover {
     background: #fff;

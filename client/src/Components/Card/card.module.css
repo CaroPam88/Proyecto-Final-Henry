@@ -32,29 +32,75 @@
   transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-  
-.cardBody {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 40%;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  background-color: white;
-  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
 
-.cardTitle {
-  width: 100%;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: black;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+    
+  .cardBody {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 40%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+  .cardTitle {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .cardText {
+    font-size: 30px;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .infoCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .viewButton {
+    bottom: 40px; /* adjust the value as per your requirement */
+    display: flex;
+    padding: 10px 20px;
+    background-color: black;
+    margin-top: 20px;
+    justify-content: center;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    border-width: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+
 
 .cardText {
   font-size: 30px;
