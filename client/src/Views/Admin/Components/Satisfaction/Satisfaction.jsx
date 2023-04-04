@@ -10,7 +10,7 @@ const StarsRating = () => {
   useEffect(() => {
     const fetchAverageRating = async () => {
       try {
-        const response = await axios('/rating');
+        const response = await axios('https://proyecto-final-henry-production-015e.up.railway.app/rating');
         const { data } = response;
         console.log('response', data);
         setAverageRating(data);
