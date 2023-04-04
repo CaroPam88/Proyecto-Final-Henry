@@ -24,6 +24,7 @@ export const NavBar = () => {
 
   const location = useLocation()
 
+  const user = useSelector(state => state.user.theUser);
 
   const { handlerFilter } = useFilter();
 
@@ -49,7 +50,7 @@ export const NavBar = () => {
                 Home
               </NavLink>
             </li>}
-            {location.pathname !== '/user/profile' && <li>
+            {location.pathname !== '/user/profile' && user.id && <li>
               <NavLink to="/user/profile" onClick={menuopen}>
                 Profile
               </NavLink>
