@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer");
 
-
-const MAILER_PASS = "ccidgguopvxynmii";
-const MAIL= "pf.dressme@gmail.com"
+require('dotenv').config();
+const MAIL = process.env.MAIL;
+const MAILER_PASS = process.env.MAILER_PASS;
 
 
 async function sendEmail(user) {
