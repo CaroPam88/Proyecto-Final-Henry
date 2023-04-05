@@ -43,7 +43,7 @@ const AllProducts = () => {
     if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
-    else return (<section>
+    else if (theUser.id && theUser.admin) return (<section>
         <img src={hero3} alt='found' className={style.found} />
         <div className={style.return}>
             <Link to={'/admin/dashboard'} className={style.Link} >
