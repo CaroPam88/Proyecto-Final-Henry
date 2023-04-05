@@ -118,3 +118,41 @@ input[type='checkbox'] {
 	margin-left: 8px;
 	margin-right: 4px;
 }
+
+.content {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.loader {
+	display: flex;
+	flex-direction: row;
+}
+
+.circle {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #555;
+	margin: 5px;
+	animation: loaderAnimation 0.6s linear infinite;
+}
+
+@keyframes loaderAnimation {
+	0% {
+		transform: scale(0.4);
+	}
+	20% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.4);
+	}
+}
+
+.linkcart {
+	display: inline-block;
+	margin-left: 10px;
+}
