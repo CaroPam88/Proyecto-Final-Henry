@@ -23,9 +23,9 @@ const DashBoard = () => {
 
     useEffect(() => {
         if (isAuthenticated) dispatch(createUser(user))
-    },[]);
+    },[theUser]);
 
-    if ( theUser.id && !theUser.admin || isAuthenticated ) return (
+    if ( theUser.id && !theUser.admin ) return (
         <NotAdmin />
     )
     else return (
