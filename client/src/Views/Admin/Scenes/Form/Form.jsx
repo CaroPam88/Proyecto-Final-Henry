@@ -28,18 +28,7 @@ function Form() {
         if (isAuthenticated && !theUser.id) dispatch(createUser(user))
     },[])
 
-	if (!theUser.id) {
-		return (
-			<div className={style.content}>
-				<div className={style.loader}>
-					<div className={style.circle}></div>
-					<div className={style.circle}></div>
-					<div className={style.circle}></div>
-					<div className={style.circle}></div>
-				</div>
-			</div>
-		);
-	}
+
 	if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     ) 

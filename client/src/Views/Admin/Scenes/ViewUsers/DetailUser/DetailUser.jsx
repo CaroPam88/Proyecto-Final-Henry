@@ -9,12 +9,14 @@ import style from './DetailUser.module.css';
 import hero3 from '../../../../../Assets/img/hero3.jpg';
 
 import NotAdmin from "../../../Components/NotAdmin/NotAdmin";
+import { useAuth0 } from '@auth0/auth0-react';
 
 function DetailUser() {
 	const dispatch = useDispatch();
 	const {id} = useParams();
 	const user = useSelector((state) => state.user.userId);
 	const theUser = useSelector(state => state.user.theUser)
+	const { isAuthenticated } = useAuth0();
 
 	useEffect(() => {
 		dispatch(getUserByTheId(id));
@@ -28,18 +30,6 @@ function DetailUser() {
 	};
 
 
-	if (!theUser.id) {
-		return (
-			<div className={style.content}>
-				<div className={style.loader}>
-					<div className={style.circle}></div>
-					<div className={style.circle}></div>
-					<div className={style.circle}></div>
-					<div className={style.circle}></div>
-				</div>
-			</div>
-		);
-	}
 	if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
