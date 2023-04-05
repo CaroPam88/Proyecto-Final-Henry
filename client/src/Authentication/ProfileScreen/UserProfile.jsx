@@ -15,11 +15,13 @@ const UserProfile = () => {
 
 	if (isLoading) {
 		return (
-			<div className={style.loader}>
-				<div className={style.circle}></div>
-				<div className={style.circle}></div>
-				<div className={style.circle}></div>
-				<div className={style.circle}></div>
+			<div className={style.content}>
+				<div className={style.loader}>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+				</div>
 			</div>
 		);
 	}

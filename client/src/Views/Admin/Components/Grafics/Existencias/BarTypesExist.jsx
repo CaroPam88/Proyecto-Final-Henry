@@ -18,7 +18,7 @@ export const BarTypesExist = () => {
     const clothes = useSelector((state) => state.products.products)
    
     let pantalones = clothes.filter(el => el.type.includes("pantalon"))
-    let camisas = clothes.filter(el => el.type.includes("camisa"))
+    let camisas = clothes.filter(el => el.type.includes("chomba"))
     let remeras = clothes.filter(el => el.type.includes("remera"))
     let vestidos = clothes.filter(el => el.type.includes("vestido"))
     let shorts = clothes.filter(el => el.type.includes("short"))
@@ -39,10 +39,10 @@ export const BarTypesExist = () => {
     let StockShorts = StockShort.reduce((sum, value) => sum + value, 0);
 
 const data = [
-    {Prenda: "Pantalones", StockGeneral: StockPantalones},
-    {Prenda: "Camisas", StockGeneral: StockCamisas },
-    {Prenda: "Remeras", StockGeneral: StockRemeras},
-    {Prenda: "Vestidos", StockGeneral: StockVestidos},
+    {Prenda: "Pants", StockGeneral: StockPantalones},
+    {Prenda: "Polo", StockGeneral: StockCamisas },
+    {Prenda: "T-Shirt", StockGeneral: StockRemeras},
+    {Prenda: "Dress", StockGeneral: StockVestidos},
     {Prenda: "Shorts", StockGeneral: StockShorts},
 ]
 
