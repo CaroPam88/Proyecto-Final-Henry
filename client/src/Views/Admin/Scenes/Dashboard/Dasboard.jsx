@@ -25,7 +25,7 @@ const DashBoard = () => {
         if (isAuthenticated) dispatch(createUser(user))
     },[]);
 
-    if ( theUser.id && !theUser.admin) return (
+    if ( theUser.id && !theUser.admin || isAuthenticated ) return (
         <NotAdmin />
     )
     else return (
