@@ -23,7 +23,7 @@ const DetailProduct = () => {
         return () => {
             dispatch(clearProductDetailState());
         };
-    }, []);
+    }, [theUser]);
     const detail = useSelector((state) => state.products.productDetail);
 
     const handlerExisting = (e, id) => {
@@ -33,7 +33,19 @@ const DetailProduct = () => {
     }
 
 
-    if (theUser.id && !theUser.admin || isAuthenticated) return (
+    if (!isAuthenticated) {
+		return (
+			<div className={style.content}>
+				<div className={style.loader}>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+				</div>
+			</div>
+		);
+	}
+    if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
     else return (
