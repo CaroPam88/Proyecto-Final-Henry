@@ -23,6 +23,7 @@ const position2 = {
 
 const divStyle = {
   background: `white`,
+  color: "black"
  
 }
 
@@ -106,9 +107,9 @@ function MyComponent() {
           onCloseClick={() => setSelectedMarker(null)}
         >
           <div style={divStyle}>
-            <h6>{markers[selectedMarker].info.name}</h6>
-            <p>{markers[selectedMarker].info.address}</p>
-            <p>{markers[selectedMarker].info.postal}</p>
+            <h6 style={divStyle}>{markers[selectedMarker].info.name}</h6>
+            <p style={divStyle}>{markers[selectedMarker].info.address}</p>
+            <p style={divStyle}>{markers[selectedMarker].info.postal}</p>
           </div>
         </InfoWindow>
       )}
