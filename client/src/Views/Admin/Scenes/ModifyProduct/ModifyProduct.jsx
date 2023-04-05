@@ -30,7 +30,7 @@ function ProductForm() {
 	useEffect(() => {
 		dispatch(getProductDetail(id));
 		if (isAuthenticated && !theUser.id) dispatch(createUser(user))
-	}, []);
+	}, [theUser]);
 
 	//////////////////////////////////////////////////////////
 
@@ -171,7 +171,19 @@ function ProductForm() {
 		navigate(`/admin/product/detail/${id}`);
 	};
 
-	if (theUser.id && !theUser.admin || isAuthenticated) return (
+	if (!isAuthenticated) {
+		return (
+			<div className={style.content}>
+				<div className={style.loader}>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+				</div>
+			</div>
+		);
+	}
+	if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
     else return (

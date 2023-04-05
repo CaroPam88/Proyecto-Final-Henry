@@ -76,7 +76,7 @@ const getProductsByName = (name) => {
 			const dbData = (await axios(`/clothes/?name=${name}`)).data;
 			return dispatch(getProdName(dbData));
 		} catch (error) {
-			alert({error: error.message});
+			alert(`Product ${name} not found`);
 		}
 	};
 };

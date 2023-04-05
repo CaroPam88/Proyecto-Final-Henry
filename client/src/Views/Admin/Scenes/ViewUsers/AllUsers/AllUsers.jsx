@@ -22,7 +22,7 @@ function AllUsers() {
 	useEffect(() => {
 		dispatch(getAllTheUsers());
 		if (isAuthenticated && !theUser.id) dispatch(createUser(user))
-	}, [users.locked]);
+	}, [users.locked, theUser]);
 
 	let handleLock = (e,id) => {
 		dispatch(changeTheUserlocked(id))
@@ -30,7 +30,19 @@ function AllUsers() {
 	};
 
 
-	if (theUser.id && !theUser.admin || isAuthenticated) return (
+	if (!isAuthenticated) {
+		return (
+			<div className={style.content}>
+				<div className={style.loader}>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+				</div>
+			</div>
+		);
+	}
+	if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
     else return (
