@@ -25,7 +25,19 @@ const DashBoard = () => {
         if (isAuthenticated) dispatch(createUser(user))
     },[theUser]);
 
-    if ( theUser.id && !theUser.admin ) return (
+    if (!isAuthenticated) {
+		return (
+			<div className={style.content}>
+				<div className={style.loader}>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+					<div className={style.circle}></div>
+				</div>
+			</div>
+		);
+	}
+    if ( theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
     else return (
