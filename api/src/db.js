@@ -2,13 +2,8 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const {Sequelize, Op} = require('sequelize');
-const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT} = process.env;
 
-// const DB_USER = 'postgres';
-// const DB_PASSWORD = 'iwkMW5o9RX1Hj2Fd0N3x';
-// const DB_HOST = 'containers-us-west-59.railway.app';
-// const DB_PORT = '5478';
-// const DB_NAME = 'railway';
+const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT} = process.env;
 
 const sequelize = new Sequelize(
 	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
