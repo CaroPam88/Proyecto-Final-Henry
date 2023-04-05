@@ -45,7 +45,7 @@ function AllUsers() {
 	if (theUser.id && !theUser.admin) return (
         <NotAdmin />
     )
-    else return (
+    else if (theUser.id && theUser.admin) return  (
 		<section>
 			<img src={hero3} alt="found" className={style.found} />
 			<div className={style.return}>
