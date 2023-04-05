@@ -1,7 +1,7 @@
 import React, {useEffect, useCallback} from 'react';
 // import { useParams } from "react-router-dom";
 import axios from 'axios';
-
+import style from "./mercadopago.module.css"
 const FORM_ID = 'payment-form';
 
 export default function Product({ids}) {
@@ -10,9 +10,10 @@ export default function Product({ids}) {
 		const res = await response.data;
 		if (res.preferenceId) {
 			const script = document.createElement('script');
+			script.type = 'text/javascript';
 			script.src =
 				'https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js';
-			script.type = 'text/javascript';
+		
 			script.setAttribute('data-preference-id', res.preferenceId);
 			let form = document.getElementById(FORM_ID);
 			if (!form) {

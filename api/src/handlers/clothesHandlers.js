@@ -100,8 +100,7 @@ let putProductHandler = async (req, res) => {
 	try {
 		let ids = req.body;
 		let userId = ids.pop();
-		console.log('IDS', ids);
-		console.log('USERID', userId);
+	
 
 		const payClothes = await clothesUpdate(ids);
 
@@ -118,12 +117,12 @@ let putProductHandler = async (req, res) => {
 let postMercadoPago = async (req, res) => {
 	try {
 		let ids = req.body;
-		console.log('back', ids);
-		let id = ids.id;
+		
+	
 		const payPago = await payMercadoPago(ids);
 		res.send(payPago);
 	} catch (error) {
-		console.log(error.message);
+	
 		res.status(405).json({error: error.message});
 	}
 };
@@ -136,7 +135,7 @@ let ratingUser = async (req, res) => {
 	
 	try {
 		const newRating = await createRating(num)
-		console.log("new", newRating);
+
 		res.status(200).json(newRating)
 	} catch(error) {
 		res.status(405).json({error: error.message});

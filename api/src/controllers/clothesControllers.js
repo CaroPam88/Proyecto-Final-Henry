@@ -49,7 +49,7 @@ const createRating = async (num) => {
 
      let ratingArray =  [...newRow[0].ratin]
 
-     console.log("arrs", ratingArray);
+     
 
 	// // Calcular la suma y el promedio de los números en la matriz.
 	const suma = ratingArray.reduce((sum, value) => sum + value, 0);
@@ -205,7 +205,7 @@ let getGenderData = async (gender) => {
 const clothesUpdates = async (ids) => {
 	const size = await Size.findByPk(ids.id);
 	const clothes = await Clothes.findByPk(ids.id);
-
+   console.log("control de sttock", ids);
 	const updatedColors = size.colors.map((colorObj) => {
 		if (colorObj.color === ids.color) {
 			colorObj.stockColors -= ids.cantidad;
@@ -232,6 +232,7 @@ const clothesUpdates = async (ids) => {
 };
 
 const clothesUpdate = async (items) => {
+	
 	const itemIds = items.map((item) => ({
 		id: item.id,
 		color: item.color,

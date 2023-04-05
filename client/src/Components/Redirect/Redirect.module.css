@@ -1,0 +1,51 @@
+.landing{
+    margin: 0%;
+    background-color: transparent;
+    background-attachment:fixed;
+    background-size: cover;
+    background-position: center;
+    height:100vh;
+    width:100vw;
+}
+
+.div{
+    background-color: transparent;
+    
+    float: left;
+    margin: 0px 20px;
+}
+.h1{
+    color: #006f8bcc;
+    margin: 50px 10px;
+    background-color: transparent;
+    padding: 6px 9px 8px;
+    
+}
+.link{
+    list-style-type: none;
+    color: transparent;
+
+}
+.button{
+   display:block;
+   border-radius: 4px;
+   text-transform: uppercase;
+   background-color: transparent;
+   color: #fff;
+   font-size: 18px;
+   overflow: hidden;
+   transition: all 500ms ease;
+   border: 2px solid #20e2d7;
+   margin-bottom: 40px;
+   z-index: 0;
+   height: 70px;
+   margin: 20px;
+   width: 150px;
+   align-items:center;
+}
+.button:hover{
+   background-color: 006f8bcc;
+   box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+   color: #434343;
+   cursor: pointer;
+}

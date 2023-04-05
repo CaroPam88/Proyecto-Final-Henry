@@ -14,7 +14,7 @@ let access_token = "TEST-4443944919928212-031713-be7be51b277bd7cb85c133b57215eef
 let preference = { 
   items: [],
   back_urls:{
-      success: "https://proyecto-final-henry-nu.vercel.app/home",
+      success: "http://localhost:3000/home",
       failure: "https://proyecto-final-henry-nu.vercel.app/home",
       pending: "https://proyecto-final-henry-nu.vercel.app/home",
   },
@@ -44,7 +44,7 @@ let payMercadoPago = async (ids) => {
      preference = {
       items: [],
       back_urls:{
-          success: "https://proyecto-final-henry-nu.vercel.app/home",
+          success:  "http://localhost:3000/home",
           failure: "https://proyecto-final-henry-nu.vercel.app/home",
           pending: "https://proyecto-final-henry-nu.vercel.app/home",
       },

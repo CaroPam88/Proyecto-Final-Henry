@@ -20,6 +20,7 @@ import ProductForm from './Views/Admin/Scenes/ModifyProduct/ModifyProduct';
 
 import UserProfile from './Authentication/ProfileScreen/UserProfile';
 import SideBar from './Views/Admin/Components/SideBar/SideBar';
+import Redirect from './Components/Redirect/Redirect';
 
 function App() {
 	const {pathname} = useLocation();
@@ -30,6 +31,7 @@ function App() {
 				<NavBar />
 			) : null}
 			<Routes>
+			    <Route path="/redirect" element={<Redirect/>} />
 				<Route path="/" element={<LoadingView />} />
 				<Route exact path="/home" element={<Home />} />
 				<Route exact path="/detail/:id" element={<Detail />} />

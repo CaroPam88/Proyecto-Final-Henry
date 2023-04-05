@@ -32,6 +32,7 @@ export const Home = ()=>{
     // variable de estado para controlar la visualización del popup
 
     const stockController = async () => {
+      console.log("control de stock front");
         if (theUser.id && update && currentPurechase) {
           setShowSatisfactionPopup(true); // cambiar el estado a true para mostrar el popup
           await dispatch(putClothes(currentPurechase))
