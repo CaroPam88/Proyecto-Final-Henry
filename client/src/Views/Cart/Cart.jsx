@@ -56,9 +56,11 @@ const Cart = () => {
 			e.preventDefault();
 			if (theUser.id && !theUser.admin && !theUser.locked) {
 				setPagar(false);
-			} else if (theUser.admin){
-				alert('You are the administrator or you are locked, you can not buy')
-			} else {
+			} else if (theUser.admin) {
+				alert('You are the administrator, you can not buy')
+			} else if (theUser.locked) { 
+				alert('You are locked, you can not buy, please contact pf.dressme@gmail.com')
+			}else {
 				loginWithRedirect();
 			}
 		} catch (error) {
@@ -71,11 +73,11 @@ const Cart = () => {
 			<img src='https://th.bing.com/th/id/R.ef110efa08c015b6beeadefa42eec32f?rik=xjNp1PX96ZPSqQ&riu=http%3a%2f%2fwww.llopmoda.com%2fwp-content%2fuploads%2f2017%2f11%2fslider_home_01.jpg&ehk=70QnEZPwYPw4EueKdodqV1uxiV1fq6Kgx4zb8MrHKxA%3d&risl=&pid=ImgRaw&r=0' alt='background' className={style.found} />
 			<div className={style.tittleContent}>
 				{theUser.id ? (
-					<span className={style.logged}>Estás Loggueado!</span>
+					<span className={style.logged}>You´re Logged !</span>
 				) : (
-					<span className={style.noLogged}>No estás Loggueado!</span>
+					<span className={style.noLogged}>You aren´t Logged!</span>
 				)}
-				<h1 className={style.h1}>Tu Carrito:</h1>
+				<h1 className={style.h1}>Your Cart:</h1>
 			</div>
 			<div className={style.cardContainer}>
 			{cart.length
@@ -133,7 +135,7 @@ const Cart = () => {
 									<p className={style.p}>Size: {item.size}</p>
 								</div>
 								<p className={style.p}>
-									Quantity:
+									Amount:
 									{item.cantidad > 1 ? <button className={style.cantButton} onClick={() => handleChangeCant(i, -1) }>	-	</button>
 									:<button className={style.cantButton}>	- 	</button>}
 									{item.cantidad}
@@ -165,7 +167,7 @@ const Cart = () => {
 				>
 					Confirm
 				</button>
-				: <div className={style.empty}>Tu Carrito está vacío:(</div> 
+				: <div className={style.empty}>Your Cart is empty :(</div> 
 			)
 			: (
 				<MercadoPago ids={cart} />

@@ -11,6 +11,7 @@
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	
 }
 
 .formContainer {
@@ -21,12 +22,17 @@
 	padding: 20px;
 	background-color: #fff;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color:  rgba(255, 255, 255, 0.7);
+	border-radius: 7%;
 }
 
 .formContainer label {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 10px;
+	align-items: center;
+	font-family: Arial, Helvetica, sans-serif;
+	color: black;
 }
 
 .formContainer label > input,
@@ -35,6 +41,7 @@
 	padding: 5px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .formContainer label > select {
@@ -45,20 +52,24 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .formContainer label > select::-ms-expand {
 	display: none;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .colorInputContainer {
 	display: flex;
 	align-items: center;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .colorInput {
 	width: 100px;
 	margin-right: 10px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .stockInput {
@@ -106,4 +117,42 @@ img {
 input[type='checkbox'] {
 	margin-left: 8px;
 	margin-right: 4px;
+}
+
+.content {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.loader {
+	display: flex;
+	flex-direction: row;
+}
+
+.circle {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #555;
+	margin: 5px;
+	animation: loaderAnimation 0.6s linear infinite;
+}
+
+@keyframes loaderAnimation {
+	0% {
+		transform: scale(0.4);
+	}
+	20% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.4);
+	}
+}
+
+.linkcart {
+	display: inline-block;
+	margin-left: 10px;
 }

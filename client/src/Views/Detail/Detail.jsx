@@ -161,7 +161,7 @@ console.log(myProduct)
                   Buy It Now!
                 </button>
               ) : (
-                <MercadoPago ids={[nuevoProducto]} />
+               <div className={style.div}><MercadoPago ids={[nuevoProducto]}  className={style.button}/></div> 
               )
             ) : (
               <div></div>

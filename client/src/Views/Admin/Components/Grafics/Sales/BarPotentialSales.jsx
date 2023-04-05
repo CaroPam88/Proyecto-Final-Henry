@@ -33,7 +33,10 @@ const BarPotentialSales = () => {
                 <XAxis dataKey='name' />
                 <YAxis />
                 <Tooltip />
-                <Legend />
+                <Legend
+                formatter={(value, entry) => (
+                    <span style={{ color: '#00000000' }}>{value}</span>
+                )}/>
                 <Bar dataKey='cant' fill="#006f8b"/>
             </BarChart>
         </ResponsiveContainer>
